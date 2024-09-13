@@ -37,4 +37,32 @@ void PacMan::run(){
                 break;
         }
     }
+
+    if (!window->ShouldClose()) {
+
+        switch (mode){
+
+        case Mode_select::Splash_screen:
+        splash.set_resourse_location("resources/splash_screen.png"); // can be changed in splash screen header, needed for throw
+
+        splash.render_texture(window);
+        break;
+
+        case Mode_select::Game_screen:
+
+        break;
+
+        case Mode_select::Pause_screen:
+        defender_game->Pause();
+        break;
+
+        case Mode_select::Game_over_screen:
+        defender_game->Game_Over();
+        }
+  }
+
+
+
+
+
 }
