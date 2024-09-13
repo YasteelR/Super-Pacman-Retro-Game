@@ -21,28 +21,31 @@ public:
 
     void run();
 
-    void render_splash_screen();
+    void set_splash_screen(const int& event);
  
-    void render_game_screen();
+    void set_game_screen(const int& event);
  
-    void render_pause_screen();
+    void set_pause_screen(const int& event);
  
-    void render_gameover_screen();
+    void set_gameover_screen(const int& event);
 
 
 private:
     shared_ptr<raylib::Window> window;
     unique_ptr<PacMan> PacMan_Window;
+    Mode_select mode;
 
 
 }
 
 #endif /* AEFA9809_0E75_4129_876C_3490D6312543 */
 
-
+/*
 private:
+
     shared_ptr<sf::RenderWindow> window;
     Mode_select mode;
    // unique_ptr<GameOperations> defender_game;
 
 };
+*/

@@ -14,7 +14,7 @@ PacMan::PacMan(){
 void PacMan::run(){
 
     while (!window->ShouldClose()) { // Detect window close button or ESC key
- 
+        /*
         // Get the key input using a switch statement
         switch (GetKeyPressed()) {
             case KEY_ESCAPE:
@@ -36,31 +36,57 @@ void PacMan::run(){
             default:
                 break;
         }
-    }
+        */
+        auto event = GetKeyPressed();
+        while(event){
 
-    if (!window->ShouldClose()) {
+            //sets the mode of the game to render the correct game page
+            switch(mode){
 
-        switch (mode){
+            case Mode_select::Splash_screen:
+            set_splash_screen(event);
+            break;
 
-        case Mode_select::Splash_screen:
-        splash.set_resourse_location("resources/splash_screen.png"); // can be changed in splash screen header, needed for throw
+            case Mode_select::Game_screen:
+            set_game_screen(event);
+            break;
 
-        splash.render_texture(window);
-        break;
+            case Mode_select::Pause_screen:
+            set_pause_screen(event);
+            break;
 
-        case Mode_select::Game_screen:
+            case Mode_select::Game_over_screen:
+            set_gameover_screen(event);
+            break;
+            }
 
-        break;
-
-        case Mode_select::Pause_screen:
-        defender_game->Pause();
-        break;
-
-        case Mode_select::Game_over_screen:
-        defender_game->Game_Over();
         }
-  }
 
+
+
+        if (!window->ShouldClose()) {
+
+            switch (mode){
+
+            case Mode_select::Splash_screen:
+            //splash.set_resourse_location("resources/splash_screen.png"); // can be changed in splash screen header, needed for throw
+
+            //splash.set_texture(window);
+            break;
+
+            case Mode_select::Game_screen:
+
+            break;
+
+            case Mode_select::Pause_screen:
+            PacMan_Window->Pause();
+            break;
+
+            case Mode_select::Game_over_screen:
+            PacMan_Window->Game_Over();
+            }
+        }
+    }
 
 
 
