@@ -1,46 +1,28 @@
 #include "GameMode.h"
 #include <raylib-cpp.hpp>
 
-    auto screen_width =1600.0f;
-    auto screen_height =900.0f;
+    int screen_width =1600;
+    int screen_height =900;
 
 PacMan::PacMan(){    
 
     window = make_shared<raylib::Window>(screen_width, screen_height, "Matt-Yas_PacMan!");
     mode = Mode_select::Splash_screen;
+    window->SetTargetFPS(60);
+    Texture2D splash = LoadTexture("superpackman.png");
     //PacMan_Window = make_unique<GameOperation>(window);
 
 }
+
+// The main function that runs all game operations 
 void PacMan::run(){
 
     while (!window->ShouldClose()) { // Detect window close button or ESC key
-        /*
-        // Get the key input using a switch statement
-        switch (GetKeyPressed()) {
-            case KEY_ESCAPE:
-                // Close
-                std::cout << "close game" << std::endl;
-                break;
-            case KEY_ENTER:
-                // Start game
-                std::cout << "start game" << std::endl;
-                break;
-            case KEY_A:
-                // Move Left
-                std::cout << "Moving Left" << std::endl;
-                break;
-            case KEY_D:
-                // Move Right
-                std::cout << "Moving Right" << std::endl;
-                break;
-            default:
-                break;
-        }
-        */
-        auto event = GetKeyPressed();
-        while(event){
 
-            //sets the mode of the game to render the correct game page
+        auto event = GetKeyPressed();
+        while(!IsKeyPressed(KEY_NULL)){
+
+            //sets the mode of the game to s the correct game page
             switch(mode){
 
             case Mode_select::Splash_screen:
@@ -63,15 +45,23 @@ void PacMan::run(){
         }
 
 
-
+        // Handles the game logic, rendering and updating data
         if (!window->ShouldClose()) {
 
             switch (mode){
 
             case Mode_select::Splash_screen:
-            //splash.set_resourse_location("resources/splash_screen.png"); // can be changed in splash screen header, needed for throw
 
-            //splash.set_texture(window);
+            BeginDrawing();
+            ClearBackground(RAYWHITE);
+
+            // Render the image (center it on screen)
+            DrawTexture(splash, (screen_width - splash.width) / 2, (screen_height - splash.height) / 2, WHITE);
+
+            // End drawing
+            EndDrawing();
+
+
             break;
 
             case Mode_select::Game_screen:
@@ -79,11 +69,12 @@ void PacMan::run(){
             break;
 
             case Mode_select::Pause_screen:
-            PacMan_Window->Pause();
+            //PacMan_Window->Pause();
             break;
 
             case Mode_select::Game_over_screen:
-            PacMan_Window->Game_Over();
+            //PacMan_Window->Game_Over();
+            break;
             }
         }
     }
@@ -92,3 +83,53 @@ void PacMan::run(){
 
 
 }
+
+
+
+void PacMan:: set_splash_screen(const int& event){
+
+    if(IsKeyPressed(KEY_ENTER)) {
+    mode=Mode_select::Game_screen;
+    }
+    else if(IsKeyPressed(KEY_ESCAPE)) {
+        window->ShouldClose();
+    }
+}
+
+
+void PacMan::set_game_screen(const int& event){
+
+    if(IsKeyPressed(KEY_P)) {
+
+    mode=Mode_select::Pause_screen;
+    }
+
+    else if(IsKeyPressed(KEY_ESCAPE)) {
+        window->ShouldClose();
+    }
+
+}
+void PacMan:: set_pause_screen(const int& event){
+
+
+    if(IsKeyPressed(KEY_P)){
+    mode=Mode_select::Game_screen;
+    }
+
+    else if(IsKeyPressed(KEY_ESCAPE)) {
+        window->ShouldClose();
+    }
+
+}
+
+void PacMan:: set_gameover_screen(const int& event)
+{
+
+    if(IsKeyPressed(KEY_ENTER)) {
+    mode=Mode_select::Game_screen;
+    }
+    else if(IsKeyPressed(KEY_ESCAPE)) {
+        window->ShouldClose();
+    }
+}
+
