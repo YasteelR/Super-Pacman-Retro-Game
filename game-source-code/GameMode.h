@@ -34,7 +34,7 @@ private:
     shared_ptr<raylib::Window> window;
     unique_ptr<PacMan> PacMan_Window;
     Mode_select mode;
-    Texture2D splash;
+    raylib::Texture2D splash;
 
 
 };

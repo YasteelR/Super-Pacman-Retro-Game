@@ -1,4 +1,5 @@
 #include "GameMode.h"
+#include <iostream>
 #include <raylib-cpp.hpp>
 
     int screen_width =1600;
@@ -9,7 +10,8 @@ PacMan::PacMan(){
     window = make_shared<raylib::Window>(screen_width, screen_height, "Matt-Yas_PacMan!");
     mode = Mode_select::Splash_screen;
     window->SetTargetFPS(60);
-    Texture2D splash = LoadTexture("superpackman.png");
+    splash = LoadTexture("../resources/pacman.png");
+    cout<< "Constructed "<<endl;
     //PacMan_Window = make_unique<GameOperation>(window);
 
 }
@@ -18,9 +20,9 @@ PacMan::PacMan(){
 void PacMan::run(){
 
     while (!window->ShouldClose()) { // Detect window close button or ESC key
-
+    
         auto event = GetKeyPressed();
-        while(!IsKeyPressed(KEY_NULL)){
+        while(event){
 
             //sets the mode of the game to s the correct game page
             switch(mode){
@@ -40,8 +42,10 @@ void PacMan::run(){
             case Mode_select::Game_over_screen:
             set_gameover_screen(event);
             break;
+            
             }
-
+            cout << "event wile loop=============="<<endl;
+            event = 0;
         }
 
 
@@ -53,10 +57,12 @@ void PacMan::run(){
             case Mode_select::Splash_screen:
 
             BeginDrawing();
-            ClearBackground(RAYWHITE);
+            ClearBackground(GREEN);
+            //splash = LoadTexture("pacman.png");
 
             // Render the image (center it on screen)
-            DrawTexture(splash, (screen_width - splash.width) / 2, (screen_height - splash.height) / 2, WHITE);
+            DrawTexture(splash, 0, 0, WHITE); 
+            cout << "rnederrrr /////////////////"<<endl;
 
             // End drawing
             EndDrawing();
