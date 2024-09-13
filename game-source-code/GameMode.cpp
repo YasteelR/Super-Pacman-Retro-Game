@@ -2,8 +2,8 @@
 #include <iostream>
 #include <raylib-cpp.hpp>
 
-    int screen_width =1600;
-    int screen_height =900;
+    const int screen_width =1600;
+    const int screen_height =900;
 
 PacMan::PacMan(){    
 
@@ -62,7 +62,6 @@ void PacMan::run(){
 
             // Render the image (center it on screen)
             DrawTexture(splash, 0, 0, WHITE); 
-            cout << "rnederrrr /////////////////"<<endl;
 
             // End drawing
             EndDrawing();
