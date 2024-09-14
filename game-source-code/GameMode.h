@@ -3,6 +3,7 @@
 
 #include <raylib-cpp.hpp>
 #include <memory>
+#include <vector>
 
 using namespace std;
 
@@ -12,7 +13,6 @@ enum Mode_select{
     Pause_screen,
     Game_over_screen
 };
-
 
 class PacMan {
 public:
@@ -35,8 +35,7 @@ private:
     unique_ptr<PacMan> PacMan_Window;
     Mode_select mode;
     raylib::Texture2D splash;
-
-
+    Vector2 ZeroZero = {0,0};
 };
 
 #endif /* AEFA9809_0E75_4129_876C_3490D6312543 */

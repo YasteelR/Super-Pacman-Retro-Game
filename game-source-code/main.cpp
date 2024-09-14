@@ -9,7 +9,7 @@ int main (){
 	PacMan game;
 	game.run();
 
-	GameMap Test1;
-
+	GameMap test1;
+	
     return 0;
 }

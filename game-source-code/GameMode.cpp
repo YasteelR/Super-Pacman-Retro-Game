@@ -61,7 +61,9 @@ void PacMan::run(){
             //splash = LoadTexture("pacman.png");
 
             // Render the image (center it on screen)
-            DrawTexture(splash, 0, 0, WHITE); 
+            DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE);
+
+            
 
             // End drawing
             EndDrawing();
@@ -70,6 +72,11 @@ void PacMan::run(){
             break;
 
             case Mode_select::Game_screen:
+            
+            BeginDrawing();
+            ClearBackground(BLACK);
+
+            EndDrawing();
 
             break;
 
@@ -91,7 +98,7 @@ void PacMan::run(){
 
 
 
-void PacMan:: set_splash_screen(const int& event){
+void PacMan::set_splash_screen(const int& event){
 
     if(IsKeyPressed(KEY_ENTER)) {
     mode=Mode_select::Game_screen;
