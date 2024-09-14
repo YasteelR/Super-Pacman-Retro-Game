@@ -15,7 +15,7 @@ void player::moveUp(){
         if (get_y() > 10) {
             set_location(get_x(), get_y() - 15);
 
-            cout<<get_y()<<endl;
+            //cout<<get_y()<<endl;
         }  
     }
 
@@ -36,7 +36,7 @@ void player::moveRight() {
          if (get_x() < 1450) {
             set_location(get_x() + 15, get_y() );
             //set_sprite("resources/pacmanRight.png");
-            cout<<get_x()<<endl;
+            //cout<<get_x()<<endl;
         }
     }
 

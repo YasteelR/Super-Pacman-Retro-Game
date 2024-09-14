@@ -52,7 +52,7 @@ GameMap::GameMap()
         }
 
         MapFile.clear();
-        MapFile.seekg(MapObjects.size()*4-1,std::ios::beg);
+        MapFile.seekg(MapObjects.size()*4,std::ios::beg);
         getline(MapFile,Headerline);
 
         while(MapFile>>coordinates)
@@ -92,14 +92,9 @@ GameMap::GameMap()
 
 void GameMap::DrawMap()
 {
-    BeginDrawing();
-    ClearBackground(BLACK);
-
     DrawBoundary();
     DrawRectangles();
     DrawLines();
-    
-    EndDrawing();
 }
 
 void GameMap::DrawRectangles()

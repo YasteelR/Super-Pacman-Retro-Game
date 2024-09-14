@@ -50,16 +50,10 @@ void GameOperations::move_objects(){
 
 void GameOperations::drawPlayer(){
 
-    BeginDrawing();
-
-    
-    //ClearBackground(BLUE);
     pacman->draw_sprite_object();
 
     //PacMan_Window->drawPlayer();
-    // End drawing
-    //EndDrawing();
     
-    cout<<"drawing pacman++++++++++++++"<<endl;
+    //cout<<"drawing pacman++++++++++++++"<<endl;
 
 }

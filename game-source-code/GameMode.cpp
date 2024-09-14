@@ -10,8 +10,9 @@ PacMan::PacMan(){
     mode = Mode_select::Splash_screen;
     window->SetTargetFPS(60);
     splash = LoadTexture("../resources/pacman.png");
-    cout<< "Constructed "<<endl;
+    //cout<< "Constructed "<<endl;
     PacMan_Window = make_unique<GameOperations>();    
+    Map = make_unique<GameMap>();
     
 }
 
@@ -43,7 +44,7 @@ void PacMan::run(){
             break;
             
             }
-            cout << "event wile loop=============="<<endl;
+            //cout << "event wile loop=============="<<endl;
             event = 0;
         }
 
@@ -61,7 +62,7 @@ void PacMan::run(){
 
                 // Render the image (center it on screen)
                 DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE); 
-                cout << "rnederrrr /////////////////"<<endl;
+                //cout << "rnederrrr /////////////////"<<endl;
 
                 // End drawing
                 EndDrawing();
@@ -74,15 +75,16 @@ void PacMan::run(){
                 PacMan_Window->move_objects();
 
                 
-                // BeginDrawing();
+                BeginDrawing();
 
                 
-                // ClearBackground(BLUE);
-                //Map.DrawMap();
+                ClearBackground(BLACK);
+                Map->DrawMap();
 
                 PacMan_Window->drawPlayer();
-                // // End drawing
-                // EndDrawing();
+
+                // End drawing
+                EndDrawing();
 
 
 
