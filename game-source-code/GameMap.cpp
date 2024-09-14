@@ -84,7 +84,14 @@ void GameMap::DrawMap()
     ClearBackground(BLACK);
 
     DrawBoundary();
-    for(int j=0; j<MapObjects.size(); j++)
+    DrawRectangles();
+    
+    EndDrawing();
+}
+
+void GameMap::DrawRectangles()
+{
+    for(int j=0; j<NumOfRectangles; j++)
     {
         int size = MapObjects[j].size();
         DrawRectangle(MapObjects[j][size-4], 
@@ -94,7 +101,6 @@ void GameMap::DrawMap()
                       GREEN);
     }
 
-    EndDrawing();
 }
 
 void GameMap::DrawBoundary()

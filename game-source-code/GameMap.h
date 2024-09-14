@@ -14,6 +14,7 @@ class GameMap
     public:
         GameMap();
         void DrawMap();
+        void DrawRectangles();
         void DrawBoundary();
         //void DrawGhostSpawn();
     private:
