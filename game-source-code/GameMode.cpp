@@ -70,12 +70,7 @@ void PacMan::run(){
 
             case Mode_select::Game_screen:
             
-            BeginDrawing();
-            ClearBackground(BLACK);
-
             Map.DrawMap();
-
-            EndDrawing();
 
             break;
 
