@@ -76,3 +76,33 @@ GameMap::GameMap()
     else if(!MapFile.is_open())   
         throw runtime_error("Map.txt file did not open!");
 }
+
+
+void GameMap::DrawMap()
+{
+    BeginDrawing();
+    ClearBackground(BLACK);
+
+    DrawBoundary();
+    for(int j=0; j<MapObjects.size(); j++)
+    {
+        int size = MapObjects[j].size();
+        DrawRectangle(MapObjects[j][size-4], 
+                      MapObjects[j][size-3],
+                      MapObjects[j][size-2],
+                      MapObjects[j][size-1],
+                      GREEN);
+    }
+
+    EndDrawing();
+}
+
+void GameMap::DrawBoundary()
+{
+    DrawRectangle(0, 0, 50, 900, GREEN);
+    DrawRectangle(50, 0, 1550, 50, GREEN);
+    DrawRectangle(1550, 50, 50, 850, GREEN);
+    DrawRectangle(50, 850, 1500, 50, GREEN);
+}
+
+
