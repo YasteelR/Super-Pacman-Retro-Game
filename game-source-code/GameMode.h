@@ -3,7 +3,7 @@
 
 #include <raylib-cpp.hpp>
 #include <memory>
-#include <vector>
+#include "GameOperations.h"
 #include "GameMap.h"
 
 using namespace std;
@@ -14,6 +14,7 @@ enum Mode_select{
     Pause_screen,
     Game_over_screen
 };
+
 
 class PacMan {
 public:
@@ -40,6 +41,10 @@ private:
     const int screen_width =1600;
     const int screen_height =900;
     GameMap Map;
+
+
+
+
 };
 
 #endif /* AEFA9809_0E75_4129_876C_3490D6312543 */
