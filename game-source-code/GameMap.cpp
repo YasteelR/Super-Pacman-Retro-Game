@@ -41,6 +41,18 @@ GameMap::GameMap()
 
             NumOfRectangles++;
         }
+
+        for(int i=0;i<MapObjects.size(); i++)
+        {
+            for(int j=0; j<MapObjects[i].size(); j++)
+            {
+                cout<<MapObjects[i][j]<<" ";
+            }
+            cout<<endl;
+        }
+
+        MapFile.clear();
+        MapFile.seekg(MapObjects.size()*4-1,std::ios::beg);
         getline(MapFile,Headerline);
 
         while(MapFile>>coordinates)
@@ -85,6 +97,7 @@ void GameMap::DrawMap()
 
     DrawBoundary();
     DrawRectangles();
+    DrawLines();
     
     EndDrawing();
 }
@@ -93,11 +106,10 @@ void GameMap::DrawRectangles()
 {
     for(int j=0; j<NumOfRectangles; j++)
     {
-        int size = MapObjects[j].size();
-        DrawRectangle(MapObjects[j][size-4], 
-                      MapObjects[j][size-3],
-                      MapObjects[j][size-2],
-                      MapObjects[j][size-1],
+        DrawRectangle(MapObjects[j][0], 
+                      MapObjects[j][1],
+                      MapObjects[j][2],
+                      MapObjects[j][3],
                       GREEN);
     }
 
@@ -111,4 +123,14 @@ void GameMap::DrawBoundary()
     DrawRectangle(50, 850, 1500, 50, GREEN);
 }
 
-
+void GameMap::DrawLines()
+{
+    for(int i=NumOfRectangles; i<MapObjects.size(); i++)
+    {
+        DrawLine(MapObjects[i][0], 
+                      MapObjects[i][1],
+                      MapObjects[i][2],
+                      MapObjects[i][3],
+                      GREEN);
+    }
+}
