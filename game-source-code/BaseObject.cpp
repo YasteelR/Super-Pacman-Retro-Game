@@ -16,8 +16,21 @@ Properties BaseObject::get_Properties(){
 };
 
 string BaseObject::get_sprite(){
+    
     return sprite;
 };
+
+void BaseObject::draw_sprite_object(){
+        BeginDrawing();
+        ClearBackground(BLUE);
+
+
+        DrawTexture(spriteObject, get_x(), get_y(), WHITE);
+        EndDrawing();
+        cout <<"xpos- "<<get_x()<<endl<<"ypos - "<<get_y()<<endl;
+
+
+}
 
 void BaseObject::set_Properties(Properties new_Properties){
     object_Properties = new_Properties;
@@ -25,6 +38,7 @@ void BaseObject::set_Properties(Properties new_Properties){
 
 void BaseObject::set_sprite(string sprite_file_location){
     sprite = sprite_file_location;
+    spriteObject = LoadTexture("../resources/pacmanLeft.png"); 
 };
 
 void BaseObject::set_location(int x, int y){

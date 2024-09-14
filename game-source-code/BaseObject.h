@@ -27,6 +27,8 @@ class BaseObject {
     int get_y();
     virtual void set_location(int x, int y);
     virtual string get_sprite();
+    //////////////////////////////////////
+    void draw_sprite_object();
     void set_sprite(string sprite_file_location);
     void set_window(shared_ptr<raylib::Window> window);
     void set_moved(bool moved);
@@ -40,6 +42,9 @@ class BaseObject {
         shared_ptr<raylib::Window> window_;
         string sprite;
         Properties object_Properties;
+
+        /////////////////////////////////
+        raylib::Texture2D spriteObject;
 
 };
 

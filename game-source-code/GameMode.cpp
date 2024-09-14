@@ -1,6 +1,7 @@
 #include "GameMode.h"
 #include <iostream>
 #include <raylib-cpp.hpp>
+#include "player.h"
 
     int screen_width =1600;
     int screen_height =900;
@@ -12,8 +13,8 @@ PacMan::PacMan(){
     window->SetTargetFPS(60);
     splash = LoadTexture("../resources/pacman.png");
     cout<< "Constructed "<<endl;
-    //PacMan_Window = make_unique<GameOperation>(window);
-
+    PacMan_Window = make_unique<GameOperations>();    
+    
 }
 
 // The main function that runs all game operations 
@@ -56,30 +57,54 @@ void PacMan::run(){
 
             case Mode_select::Splash_screen:
 
-            BeginDrawing();
-            ClearBackground(GREEN);
-            //splash = LoadTexture("pacman.png");
+                BeginDrawing();
+                ClearBackground(GREEN);
+                //splash = LoadTexture("pacman.png");
 
-            // Render the image (center it on screen)
-            DrawTexture(splash, 0, 0, WHITE); 
-            cout << "rnederrrr /////////////////"<<endl;
+                // Render the image (center it on screen)
+                DrawTexture(splash, 0, 0, WHITE); 
+                cout << "rnederrrr /////////////////"<<endl;
 
-            // End drawing
-            EndDrawing();
+                // End drawing
+                EndDrawing();
 
 
             break;
 
             case Mode_select::Game_screen:
 
+                PacMan_Window->move_objects();
+
+                
+                // BeginDrawing();
+
+                
+                // ClearBackground(BLUE);
+                
+
+                PacMan_Window->drawPlayer();
+                // // End drawing
+                // EndDrawing();
+
+
+
+
+
+
             break;
 
             case Mode_select::Pause_screen:
-            //PacMan_Window->Pause();
+                BeginDrawing();
+                ClearBackground(PINK);
+                // End drawing
+                EndDrawing();
             break;
 
             case Mode_select::Game_over_screen:
-            //PacMan_Window->Game_Over();
+                BeginDrawing();
+                ClearBackground(RED);
+                // End drawing
+                EndDrawing();
             break;
             }
         }
