@@ -34,7 +34,7 @@ public:
 
 private:
     shared_ptr<raylib::Window> window;
-    unique_ptr<PacMan> PacMan_Window;
+    unique_ptr<GameOperations> PacMan_Window;
     Mode_select mode;
     raylib::Texture2D splash;
     Vector2 ZeroZero = {0,0};

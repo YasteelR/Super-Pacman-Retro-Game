@@ -78,7 +78,7 @@ void PacMan::run(){
 
                 
                 // ClearBackground(BLUE);
-                Map.DrawMap();
+                //Map.DrawMap();
 
                 PacMan_Window->drawPlayer();
                 // // End drawing
