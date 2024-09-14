@@ -10,6 +10,6 @@ int main (){
 	game.run();
 
 	GameMap test1;
-	
+	cout<<"Here"<<endl;
     return 0;
 }
