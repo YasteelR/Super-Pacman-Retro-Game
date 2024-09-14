@@ -2,9 +2,6 @@
 #include <iostream>
 #include <raylib-cpp.hpp>
 
-    const int screen_width =1600;
-    const int screen_height =900;
-
 PacMan::PacMan(){    
 
     window = make_shared<raylib::Window>(screen_width, screen_height, "Matt-Yas_PacMan!");
@@ -75,6 +72,8 @@ void PacMan::run(){
             
             BeginDrawing();
             ClearBackground(BLACK);
+
+            Map.DrawMap();
 
             EndDrawing();
 
