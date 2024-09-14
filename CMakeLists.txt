@@ -84,7 +84,7 @@ set(GAME_EXE "game") # name of the game executable
 add_executable(${GAME_EXE} ${GAME_SRC}) # shows the console window
 
 # Copy the text file to the build directory
-configure_file(${CMAKE_SOURCE_DIR}/game-source-code/GameMap.txt ${CMAKE_BINARY_DIR}/GameMap.txt COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/game-source-code/GameMap.txt ${CMAKE_BINARY_DIR}/game-source-code/GameMap.txt COPYONLY)
 
 # To prevent the console window from appearing when the game is run, replace the above line with this one:
 # add_executable(${GAME_EXE} WIN32 ${GAME_SRC})
