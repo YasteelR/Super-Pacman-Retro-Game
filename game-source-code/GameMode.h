@@ -4,6 +4,7 @@
 #include <raylib-cpp.hpp>
 #include <memory>
 #include "GameOperations.h"
+#include "GameMap.h"
 
 using namespace std;
 
@@ -33,10 +34,13 @@ public:
 
 private:
     shared_ptr<raylib::Window> window;
-    //unique_ptr<PacMan> PacMan_Window;
+    unique_ptr<PacMan> PacMan_Window;
     Mode_select mode;
     raylib::Texture2D splash;
-    unique_ptr<GameOperations> PacMan_Window;
+    Vector2 ZeroZero = {0,0};
+    const int screen_width =1600;
+    const int screen_height =900;
+    GameMap Map;
 
 
 

@@ -3,8 +3,6 @@
 #include <raylib-cpp.hpp>
 #include "player.h"
 
-    int screen_width =1600;
-    int screen_height =900;
 
 PacMan::PacMan(){    
 
@@ -62,7 +60,7 @@ void PacMan::run(){
                 //splash = LoadTexture("pacman.png");
 
                 // Render the image (center it on screen)
-                DrawTexture(splash, 0, 0, WHITE); 
+                DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE); 
                 cout << "rnederrrr /////////////////"<<endl;
 
                 // End drawing
@@ -80,7 +78,7 @@ void PacMan::run(){
 
                 
                 // ClearBackground(BLUE);
-                
+                Map.DrawMap();
 
                 PacMan_Window->drawPlayer();
                 // // End drawing
