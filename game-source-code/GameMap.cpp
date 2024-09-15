@@ -18,14 +18,35 @@ GameMap::GameMap()
         //    }
         //    cout<<endl;
         //}
+    MapFile="game-source-code/GameMap.txt";
+    OpenFile();
 
+    if(FileIsOpen())
+    {
+        ReadData();
+
+        //for(int i=0;i<MapObjects.size(); i++)
+        //{
+        //   for(int j=0; j<MapObjects[i].size(); j++)
+        //    {
+        //        cout<<MapObjects[i][j]<<" ";
+        //    }
+        //    cout<<endl;
+        //}
+
+        if(MapObjects.empty())
         if(MapObjects.empty())
         {
             throw runtime_error("Map.txt is empty!");
         }
+            throw runtime_error("Map.txt is empty!");
+        }
     }
     else    
+    else    
         throw runtime_error("Map.txt file did not open!");
+    CloseFile();
+    
     CloseFile();
     
 }
