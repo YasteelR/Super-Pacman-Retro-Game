@@ -4,15 +4,13 @@ GameMap::GameMap()
 {
     //Read in Coordinates of obstacles for the map
     MapFile="game-source-code/GameMap.txt";
-    ifstream ifile(MapFile);
+    OpenFile();
 
-    if(ifile.is_open())
+    if(FileIsOpen())
     {
-        ifile.close();
-
         ReadInRectangles();
         ReadInLines();
-        
+
         for(int i=0;i<MapObjects.size(); i++)
         {
             for(int j=0; j<MapObjects[i].size(); j++)
@@ -21,14 +19,16 @@ GameMap::GameMap()
             }
             cout<<endl;
         }
-    }
-        
-    if(MapObjects.empty()){throw runtime_error("Map.txt is empty!");}
-    
-    //else if(!ifile.is_open())   
-    //    throw runtime_error("Map.txt file did not open!");
 
-    ifile.close();
+        if(MapObjects.empty())
+        {
+            throw runtime_error("Map.txt is empty!");
+        }
+    }
+    else    
+        throw runtime_error("Map.txt file did not open!");
+    CloseFile();
+    
 }
 
 void GameMap::DrawMap()
@@ -84,19 +84,19 @@ void GameMap::SetMapFile(string& FileName)
 
 void GameMap::ReadInRectangles()
 {
-    ifstream ifile(MapFile);
     string HeaderLine;
+    InputFile.seekg(0,std::ios::beg);
 
     while(HeaderLine!="Rectangles")
     {
-        getline(ifile,HeaderLine);    
+        getline(InputFile,HeaderLine);    
     }
 
     vector<int> temp;
     int coordinates;
     int count=0;
     bool flag=false;
-    while(ifile>>coordinates)
+    while(InputFile>>coordinates)
     {
         temp.push_back(coordinates);
         count++;
@@ -134,26 +134,25 @@ void GameMap::ReadInRectangles()
         throw runtime_error("File contained no coordinates");
     }
 
-    ifile.clear();
-    ifile.close();
+    InputFile.clear();
 }
 
 
 void GameMap::ReadInLines()
 {
-    ifstream ifile(MapFile);
+    InputFile.seekg(0,std::ios::beg);
     string HeaderLine;
 
     while(HeaderLine!="Lines")
     {
-        getline(ifile,HeaderLine);    
+        getline(InputFile,HeaderLine);    
     }
 
     vector<int> temp;
     int coordinates;
     int count=0;
     bool flag=false;
-    while(ifile>>coordinates)
+    while(InputFile>>coordinates)
     {
         temp.push_back(coordinates);
         count++;
@@ -191,8 +190,7 @@ void GameMap::ReadInLines()
         throw runtime_error("File contained no coordinates");
     }
 
-    ifile.clear();
-    ifile.close();
+    InputFile.clear();
 }
 
 void GameMap::OpenFile()
