@@ -4,12 +4,14 @@
 #include <iostream>
 #include "GameMode.h"
 #include "GameMap.h"
+#include "BaseObject.h"
 
 TEST_CASE("check cake "){
 
     CHECK(1==1);
 }
 
+//====================================Testing GameMap==============================================
 TEST_CASE("Check that GameMap initializes correctly")
 {
     GameMap test;
@@ -43,5 +45,30 @@ TEST_CASE("If file does not contain data in the correct format it throws an erro
     test.OpenFile(testFile);
 
     CHECK_THROWS_AS(test.ReadData(),std::runtime_error);
+}
+
+//====================================Testing BaseObject class=====================================================================
+TEST_CASE("Base Object Initializes correctly")
+{
+    //This test needs to be altered later
+    BaseObject test=BaseObject{0,0};
+    tuple<bool, bool, bool> TestConditions(false, false, false);
+
+    if(test.get_x()==0 && test.get_y()==0)
+    {
+        get<0>(TestConditions)=true;
+    }
+
+    if(test.get_sprite()=="")
+    {
+        get<1>(TestConditions)=true;
+    }
+
+    if(get<0>(TestConditions)==get<1>(TestConditions))
+    {
+        get<2>(TestConditions)=true;
+    }
+
+    CHECK(get<2>(TestConditions));
 }
 
