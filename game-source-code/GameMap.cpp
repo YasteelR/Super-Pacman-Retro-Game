@@ -197,3 +197,60 @@ void GameMap::ReadInRectangles()
     ifile.close();
 }
 
+
+void GameMap::ReadInLines()
+{
+    ifstream ifile(MapFile);
+    string HeaderLine;
+
+    while(HeaderLine!="Lines")
+    {
+        getline(ifile,HeaderLine);    
+    }
+
+    vector<int> temp;
+    int coordinates;
+    int count=0;
+    bool flag=false;
+    while(ifile>>coordinates)
+    {
+        temp.push_back(coordinates);
+        count++;
+
+        if(flag==false)
+        {
+            flag=true;
+        }
+
+        if(count==4)
+        {
+            count=0;
+            MapObjects.push_back(temp);
+                
+            temp.clear();
+            vector<int>().swap(temp);
+                
+            NumOfLines++;
+        }
+    }
+
+    if(count!=0)
+    {
+        count=0;
+        MapObjects.push_back(temp);
+
+        temp.clear();
+        vector<int>().swap(temp);
+
+        NumOfLines++;
+    }
+
+    if(flag==false)
+    {
+        throw runtime_error("File contained no coordinates");
+    }
+
+    ifile.clear();
+    ifile.close();
+}
+
