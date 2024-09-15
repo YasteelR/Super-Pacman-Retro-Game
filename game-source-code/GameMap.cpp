@@ -3,103 +3,38 @@
 GameMap::GameMap()
 {
     //Read in Coordinates of obstacles for the map
-    ifstream MapFile("resources/GameMap.txt");
-    int coordinates;
+    MapFile="game-source-code/GameMap.txt";
+    OpenFile();
 
-    if(MapFile.is_open())
+    if(FileIsOpen())
     {
-        vector<int> temp;
-        int count=0;
-        string Headerline;
+        ReadData();
 
-        getline(MapFile,Headerline);
+        //for(int i=0;i<MapObjects.size(); i++)
+        //{
+        //   for(int j=0; j<MapObjects[i].size(); j++)
+        //    {
+        //        cout<<MapObjects[i][j]<<" ";
+        //    }
+        //    cout<<endl;
+        //}
 
-        while(MapFile>>coordinates)
+        if(MapObjects.empty())
         {
-            temp.push_back(coordinates);
-            count++;
-            
-            if(count==4)
-            {
-                count=0;
-                MapObjects.push_back(temp);
-                
-                temp.clear();
-                vector<int>().swap(temp);
-                
-                NumOfRectangles++;
-            }
+            throw runtime_error("Map.txt is empty!");
         }
-
-        if(count!=0)
-        {
-            count=0;
-            MapObjects.push_back(temp);
-
-            temp.clear();
-            vector<int>().swap(temp);
-
-            NumOfRectangles++;
-        }
-
-        for(int i=0;i<MapObjects.size(); i++)
-        {
-            for(int j=0; j<MapObjects[i].size(); j++)
-            {
-                cout<<MapObjects[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-
-        MapFile.clear();
-        MapFile.seekg(MapObjects.size()*4-1,std::ios::beg);
-        getline(MapFile,Headerline);
-
-        while(MapFile>>coordinates)
-        {
-            
-            temp.push_back(coordinates);
-            count++;
-            if(count==4)
-            {
-                NumOfLines++;
-                count=0;
-
-                MapObjects.push_back(temp);
-                
-                temp.clear();
-                vector<int>().swap(temp);
-            }
-        }
-
-        if(count!=0)
-        {
-            NumOfLines++;
-            count=0;
-
-            MapObjects.push_back(temp);
-
-            temp.clear();
-            vector<int>().swap(temp);
-        }
-        MapFile.close();
-        if(MapObjects.empty()){throw runtime_error("Map.txt is empty!");}
     }
-    else if(!MapFile.is_open())   
+    else    
         throw runtime_error("Map.txt file did not open!");
+    CloseFile();
+    
 }
-
 
 void GameMap::DrawMap()
 {
-    //BeginDrawing();
-    //ClearBackground(BLACK);
-
     DrawBoundary();
     DrawRectangles();
-   // DrawLines();
-    
-    //EndDrawing();
+    DrawLines();
 }
 
 void GameMap::DrawRectangles()
@@ -134,3 +69,25 @@ void GameMap::DrawLines()
                       GREEN);
     }
 }
+
+void GameMap::SetMapFile(string& FileName)
+{
+    MapFile=FileName;
+    OpenFile();
+    if(!FileIsOpen())
+    {
+        throw runtime_error("File did not open");
+    }
+    CloseFile();
+}
+
+
+void GameMap::ReadInRectangles()
+{
+    string HeaderLine;
+    InputFile.seekg(0,std::ios::beg);
+
+    while(HeaderLine!="Rectangles" && !InputFile.eof())
+    {
+        getline(InputFile,HeaderLine);    
+    }
