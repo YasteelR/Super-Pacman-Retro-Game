@@ -129,3 +129,13 @@ void GameMap::DrawLines()
                       GREEN);
     }
 }
+
+void GameMap::SetMapFile(string& FileName)
+{
+    MapFile=FileName;
+    ifstream(MapFile);
+    if(!MapFile)
+    {
+        throw runtime_error("File did not open");
+    }
+}
