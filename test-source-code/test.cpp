@@ -17,3 +17,22 @@ TEST_CASE("Check that GameMap initializes correctly")
     test.OpenFile(testFile);
     CHECK(test.FileIsOpen());
 }
+
+TEST_CASE("Check that GameMap returns false if file not open")
+{
+    GameMap test;
+    string testFile="";
+    test.OpenFile(testFile);
+
+    CHECK_FALSE(test.FileIsOpen());
+}
+
+TEST_CASE("If a file is open and you try open another it throws and error")
+{
+    GameMap test;
+    string testFile1="game-source-code/GameMap.txt";
+    test.OpenFile(testFile1);
+
+    CHECK_THROWS_AS(test.OpenFile(testFile1),std::runtime_error);
+}
+
