@@ -138,6 +138,15 @@ TEST_CASE("moveUp moves the player up")
     CHECK(test.get_y()==300-15);
 }
 
+TEST_CASE("moveUp will not move the player off the screen")
+{
+    player test = player{800,300};
+    test.set_location(800,9);
+    test.moveUp();
+
+    CHECK(test.get_y()==9);
+}
+
 TEST_CASE("moveDown moves the player down")
 {
     player test = player{800,300};
@@ -146,12 +155,30 @@ TEST_CASE("moveDown moves the player down")
     CHECK(test.get_y()==300+15);
 }
 
+TEST_CASE("moveDown will not move the player off screen")
+{
+    player test = player{800,300};
+    test.set_location(800,756);
+    test.moveDown();
+
+    CHECK(test.get_y()==756);
+}
+
 TEST_CASE("moveLeft moves the player Left")
 {
     player test = player{800,300};
     test.moveLeft();
 
     CHECK(test.get_x()==800-15);
+}
+
+TEST_CASE("moveLeft moves the player Left")
+{
+    player test = player{800,300};
+    test.set_location(4,300);
+    test.moveLeft();
+
+    CHECK(test.get_x()==4);
 }
 
 TEST_CASE("moveRight moves the player Right")

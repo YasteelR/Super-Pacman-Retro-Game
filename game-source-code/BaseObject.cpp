@@ -48,10 +48,10 @@ void BaseObject::set_Properties(Properties new_Properties){
     object_Properties = new_Properties;
 };
 
-//void BaseObject::set_sprite(string sprite_file_location){
-//    sprite = sprite_file_location;
-//    spriteObject = LoadTexture("../resources/pacmanLeft.png"); 
-//};
+void BaseObject::set_sprite(string sprite_file_location){
+    sprite = sprite_file_location;
+    spriteObject = LoadTexture("../resources/pacmanLeft.png"); 
+};
 
 void BaseObject::set_location(int x, int y){
     current_x = x;
