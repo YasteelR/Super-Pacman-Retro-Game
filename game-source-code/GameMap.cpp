@@ -34,7 +34,7 @@ void GameMap::DrawMap()
 {
     DrawBoundary();
     DrawRectangles();
-    DrawLines();
+    //DrawLines();
 }
 
 void GameMap::DrawRectangles()
