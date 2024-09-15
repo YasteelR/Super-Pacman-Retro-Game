@@ -7,7 +7,7 @@ BaseObject::BaseObject(int x_pos, int y_pos){
     current_y = y_pos;
     object_Properties = {false,false,false,false,false,false};
     sprite = "";
-    //cout <<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
+    cout <<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
     
 }
 
@@ -21,11 +21,28 @@ string BaseObject::get_sprite(){
 };
 
 void BaseObject::draw_sprite_object(){
+        BeginDrawing();
+        ClearBackground(BLUE);
+
+
         DrawTexture(spriteObject, get_x(), get_y(), WHITE);
-        //cout <<"xpos- "<<get_x()<<endl<<"ypos - "<<get_y()<<endl;
+        EndDrawing();
+        cout <<"xpos- "<<get_x()<<endl<<"ypos - "<<get_y()<<endl;
 
 
 }
+
+void BaseObject::draw_sprite_object_with_map(GameMap& Map){
+
+        BeginDrawing();
+        ClearBackground(BLUE);
+        Map.DrawMap();
+
+        DrawTexture(spriteObject, get_x(), get_y(), WHITE);
+        EndDrawing();
+
+}
+
 
 void BaseObject::set_Properties(Properties new_Properties){
     object_Properties = new_Properties;

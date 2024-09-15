@@ -40,7 +40,7 @@ private:
     Vector2 ZeroZero = {0,0};
     const int screen_width =1600;
     const int screen_height =900;
-    unique_ptr<GameMap> Map;
+    GameMap Map;
 
 
 
