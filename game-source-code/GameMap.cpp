@@ -3,7 +3,7 @@
 GameMap::GameMap()
 {
     //Read in Coordinates of obstacles for the map
-    ifstream MapFile("game-source-code/GameMap.txt");
+    ifstream MapFile("resources/GameMap.txt");
     int coordinates;
 
     if(MapFile.is_open())
@@ -92,14 +92,14 @@ GameMap::GameMap()
 
 void GameMap::DrawMap()
 {
-    BeginDrawing();
-    ClearBackground(BLACK);
+    //BeginDrawing();
+    //ClearBackground(BLACK);
 
     DrawBoundary();
     DrawRectangles();
-    DrawLines();
+   // DrawLines();
     
-    EndDrawing();
+    //EndDrawing();
 }
 
 void GameMap::DrawRectangles()

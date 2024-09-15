@@ -17,7 +17,7 @@ public:
 
 
     // put in seporate class
-    void drawPlayer();
+    void drawPlayer(GameMap& Map);
 private:
     shared_ptr<player> pacman;
 

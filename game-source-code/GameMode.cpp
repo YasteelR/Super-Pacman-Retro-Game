@@ -80,7 +80,7 @@ void PacMan::run(){
                 // ClearBackground(BLUE);
                 //Map.DrawMap();
 
-                PacMan_Window->drawPlayer();
+                PacMan_Window->drawPlayer(Map);
                 // // End drawing
                 // EndDrawing();
 

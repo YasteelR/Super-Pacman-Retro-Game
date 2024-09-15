@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <raylib-cpp.hpp>
+#include "GameMap.h"
 
 using namespace std;
 
@@ -29,6 +30,7 @@ class BaseObject {
     virtual string get_sprite();
     //////////////////////////////////////
     void draw_sprite_object();
+    void draw_sprite_object_with_map(GameMap& Map);
     void set_sprite(string sprite_file_location);
     void set_window(shared_ptr<raylib::Window> window);
     void set_moved(bool moved);

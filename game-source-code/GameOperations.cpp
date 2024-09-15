@@ -48,13 +48,14 @@ void GameOperations::move_objects(){
 }
 
 
-void GameOperations::drawPlayer(){
+void GameOperations::drawPlayer(GameMap& Map){
 
     BeginDrawing();
 
     
     //ClearBackground(BLUE);
-    pacman->draw_sprite_object();
+    //pacman->draw_sprite_object();
+    pacman->draw_sprite_object_with_map(Map);
 
     //PacMan_Window->drawPlayer();
     // End drawing

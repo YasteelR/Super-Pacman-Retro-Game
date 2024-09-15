@@ -32,6 +32,18 @@ void BaseObject::draw_sprite_object(){
 
 }
 
+void BaseObject::draw_sprite_object_with_map(GameMap& Map){
+
+        BeginDrawing();
+        ClearBackground(BLUE);
+        Map.DrawMap();
+
+        DrawTexture(spriteObject, get_x(), get_y(), WHITE);
+        EndDrawing();
+
+}
+
+
 void BaseObject::set_Properties(Properties new_Properties){
     object_Properties = new_Properties;
 };
