@@ -12,7 +12,29 @@ player::player(int x, int y)
 }
 
 void player::moveUp(){
-        if (get_y() > 10) {
+    if ( get_y() > 225 && get_y() < 495 ){
+        if (get_y() > 50) {
+            set_location(get_x(), get_y() - 15);
+
+            cout<<get_y()<<endl;
+        } 
+    } else if ( get_x() > 1340 ){
+        if (get_y() > 50) {
+            set_location(get_x(), get_y() - 15);
+
+            cout<<get_y()<<endl;
+        } 
+    }else if (get_x() < 215){
+        if (get_y() > 50) {
+            set_location(get_x(), get_y() - 15);
+
+            cout<<get_y()<<endl;
+        } 
+    }
+
+
+
+        if (get_y() > 50) {
             set_location(get_x(), get_y() - 15);
 
             cout<<get_y()<<endl;
