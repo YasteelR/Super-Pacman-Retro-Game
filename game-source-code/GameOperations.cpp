@@ -65,7 +65,48 @@ bool GameOperations::checkCollisionLeft(GameMap& Map){
     int rectTop;
     int rectBottom;
 
+    for(int i=numberRect; i<mapObj.size(); i++)
+    {   
+        rectRight = mapObj[i][0] + 1100;
+        rectLeft = mapObj[i][0] ;
+        rectTop = mapObj[i][1]; 
+        rectBottom =  mapObj[i][1] + 50;
+        cout <<i<<endl;
+        cout << "  X1=" << rectLeft <<"  Y1=" <<rectTop<<"  X2=" <<rectRight <<"  Y2="<<rectBottom<<endl;
+        cout << "  X1=" << Xleft <<"  Y1=" <<Ytop<<"  X2=" <<Xright <<"  Y2="<<Ybottom<<endl;
 
+        if ( rectRight > Xleft && Ytop < (rectTop - 50) && Ybottom > (rectBottom + 50)  ){
+
+            collision = true;
+            break;
+
+        }else{
+
+            collision = false;
+            
+        }
+
+
+
+        // if(    ((mapObj[i][0]+mapObj[i][2]) > Xleft  && mapObj[i][0] < Xleft &&   (mapObj[i][1]+mapObj[i][3]) > Ytop &&  mapObj[i][1] > Ytop ) ){
+
+        //     collision = true;
+        // }
+        // else {
+        //     collision = false;
+        // }
+
+        //mapObj[i][0], mapObj[i][1], mapObj[i][2], mapObj[i][3];      &&  mapObj[i][1] > Ytop 
+        
+        
+                      //||  mapObj[i][0] < (Xright) || mapObj[i][1] > Ybottom || (mapObj[i][1]+mapObj[i][3]) < Ytop)
+        
+    }    
+
+
+
+    return collision;
+}
 
 void GameOperations::drawPlayer(GameMap& Map){
 
