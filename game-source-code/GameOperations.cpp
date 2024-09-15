@@ -2,7 +2,7 @@
 
 GameOperations::GameOperations(){
     pacman = make_shared<player>(player(1800,700));
-
+    pacman->set_sprite("resources/pacmanLeft.png");
 
 }
 
