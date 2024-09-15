@@ -139,3 +139,61 @@ void GameMap::SetMapFile(string& FileName)
         throw runtime_error("File did not open");
     }
 }
+
+
+void GameMap::ReadInRectangles()
+{
+    ifstream ifile(MapFile);
+    string HeaderLine;
+
+    while(HeaderLine!="Rectangles")
+    {
+        getline(ifile,HeaderLine);    
+    }
+
+    vector<int> temp;
+    int coordinates;
+    int count=0;
+    bool flag=false;
+    while(ifile>>coordinates)
+    {
+        temp.push_back(coordinates);
+        count++;
+
+        if(flag==false)
+        {
+            flag=true;
+        }
+
+        if(count==4)
+        {
+            count=0;
+            MapObjects.push_back(temp);
+                
+            temp.clear();
+            vector<int>().swap(temp);
+                
+            NumOfRectangles++;
+        }
+    }
+
+    if(count!=0)
+    {
+        count=0;
+        MapObjects.push_back(temp);
+
+        temp.clear();
+        vector<int>().swap(temp);
+
+        NumOfRectangles++;
+    }
+
+    if(flag==false)
+    {
+        throw runtime_error("File contained no coordinates");
+    }
+
+    ifile.clear();
+    ifile.close();
+}
+
