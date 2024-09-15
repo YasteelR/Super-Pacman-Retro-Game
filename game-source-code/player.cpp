@@ -33,11 +33,35 @@ void player::moveLeft() {
     }
 
 void player::moveRight() {
-         if (get_x() < 1450) {
+    if (get_x() < 215){
+        if (get_x() < 1500) {
             set_location(get_x() + 15, get_y() );
             //set_sprite("resources/pacmanRight.png");
-            cout<<get_x()<<endl;
+            cout<<"Phase 1 "<<endl;
         }
+
+    } else if ( get_x() > 200 && get_y() > 240 && get_y() < 465 ){
+        if (get_x() < 1500) {
+            set_location(get_x() + 15, get_y() );
+            //set_sprite("resources/pacmanRight.png");
+            cout<<"Phase 2 "<<endl;
+        }
+    }else if (get_x() >1400){
+        if (get_x() < 1500) {
+            set_location(get_x() + 15, get_y() );
+            //set_sprite("resources/pacmanRight.png");
+            cout<<"Phase 3 "<<endl;
+        }
+    }
+
+
+
+
+        //  if (get_x() < 1450) {
+        //     set_location(get_x() + 15, get_y() );
+        //     //set_sprite("resources/pacmanRight.png");
+        //     cout<<get_x()<<endl;
+        // }
     }
 
 

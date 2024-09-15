@@ -32,8 +32,8 @@ void GameOperations::move_objects(GameMap& Map){
             }
 
     }
-    bool collision = checkCollisionLeft(Map);
-    if (!collision){
+    //bool collision = checkCollisionLeft(Map);
+    //if (!collision){
         if(IsKeyDown(KEY_UP)) {
             pacman->moveUp();
         }
@@ -46,10 +46,10 @@ void GameOperations::move_objects(GameMap& Map){
         else if(IsKeyDown(KEY_LEFT)) {
             pacman->moveLeft();
         }
-    }
-    else{
-        pacman->moveRight();
-    }
+    //}
+    //else{
+    //    pacman->moveRight();
+    //}
 }
 bool GameOperations::checkCollisionLeft(GameMap& Map){
     
@@ -71,9 +71,9 @@ bool GameOperations::checkCollisionLeft(GameMap& Map){
         rectLeft = mapObj[i][0] ;
         rectTop = mapObj[i][1]; 
         rectBottom =  mapObj[i][1] + 50;
-        cout <<i<<endl;
-        cout << "  X1=" << rectLeft <<"  Y1=" <<rectTop<<"  X2=" <<rectRight <<"  Y2="<<rectBottom<<endl;
-        cout << "  X1=" << Xleft <<"  Y1=" <<Ytop<<"  X2=" <<Xright <<"  Y2="<<Ybottom<<endl;
+        //cout <<i<<endl;
+        //cout << "  X1=" << rectLeft <<"  Y1=" <<rectTop<<"  X2=" <<rectRight <<"  Y2="<<rectBottom<<endl;
+        //cout << "  X1=" << Xleft <<"  Y1=" <<Ytop<<"  X2=" <<Xright <<"  Y2="<<Ybottom<<endl;
 
         if ( rectRight > Xleft && Ytop < (rectTop - 50) && Ybottom > (rectBottom + 50)  ){
 
@@ -121,6 +121,6 @@ void GameOperations::drawPlayer(GameMap& Map){
     // End drawing
     //EndDrawing();
     
-    cout<<"drawing pacman++++++++++++++"<<endl;
+    //cout<<"drawing pacman++++++++++++++"<<endl;
 
 }
