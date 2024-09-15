@@ -60,7 +60,8 @@ void PacMan::run(){
                 //splash = LoadTexture("pacman.png");
 
                 // Render the image (center it on screen)
-                DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE); 
+                DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE);
+                DrawText("press enter", 1200, 800, 25, WHITE); 
                 cout << "rnederrrr /////////////////"<<endl;
 
                 // End drawing
