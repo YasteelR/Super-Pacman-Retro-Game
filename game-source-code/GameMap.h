@@ -22,12 +22,16 @@ class GameMap
         
         //Reads the Map file
         void SetMapFile(string& FileName);
+        void OpenFile();
+        void CloseFile();
+        bool FileIsOpen();
         void ReadInRectangles();
-        void ReadInlines();
+        void ReadInLines();
 
     private:
         vector<vector<int>> MapObjects;
         string MapFile;
+        ifstream InputFile;
         int NumOfRectangles=0;
         int NumOfLines=0;
 };
