@@ -1,0 +1,3 @@
+This is test that the read in format works
+Rectangles
+400 500 600 157
