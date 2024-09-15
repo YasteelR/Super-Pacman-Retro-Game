@@ -36,3 +36,11 @@ TEST_CASE("If a file is open and you try open another it throws and error")
     CHECK_THROWS_AS(test.OpenFile(testFile1),std::runtime_error);
 }
 
+TEST_CASE("If file does not contain data in the correct format it throws an error")
+{
+    GameMap test;
+    string testFile="test-source-code/GameMapTest.txt";
+    test.OpenFile(testFile);
+
+    CHECK_THROWS_AS(test.ReadInLines(),std::runtime_error);
+}

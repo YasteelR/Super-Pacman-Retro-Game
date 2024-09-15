@@ -88,7 +88,7 @@ void GameMap::ReadInRectangles()
     string HeaderLine;
     InputFile.seekg(0,std::ios::beg);
 
-    while(HeaderLine!="Rectangles")
+    while(HeaderLine!="Rectangles" && !InputFile.eof())
     {
         getline(InputFile,HeaderLine);    
     }
@@ -143,10 +143,11 @@ void GameMap::ReadInLines()
 {
     InputFile.seekg(0,std::ios::beg);
     string HeaderLine;
-
-    while(HeaderLine!="Lines")
+    int safety=0;
+    while(HeaderLine!="Lines" && !InputFile.eof())
     {
-        getline(InputFile,HeaderLine);    
+
+        getline(InputFile,HeaderLine);
     }
 
     vector<int> temp;
