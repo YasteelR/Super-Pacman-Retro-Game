@@ -91,3 +91,97 @@ void GameMap::ReadInRectangles()
     {
         getline(InputFile,HeaderLine);    
     }
+
+    vector<int> temp;
+    int coordinates;
+    int count=0;
+    bool flag=false;
+    while(InputFile>>coordinates)
+    {
+        temp.push_back(coordinates);
+        count++;
+
+        if(flag==false)
+        {
+            flag=true;
+        }
+
+        if(count==4)
+        {
+            count=0;
+            MapObjects.push_back(temp);
+                
+            temp.clear();
+            vector<int>().swap(temp);
+                
+            NumOfRectangles++;
+        }
+    }
+
+    if(count!=0)
+    {
+        count=0;
+        MapObjects.push_back(temp);
+
+        temp.clear();
+        vector<int>().swap(temp);
+
+        NumOfRectangles++;
+    }
+
+    if(flag==false)
+    {
+        throw runtime_error("File contained no coordinates");
+    }
+
+    InputFile.clear();
+}
+
+
+void GameMap::ReadInLines()
+{
+    InputFile.seekg(0,std::ios::beg);
+    string HeaderLine;
+    int safety=0;
+    while(HeaderLine!="Lines" && !InputFile.eof())
+    {
+
+        getline(InputFile,HeaderLine);
+    }
+
+    vector<int> temp;
+    int coordinates;
+    int count=0;
+    bool flag=false;
+    while(InputFile>>coordinates)
+    {
+        temp.push_back(coordinates);
+        count++;
+
+        if(flag==false)
+        {
+            flag=true;
+        }
+
+        if(count==4)
+        {
+            count=0;
+            MapObjects.push_back(temp);
+                
+            temp.clear();
+            vector<int>().swap(temp);
+                
+            NumOfLines++;
+        }
+    }
+
+    if(count!=0)
+    {
+        count=0;
+        MapObjects.push_back(temp);
+
+        temp.clear();
+        vector<int>().swap(temp);
+
+        NumOfLines++;
+    }
