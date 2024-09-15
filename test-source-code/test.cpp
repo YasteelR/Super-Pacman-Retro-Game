@@ -5,6 +5,7 @@
 #include "GameMode.h"
 #include "GameMap.h"
 #include "BaseObject.h"
+#include "GameOperations.h"
 
 TEST_CASE("check cake "){
 
@@ -90,3 +91,25 @@ TEST_CASE("Set Location updates objects location")
 
     CHECK(testCase);
 }
+
+//TEST_CASE("Set sprite changes sprite to filename")
+//{
+//    BaseObject test = BaseObject{0,0};
+//    string spriteTestName="bobbbyyyyyy";
+//
+//    test.set_sprite(spriteTestName);
+//
+//    CHECK(test.get_sprite()==spriteTestName);
+//}
+
+TEST_CASE("Set_moved shows if the object has been moved")
+{
+    BaseObject test = BaseObject{0,0};
+    test.set_moved(true);
+
+    Properties check=test.get_Properties();
+
+    CHECK(check.is_moved);
+}  
+
+//====================================Testing GameOperations====================================================================================
