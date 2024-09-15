@@ -3,22 +3,7 @@
 GameMap::GameMap()
 {
     //Read in Coordinates of obstacles for the map
-    MapFile="game-source-code/GameMap.txt";
-    OpenFile();
-
-    if(FileIsOpen())
-    {
-        ReadData();
-
-        //for(int i=0;i<MapObjects.size(); i++)
-        //{
-        //   for(int j=0; j<MapObjects[i].size(); j++)
-        //    {
-        //        cout<<MapObjects[i][j]<<" ";
-        //    }
-        //    cout<<endl;
-        //}
-    MapFile="game-source-code/GameMap.txt";
+    MapFile="../resources/GameMap.txt";
     OpenFile();
 
     if(FileIsOpen())
@@ -34,19 +19,13 @@ GameMap::GameMap()
         //    cout<<endl;
         //}
 
-        if(MapObjects.empty())
         if(MapObjects.empty())
         {
             throw runtime_error("Map.txt is empty!");
         }
-            throw runtime_error("Map.txt is empty!");
-        }
     }
     else    
-    else    
         throw runtime_error("Map.txt file did not open!");
-    CloseFile();
-    
     CloseFile();
     
 }
