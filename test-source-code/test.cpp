@@ -44,3 +44,4 @@ TEST_CASE("If file does not contain data in the correct format it throws an erro
 
     CHECK_THROWS_AS(test.ReadData(),std::runtime_error);
 }
+
