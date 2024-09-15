@@ -12,19 +12,19 @@ player::player(int x, int y)
 }
 
 void player::moveUp(){
-    if ( get_y() > 225 && get_y() < 495 ){
+    if ( get_y() > 240 && get_y() < 500 ){
         if (get_y() > 50) {
             set_location(get_x(), get_y() - 15);
 
             cout<<get_y()<<endl;
         } 
-    } else if ( get_x() > 1340 ){
+    } else if ( get_x() > 1325 ){
         if (get_y() > 50) {
             set_location(get_x(), get_y() - 15);
 
             cout<<get_y()<<endl;
         } 
-    }else if (get_x() < 215){
+    }else if (get_x() < 220){
         if (get_y() > 50) {
             set_location(get_x(), get_y() - 15);
 
@@ -34,11 +34,11 @@ void player::moveUp(){
 
 
 
-        if (get_y() > 50) {
-            set_location(get_x(), get_y() - 15);
+        // if (get_y() > 50) {
+        //     set_location(get_x(), get_y() - 15);
 
-            cout<<get_y()<<endl;
-        }  
+        //     cout<<get_y()<<endl;
+        // }  
     }
 
 void player::moveDown() {
@@ -52,11 +52,11 @@ void player::moveDown() {
          if (get_y() <800) {
             set_location(get_x(), get_y() + 15);
         }
-    } else if ( get_x() > 1340 ){
+    } else if ( get_x() > 1325 ){
         if (get_y() <800) {
         set_location(get_x(), get_y() + 15);
     }    
-    }else if (get_x() < 215){
+    }else if (get_x() < 220){
          if (get_y() < 800) {
             set_location(get_x(), get_y() + 15);
         }
@@ -81,7 +81,26 @@ void player::moveDown() {
 }
 
 void player::moveLeft() {
+    if (get_x() < 220){
+         if (get_x() > 50) {
+            set_location(get_x() - 15, get_y() );
+            //set_sprite("resources/pacmanRight.png");
+            cout<<"Phase 1 "<<endl;
+        }
 
+    } else if ( get_x() < 1355 && get_y() > 225 && get_y() < 500 ){
+         if (get_x() > 50) {
+            set_location(get_x() - 15, get_y() );
+            //set_sprite("resources/pacmanRight.png");
+            cout<<"Phase 2 "<<endl;
+        }
+    }else if (get_x() >1340){
+         if (get_x() > 50) {
+            set_location(get_x() - 15, get_y() );
+            //set_sprite("resources/pacmanRight.png");
+            cout<<"Phase 3 "<<endl;
+        }
+    }
 
 
 
@@ -92,10 +111,10 @@ void player::moveLeft() {
 
 
     
-         if (get_x() > 5) {
-            set_location(get_x() - 15, get_y() );
-            //set_sprite("resources/pacmanLeft.png");
-        }
+        //  if (get_x() > 50) {
+        //     set_location(get_x() - 15, get_y() );
+        //     //set_sprite("resources/pacmanLeft.png");
+        // }
     }
 
 void player::moveRight() {
@@ -106,13 +125,13 @@ void player::moveRight() {
             cout<<"Phase 1 "<<endl;
         }
 
-    } else if ( get_x() > 200 && get_y() > 240 && get_y() < 500 ){
+    } else if ( get_x() > 200 && get_y() > 225 && get_y() < 500 ){
         if (get_x() < 1500) {
             set_location(get_x() + 15, get_y() );
             //set_sprite("resources/pacmanRight.png");
             cout<<"Phase 2 "<<endl;
         }
-    }else if (get_x() >1340){
+    }else if (get_x() >1325){
         if (get_x() < 1500) {
             set_location(get_x() + 15, get_y() );
             //set_sprite("resources/pacmanRight.png");
