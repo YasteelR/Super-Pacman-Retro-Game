@@ -11,14 +11,14 @@ GameMap::GameMap()
         ReadInRectangles();
         ReadInLines();
 
-        for(int i=0;i<MapObjects.size(); i++)
-        {
-            for(int j=0; j<MapObjects[i].size(); j++)
-            {
-                cout<<MapObjects[i][j]<<" ";
-            }
-            cout<<endl;
-        }
+        //for(int i=0;i<MapObjects.size(); i++)
+        //{
+        //   for(int j=0; j<MapObjects[i].size(); j++)
+        //    {
+        //        cout<<MapObjects[i][j]<<" ";
+        //    }
+        //    cout<<endl;
+        //}
 
         if(MapObjects.empty())
         {
@@ -195,6 +195,12 @@ void GameMap::ReadInLines()
 
 void GameMap::OpenFile()
 {
+    InputFile.open(MapFile);
+}
+
+void GameMap::OpenFile(string& FileName)
+{
+    MapFile=FileName;
     InputFile.open(MapFile);
 }
 

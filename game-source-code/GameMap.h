@@ -23,6 +23,7 @@ class GameMap
         //Reads the Map file
         void SetMapFile(string& FileName);
         void OpenFile();
+        void OpenFile(string& FileName);//Overload OpenFile to take in a file name
         void CloseFile();
         bool FileIsOpen();
         void ReadInRectangles();
