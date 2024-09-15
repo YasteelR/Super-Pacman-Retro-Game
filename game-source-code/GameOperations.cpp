@@ -50,7 +50,7 @@ void GameOperations::move_objects(){
 
 void GameOperations::drawPlayer(GameMap& Map){
 
-    BeginDrawing();
+    //BeginDrawing();
 
     
     //ClearBackground(BLUE);
