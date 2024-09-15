@@ -72,3 +72,21 @@ TEST_CASE("Base Object Initializes correctly")
     CHECK(get<2>(TestConditions));
 }
 
+TEST_CASE("Set Location updates objects location")
+{
+    BaseObject test = BaseObject{0,0};
+
+    int x=1;
+    int y=1;
+
+    test.set_location(x,y);
+
+    bool testCase=false;
+
+    if(test.get_x()==x && test.get_y()==y)
+    {
+        testCase=true;
+    }
+
+    CHECK(testCase);
+}
