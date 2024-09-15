@@ -55,16 +55,16 @@ void PacMan::run(){
 
             case Mode_select::Splash_screen:
 
-                BeginDrawing();
-                ClearBackground(GREEN);
+                window->BeginDrawing();
+                window->ClearBackground(GREEN);
                 //splash = LoadTexture("pacman.png");
 
                 // Render the image (center it on screen)
-                DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE); 
+                splash.Draw(ZeroZero,0, 2.35, WHITE); 
                 cout << "rnederrrr /////////////////"<<endl;
 
                 // End drawing
-                EndDrawing();
+                window->EndDrawing();
 
 
             break;

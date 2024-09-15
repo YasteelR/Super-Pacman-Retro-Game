@@ -6,6 +6,7 @@
 #include "GameMap.h"
 #include "BaseObject.h"
 #include "GameOperations.h"
+#include "Player.h"
 
 TEST_CASE("check cake "){
 
@@ -112,4 +113,51 @@ TEST_CASE("Set_moved shows if the object has been moved")
     CHECK(check.is_moved);
 }  
 
-//====================================Testing GameOperations====================================================================================
+//====================================Testing Player====================================================================================
+//TEST_CASE("GameOperations initializes correctly")
+//{
+//    player test = player(0,0);
+//
+//    int xPosition=800;
+//    int yPosition=300;
+//
+//    bool check = false;
+//    if(test.get_x()==xPosition && test.get_y()==yPosition)
+//    {
+//        check=true;
+//    }
+//
+//   CHECK(check);
+//}
+
+TEST_CASE("moveUp moves the player up")
+{
+    player test = player{800,300};
+    test.moveUp();
+
+    CHECK(test.get_y()==300-15);
+}
+
+TEST_CASE("moveDown moves the player down")
+{
+    player test = player{800,300};
+    test.moveDown();
+
+    CHECK(test.get_y()==300+15);
+}
+
+TEST_CASE("moveLeft moves the player Left")
+{
+    player test = player{800,300};
+    test.moveLeft();
+
+    CHECK(test.get_x()==800-15);
+}
+
+TEST_CASE("moveRight moves the player Right")
+{
+    player test = player{800,300};
+    test.moveRight();
+
+    CHECK(test.get_x()==800+15);
+}
