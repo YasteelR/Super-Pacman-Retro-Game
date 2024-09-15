@@ -74,8 +74,8 @@ void GameMap::DrawLines()
 void GameMap::SetMapFile(string& FileName)
 {
     MapFile=FileName;
-    ifstream(MapFile);
-    if(!MapFile)
+    OpenFile();
+    if(!FileIsOpen())
     {
         throw runtime_error("File did not open");
     }
@@ -195,3 +195,22 @@ void GameMap::ReadInLines()
     ifile.close();
 }
 
+void GameMap::OpenFile()
+{
+    InputFile.open(MapFile);
+}
+
+void GameMap::CloseFile()
+{
+    InputFile.close();
+}
+
+bool GameMap::FileIsOpen()
+{
+    if(InputFile.is_open())
+    {
+        return true;
+    }
+    else 
+        return false;
+}
