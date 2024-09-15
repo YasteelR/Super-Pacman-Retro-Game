@@ -13,13 +13,21 @@ class GameMap
 {
     public:
         GameMap();
+
+        //Draws the Map
         void DrawMap();
         void DrawRectangles();
         void DrawLines();
         void DrawBoundary();
-        //void DrawGhostSpawn();
+        
+        //Reads the Map file
+        void SetMapFile(string& FileName);
+        void ReadInRectangles();
+        void ReadInlines();
+
     private:
         vector<vector<int>> MapObjects;
+        string MapFile;
         int NumOfRectangles=0;
         int NumOfLines=0;
 };
