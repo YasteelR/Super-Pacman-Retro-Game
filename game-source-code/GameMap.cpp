@@ -8,8 +8,7 @@ GameMap::GameMap()
 
     if(FileIsOpen())
     {
-        ReadInRectangles();
-        ReadInLines();
+        ReadData();
 
         //for(int i=0;i<MapObjects.size(); i++)
         //{
@@ -229,4 +228,10 @@ bool GameMap::FileIsOpen()
     }
     else 
         return false;
+}
+
+void GameMap::ReadData()
+{
+    ReadInRectangles();
+    ReadInLines();
 }

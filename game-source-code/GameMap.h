@@ -16,9 +16,6 @@ class GameMap
 
         //Draws the Map
         void DrawMap();
-        void DrawRectangles();
-        void DrawLines();
-        void DrawBoundary();
         
         //Reads the Map file
         void SetMapFile(string& FileName);
@@ -26,8 +23,7 @@ class GameMap
         void OpenFile(string& FileName);//Overload OpenFile to take in a file name
         void CloseFile();
         bool FileIsOpen();
-        void ReadInRectangles();
-        void ReadInLines();
+        void ReadData();
 
     private:
         vector<vector<int>> MapObjects;
@@ -35,6 +31,12 @@ class GameMap
         ifstream InputFile;
         int NumOfRectangles=0;
         int NumOfLines=0;
+
+        void ReadInRectangles();
+        void ReadInLines();
+        void DrawRectangles();
+        void DrawLines();
+        void DrawBoundary();
 };
 
 

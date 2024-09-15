@@ -42,5 +42,5 @@ TEST_CASE("If file does not contain data in the correct format it throws an erro
     string testFile="test-source-code/GameMapTest.txt";
     test.OpenFile(testFile);
 
-    CHECK_THROWS_AS(test.ReadInLines(),std::runtime_error);
+    CHECK_THROWS_AS(test.ReadData(),std::runtime_error);
 }
