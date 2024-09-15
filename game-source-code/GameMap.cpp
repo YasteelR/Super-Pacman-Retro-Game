@@ -34,7 +34,7 @@ void GameMap::DrawMap()
 {
     DrawBoundary();
     DrawRectangles();
-    //DrawLines();
+    DrawLines();
 }
 
 void GameMap::DrawRectangles()
@@ -234,4 +234,12 @@ void GameMap::ReadData()
 {
     ReadInRectangles();
     ReadInLines();
+}
+
+vector<vector<int>> GameMap::getMapObjects(){
+    return MapObjects;
+}
+
+int GameMap::getNoRectangles(){
+    return NumOfRectangles;
 }

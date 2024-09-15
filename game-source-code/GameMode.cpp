@@ -71,7 +71,7 @@ void PacMan::run(){
 
             case Mode_select::Game_screen:
 
-                PacMan_Window->move_objects();
+                PacMan_Window->move_objects(Map);
 
                 
                 // BeginDrawing();

@@ -6,7 +6,7 @@ GameOperations::GameOperations(){
 
 }
 
-void GameOperations::move_objects(){
+void GameOperations::move_objects(GameMap& Map){
 
     if (IsKeyPressed(KEY_W) || IsKeyPressed(KEY_S) || IsKeyPressed(KEY_A) || IsKeyPressed(KEY_D)) {
             // Get the key input using a switch statement
@@ -32,20 +32,39 @@ void GameOperations::move_objects(){
             }
 
     }
-    
-    if(IsKeyDown(KEY_UP)) {
-        pacman->moveUp();
+    bool collision = checkCollisionLeft(Map);
+    if (!collision){
+        if(IsKeyDown(KEY_UP)) {
+            pacman->moveUp();
+        }
+        else if(IsKeyDown(KEY_DOWN)) {
+            pacman->moveDown();
+        }
+        if(IsKeyDown(KEY_RIGHT)) {
+            pacman->moveRight();
+        }
+        else if(IsKeyDown(KEY_LEFT)) {
+            pacman->moveLeft();
+        }
     }
-    else if(IsKeyDown(KEY_DOWN)) {
-        pacman->moveDown();
-    }
-    if(IsKeyDown(KEY_RIGHT)) {
+    else{
         pacman->moveRight();
     }
-    else if(IsKeyDown(KEY_LEFT)) {
-        pacman->moveLeft();
-    }
 }
+bool GameOperations::checkCollisionLeft(GameMap& Map){
+    
+    bool collision;
+    auto Xleft= pacman->get_x();
+    auto Xright= (pacman->get_x()+180);
+    auto Ytop= pacman->get_x();
+    auto Ybottom= (pacman->get_y()+180);
+    auto mapObj = Map.getMapObjects();
+    auto numberRect = Map.getNoRectangles();
+    int rectRight;
+    int rectLeft;
+    int rectTop;
+    int rectBottom;
+
 
 
 void GameOperations::drawPlayer(GameMap& Map){

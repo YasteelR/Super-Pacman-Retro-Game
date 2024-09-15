@@ -11,13 +11,14 @@ public:
     void Start();
     //void Execute_Game_Itteration();
     //void set_Game_Info(const int& score,const int& lives);
-    void move_objects();
+    void move_objects(GameMap& Map);
+    bool checkCollisionLeft(GameMap& Map);
     static bool is_game_over;
 
 
 
     // put in seporate class
-    void drawPlayer(GameMap& Map);
+    void drawPlayer(GameMap& Map);  
 private:
     shared_ptr<player> pacman;
 

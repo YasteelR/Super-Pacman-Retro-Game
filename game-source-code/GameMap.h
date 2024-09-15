@@ -24,6 +24,8 @@ class GameMap
         void CloseFile();
         bool FileIsOpen();
         void ReadData();
+        vector<vector<int>> getMapObjects();
+        int getNoRectangles();
 
     private:
         vector<vector<int>> MapObjects;
