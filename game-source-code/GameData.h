@@ -10,12 +10,15 @@ class GameData
 {
     public:
         GameData();
-        void ReadInWalls();
+        void ReadInWalls(string FilePath);
+        vector<int>* getWallCoordinates();
+        int* getNumberOfWalls();
 
 
     private:
         vector<BaseObject> Object;
         vector<int> WallCoordinates;
+        int NumberOfWalls;
 
 };
 

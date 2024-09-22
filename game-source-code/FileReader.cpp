@@ -6,8 +6,17 @@ FileReader::FileReader(string ReadInFile)
     Object="Rectangles";
     OpenFile(MapFile);
 }
+void FileReader::OpenFile()
+{
+    if(InputFile.is_open())
+    {
+        throw runtime_error("Map File is already open");
+    }
+    else 
+        InputFile.open(MapFile);
+}
 
-void FileReader::OpenFile(string& FileName)
+void FileReader::OpenFile(string FileName)
 {
     MapFile=FileName;
     if(InputFile.is_open())
@@ -23,7 +32,7 @@ void FileReader::CloseFile()
     InputFile.close();
 }
 
-void FileReader::SetMapFile(string& FileName)
+void FileReader::SetMapFile(string FileName)
 {
     MapFile=FileName;
     OpenFile();
