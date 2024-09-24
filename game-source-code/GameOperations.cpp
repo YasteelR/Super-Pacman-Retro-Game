@@ -5,6 +5,9 @@ GameOperations::GameOperations(){
     Ghost1 = make_shared<Ghost>(Ghost(10,10));    
     movingObjects.push_back(playerPacman);
     movingObjects.push_back(Ghost1);
+    Ghost1 = make_shared<Ghost>(Ghost(100,100));
+    movingObjects.push_back(Ghost1);
+
 
 }
 
