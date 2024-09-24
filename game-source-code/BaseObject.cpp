@@ -21,7 +21,6 @@ void BaseObject::draw_sprite_object(){
         ClearBackground(BLUE);
         DrawTexture(spriteObject, get_x(), get_y(), WHITE);
         EndDrawing();
-        cout <<"xpos- "<<get_x()<<endl<<"ypos - "<<get_y()<<endl;
 }
 
 void BaseObject::draw_sprite_object_with_map(GameMap& Map){
