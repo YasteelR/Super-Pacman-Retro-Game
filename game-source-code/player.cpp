@@ -151,32 +151,19 @@ void player::moveRight() {
 
 
 void player::move_Obj(){
-    /*
-    window = get_window();
-
-    window->pollEvent(event);
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        moveUp();
-        //set_moved(true);
-    // is_moved = true;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        moveDown();
-        //set_moved(true);
-       // player.is_moved = true;
-
-}
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        moveRight();
-        //set_moved(true);
-        //player.is_moved = true;
-}
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        moveLeft();
-       // set_moved(true);
-        //player.is_moved = true;
-}*/
+        if(IsKeyDown(KEY_UP)) {
+            moveUp();
+            
+        }
+        else if(IsKeyDown(KEY_DOWN)) {
+            moveDown();
+        }
+        if(IsKeyDown(KEY_RIGHT)) {
+            moveRight();
+        }
+        else if(IsKeyDown(KEY_LEFT)) {
+            moveLeft();
+        }
 }
 
 

@@ -19,9 +19,7 @@ struct Properties{
     bool is_dead;
 };
 
-struct lastMove{
-    string prevMove;
-};
+
 
 class BaseObject {
     public:
@@ -48,8 +46,6 @@ class BaseObject {
         shared_ptr<raylib::Window> window_;
         string sprite;
         Properties object_Properties;
-
-        /////////////////////////////////
         raylib::Texture2D spriteObject;
 
 };

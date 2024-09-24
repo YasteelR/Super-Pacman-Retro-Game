@@ -21,6 +21,7 @@ public:
 private:
     int x_pos;
     int y_pos;  
+    string lastMove;
 };
 
 

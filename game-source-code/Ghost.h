@@ -14,6 +14,7 @@ public:
 private:
     int x_pos;
     int y_pos;  
+    string lastMove;
 };
 
 #endif /* D090F8A0_C96D_4D4B_A6E4_9D21C536DB0F */
