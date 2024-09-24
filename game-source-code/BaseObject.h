@@ -19,6 +19,10 @@ struct Properties{
     bool is_dead;
 };
 
+struct lastMove{
+    string prevMove;
+};
+
 class BaseObject {
     public:
     BaseObject(int x, int y);

@@ -53,58 +53,33 @@ void PacMan::run(){
 
             switch (mode){
 
-            case Mode_select::Splash_screen:
+                case Mode_select::Splash_screen:
 
-                BeginDrawing();
-                ClearBackground(GREEN);
-                //splash = LoadTexture("pacman.png");
+                    BeginDrawing();
+                    ClearBackground(GREEN);
+                    DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE);
+                    DrawText("press enter to start, use arrows to move and p to pause", 800, 800, 25, WHITE); 
+                    cout << "rnederrrr /////////////////"<<endl;
+                    EndDrawing();
+                break;
 
-                // Render the image (center it on screen)
-                DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE);
-                DrawText("press enter to start, use arrows to move and p to pause", 800, 800, 25, WHITE); 
-                cout << "rnederrrr /////////////////"<<endl;
+                case Mode_select::Game_screen:
 
-                // End drawing
-                EndDrawing();
+                    PacMan_Window->move_objects(Map);     
+                    PacMan_Window->drawPlayer(Map);
+                break;
 
+                case Mode_select::Pause_screen:
+                    BeginDrawing();
+                    ClearBackground(PINK);
+                    EndDrawing();
+                break;
 
-            break;
-
-            case Mode_select::Game_screen:
-
-                PacMan_Window->move_objects(Map);
-
-                
-                // BeginDrawing();
-
-                
-                // ClearBackground(BLUE);
-                //Map.DrawMap();
-
-                PacMan_Window->drawPlayer(Map);
-                // // End drawing
-                // EndDrawing();
-
-
-
-
-
-
-            break;
-
-            case Mode_select::Pause_screen:
-                BeginDrawing();
-                ClearBackground(PINK);
-                // End drawing
-                EndDrawing();
-            break;
-
-            case Mode_select::Game_over_screen:
-                BeginDrawing();
-                ClearBackground(RED);
-                // End drawing
-                EndDrawing();
-            break;
+                case Mode_select::Game_over_screen:
+                    BeginDrawing();
+                    ClearBackground(RED);
+                    EndDrawing();
+                break;
             }
         }
     }
