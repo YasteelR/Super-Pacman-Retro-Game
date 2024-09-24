@@ -4,6 +4,7 @@
 #include<string>
 #include <iostream>
 #include "player.h"
+#include "Ghost.h"
 
 class GameOperations{
 public:
@@ -18,6 +19,8 @@ private:
 
 
     shared_ptr<player> playerPacman;
+    shared_ptr<Ghost> Ghost1;
+    vector <shared_ptr<BaseObject>> movingObjects;
 
 
 

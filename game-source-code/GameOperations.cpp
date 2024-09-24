@@ -2,38 +2,14 @@
 
 GameOperations::GameOperations(){
     playerPacman = make_shared<player>(player(1800,700));
-    playerPacman->set_sprite("resources/pacmanLeft.png");
+    Ghost1 = make_shared<Ghost>(Ghost(10,10));    
+    movingObjects.push_back(playerPacman);
+    movingObjects.push_back(Ghost1);
 
 }
 
-void GameOperations::move_objects(GameMap& Map){
-
-    if (IsKeyPressed(KEY_W) || IsKeyPressed(KEY_S) || IsKeyPressed(KEY_A) || IsKeyPressed(KEY_D)) {
-            // Get the key input using a switch statement
-            switch (GetKeyPressed()) {
-                case KEY_W:
-                    // Move Up
-                    playerPacman->moveUp();
-                    break;
-                case KEY_S:
-                    // Move Down
-                    playerPacman->moveDown();
-                    break;
-                case KEY_A:
-                    // Move Left
-                    playerPacman->moveLeft();
-                    break;
-                case KEY_D:
-                    // Move Right
-                    playerPacman->moveRight();
-                    break;
-                default:
-                    break;
-            }
-
-    }
-    //bool collision = checkCollisionLeft(Map);
-    //if (!collision){
+void GameOperations::move_objects(GameMap& Map)
+{
         if(IsKeyDown(KEY_UP)) {
             playerPacman->moveUp();
         }
