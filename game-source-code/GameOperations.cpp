@@ -13,18 +13,9 @@ GameOperations::GameOperations(){
 
 void GameOperations::move_objects(GameMap& Map)
 {
-        if(IsKeyDown(KEY_UP)) {
-            playerPacman->moveUp();
-        }
-        else if(IsKeyDown(KEY_DOWN)) {
-            playerPacman->moveDown();
-        }
-        if(IsKeyDown(KEY_RIGHT)) {
-            playerPacman->moveRight();
-        }
-        else if(IsKeyDown(KEY_LEFT)) {
-            playerPacman->moveLeft();
-        }
+    for (auto& objects :movingObjects){
+        objects->move_Obj();
+    }
 }
 
 bool GameOperations::checkCollisionLeft(GameMap& Map){

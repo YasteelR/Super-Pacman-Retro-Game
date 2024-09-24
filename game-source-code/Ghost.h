@@ -9,12 +9,14 @@ using namespace std;
 class Ghost : public BaseObject{
 public:
     Ghost(int x, int y);
-    void moveGhost();
+    void move_Obj();
 
 private:
     int x_pos;
     int y_pos;  
     string lastMove;
 };
+
+
 
 #endif /* D090F8A0_C96D_4D4B_A6E4_9D21C536DB0F */

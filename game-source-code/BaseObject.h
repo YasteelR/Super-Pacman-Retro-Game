@@ -30,6 +30,7 @@ class BaseObject {
     int get_y();
     virtual void set_location(int x, int y);
     virtual string get_sprite();
+    virtual void move_Obj();
     //////////////////////////////////////
     void draw_sprite_object();
     void draw_sprite_object_with_map(GameMap& Map);

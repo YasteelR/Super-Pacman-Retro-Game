@@ -11,7 +11,7 @@ PacMan::PacMan(){
     window->SetTargetFPS(60);
     splash = LoadTexture("../resources/pacman.png");
     cout<< "Constructed "<<endl;
-    PacMan_Window = make_unique<GameOperations>();    
+    Game_Opperations = make_unique<GameOperations>();    
     
 }
 
@@ -65,8 +65,9 @@ void PacMan::run(){
 
                 case Mode_select::Game_screen:
 
-                    PacMan_Window->move_objects(Map);     
-                    PacMan_Window->drawPlayer(Map);
+                    Game_Opperations->move_objects(Map);     
+                    Game_Opperations->drawPlayer(Map);
+                    
                 break;
 
                 case Mode_select::Pause_screen:
