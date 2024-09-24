@@ -5,10 +5,7 @@ using namespace std;
 BaseObject::BaseObject(int x_pos, int y_pos){
     current_x = x_pos;
     current_y = y_pos;
-    object_Properties = {false,false,false,false,false,false};
-    sprite = "";
-    cout <<">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<<endl;
-    
+    object_Properties = {false,false,false,false,false,false};    
 }
 
 Properties BaseObject::get_Properties(){
@@ -16,31 +13,23 @@ Properties BaseObject::get_Properties(){
 };
 
 string BaseObject::get_sprite(){
-    
     return sprite;
 };
 
 void BaseObject::draw_sprite_object(){
         BeginDrawing();
         ClearBackground(BLUE);
-
-
         DrawTexture(spriteObject, get_x(), get_y(), WHITE);
         EndDrawing();
         cout <<"xpos- "<<get_x()<<endl<<"ypos - "<<get_y()<<endl;
-
-
 }
 
 void BaseObject::draw_sprite_object_with_map(GameMap& Map){
-
         BeginDrawing();
         ClearBackground(BLUE);
         Map.DrawMap();
-
         DrawTexture(spriteObject, get_x(), get_y(), WHITE);
         EndDrawing();
-
 }
 
 
