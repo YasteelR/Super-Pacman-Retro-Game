@@ -20,7 +20,7 @@ public:
     // put in seporate class
     void drawPlayer(GameMap& Map);  
 private:
-    shared_ptr<player> pacman;
+    shared_ptr<player> playerPacman;
 
     //unique_ptr<Setup> initialise_game;
     //unique_ptr<GameItteration> game_round_;
