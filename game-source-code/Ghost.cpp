@@ -10,3 +10,7 @@ Ghost::Ghost(int x, int y)
     set_Properties(object_feature);
     set_sprite("resources/Ghost.png");
 }
+
+void Ghost::move_Obj(){
+    cout <<"Ghost"<<endl;
+};

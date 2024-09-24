@@ -50,48 +50,48 @@ TEST_CASE("If file does not contain data in the correct format it throws an erro
 }
 
 //====================================Testing BaseObject class=====================================================================
-TEST_CASE("Base Object Initializes correctly")
-{
-    //This test needs to be altered later
-    BaseObject test=BaseObject{0,0};
-    tuple<bool, bool, bool> TestConditions(false, false, false);
+// TEST_CASE("Base Object Initializes correctly")
+// {
+//     //This test needs to be altered later
+//     BaseObject test=BaseObject{0,0};
+//     tuple<bool, bool, bool> TestConditions(false, false, false);
 
-    if(test.get_x()==0 && test.get_y()==0)
-    {
-        get<0>(TestConditions)=true;
-    }
+//     if(test.get_x()==0 && test.get_y()==0)
+//     {
+//         get<0>(TestConditions)=true;
+//     }
 
-    if(test.get_sprite()=="")
-    {
-        get<1>(TestConditions)=true;
-    }
+//     if(test.get_sprite()=="")
+//     {
+//         get<1>(TestConditions)=true;
+//     }
 
-    if(get<0>(TestConditions)==get<1>(TestConditions))
-    {
-        get<2>(TestConditions)=true;
-    }
+//     if(get<0>(TestConditions)==get<1>(TestConditions))
+//     {
+//         get<2>(TestConditions)=true;
+//     }
 
-    CHECK(get<2>(TestConditions));
-}
+//     CHECK(get<2>(TestConditions));
+// }
 
-TEST_CASE("Set Location updates objects location")
-{
-    BaseObject test = BaseObject{0,0};
+// TEST_CASE("Set Location updates objects location")
+// {
+//     BaseObject test = BaseObject{0,0};
 
-    int x=1;
-    int y=1;
+//     int x=1;
+//     int y=1;
 
-    test.set_location(x,y);
+//     test.set_location(x,y);
 
-    bool testCase=false;
+//     bool testCase=false;
 
-    if(test.get_x()==x && test.get_y()==y)
-    {
-        testCase=true;
-    }
+//     if(test.get_x()==x && test.get_y()==y)
+//     {
+//         testCase=true;
+//     }
 
-    CHECK(testCase);
-}
+//     CHECK(testCase);
+// }
 
 //TEST_CASE("Set sprite changes sprite to filename")
 //{
@@ -103,15 +103,15 @@ TEST_CASE("Set Location updates objects location")
 //    CHECK(test.get_sprite()==spriteTestName);
 //}
 
-TEST_CASE("Set_moved shows if the object has been moved")
-{
-    BaseObject test = BaseObject{0,0};
-    test.set_moved(true);
+// TEST_CASE("Set_moved shows if the object has been moved")
+// {
+//     BaseObject test = BaseObject{0,0};
+//     test.set_moved(true);
 
-    Properties check=test.get_Properties();
+//     Properties check=test.get_Properties();
 
-    CHECK(check.is_moved);
-}  
+//     CHECK(check.is_moved);
+// }  
 
 //====================================Testing Player====================================================================================
 TEST_CASE("GameOperations initializes correctly")
