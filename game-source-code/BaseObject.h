@@ -38,7 +38,7 @@ class BaseObject {
     virtual void undoLastMove() = 0;
     //////////////////////////////////////
     void draw_sprite_object();
-    void draw_sprite_object_with_map(GameMap& Map);
+    void draw_rectangular_object(vector<int>& objectCoordinates);
     void set_sprite(string sprite_file_location);
     void set_window(shared_ptr<raylib::Window> window);
     void set_moved(bool moved);

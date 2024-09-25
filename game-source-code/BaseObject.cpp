@@ -22,13 +22,14 @@ string BaseObject::get_sprite(){
 };
 
 void BaseObject::draw_sprite_object(){
-        BeginDrawing();
-        ClearBackground(BLUE);
+        //BeginDrawing();
+        //ClearBackground(BLUE);
         DrawTexture(spriteObject, get_x(), get_y(), WHITE);
-        EndDrawing();
+        DrawRectangleLines(get_x(), get_y(), spriteObject.width,spriteObject.height, RED);
+        //EndDrawing();
 }
 
-void BaseObject::draw_object(){
+void BaseObject::draw_object(vector<int>& objectCoordinates){
         //BeginDrawing();
         //ClearBackground(BLUE);
         DrawTexture(spriteObject, get_x(), get_y(), WHITE);
