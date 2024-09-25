@@ -28,6 +28,7 @@ void BaseObject::draw_sprite_object_with_map(GameMap& Map){
         //ClearBackground(BLUE);
         Map.DrawMap();
         DrawTexture(spriteObject, get_x(), get_y(), WHITE);
+        DrawRectangleLines(get_x(), get_y(), spriteObject.width,spriteObject.height, RED);
         //EndDrawing();
 }
 
@@ -42,6 +43,7 @@ void BaseObject::set_sprite(string sprite_file_location){
 };
 
 Rectangle BaseObject::getBoundingBox() const {
+
         return { current_x, current_y, (float)spriteObject.width, (float)spriteObject.height };
 }
 

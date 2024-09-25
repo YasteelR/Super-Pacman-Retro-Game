@@ -100,8 +100,6 @@ void player::move_Obj(){
             moveLeft();
             lastMove = "left";
         }
-
-        cout <<"player is moved" <<endl; 
 }
 
 

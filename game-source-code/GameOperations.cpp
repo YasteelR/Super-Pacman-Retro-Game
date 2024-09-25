@@ -2,7 +2,7 @@
 
 GameOperations::GameOperations(){
     playerPacman = make_shared<player>(player(800,400));
-    Ghost1 = make_shared<Ghost>(Ghost(10,10));    
+    Ghost1 = make_shared<Ghost>(Ghost(200,200));    
     movingObjects.push_back(playerPacman);
     movingObjects.push_back(Ghost1);
     Ghost1 = make_shared<Ghost>(Ghost(100,100));
@@ -18,13 +18,15 @@ void GameOperations::move_objects(GameMap& Map)
     }
 }
 
-bool GameOperations::checkCollisionLeft(vector <shared_ptr<BaseObject>> movingObjects){
+bool GameOperations::checkCollision(){
     
     bool collision;
 
 
     if (CheckCollisionRecs(movingObjects[0]->getBoundingBox() ,movingObjects[1]->getBoundingBox() )) {
         cout <<"collistion is happening "<<endl;
+        cout <<"player x:"<<movingObjects[0]->get_x()<<"player y:"<<movingObjects[0]->get_y()<<endl;
+        cout <<"ghost x:"<<movingObjects[2]->get_x()<<"ghost y:"<<movingObjects[2]->get_y()<<endl;
     }
 
     return collision;
