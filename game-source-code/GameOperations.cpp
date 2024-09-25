@@ -21,14 +21,14 @@ void GameOperations::move_objects(GameMap& Map)
 bool GameOperations::checkCollision(){
     
     bool collision;
-
-
-    if (CheckCollisionRecs(movingObjects[0]->getBoundingBox() ,movingObjects[1]->getBoundingBox() )) {
-        cout <<"collistion is happening "<<endl;
-        cout <<"player x:"<<movingObjects[0]->get_x()<<"player y:"<<movingObjects[0]->get_y()<<endl;
-        cout <<"ghost x:"<<movingObjects[2]->get_x()<<"ghost y:"<<movingObjects[2]->get_y()<<endl;
+    for (auto i = 1; i < 3; i++ ){
+        if (CheckCollisionRecs(movingObjects[0]->getBoundingBox() ,movingObjects[i]->getBoundingBox() )) {
+            collision = true;
+            cout <<"collistion is happening "<<endl;
+            cout <<"player x:"<<movingObjects[0]->get_x()<<"player y:"<<movingObjects[0]->get_y()<<endl;
+            cout <<"ghost x:"<<movingObjects[i]->get_x()<<"ghost y:"<<movingObjects[i]->get_y()<<endl;
+        }
     }
-
     return collision;
 }
 
