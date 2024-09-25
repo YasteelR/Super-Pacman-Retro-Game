@@ -1,18 +1,25 @@
 #include "GameOperations.h"
 
 GameOperations::GameOperations(){
+    shared_ptr<GameData> GameInfo = GameData::getData();
+    GameInfo->setup();
+    GameInfo->ReadInWalls("../resources/GameMap.txt");
+    auto walls = GameInfo->getWallCoordinates();
+
+
     playerPacman = make_shared<player>(player(800,400));
     Ghost1 = make_shared<Ghost>(Ghost(200,200));    
     movingObjects.push_back(playerPacman);
     movingObjects.push_back(Ghost1);
     Ghost1 = make_shared<Ghost>(Ghost(100,100));
     movingObjects.push_back(Ghost1);
+
+    
     // create vector of rectangles
 
     //create vector of walls
 
-    shared_ptr<GameData> GameInfo = GameData::getData();
-    GameInfo->
+
 
 }
 
@@ -40,26 +47,26 @@ bool GameOperations::checkCollisionPacmanGhost(){
     return collision;
 }
 
-void GameOperations::checkCollisionWall(){
-    for (auto& objects : movingObjects ){
-        for (auto& walls : wallList){
-            if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
-                objects->undoLastMove();
-            }
-        }
-    }
-}
+// void GameOperations::checkCollisionWall(){
+//     for (auto& objects : movingObjects ){
+//         for (auto& walls : wallList){
+//             if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
+//                 objects->undoLastMove();
+//             }
+//         }
+//     }
+// }
 
-void GameOperations::checkCollisionPellets(){
-    for (auto& objects : movingObjects ){
-        for (auto& pellets : pelletList){
-            if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
-                //checl if isdead 
-                //update score
-            }
-        }
-    }
-}
+// void GameOperations::checkCollisionPellets(){
+//     for (auto& objects : movingObjects ){
+//         for (auto& pellets : pelletList){
+//             if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
+//                 //checl if isdead 
+//                 //update score
+//             }
+//         }
+//     }
+// }
 
 void GameOperations::drawPlayer(GameMap& Map){
         BeginDrawing();
