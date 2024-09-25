@@ -6,10 +6,10 @@
 
 using namespace std;
 
-class Wall : public BaseObject{
+class Pellet : public BaseObject{
 public:
 
-    Wall(int x, int y);
+    Pellet(int x, int y);
 
 private:
     int x_pos;

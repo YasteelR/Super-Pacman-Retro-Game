@@ -11,9 +11,6 @@ public:
 
     Door(int x, int y);
 
-    
-
-
 private:
     int x_pos;
     int y_pos;  
