@@ -1,6 +1,6 @@
 #include "Pellet.h"
 
-Pellet::Pellet(int x, int y) : BaseObject(x,y)
+Pellet::Pellet() : BaseObject()
 {
     auto object_feature = get_Properties();
     set_Properties(object_feature);
