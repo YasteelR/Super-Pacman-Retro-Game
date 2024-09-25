@@ -9,6 +9,10 @@ using namespace std;
 class Ghost : public BaseObject{
 public:
     Ghost(int x, int y);
+    void moveUp();
+    void moveDown();
+    void moveLeft();
+    void moveRight();
     void move_Obj();
     void undoLastMove();
 

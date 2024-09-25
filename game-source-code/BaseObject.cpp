@@ -94,3 +94,11 @@ void BaseObject::setGameData(shared_ptr<GameData> GameData){
 void BaseObject::updatePlayerGameData(){
     GameInfo->setPlayerPos(get_x(),get_y());
 }
+
+
+int BaseObject::getPlayerX(){
+    return GameInfo->getPlayerXpos();
+}
+int BaseObject::getPlayerY(){
+    return GameInfo->getPlayerYpos();
+}

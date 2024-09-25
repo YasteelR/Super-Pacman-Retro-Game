@@ -43,8 +43,11 @@ class BaseObject {
     void set_window(shared_ptr<raylib::Window> window);
     void set_moved(bool moved);
     shared_ptr<raylib::Window> get_window();
+
     void setGameData(shared_ptr<GameData> GameData);
     void updatePlayerGameData();
+    int getPlayerX();
+    int getPlayerY();
 
 
     protected:
