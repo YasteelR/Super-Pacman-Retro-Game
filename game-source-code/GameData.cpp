@@ -1,10 +1,5 @@
 #include "GameData.h"
 
-GameData::GameData()
-{
-    cout<<"GameData"<<endl;
-}
-
 GameData& GameData::getData()
 {
     return Data;

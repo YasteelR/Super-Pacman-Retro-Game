@@ -9,6 +9,8 @@ using namespace std;
 class GameData
 {
     public:
+        //getData() returns a pointer to the single instance of GameData allowing access to it's public member functions
+        static GameData& getData();
         void ReadInWalls(string FilePath);
         vector<int>* getWallCoordinates();//Returns a pointer to the vector of wall coordinates (so their positions can be read in)
         int* getNumberOfWalls();
@@ -24,6 +26,8 @@ class GameData
         //code base can some accidentily create a copy of GameData.
         GameData(const GameData&) = delete;
         GameData& operator=(const GameData&) = delete;
+        //This creates one instance of GameData that will be used throughout the entire period of the game.
+        static GameData Data;
 
         vector<BaseObject> Object;
         vector<int> WallCoordinates;
@@ -31,6 +35,7 @@ class GameData
         vector<int> PlayerCoordinates;
         vector<int> GhostCoordinates;
         int NumOfGhosts;
+        int score;
 
 };
 
