@@ -8,8 +8,10 @@ using namespace std;
 class Key : public BaseObject
 {
     public:
-        Key(int x, int y);
+        Key();
         void set_location(int x, int y);
+        void move_Obj() override{};
+    void undoLastMove() override{};
 
     private:
 };

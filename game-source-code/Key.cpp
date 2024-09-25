@@ -1,8 +1,7 @@
 #include "Key.h"
 
-Key::Key(int x, int y) : BaseObject(x,y)
+Key::Key() : BaseObject()
 {
-    set_location(x,y);
     set_sprite("../resources/key.png");
 }
 

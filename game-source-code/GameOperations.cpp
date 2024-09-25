@@ -93,6 +93,11 @@ void GameOperations::draw(){
                       WallCoordinates[i+3],
                       GREEN);
         }
+        for(int i=0; i<keys.size()-1; i=i+2)
+        {
+            KeyObject.set_location(keys[i],keys[i+1]);
+            KeyObject.draw_sprite_object();
+        }
         EndDrawing();
 
 }

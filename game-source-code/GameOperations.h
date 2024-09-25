@@ -36,5 +36,6 @@ private:
     int NumberOfPellets;
     vector<int> keys;
     int NumberOfKeys;
+    Key KeyObject;
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */
