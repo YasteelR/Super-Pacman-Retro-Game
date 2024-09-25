@@ -18,42 +18,14 @@ void GameOperations::move_objects(GameMap& Map)
     }
 }
 
-bool GameOperations::checkCollisionLeft(GameMap& Map){
+bool GameOperations::checkCollisionLeft(vector <shared_ptr<BaseObject>> movingObjects){
     
     bool collision;
-    auto Xleft= playerPacman->get_x();
-    auto Xright= (playerPacman->get_x()+180);
-    auto Ytop= playerPacman->get_x();
-    auto Ybottom= (playerPacman->get_y()+180);
-    auto mapObj = Map.getMapObjects();
-    auto numberRect = Map.getNoRectangles();
-    int rectRight;
-    int rectLeft;
-    int rectTop;
-    int rectBottom;
-
-    for(int i=numberRect; i<mapObj.size(); i++)
-    {   
-        rectRight = mapObj[i][0] + 1100;
-        rectLeft = mapObj[i][0] ;
-        rectTop = mapObj[i][1]; 
-        rectBottom =  mapObj[i][1] + 50;
-
-        if ( rectRight > Xleft && Ytop < (rectTop - 50) && Ybottom > (rectBottom + 50)  ){
-
-            collision = true;
-            break;
-
-        }else{
-
-            collision = false;
-            
-        }
-                      //||  mapObj[i][0] < (Xright) || mapObj[i][1] > Ybottom || (mapObj[i][1]+mapObj[i][3]) < Ytop)
-        
-    }    
 
 
+    if (CheckCollisionRecs(movingObjects[0]->getBoundingBox() ,movingObjects[1]->getBoundingBox() )) {
+        cout <<"collistion is happening "<<endl;
+    }
 
     return collision;
 }

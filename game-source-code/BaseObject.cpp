@@ -41,6 +41,10 @@ void BaseObject::set_sprite(string sprite_file_location){
     spriteObject = LoadTexture(sprite_file_location.c_str()); 
 };
 
+Rectangle BaseObject::getBoundingBox() const {
+        return { current_x, current_y, (float)spriteObject.width, (float)spriteObject.height };
+}
+
 void BaseObject::set_location(int x, int y){
     current_x = x;
     current_y = y;

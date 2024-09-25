@@ -11,4 +11,5 @@ Ghost::Ghost(int x, int y)
 
 void Ghost::move_Obj(){
     cout <<"Ghost moved"<<endl;
+    
 };

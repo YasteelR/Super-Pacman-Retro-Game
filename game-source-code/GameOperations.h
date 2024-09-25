@@ -11,7 +11,7 @@ public:
     GameOperations();
     void Start();
     void move_objects(GameMap& Map);
-    bool checkCollisionLeft(GameMap& Map);
+    bool checkCollisionLeft(vector <shared_ptr<BaseObject>> movingObjects);
     static bool is_game_over;
     void drawPlayer(GameMap& Map);
 

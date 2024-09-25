@@ -43,7 +43,6 @@ void PacMan::run(){
             break;
             
             }
-            cout << "event wile loop=============="<<endl;
             event = 0;
         }
 
@@ -59,7 +58,6 @@ void PacMan::run(){
                     ClearBackground(GREEN);
                     DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE);
                     DrawText("press enter to start, use arrows to move and p to pause", 800, 800, 25, WHITE); 
-                    cout << "rnederrrr /////////////////"<<endl;
                     EndDrawing();
                 break;
 
