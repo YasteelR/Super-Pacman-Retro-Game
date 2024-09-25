@@ -13,6 +13,7 @@ public:
     void move_objects(GameMap& Map);
     bool checkCollisionPacmanGhost();
     void checkCollisionWall();
+    void checkCollisionPellets();
     static bool is_game_over;
     void drawPlayer(GameMap& Map);
 
