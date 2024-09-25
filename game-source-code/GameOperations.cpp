@@ -11,6 +11,9 @@ GameOperations::GameOperations(){
 
     //create vector of walls
 
+    shared_ptr<GameData> GameInfo = GameData::getData();
+    GameInfo->
+
 }
 
 void GameOperations::move_objects(GameMap& Map)

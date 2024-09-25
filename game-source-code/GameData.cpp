@@ -1,9 +1,13 @@
 #include "GameData.h"
 
-GameData& GameData::getData()
-{
-    return Data;
-}
+shared_ptr<GameData> GameData::getData(){
+        // If the static Data object is not initialized, initialize it
+        if (Data == nullptr) {
+            Data = make_shared<GameData>();  // Use make_shared to allocate the object
+        }
+        return Data;
+    }
+
 
 void GameData::ReadInWalls(string FilePath)
 {
@@ -12,12 +16,30 @@ void GameData::ReadInWalls(string FilePath)
     Walls.ReadData(WallCoordinates,NumberOfWalls);
 }
 
-vector<int>* GameData::getWallCoordinates()
+shared_ptr<vector<int>> GameData::getWallCoordinates()
 {
-    return &WallCoordinates;
+    return make_shared<vector<int>>(NumberOfWalls);
 }
 
-int* GameData::getNumberOfWalls()
+shared_ptr<int> GameData::getNumberOfWalls()
 {
-    return &NumberOfWalls;
+    return make_shared<int>(WallCoordinates);
+}
+
+void GameData::setPlayerCoordinates(int x, int y){
+    playerXpos = x;
+    playerYpos = y;
+}
+
+int GameData::getPlayerXpos(){
+    return playerXpos;
+}
+int GameData::getPlayerYpos(){
+    return playerYpos;
+}
+void GameData::setup(){
+    score = 0;
+    lives = 3;
+    playerXpos = 800;
+    playerYpos = 450;
 }

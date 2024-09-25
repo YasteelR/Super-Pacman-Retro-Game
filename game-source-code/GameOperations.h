@@ -5,6 +5,7 @@
 #include <iostream>
 #include "player.h"
 #include "Ghost.h"
+#include "GameData.h"
 
 class GameOperations{
 public:
