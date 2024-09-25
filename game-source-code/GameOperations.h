@@ -19,6 +19,7 @@ public:
     static bool is_game_over;
     void drawPlayer(GameMap& Map);
     void loadRect(string FilePath);
+    Rectangle returnRect(int& i);
 
 private:
 

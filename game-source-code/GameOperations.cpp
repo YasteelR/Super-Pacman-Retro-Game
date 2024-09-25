@@ -91,3 +91,7 @@ void GameOperations::loadRect(string FilePath){
     Walls.ReadData(boundaryCoordinates,NumberOfBounds);
 
 }
+Rectangle GameOperations::returnRect(int& i){
+    cout <<WallCoordinates[i] << "y-"<< WallCoordinates[i +1] << "y-"<< (float)WallCoordinates[i + 2]<< "y-"<< (float)WallCoordinates[i + 3]<<endl;
+    return { (float)WallCoordinates[i], (float)WallCoordinates[i +1], (float)WallCoordinates[i + 2], (float)WallCoordinates[i + 3]};
+}
