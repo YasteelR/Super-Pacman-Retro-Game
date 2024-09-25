@@ -10,22 +10,22 @@ Ghost::Ghost(int x, int y)
 }
 
 void Ghost::moveUp(){
-    set_location(get_x(), get_y() - 10);
+    set_location(get_x(), get_y() - 2);
 
 }
 
 void Ghost::moveDown() {
-    set_location(get_x(), get_y() + 10);
+    set_location(get_x(), get_y() + 2);
 
 }
 
 void Ghost::moveLeft() {
-    set_location(get_x() - 10, get_y() );
+    set_location(get_x() - 2, get_y() );
 
 }
 
 void Ghost::moveRight() {
-    set_location(get_x() + 10, get_y() );
+    set_location(get_x() + 2, get_y() );
 }
 
 void Ghost::move_Obj(){
@@ -34,34 +34,34 @@ void Ghost::move_Obj(){
 
     auto xDistance = playerX - get_x();
     auto yDistance = playerY - get_y();
-    if (xDistance > 0 && yDistance > 0){
-        moveDown();
+    if (xDistance > 0){
         moveRight();
-    }else if (xDistance < 0 && yDistance < 0){
+        lastMove = "right";
+    }else if (xDistance < 0){
         moveLeft();
+        lastMove = "left";
+    }else if (yDistance < 0){
         moveUp();
-    }else if (xDistance > 0 && yDistance < 0){
-        moveRight();
-        moveUp();
-    }else if (xDistance < 0 && yDistance > 0){
+        lastMove = "up";
+    }else if ( yDistance > 0){
         moveDown();
-        moveLeft();
+        lastMove = "down";
     }
 
 };
 
 void Ghost::undoLastMove() {
     if (lastMove == "up") {
-        //moveDown();
+        moveDown();
     }
     else if (lastMove == "down") {
-        //moveUp();
+        moveUp();
     }
     else if (lastMove == "left") {
-       //moveRight();
+       moveRight();
     }
     else if (lastMove == "right") {
-        //moveLeft();
+        moveLeft();
     }
     else {
         std::cout << "Invalid move!" << std::endl;

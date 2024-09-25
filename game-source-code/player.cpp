@@ -34,18 +34,22 @@ void player::move_Obj(){
         if(IsKeyDown(KEY_UP)) {
             moveUp();
             lastMove = "up";
+            return;
         }
         else if(IsKeyDown(KEY_DOWN)) {
             moveDown();
             lastMove = "down";
+            return;
         }
         if(IsKeyDown(KEY_RIGHT)) {
             moveRight();
             lastMove = "right";
+            return;
         }
         else if(IsKeyDown(KEY_LEFT)) {
             moveLeft();
             lastMove = "left";
+            return;
         }
         updatePlayerGameData();
 }
