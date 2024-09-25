@@ -59,7 +59,9 @@ bool GameOperations::checkCollisionLeft(GameMap& Map){
 }
 
 void GameOperations::drawPlayer(GameMap& Map){
-
-    playerPacman->draw_sprite_object_with_map(Map);
+        BeginDrawing();
+        ClearBackground(BLUE);
+        playerPacman->draw_sprite_object_with_map(Map);
+        EndDrawing();
 
 }

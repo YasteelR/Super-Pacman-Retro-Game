@@ -24,11 +24,11 @@ void BaseObject::draw_sprite_object(){
 }
 
 void BaseObject::draw_sprite_object_with_map(GameMap& Map){
-        BeginDrawing();
-        ClearBackground(BLUE);
+        //BeginDrawing();
+        //ClearBackground(BLUE);
         Map.DrawMap();
         DrawTexture(spriteObject, get_x(), get_y(), WHITE);
-        EndDrawing();
+        //EndDrawing();
 }
 
 
