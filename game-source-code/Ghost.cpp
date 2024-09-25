@@ -11,3 +11,21 @@ Ghost::Ghost(int x, int y)
 
 void Ghost::move_Obj(){
 };
+
+void Ghost::undoLastMove() {
+    if (lastMove == "up") {
+        //moveDown();
+    }
+    else if (lastMove == "down") {
+        //moveUp();
+    }
+    else if (lastMove == "left") {
+       //moveRight();
+    }
+    else if (lastMove == "right") {
+        //moveLeft();
+    }
+    else {
+        std::cout << "Invalid move!" << std::endl;
+    }
+}

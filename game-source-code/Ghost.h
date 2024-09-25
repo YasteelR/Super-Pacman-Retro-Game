@@ -9,7 +9,8 @@ using namespace std;
 class Ghost : public BaseObject{
 public:
     Ghost(int x, int y);
-    void move_Obj() override ;
+    void move_Obj();
+    void undoLastMove();
 
 private:
     int x_pos;

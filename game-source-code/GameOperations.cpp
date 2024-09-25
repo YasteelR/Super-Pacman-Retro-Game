@@ -18,7 +18,7 @@ void GameOperations::move_objects(GameMap& Map)
     for (auto& objects :movingObjects){
         objects->move_Obj();
     }
-}
+}   
 
 bool GameOperations::checkCollisionPacmanGhost(){
     
@@ -31,6 +31,7 @@ bool GameOperations::checkCollisionPacmanGhost(){
             cout <<"player x:"<<movingObjects[0]->get_x()<<"player y:"<<movingObjects[0]->get_y()<<endl;
             cout <<"ghost x:"<<movingObjects[i]->get_x()<<"ghost y:"<<movingObjects[i]->get_y()<<endl;
             // set player dead
+            // update score
         }
     }
     return collision;
@@ -41,6 +42,17 @@ void GameOperations::checkCollisionWall(){
         for (auto& walls : wallList){
             if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
                 objects->undoLastMove();
+            }
+        }
+    }
+}
+
+void GameOperations::checkCollisionPellets(){
+    for (auto& objects : movingObjects ){
+        for (auto& pellets : pelletList){
+            if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
+                //checl if isdead 
+                //update score
             }
         }
     }
