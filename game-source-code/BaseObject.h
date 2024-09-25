@@ -13,6 +13,7 @@ using namespace std;
 struct Properties{
     bool is_moved;
     bool is_invincible;
+    bool is_collided;
     bool is_player;
     bool is_enemy;
     bool is_wall;
@@ -32,6 +33,7 @@ class BaseObject {
     Rectangle getBoundingBox() const;
     virtual string get_sprite();
     virtual void move_Obj() = 0;
+    virtual void undoLastMove() = 0;
     //////////////////////////////////////
     void draw_sprite_object();
     void draw_sprite_object_with_map(GameMap& Map);

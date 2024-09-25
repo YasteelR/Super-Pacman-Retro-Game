@@ -11,7 +11,8 @@ public:
     GameOperations();
     void Start();
     void move_objects(GameMap& Map);
-    bool checkCollision();
+    bool checkCollisionPacmanGhost();
+    void checkCollisionWall();
     static bool is_game_over;
     void drawPlayer(GameMap& Map);
 

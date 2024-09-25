@@ -7,7 +7,9 @@ GameOperations::GameOperations(){
     movingObjects.push_back(Ghost1);
     Ghost1 = make_shared<Ghost>(Ghost(100,100));
     movingObjects.push_back(Ghost1);
+    // create vector of rectangles
 
+    //create vector of walls
 
 }
 
@@ -18,18 +20,30 @@ void GameOperations::move_objects(GameMap& Map)
     }
 }
 
-bool GameOperations::checkCollision(){
+bool GameOperations::checkCollisionPacmanGhost(){
     
     bool collision;
+    //check collision with Ghosts
     for (auto i = 1; i < 3; i++ ){
         if (CheckCollisionRecs(movingObjects[0]->getBoundingBox() ,movingObjects[i]->getBoundingBox() )) {
             collision = true;
             cout <<"collistion is happening "<<endl;
             cout <<"player x:"<<movingObjects[0]->get_x()<<"player y:"<<movingObjects[0]->get_y()<<endl;
             cout <<"ghost x:"<<movingObjects[i]->get_x()<<"ghost y:"<<movingObjects[i]->get_y()<<endl;
+            // set player dead
         }
     }
     return collision;
+}
+
+void GameOperations::checkCollisionWall(){
+    for (auto& objects : movingObjects ){
+        for (auto& walls : wallList){
+            if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
+                objects->undoLastMove();
+            }
+        }
+    }
 }
 
 void GameOperations::drawPlayer(GameMap& Map){
