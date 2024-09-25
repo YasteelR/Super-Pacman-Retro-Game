@@ -37,26 +37,26 @@ bool GameOperations::checkCollisionPacmanGhost(){
     return collision;
 }
 
-void GameOperations::checkCollisionWall(){
-    for (auto& objects : movingObjects ){
-        for (auto& walls : wallList){
-            if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
-                objects->undoLastMove();
-            }
-        }
-    }
-}
+// void GameOperations::checkCollisionWall(){
+//     for (auto& objects : movingObjects ){
+//         for (auto& walls : wallList){
+//             if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
+//                 objects->undoLastMove();
+//             }
+//         }
+//     }
+// }
 
-void GameOperations::checkCollisionPellets(){
-    for (auto& objects : movingObjects ){
-        for (auto& pellets : pelletList){
-            if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
-                //checl if isdead 
-                //update score
-            }
-        }
-    }
-}
+// void GameOperations::checkCollisionPellets(){
+//     for (auto& objects : movingObjects ){
+//         for (auto& pellets : pelletList){
+//             if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
+//                 //checl if isdead 
+//                 //update score
+//             }
+//         }
+//     }
+// }
 
 void GameOperations::drawPlayer(GameMap& Map){
         BeginDrawing();

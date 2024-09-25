@@ -233,7 +233,7 @@ bool GameMap::FileIsOpen()
 void GameMap::ReadData()
 {
     ReadInRectangles();
-    ReadInLines();
+    //ReadInLines();
 }
 
 vector<vector<int>> GameMap::getMapObjects(){

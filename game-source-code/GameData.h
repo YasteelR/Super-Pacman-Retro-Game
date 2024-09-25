@@ -21,13 +21,13 @@ class GameData
     private:
         //The constructor is defined in the private section because we are using the singleton method to prevent
         //multiple instances of the GameData class from being made.
-        GameData();
+        //GameData();
         //We define the copy and constructor and assignment constructor to delete the object so that no where the 
         //code base can some accidentily create a copy of GameData.
-        GameData(const GameData&) = delete;
-        GameData& operator=(const GameData&) = delete;
+        //GameData(const GameData&) = delete;
+        //GameData& operator=(const GameData&) = delete;
         //This creates one instance of GameData that will be used throughout the entire period of the game.
-        static GameData Data;
+        //static GameData Data;
 
         vector<BaseObject> Object;
         vector<int> WallCoordinates;

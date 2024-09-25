@@ -1,9 +1,9 @@
 #include "GameData.h"
 
-GameData& GameData::getData()
-{
-    return Data;
-}
+// GameData& GameData::getData()
+// {
+//     return Data;
+// }
 
 void GameData::ReadInWalls(string FilePath)
 {
