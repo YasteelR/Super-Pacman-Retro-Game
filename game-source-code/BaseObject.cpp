@@ -2,6 +2,9 @@
 
 using namespace std; 
 
+shared_ptr<GameData> BaseObject::GameInfo = nullptr;
+
+
 BaseObject::BaseObject()
 {
     object_Properties = {false,false,false,false,false,false,false,false};
@@ -83,3 +86,11 @@ void BaseObject::set_window(shared_ptr<raylib::Window> window){
 shared_ptr<raylib::Window> BaseObject::get_window(){
     return window_;
 };
+
+void BaseObject::setGameData(shared_ptr<GameData> GameData){
+    GameInfo = GameData;
+}
+
+void BaseObject::updatePlayerGameData(){
+    GameInfo->setPlayerPos(get_x(),get_y());
+}

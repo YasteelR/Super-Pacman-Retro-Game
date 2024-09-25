@@ -1,10 +1,11 @@
 #include "GameOperations.h"
 
 GameOperations::GameOperations(){
-    GameData GameInfo;
+    shared_ptr<GameData> GameInfo = make_shared<GameData>();
     loadRect("../resources/GameMap.txt");
 
     playerPacman = make_shared<player>(player(800,400));
+    playerPacman->setGameData(GameInfo);
     Ghost1 = make_shared<Ghost>(Ghost(200,200));    
     movingObjects.push_back(playerPacman);
     movingObjects.push_back(Ghost1);

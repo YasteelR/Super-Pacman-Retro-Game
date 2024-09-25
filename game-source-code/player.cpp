@@ -47,6 +47,7 @@ void player::move_Obj(){
             moveLeft();
             lastMove = "left";
         }
+        updatePlayerGameData();
 }
 
 void player::undoLastMove() {

@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <raylib-cpp.hpp>
+#include "GameData.h"
 
 using namespace std;
 
@@ -42,6 +43,8 @@ class BaseObject {
     void set_window(shared_ptr<raylib::Window> window);
     void set_moved(bool moved);
     shared_ptr<raylib::Window> get_window();
+    void setGameData(shared_ptr<GameData> GameData);
+    void updatePlayerGameData();
 
 
     protected:
@@ -53,6 +56,9 @@ class BaseObject {
         Properties object_Properties;
         raylib::Texture2D spriteObject;
 
+        static shared_ptr<GameData> GameInfo;
+
 };
+
 
 #endif 
