@@ -11,75 +11,22 @@ player::player(int x, int y)
 }
 
 void player::moveUp(){
-    if ( get_y() > 240 && get_y() < 500 ){
-        if (get_y() > 50) {
-            set_location(get_x(), get_y() - 15);
-        } 
-    } else if ( get_x() > 1325 ){
-        if (get_y() > 50) {
-            set_location(get_x(), get_y() - 15);
-        } 
-    }else if (get_x() < 220){
-        if (get_y() > 50) {
-            set_location(get_x(), get_y() - 15);
-        } 
-    }
+            set_location(get_x(), get_y() - 10);
+
 }
 
 void player::moveDown() {
+        set_location(get_x(), get_y() + 10);
 
-    if (get_y() < 240){
-        if (get_y() < 800) {
-        set_location(get_x(), get_y() + 15);
-    }
-
-    } else if ( get_y() > 225 && get_y() < 495 ){
-         if (get_y() <800) {
-            set_location(get_x(), get_y() + 15);
-        }
-    } else if ( get_x() > 1325 ){
-        if (get_y() <800) {
-        set_location(get_x(), get_y() + 15);
-    }    
-    }else if (get_x() < 220){
-         if (get_y() < 800) {
-            set_location(get_x(), get_y() + 15);
-        }
-    }
 }
 
 void player::moveLeft() {
-    if (get_x() < 220){
-         if (get_x() > 50) {
-            set_location(get_x() - 15, get_y() );
-        }
+            set_location(get_x() - 10, get_y() );
 
-    } else if ( get_x() < 1355 && get_y() > 225 && get_y() < 500 ){
-         if (get_x() > 50) {
-            set_location(get_x() - 15, get_y() );
-        }
-    }else if (get_x() >1340){
-         if (get_x() > 50) {
-            set_location(get_x() - 15, get_y() );
-        }
-    }
 }
 
 void player::moveRight() {
-    if (get_x() < 215){
-        if (get_x() < 1500) {
-            set_location(get_x() + 15, get_y() );
-        }
-
-    } else if ( get_x() > 200 && get_y() > 225 && get_y() < 500 ){
-        if (get_x() < 1500) {
-            set_location(get_x() + 15, get_y() );
-        }
-    }else if (get_x() >1325){
-        if (get_x() < 1500) {
-            set_location(get_x() + 15, get_y() );
-        }
-    }
+    set_location(get_x() + 10, get_y() );
 }
 
 

@@ -9,7 +9,7 @@ using namespace std;
 class Pellet : public BaseObject{
 public:
 
-    Pellet(int x, int y);
+    Pellet();
 
 private:
     int x_pos;

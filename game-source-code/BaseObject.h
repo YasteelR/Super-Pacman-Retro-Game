@@ -18,6 +18,7 @@ struct Properties{
     bool is_enemy;
     bool is_wall;
     bool is_dead;
+    bool is_points;
 };
 
 
@@ -25,6 +26,7 @@ struct Properties{
 class BaseObject {
     public:
     BaseObject(int x, int y);
+    BaseObject();
     Properties get_Properties();
     void set_Properties(Properties new_Properties);
     int get_x();
