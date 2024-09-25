@@ -1,7 +1,7 @@
 #include "GameOperations.h"
 
 GameOperations::GameOperations(){
-    playerPacman = make_shared<player>(player(1800,700));
+    playerPacman = make_shared<player>(player(800,400));
     Ghost1 = make_shared<Ghost>(Ghost(10,10));    
     movingObjects.push_back(playerPacman);
     movingObjects.push_back(Ghost1);
@@ -61,7 +61,9 @@ bool GameOperations::checkCollisionLeft(GameMap& Map){
 void GameOperations::drawPlayer(GameMap& Map){
         BeginDrawing();
         ClearBackground(BLUE);
-        playerPacman->draw_sprite_object_with_map(Map);
+        for (auto& objects :movingObjects){
+            objects->draw_sprite_object_with_map(Map);
+        }
         EndDrawing();
 
 }
