@@ -33,9 +33,5 @@ private:
     int NumberOfBounds;
     vector<int> pellets;
     int NumberOfPellets;
-
-
-
-
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */

@@ -99,21 +99,24 @@ void GameOperations::draw(){
 
 void GameOperations::loadRect(string FilePath){
 
-    FileReader Walls(FilePath);
-    Walls.ObjectType("Rectangles");
-    Walls.ReadData(WallCoordinates,NumberOfWalls);
+    FileReader TextFile(FilePath);
+    TextFile.ObjectType("Rectangles");
+    TextFile.ReadData(WallCoordinates,NumberOfWalls);
 
-    Walls.ObjectType("Boundaries");
-    Walls.ReadData(boundaryCoordinates,NumberOfBounds);
+    TextFile.ObjectType("Boundaries");
+    TextFile.ReadData(boundaryCoordinates,NumberOfBounds);
 
-    for(int i=0; i<boundaryCoordinates.size(); i++)
-    {
-        cout<<boundaryCoordinates[i]<<" ";
-        if(i%4==0 && i!=0)
-        {
-            cout<<endl;
-        }
-    }
+    // TextFile.ObjectType("Pellets");
+    // TextFile.ReadData(pellets,NumberOfPellets);
+
+    // for(int i=0; i<pellets.size(); i++)
+    // {
+    //     cout<<pellets[i]<<" ";
+    //     if(i%4==0 && i!=0)
+    //     {
+    //         cout<<endl;
+    //     }
+    // }
 
 }
 Rectangle GameOperations::returnRect(int& i){

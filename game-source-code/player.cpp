@@ -63,7 +63,7 @@ void player::undoLastMove() {
         moveLeft();
     }
     else {
-        std::cout << "Invalid move!" << std::endl;
+        //std::cout << "Invalid move!" << std::endl;
     }
 }
 
