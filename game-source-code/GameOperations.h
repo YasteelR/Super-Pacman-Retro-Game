@@ -31,6 +31,8 @@ private:
     int NumberOfWalls;
     vector<int> boundaryCoordinates;
     int NumberOfBounds;
+    vector<int> pellets;
+    int NumberOfPellets;
 
 
 

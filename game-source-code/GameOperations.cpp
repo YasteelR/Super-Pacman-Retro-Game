@@ -34,9 +34,9 @@ bool GameOperations::checkCollisionPacmanGhost(){
     for (auto i = 1; i < 3; i++ ){
         if (CheckCollisionRecs(movingObjects[0]->getBoundingBox() ,movingObjects[i]->getBoundingBox() )) {
             collision = true;
-            cout <<"collistion is happening "<<endl;
-            cout <<"player x:"<<movingObjects[0]->get_x()<<"player y:"<<movingObjects[0]->get_y()<<endl;
-            cout <<"ghost x:"<<movingObjects[i]->get_x()<<"ghost y:"<<movingObjects[i]->get_y()<<endl;
+            // cout <<"collistion is happening "<<endl;
+            // cout <<"player x:"<<movingObjects[0]->get_x()<<"player y:"<<movingObjects[0]->get_y()<<endl;
+            // cout <<"ghost x:"<<movingObjects[i]->get_x()<<"ghost y:"<<movingObjects[i]->get_y()<<endl;
             // set player dead
             // update score
         }
@@ -48,14 +48,14 @@ void GameOperations::checkCollisionWall(){
     for (auto& objects : movingObjects ){
         for (auto i = 0; i< WallCoordinates.size() - 3; i= i + 4){
                 if (CheckCollisionRecs(returnRect(i) ,objects->getBoundingBox() )) {
-                    cout <<"wall collision"<<endl;
+                    //cout <<"wall collision"<<endl;
                     objects->undoLastMove();
             }
             //cout<<"collision Exit"<<endl;
         }
-        cout<<"exit first"<<endl;
+        //cout<<"exit first"<<endl;
     }
-    cout << "Exit both forloop"<<endl;
+    //cout << "Exit both forloop"<<endl;
 }
 
 
@@ -75,7 +75,7 @@ void GameOperations::drawPlayer(GameMap& Map){
         BeginDrawing();
         ClearBackground(BLUE);
         for (auto& objects :movingObjects){
-            objects->draw_sprite_object_with_map(Map);
+            objects->draw_object();
         }
         EndDrawing();
 
@@ -90,8 +90,17 @@ void GameOperations::loadRect(string FilePath){
     Walls.ObjectType("Boundaries");
     Walls.ReadData(boundaryCoordinates,NumberOfBounds);
 
+    for(int i=0; i<boundaryCoordinates.size(); i++)
+    {
+        cout<<boundaryCoordinates[i]<<" ";
+        if(i%4==0 && i!=0)
+        {
+            cout<<endl;
+        }
+    }
+
 }
 Rectangle GameOperations::returnRect(int& i){
-    cout <<WallCoordinates[i] << "y-"<< WallCoordinates[i +1] << "y-"<< (float)WallCoordinates[i + 2]<< "y-"<< (float)WallCoordinates[i + 3]<<endl;
+    //cout <<WallCoordinates[i] << "y-"<< WallCoordinates[i +1] << "y-"<< (float)WallCoordinates[i + 2]<< "y-"<< (float)WallCoordinates[i + 3]<<endl;
     return { (float)WallCoordinates[i], (float)WallCoordinates[i +1], (float)WallCoordinates[i + 2], (float)WallCoordinates[i + 3]};
 }
