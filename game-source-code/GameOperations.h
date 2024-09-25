@@ -17,7 +17,7 @@ public:
     void checkCollisionWall();
     void checkCollisionPellets();
     static bool is_game_over;
-    void drawPlayer(GameMap& Map);
+    void draw();
     void loadRect(string FilePath);
     Rectangle returnRect(int& i);
 

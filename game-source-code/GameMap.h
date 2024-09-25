@@ -37,7 +37,6 @@ class GameMap
         void ReadInRectangles();
         void ReadInLines();
         void DrawRectangles();
-        void DrawLines();
         void DrawBoundary();
 };
 

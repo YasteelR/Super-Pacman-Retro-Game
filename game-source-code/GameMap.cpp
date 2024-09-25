@@ -10,15 +10,6 @@ GameMap::GameMap()
     {
         ReadData();
 
-        //for(int i=0;i<MapObjects.size(); i++)
-        //{
-        //   for(int j=0; j<MapObjects[i].size(); j++)
-        //    {
-        //        cout<<MapObjects[i][j]<<" ";
-        //    }
-        //    cout<<endl;
-        //}
-
         if(MapObjects.empty())
         {
             throw runtime_error("Map.txt is empty!");
@@ -34,7 +25,6 @@ void GameMap::DrawMap()
 {
     DrawBoundary();
     DrawRectangles();
-    //DrawLines();
 }
 
 void GameMap::DrawRectangles()
@@ -56,18 +46,6 @@ void GameMap::DrawBoundary()
     DrawRectangle(50, 0, 1550, 50, GREEN);
     DrawRectangle(1550, 50, 50, 850, GREEN);
     DrawRectangle(50, 850, 1500, 50, GREEN);
-}
-
-void GameMap::DrawLines()
-{
-    for(int i=NumOfRectangles; i<MapObjects.size(); i++)
-    {
-        DrawLine(MapObjects[i][0], 
-                      MapObjects[i][1],
-                      MapObjects[i][2],
-                      MapObjects[i][3],
-                      GREEN);
-    }
 }
 
 void GameMap::SetMapFile(string& FileName)

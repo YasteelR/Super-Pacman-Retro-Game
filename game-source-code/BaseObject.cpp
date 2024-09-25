@@ -29,11 +29,17 @@ void BaseObject::draw_sprite_object(){
         //EndDrawing();
 }
 
-void BaseObject::draw_object(vector<int>& objectCoordinates){
+void BaseObject::draw_rectangular_object(vector<int>& objectCoordinates){
         //BeginDrawing();
         //ClearBackground(BLUE);
-        DrawTexture(spriteObject, get_x(), get_y(), WHITE);
-        DrawRectangleLines(get_x(), get_y(), spriteObject.width,spriteObject.height, RED);
+        for(int i=0; i<objectCoordinates.size()-3; i+4)
+        {
+            DrawRectangle(objectCoordinates[i], 
+                      objectCoordinates[i+1],
+                      objectCoordinates[i+2],
+                      objectCoordinates[i+3],
+                      GREEN);
+        }
         //EndDrawing();
 }
 

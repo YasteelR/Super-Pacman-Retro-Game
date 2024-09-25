@@ -71,11 +71,27 @@ void GameOperations::checkCollisionWall(){
 //     }
 // }
 
-void GameOperations::drawPlayer(GameMap& Map){
+void GameOperations::draw(){
         BeginDrawing();
         ClearBackground(BLUE);
         for (auto& objects :movingObjects){
-            objects->draw_object();
+            objects->draw_sprite_object();
+        }
+        for(int i=0; i<boundaryCoordinates.size()-3; i=i+4)
+        {
+            DrawRectangle(boundaryCoordinates[i], 
+                      boundaryCoordinates[i+1],
+                      boundaryCoordinates[i+2],
+                      boundaryCoordinates[i+3],
+                      GREEN);
+        }
+        for(int i=0; i<WallCoordinates.size()-3; i=i+4)
+        {
+            DrawRectangle(WallCoordinates[i], 
+                      WallCoordinates[i+1],
+                      WallCoordinates[i+2],
+                      WallCoordinates[i+3],
+                      GREEN);
         }
         EndDrawing();
 

@@ -65,7 +65,7 @@ void PacMan::run(){
 
                     Game_Opperations->move_objects(Map);     
                     Game_Opperations->checkCollisionPacmanGhost();
-                    Game_Opperations->drawPlayer(Map);
+                    Game_Opperations->draw();
                     Game_Opperations->checkCollisionWall();
 
                     
