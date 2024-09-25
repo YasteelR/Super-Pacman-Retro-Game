@@ -2,10 +2,15 @@
 
 using namespace std; 
 
+BaseObject::BaseObject()
+{
+    object_Properties = {false,false,false,false,false,false,false,false};
+}
+
 BaseObject::BaseObject(int x_pos, int y_pos){
     current_x = x_pos;
     current_y = y_pos;
-    object_Properties = {false,false,false,false,false,false,false};    
+    object_Properties = {false,false,false,false,false,false,false,false};    
 }
 
 Properties BaseObject::get_Properties(){
