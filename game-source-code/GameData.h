@@ -9,7 +9,6 @@ using namespace std;
 class GameData
 {
     public:
-        GameData();
         void ReadInWalls(string FilePath);
         vector<int>* getWallCoordinates();//Returns a pointer to the vector of wall coordinates (so their positions can be read in)
         int* getNumberOfWalls();
@@ -18,6 +17,14 @@ class GameData
 
 
     private:
+        //The constructor is defined in the private section because we are using the singleton method to prevent
+        //multiple instances of the GameData class from being made.
+        GameData();
+        //We define the copy and constructor and assignment constructor to delete the object so that no where the 
+        //code base can some accidentily create a copy of GameData.
+        GameData(const GameData&) = delete;
+        GameData& operator=(const GameData&) = delete;
+
         vector<BaseObject> Object;
         vector<int> WallCoordinates;
         int NumberOfWalls;
