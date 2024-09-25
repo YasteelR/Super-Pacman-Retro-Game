@@ -5,6 +5,11 @@ GameData::GameData()
     cout<<"GameData"<<endl;
 }
 
+GameData& GameData::getData()
+{
+    return Data;
+}
+
 void GameData::ReadInWalls(string FilePath)
 {
     FileReader Walls(FilePath);
