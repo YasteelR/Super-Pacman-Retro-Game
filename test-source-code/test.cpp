@@ -3,7 +3,6 @@
 #include <raylib-cpp.hpp>
 #include <iostream>
 #include "GameMode.h"
-#include "GameMap.h"
 #include "BaseObject.h"
 #include "GameOperations.h"
 #include "Player.h"
@@ -11,42 +10,6 @@
 TEST_CASE("check cake "){
 
     CHECK(1==1);
-}
-
-//====================================Testing GameMap==============================================
-TEST_CASE("Check that GameMap initializes correctly")
-{
-    GameMap test;
-    string testFile="../resources/GameMap.txt";
-    test.OpenFile(testFile);
-    CHECK(test.FileIsOpen());
-}
-
-TEST_CASE("Check that GameMap returns false if file not open")
-{
-    GameMap test;
-    string testFile="";
-    test.OpenFile(testFile);
-
-    CHECK_FALSE(test.FileIsOpen());
-}
-
-TEST_CASE("If a file is open and you try open another it throws and error")
-{
-    GameMap test;
-    string testFile1="../resources/GameMap.txt";
-    test.OpenFile(testFile1);
-
-    CHECK_THROWS_AS(test.OpenFile(testFile1),std::runtime_error);
-}
-
-TEST_CASE("If file does not contain data in the correct format it throws an error")
-{
-    GameMap test;
-    string testFile="../resources/GameMapTest1.txt";
-    test.OpenFile(testFile);
-
-    CHECK_THROWS_AS(test.ReadData(),std::runtime_error);
 }
 
 //====================================Testing BaseObject class=====================================================================

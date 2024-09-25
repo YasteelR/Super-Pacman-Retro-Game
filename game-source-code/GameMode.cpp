@@ -63,7 +63,7 @@ void PacMan::run(){
 
                 case Mode_select::Game_screen:
 
-                    Game_Opperations->move_objects(Map);     
+                    Game_Opperations->move_objects();     
                     Game_Opperations->checkCollisionPacmanGhost();
                     Game_Opperations->draw();
                     Game_Opperations->checkCollisionWall();

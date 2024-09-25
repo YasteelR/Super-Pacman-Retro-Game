@@ -1,7 +1,7 @@
 #ifndef CE167A85_A911_4D91_8B62_622EFB213774
 #define CE167A85_A911_4D91_8B62_622EFB213774
 
-#include<string>
+#include <string>
 #include <iostream>
 #include "player.h"
 #include "Ghost.h"
@@ -12,7 +12,7 @@ class GameOperations{
 public:
     GameOperations();
     void Start();
-    void move_objects(GameMap& Map);
+    void move_objects();
     bool checkCollisionPacmanGhost();
     void checkCollisionWall();
     void checkCollisionPellets();

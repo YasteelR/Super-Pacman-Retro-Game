@@ -4,7 +4,6 @@
 #include <raylib-cpp.hpp>
 #include <memory>
 #include "GameOperations.h"
-#include "GameMap.h"
 
 using namespace std;
 
@@ -40,7 +39,6 @@ private:
     Vector2 ZeroZero = {0,0};
     const int screen_width =1600;
     const int screen_height =900;
-    GameMap Map;
 };
 
 #endif /* AEFA9809_0E75_4129_876C_3490D6312543 */

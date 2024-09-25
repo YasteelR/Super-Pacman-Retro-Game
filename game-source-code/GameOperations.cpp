@@ -20,7 +20,7 @@ GameOperations::GameOperations(){
 
 }
 
-void GameOperations::move_objects(GameMap& Map)
+void GameOperations::move_objects()
 {
     for (auto& objects :movingObjects){
         objects->move_Obj();
