@@ -3,6 +3,7 @@
 Key::Key(int x, int y) : BaseObject(x,y)
 {
     set_location(x,y);
+    set_sprite("../resources/key.png");
 }
 
 void Key::set_location(int x, int y)
