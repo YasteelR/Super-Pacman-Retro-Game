@@ -9,7 +9,7 @@ using namespace std;
 class Door : public BaseObject{
 public:
 
-    Door(int x, int y);
+    Door();
 
 private:
     int x_pos;

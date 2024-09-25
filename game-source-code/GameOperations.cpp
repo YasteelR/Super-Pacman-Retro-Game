@@ -106,6 +106,9 @@ void GameOperations::loadRect(string FilePath){
     TextFile.ObjectType("Boundaries");
     TextFile.ReadData(boundaryCoordinates,NumberOfBounds);
 
+    TextFile.ObjectType("Keys");
+    TextFile.ReadData(keys,NumberOfKeys);
+
     // TextFile.ObjectType("Pellets");
     // TextFile.ReadData(pellets,NumberOfPellets);
 
