@@ -1,7 +1,7 @@
 #include <raylib-cpp.hpp>
 #include <iostream>
 #include "GameMode.h"
-#include "GameMap.h"
+#include "GameData.h"
 
 using namespace std;
 
