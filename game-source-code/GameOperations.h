@@ -6,6 +6,7 @@
 #include "player.h"
 #include "Ghost.h"
 #include "GameData.h"
+#include "FileReader.h"
 
 class GameOperations{
 public:
@@ -17,6 +18,7 @@ public:
     void checkCollisionPellets();
     static bool is_game_over;
     void drawPlayer(GameMap& Map);
+    void loadRect(string FilePath);
 
 private:
 
@@ -24,6 +26,11 @@ private:
     shared_ptr<player> playerPacman;
     shared_ptr<Ghost> Ghost1;
     vector <shared_ptr<BaseObject>> movingObjects;
+    vector<int> WallCoordinates;
+    int NumberOfWalls;
+    vector<int> boundaryCoordinates;
+    int NumberOfBounds;
+
 
 
 

@@ -1,11 +1,8 @@
 #include "GameOperations.h"
 
 GameOperations::GameOperations(){
-    shared_ptr<GameData> GameInfo = GameData::getData();
-    GameInfo->setup();
-    GameInfo->ReadInWalls("../resources/GameMap.txt");
-    auto walls = GameInfo->getWallCoordinates();
-
+    GameData GameInfo;
+    loadRect("../resources/GameMap.txt");
 
     playerPacman = make_shared<player>(player(800,400));
     Ghost1 = make_shared<Ghost>(Ghost(200,200));    
@@ -75,5 +72,16 @@ void GameOperations::drawPlayer(GameMap& Map){
             objects->draw_sprite_object_with_map(Map);
         }
         EndDrawing();
+
+}
+
+void GameOperations::loadRect(string FilePath){
+
+    FileReader Walls(FilePath);
+    Walls.ObjectType("Rectangles");
+    Walls.ReadData(WallCoordinates,NumberOfWalls);
+
+    Walls.ObjectType("Boundaries");
+    Walls.ReadData(boundaryCoordinates,NumberOfBounds);
 
 }

@@ -1,5 +1,11 @@
 #include "GameData.h"
 
+GameData::GameData(){
+    score = 0;
+    lives = 3;
+
+}
+
 int GameData::getPlayerXpos(){
     return playerX;
 }

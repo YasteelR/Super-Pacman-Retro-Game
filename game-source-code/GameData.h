@@ -19,6 +19,7 @@ private:
     int lives;
     int playerX;
     int playerY;
+    int highScore;
     
 
 
