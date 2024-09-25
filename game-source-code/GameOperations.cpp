@@ -44,15 +44,21 @@ bool GameOperations::checkCollisionPacmanGhost(){
     return collision;
 }
 
-// void GameOperations::checkCollisionWall(){
-//     for (auto& objects : movingObjects ){
-//         for (auto& walls : wallList){
-//             if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
-//                 objects->undoLastMove();
-//             }
-//         }
-//     }
-// }
+void GameOperations::checkCollisionWall(){
+    for (auto& objects : movingObjects ){
+        for (auto i = 0; i< WallCoordinates.size() - 3; i= i + 4){
+                if (CheckCollisionRecs(returnRect(i) ,objects->getBoundingBox() )) {
+                    cout <<"wall collision"<<endl;
+                    objects->undoLastMove();
+            }
+            //cout<<"collision Exit"<<endl;
+        }
+        cout<<"exit first"<<endl;
+    }
+    cout << "Exit both forloop"<<endl;
+}
+
+
 
 // void GameOperations::checkCollisionPellets(){
 //     for (auto& objects : movingObjects ){
