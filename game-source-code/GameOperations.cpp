@@ -100,6 +100,10 @@ void GameOperations::draw(){
                       WallCoordinates[i+3],
                       GREEN);
         }
+        for(int i=0; i<keys.size(); i++)
+        {
+            keys[i]->draw_sprite_object();
+        }
         EndDrawing();
 
 }
@@ -112,6 +116,9 @@ void GameOperations::loadRect(string FilePath){
 
     TextFile.ObjectType("Boundaries");
     TextFile.ReadData(boundaryCoordinates,NumberOfBounds);
+
+    TextFile.ObjectType("Keys");
+    TextFile.ReadDataObject(keys,NumberOfKeys);
 
     // TextFile.ObjectType("Pellets");
     // TextFile.ReadData(pellets,NumberOfPellets);

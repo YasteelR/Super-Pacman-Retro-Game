@@ -7,6 +7,7 @@
 #include "Ghost.h"
 #include "GameData.h"
 #include "FileReader.h"
+#include "Key.h"
 
 class GameOperations{
 public:
@@ -35,5 +36,8 @@ private:
     vector<int> pellets;
     int NumberOfPellets;
     bool gameOver;
+    vector<unique_ptr<Key>> keys;
+    int NumberOfKeys;
+
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */
