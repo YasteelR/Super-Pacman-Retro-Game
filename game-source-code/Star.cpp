@@ -17,7 +17,7 @@ void Star::setUpCompanions()
     if(!starFruits.empty())
     {
         starFruits[0]->set_sprite(fruitsFilepath[0]);
-        starFruits[1]->set_sprite(fruitsFilepath[2]);
+        starFruits[1]->set_sprite(fruitsFilepath[1]);
     }
     setCompanionPosition();
 }

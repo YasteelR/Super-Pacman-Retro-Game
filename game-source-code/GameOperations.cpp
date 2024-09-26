@@ -109,7 +109,7 @@ void GameOperations::checkCollisionStar()
 {
     for (auto i = 0; i< stars.size(); i++){
                 if (CheckCollisionRecs(stars[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
-                    //cout <<"wall collision"<<endl;
+                    cout <<"Star collision"<<endl;
                     points.addStarPoints(stars[i]->CompanionsMatch(),stars[i]->CompanionsMatchFruit());
                     stars[i]->Destroy();
             }
