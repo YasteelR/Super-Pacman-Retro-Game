@@ -47,7 +47,7 @@ private:
     int NumberOfDoors;
     vector<shared_ptr<Fruit>> fruits;
     int NumberOfFruits;
-    Score points();
+    Score points;
 
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */

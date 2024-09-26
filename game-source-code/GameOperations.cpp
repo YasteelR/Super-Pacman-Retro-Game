@@ -93,7 +93,8 @@ void GameOperations::checkCollisionFruit()
     for (auto i = 0; i< fruits.size(); i++){
                 if (CheckCollisionRecs(fruits[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
-                    
+                    fruits[i]->set_location(-100,-100);
+                    points.addPoints();
             }
             //cout<<"collision Exit"<<endl;
         }
