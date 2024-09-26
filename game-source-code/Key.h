@@ -12,10 +12,12 @@ class Key : public BaseObject
         Key();
         void move_Obj();
         void undoLastMove();
-        void setDoors(vector<shared_ptr<BaseObject>>& doors, int Position);
+        void destroyDoors(vector<int>& doors);
 
     private:
         vector<shared_ptr<int>> doors;
+        static int NumberOfKeys;
+        int ThisKeysNumber;
 };
 
 #endif /* C52769D9_9D04_4104_8174_7698B3973915 */

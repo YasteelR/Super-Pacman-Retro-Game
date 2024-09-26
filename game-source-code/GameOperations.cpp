@@ -81,7 +81,7 @@ void GameOperations::checkCollisionKey()
     for (auto i = 0; i< keys.size(); i++){
                 if (CheckCollisionRecs(keys[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
-                    movingObjects[0]->undoLastMove();
+                    keys[i]->destroyDoors(doors);
             }
             //cout<<"collision Exit"<<endl;
         }

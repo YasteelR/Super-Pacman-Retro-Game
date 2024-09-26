@@ -1,14 +1,21 @@
 #include "Key.h"
 
+int Key::NumberOfKeys=0;
+
 Key::Key() : BaseObject()
 {
     set_sprite("../resources/key.png");
+    ThisKeysNumber=NumberOfKeys;
+    NumberOfKeys++;
+    //cout<<NumberOfKeys<<endl;
 }
 
-void Key::setDoors(vector<shared_ptr<BaseObject>>& doors, int Position)
+void Key::destroyDoors(vector<int>& doors)
 {
-    doors.push_back(doors[Position]);
-    doors.push_back(doors[Position+1]);
+    for(int i=ThisKeysNumber*8; i<ThisKeysNumber+8; i++)
+    {
+        doors[i]=0;
+    }
 }
 
 void Key::move_Obj()
