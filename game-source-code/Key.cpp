@@ -12,10 +12,14 @@ Key::Key() : BaseObject()
 
 void Key::destroyDoors(vector<int>& doors)
 {
-    for(int i=ThisKeysNumber*8; i<ThisKeysNumber+8; i++)
+    cout<<"Entered"<<endl;
+    for(int j=ThisKeysNumber*8; j<(ThisKeysNumber*8+8); j++)
     {
-        doors[i]=0;
+        doors[j]=0;
+        cout<<j<<" ";
+        cout<<doors[j]<<" ";
     }
+    cout<<endl;
 }
 
 void Key::move_Obj()

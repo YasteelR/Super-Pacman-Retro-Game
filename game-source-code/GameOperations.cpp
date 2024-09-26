@@ -155,11 +155,7 @@ void GameOperations::loadRect(string FilePath){
 
     for(int i=0; i<keys.size(); i++)
     {
-        cout<<keys[i]->get_x()<<" "<<keys[i]->get_y()<<" ";
-        if(i%2==0 && i!=0)
-        {
-            cout<<endl;
-        }
+        cout<<keys[i]->get_x()<<" "<<keys[i]->get_y()<<" "<<endl;
     }
 
 }
