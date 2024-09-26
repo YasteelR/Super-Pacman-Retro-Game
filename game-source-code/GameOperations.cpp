@@ -93,13 +93,18 @@ void GameOperations::checkCollisionFruit()
     for (auto i = 0; i< fruits.size(); i++){
                 if (CheckCollisionRecs(fruits[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
-                    fruits[i]->set_location(-100,-100);
-                    fruits[i]->eatenFruit();
-                    points.addPoints();
-                    if(fruits[i]->getFruitNum()==0)
-                    {
-                        gameOver=true;
-                    }
+                    
+            }
+            //cout<<"collision Exit"<<endl;
+        }
+}
+
+void GameOperations::checkCollisionStar()
+{
+    for (auto i = 0; i< stars.size(); i++){
+                if (CheckCollisionRecs(stars[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
+                    //cout <<"wall collision"<<endl;
+                    
             }
             //cout<<"collision Exit"<<endl;
         }

@@ -28,6 +28,7 @@ public:
     void loadRect(string FilePath);
     Rectangle returnRect(int& i, vector<int>& vector);
     bool getGameOver();
+    void checkCollisionStar();
 
 private:
 

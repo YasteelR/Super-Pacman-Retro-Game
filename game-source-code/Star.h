@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Star : BaseObject
+class Star : public BaseObject
 {
     public:
         Star();
