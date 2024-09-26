@@ -129,7 +129,7 @@ void GameOperations::checkCollisionStar()
 
 void GameOperations::draw(){
         BeginDrawing();
-        ClearBackground(BLUE);
+        ClearBackground(GREEN);
         for (auto& objects :movingObjects){
             objects->draw_sprite_object();
         }
@@ -139,7 +139,7 @@ void GameOperations::draw(){
                       boundaryCoordinates[i+1],
                       boundaryCoordinates[i+2],
                       boundaryCoordinates[i+3],
-                      GREEN);
+                      BLACK);
         }
         for(int i=0; i<WallCoordinates.size()-3; i=i+4)
         {
@@ -147,7 +147,7 @@ void GameOperations::draw(){
                       WallCoordinates[i+1],
                       WallCoordinates[i+2],
                       WallCoordinates[i+3],
-                      GREEN);
+                      BLACK);
         }
         for(int i=0; i<doors.size()-3; i=i+4)
         {
@@ -171,6 +171,9 @@ void GameOperations::draw(){
             stars[i]->draw_sprite_object();
             stars[i]->DrawCompanions();
         }
+        string ScoreString = "Score: ";
+        ScoreString += to_string(points.getScore());
+        DrawText(ScoreString.c_str(),600, 50, 50, GREEN);
         EndDrawing();
 
 }
