@@ -10,10 +10,11 @@ class Door : public BaseObject{
 public:
 
     Door();
+    void move_Obj() override{};
+    void undoLastMove() override{};
 
 private:
-    int x_pos;
-    int y_pos;  
+    
 };
 
 #endif /* C98DA9BF_020E_42CF_BEB5_1BAAFD9D9AEC */

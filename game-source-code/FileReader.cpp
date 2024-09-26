@@ -102,8 +102,10 @@ void FileReader::ReadData(vector<int>& StoreData, int& NumberOfObjects)
     InputFile.clear();
 }
 
-void FileReader::ReadDataObject(vector<Key>& StoreKeys, int& NumberOfObjects)
+template<typename T>
+void FileReader::ReadDataObject(vector<unique_ptr<T>>& StoreKeys, int& NumberOfObjects)
 {
+    static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
     InputFile.seekg(0, std::ios::beg);
     string HeaderLine;
     while (HeaderLine != Object && !InputFile.eof())
@@ -117,8 +119,8 @@ void FileReader::ReadDataObject(vector<Key>& StoreKeys, int& NumberOfObjects)
     bool DataWasRead = false;
     while (InputFile >> xpos >> ypos)
     {
-        StoreKeys.emplace_back();
-        StoreKeys.back().set_location(xpos,ypos);
+        StoreKeys.emplace_back(make_unique<T>());
+        StoreKeys.back()->set_location(xpos,ypos);
         NumberOfObjects++;
         DataWasRead = true;
     }

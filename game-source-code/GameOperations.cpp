@@ -95,7 +95,7 @@ void GameOperations::draw(){
         }
         for(int i=0; i<keys.size(); i++)
         {
-            keys[i].draw_sprite_object();
+            keys[i]->draw_sprite_object();
         }
         EndDrawing();
 

@@ -4,7 +4,9 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "Key.h"
+#include <memory>
+#include <type_traits>
+#include "BaseObject.h"
 
 using namespace std;
 
@@ -22,7 +24,8 @@ class FileReader
         //Reads the Map txt file.
         void ObjectType(string NameOfObject); //The Name of the object i.e rectangles, lines, circles, etc...
         void ReadData(vector<int>& StoreData, int& NumberOfObjects);
-        void ReadDataObject(vector<Key>& StoreKeys, int& NumberOfObjects);
+        template<typename T>
+        void ReadDataObject(vector<unique_ptr<T>>& StoreKeys, int& NumberOfObjects);
 
     private:
         string MapFile;
