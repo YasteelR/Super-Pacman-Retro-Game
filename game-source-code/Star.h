@@ -25,7 +25,7 @@ class Star : public BaseObject
         void undoLastMove();
 
     private:
-        vector<Star> starFruits;
+        vector<shared_ptr<Star>> starFruits;
         vector<string> fruitsFilepath;
         int clock;
 };

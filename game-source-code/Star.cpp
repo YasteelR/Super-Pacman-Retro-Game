@@ -14,14 +14,20 @@ Star::Star() : BaseObject()
 void Star::setUpCompanions()
 {
     createCompanions();
-    setObjects();
+    if(!starFruits.empty())
+    {
+        starFruits[0]->set_sprite(fruitsFilepath[0]);
+        starFruits[1]->set_sprite(fruitsFilepath[2]);
+    }
     setCompanionPosition();
 }
 
 void Star::createCompanions()
 {
-    starFruits.emplace_back();
-    starFruits.emplace_back();
+    for(int i=0; i<2; i++)
+    {
+        starFruits.emplace_back(make_shared<Star>());
+    }
 }
 
 void Star::setObjects()
@@ -33,7 +39,7 @@ void Star::setObjects()
         for (int i = 0; i < starFruits.size(); i++)
         {
             int temp = rand() % 3;
-            starFruits[i].set_sprite(fruitsFilepath[temp]);
+            starFruits[i]->set_sprite(fruitsFilepath[temp]);
         }
     }
 }  
@@ -42,7 +48,7 @@ void Star::DrawCompanions()
 {
     for(int i=0; i<starFruits.size(); i++)
     {
-        starFruits[i].draw_sprite_object();
+        starFruits[i]->draw_sprite_object();
     }
 }
 
@@ -50,8 +56,8 @@ void Star::setCompanionPosition()
 {
     if(!starFruits.empty() && starFruits.size()==2)
     {
-        starFruits[0].set_location(get_x()+49,get_y()-1);
-        starFruits[0].set_location(get_x()-51,get_y()-1);
+        starFruits[0]->set_location(get_x()+49,get_y()-1);
+        starFruits[1]->set_location(get_x()-51,get_y()-1);
     }
 }
 
@@ -66,7 +72,7 @@ void Star::undoLastMove()
 }
 bool Star::CompanionsMatch()
 {
-    if(starFruits[0].get_sprite()==starFruits[1].get_sprite())
+    if(starFruits[0]->get_sprite()==starFruits[1]->get_sprite())
     {
         return true;
     }
@@ -78,13 +84,17 @@ bool Star::CompanionsMatchFruit()
 {
     string check;
     check="../resources/banana.png";
-
-    if(starFruits[0].get_sprite()==check && starFruits[1].get_sprite()==check)
+    if(!starFruits.empty())
     {
-        return true;
+        if (starFruits[0]->get_sprite() == check && starFruits[1]->get_sprite() == check)
+        {
+            return true;
+        }
+        else
+            return false;
     }
-    else 
-        return false;
+
+    return false;
 }
 
 void Star::Destroy()
@@ -93,6 +103,6 @@ void Star::Destroy()
     current_y=-100;
     for(int i=0; i<starFruits.size(); i++)
     {
-        starFruits[i].set_location(-100,-100);
+        starFruits[i]->set_location(-100,-100);
     }
 }
