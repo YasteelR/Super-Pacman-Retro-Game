@@ -38,6 +38,8 @@ private:
     bool gameOver;
     vector<shared_ptr<Key>> keys;
     int NumberOfKeys;
+    vector<shared_ptr<Door>> doors;
+    int NumberOfDoors;
 
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */

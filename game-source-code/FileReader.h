@@ -53,7 +53,7 @@ class FileReader
             }
 
             InputFile.clear();
-        }
+        };
 
     private:
         string MapFile;

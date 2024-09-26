@@ -12,7 +12,7 @@ GameOperations::GameOperations(){
     Ghost1 = make_shared<Ghost>(Ghost(850,400));
     movingObjects.push_back(Ghost1);
 
-    
+    gameOver=false;
     // create vector of rectangles
 
     //create vector of walls
