@@ -22,7 +22,7 @@ class FileReader
         //Reads the Map txt file.
         void ObjectType(string NameOfObject); //The Name of the object i.e rectangles, lines, circles, etc...
         void ReadData(vector<int>& StoreData, int& NumberOfObjects);
-        void ReadDataObject(vector<int>& StoreKeys, int& NumberOfObjects);
+        void ReadDataObject(vector<Key>& StoreKeys, int& NumberOfObjects);
 
     private:
         string MapFile;

@@ -102,7 +102,7 @@ void FileReader::ReadData(vector<int>& StoreData, int& NumberOfObjects)
     InputFile.clear();
 }
 
-void FileReader::ReadDataObject(vector<int>& StoreKeys, int& NumberOfObjects)
+void FileReader::ReadDataObject(vector<Key>& StoreKeys, int& NumberOfObjects)
 {
     InputFile.seekg(0, std::ios::beg);
     string HeaderLine;
@@ -112,31 +112,18 @@ void FileReader::ReadDataObject(vector<int>& StoreKeys, int& NumberOfObjects)
         getline(InputFile, HeaderLine);
     }
 
-    int coordinates;
-    int count = 0;
-    bool flag = false;
-    while (InputFile >> coordinates)
+    int xpos;
+    int ypos;
+    bool DataWasRead = false;
+    while (InputFile >> xpos >> ypos)
     {
-        StoreKeys.push_back(coordinates);
-        count++;
-
-        if (count == 2)
-        {
-            NumberOfObjects++;
-            count =0;
-        }
-        if (flag == false)
-        {
-            flag = true;
-        }
-    }
-
-    if (count != 0)
-    {
+        StoreKeys.emplace_back();
+        StoreKeys.back().set_location(xpos,ypos);
         NumberOfObjects++;
+        DataWasRead = true;
     }
 
-    if (flag == false)
+    if (DataWasRead == false)
     {
         throw runtime_error("File contained no coordinates");
     }

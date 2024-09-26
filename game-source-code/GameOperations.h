@@ -34,8 +34,7 @@ private:
     int NumberOfBounds;
     vector<int> pellets;
     int NumberOfPellets;
-    vector<int> keys;
+    vector<Key> keys;
     int NumberOfKeys;
-    Key KeyObject;
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */
