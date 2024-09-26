@@ -13,7 +13,18 @@ Star::Star()
 
 void Star::setObjects()
 {
-    starFruits[0].set_sprite();
-    starFruits[1].set_sprite();
-    starFruits[2].set_sprite();
+    srand(time(0));
+    for(int i=0; i<starFruits.size(); i++)
+    {
+        int temp = rand()%3;
+        starFruits[i].set_sprite(fruitsFilepath[temp]);
+    }
+}  
+
+void Star::DrawCompanions()
+{
+    for(int i=0; i<starFruits.size(); i++)
+    {
+        starFruits[i].draw_sprite_object();
+    }
 }
