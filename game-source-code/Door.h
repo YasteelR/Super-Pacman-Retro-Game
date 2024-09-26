@@ -14,7 +14,8 @@ public:
     void undoLastMove();
 
 private:
-    
+    int width;
+    int height;
 };
 
 #endif /* C98DA9BF_020E_42CF_BEB5_1BAAFD9D9AEC */

@@ -103,7 +103,7 @@ void FileReader::ReadData(vector<int>& StoreData, int& NumberOfObjects)
 }
 
 // template<typename T>
-// void FileReader::ReadDataObject(vector<shared_ptr<BaseObject>>& StoreKeys, int& NumberOfObjects)
+// void FileReader::ReadDataObject(vector<shared_ptr<T>>& StoreKeys, int& NumberOfObjects)
 // {
 //     static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
 //     InputFile.seekg(0, std::ios::beg);

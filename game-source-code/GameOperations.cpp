@@ -100,6 +100,14 @@ void GameOperations::draw(){
                       WallCoordinates[i+3],
                       GREEN);
         }
+        for(int i=0; i<WallCoordinates.size()-3; i=i+4)
+        {
+            DrawRectangle(WallCoordinates[i], 
+                      WallCoordinates[i+1],
+                      WallCoordinates[i+2],
+                      WallCoordinates[i+3],
+                      GREEN);
+        }
         for(int i=0; i<keys.size(); i++)
         {
             keys[i]->draw_sprite_object();
@@ -119,6 +127,9 @@ void GameOperations::loadRect(string FilePath){
 
     TextFile.ObjectType("Keys");
     TextFile.ReadDataObject(keys,NumberOfKeys);
+
+    TextFile.ObjectType("Doors");
+    TextFile.ReadData(doors,NumberOfDoors);
 
     // TextFile.ObjectType("Pellets");
     // TextFile.ReadData(pellets,NumberOfPellets);
