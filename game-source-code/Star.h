@@ -16,6 +16,10 @@ class Star : public BaseObject
         void DrawCompanions();
         void setCompanionPosition();
         void createCompanions();
+        void setUpCompanions();
+        bool CompanionsMatch();
+        bool CompanionsMatchFruit();
+        void Destroy();
 
         void move_Obj();
         void undoLastMove();

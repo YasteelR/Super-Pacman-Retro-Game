@@ -108,7 +108,8 @@ void GameOperations::checkCollisionStar()
     for (auto i = 0; i< stars.size(); i++){
                 if (CheckCollisionRecs(stars[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
-                    
+                    points.addStarPoints(stars[i]->CompanionsMatch(),stars[i]->CompanionsMatchFruit());
+                    stars[i]->Destroy();
             }
             //cout<<"collision Exit"<<endl;
         }
@@ -162,6 +163,12 @@ void GameOperations::draw(){
         {
             fruits[i]->draw_sprite_object();
         }
+        for(int i=0; i<stars.size(); i++)
+        {
+            stars[i]->setObjects();
+            stars[i]->draw_sprite_object();
+            stars[i]->DrawCompanions();
+        }
         EndDrawing();
 
 }
@@ -186,7 +193,7 @@ void GameOperations::loadRect(string FilePath){
 
     TextFile.ObjectType("Stars");
     TextFile.ReadDataObject(stars,NumberOfStars);
-    stars[0]->createCompanions();
+    stars[0]->setUpCompanions();
     // TextFile.ObjectType("Pellets");
     // TextFile.ReadData(pellets,NumberOfPellets);
 

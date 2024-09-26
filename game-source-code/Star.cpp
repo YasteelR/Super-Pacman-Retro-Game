@@ -43,7 +43,7 @@ void Star::DrawCompanions()
 void Star::setCompanionPosition()
 {
     starFruits[0].set_location(get_x()+49,get_y()-1);
-    starFruits[0].set_location(get_x()-51,get_y()-1)
+    starFruits[0].set_location(get_x()-51,get_y()-1);
 }
 
 void Star::move_Obj()
@@ -55,7 +55,33 @@ void Star::undoLastMove()
 {
     throw runtime_error("Keys cannot move!");
 }
-bool Star::checkCompanionsMatch()
+bool Star::CompanionsMatch()
 {
     if(starFruits[0].get_sprite()==starFruits[1].get_sprite())
+    {
+        return true;
+    }
+    else 
+        return false;
+}
+
+bool Star::CompanionsMatchFruit()
+{
+    string check;
+    check="../resources/banana.png";
+
+    if(starFruits[0].get_sprite()==check && starFruits[1].get_sprite()==check)
+    {
+        return true;
+    }
+    else 
+        return false;
+}
+
+void Star::Destroy()
+{
+    current_x=-100;
+    current_y=-100;
+    starFruits[0].set_location(-100,-100);
+    starFruits[1].set_location(-100,-100);
 }
