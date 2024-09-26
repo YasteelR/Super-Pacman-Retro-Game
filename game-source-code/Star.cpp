@@ -7,7 +7,7 @@ Star::Star() : BaseObject()
     clock=0;
     
     fruitsFilepath.emplace_back("../resources/banana.png");
-    fruitsFilepath.emplace_back("../resources/oranges.png");
+    fruitsFilepath.emplace_back("../resources/orange.png");
     fruitsFilepath.emplace_back("../resources/cherry.png");
 }
 
@@ -84,23 +84,17 @@ bool Star::CompanionsMatchFruit()
 {
     string check;
     check="../resources/banana.png";
-    if(!starFruits.empty())
+    if (starFruits[0]->get_sprite() == check && starFruits[1]->get_sprite() == check)
     {
-        if (starFruits[0]->get_sprite() == check && starFruits[1]->get_sprite() == check)
-        {
-            return true;
-        }
-        else
-            return false;
+        return true;
     }
-
-    return false;
+    else
+        return false;
 }
 
 void Star::Destroy()
 {
-    current_x=-100;
-    current_y=-100;
+    set_location(-100,-100);
     for(int i=0; i<starFruits.size(); i++)
     {
         starFruits[i]->set_location(-100,-100);
