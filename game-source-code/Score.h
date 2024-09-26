@@ -6,6 +6,7 @@ class Score
     public:
         Score();
         void addPoints();
+        void addStarPoints(bool matched1 , bool matched2);
         int getScore();
 
     private:
