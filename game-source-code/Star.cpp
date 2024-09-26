@@ -3,12 +3,23 @@
 Star::Star() : BaseObject()
 {
     set_sprite("../resources/star.png");
-    starFruits.emplace_back();
-    starFruits.emplace_back();
     
     fruitsFilepath.emplace_back("../resources/banana.png");
     fruitsFilepath.emplace_back("../resources/oranges.png");
     fruitsFilepath.emplace_back("../resources/cherry.png");
+}
+
+void Star::setUpCompanions()
+{
+    createCompanions();
+    setObjects();
+    setCompanionPosition();
+}
+
+void Star::createCompanions()
+{
+    starFruits.emplace_back();
+    starFruits.emplace_back();
 }
 
 void Star::setObjects()
@@ -31,10 +42,8 @@ void Star::DrawCompanions()
 
 void Star::setCompanionPosition()
 {
-    for(int i=0; i<starFruits.size(); i++)
-    {
-        starFruits[i].set_location(get_x(),get_y());
-    }
+    starFruits[0].set_location(get_x()+49,get_y()-1);
+    starFruits[0].set_location(get_x()-51,get_y()-1)
 }
 
 void Star::move_Obj()
@@ -45,4 +54,8 @@ void Star::move_Obj()
 void Star::undoLastMove()
 {
     throw runtime_error("Keys cannot move!");
+}
+bool Star::checkCompanionsMatch()
+{
+    if(starFruits[0].get_sprite()==starFruits[1].get_sprite())
 }

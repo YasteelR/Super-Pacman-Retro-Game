@@ -93,7 +93,11 @@ void GameOperations::checkCollisionFruit()
     for (auto i = 0; i< fruits.size(); i++){
                 if (CheckCollisionRecs(fruits[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
-                    
+                    fruits[i]->eatenFruit();
+                    if(fruits[i]->getFruitNum()==0)
+                    {
+                        gameOver=true;
+                    }
             }
             //cout<<"collision Exit"<<endl;
         }
@@ -182,7 +186,7 @@ void GameOperations::loadRect(string FilePath){
 
     TextFile.ObjectType("Stars");
     TextFile.ReadDataObject(stars,NumberOfStars);
-
+    stars[0]->createCompanions();
     // TextFile.ObjectType("Pellets");
     // TextFile.ReadData(pellets,NumberOfPellets);
 

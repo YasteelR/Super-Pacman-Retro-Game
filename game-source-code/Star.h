@@ -15,12 +15,13 @@ class Star : public BaseObject
         void changeImages();
         void DrawCompanions();
         void setCompanionPosition();
+        void createCompanions();
 
         void move_Obj();
         void undoLastMove();
 
     private:
-        vector<BaseObject> starFruits;
+        vector<Star> starFruits;
         vector<string> fruitsFilepath;
 };
 
