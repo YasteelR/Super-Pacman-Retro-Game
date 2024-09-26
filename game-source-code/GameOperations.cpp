@@ -151,6 +151,9 @@ void GameOperations::loadRect(string FilePath){
     TextFile.ObjectType("Doors");
     TextFile.ReadData(doors,NumberOfDoors);
 
+    TextFile.ObjectType("Fruits");
+    TextFile.ReadDataObject(fruits,NumberOfFruits);
+
     // TextFile.ObjectType("Pellets");
     // TextFile.ReadData(pellets,NumberOfPellets);
 

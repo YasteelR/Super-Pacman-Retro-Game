@@ -8,6 +8,7 @@
 #include "GameData.h"
 #include "FileReader.h"
 #include "Key.h"
+#include "Fruit.h"
 
 class GameOperations{
 public:
@@ -42,6 +43,8 @@ private:
     int NumberOfKeys;
     vector<int> doors;
     int NumberOfDoors;
+    vector<shared_ptr<Fruit>> fruits;
+    int NumberOfFruits
 
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */
