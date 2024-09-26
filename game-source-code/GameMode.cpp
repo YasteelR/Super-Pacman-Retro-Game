@@ -68,6 +68,7 @@ void PacMan::run(){
                     Game_Opperations->draw();
                     Game_Opperations->checkCollisionWall();
                     Game_Opperations->checkCollisionDoor();
+                    Game_Opperations->checkCollisionKey();
                     if (Game_Opperations->getGameOver()){
                         mode=Mode_select::Game_over_screen;
                     }

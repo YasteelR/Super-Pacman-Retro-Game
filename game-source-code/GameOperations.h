@@ -17,6 +17,7 @@ public:
     bool checkCollisionPacmanGhost();
     void checkCollisionWall();
     void checkCollisionDoor();
+    void checkCollisionKey();
     void checkCollisionPellets();
     static bool is_game_over;
     void draw();

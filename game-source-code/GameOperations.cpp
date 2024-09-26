@@ -76,6 +76,16 @@ void GameOperations::checkCollisionDoor()
         }
 }
 
+void GameOperations::checkCollisionKey()
+{
+    for (auto i = 0; i< keys.size(); i++){
+                if (CheckCollisionRecs(keys[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
+                    //cout <<"wall collision"<<endl;
+                    movingObjects[0]->undoLastMove();
+            }
+            //cout<<"collision Exit"<<endl;
+        }
+}
 // void GameOperations::checkCollisionPellets(){
 //     for (auto& objects : movingObjects ){
 //         for (auto& pellets : pelletList){

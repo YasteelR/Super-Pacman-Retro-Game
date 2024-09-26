@@ -15,7 +15,7 @@ class Key : public BaseObject
         void setDoors(vector<shared_ptr<BaseObject>>& doors, int Position);
 
     private:
-        vector<shared_ptr<BaseObject>> doors;
+        vector<shared_ptr<int>> doors;
 };
 
 #endif /* C52769D9_9D04_4104_8174_7698B3973915 */
