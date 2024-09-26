@@ -13,6 +13,7 @@ class Fruit : public BaseObject
         void undoLastMove();
         int getFruitNum();
         static void eatenFruit();
+        void Destroy();
 
     private:
         static int NumOfFruit;

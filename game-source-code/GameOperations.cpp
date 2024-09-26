@@ -4,7 +4,7 @@ GameOperations::GameOperations(){
     shared_ptr<GameData> GameInfo = make_shared<GameData>();
     loadRect("../resources/GameMap.txt");
 
-    playerPacman = make_shared<player>(player(800,600));
+    playerPacman = make_shared<player>(player(550,200));
     playerPacman->setGameData(GameInfo);
     Ghost1 = make_shared<Ghost>(Ghost(800,400));    
     movingObjects.push_back(playerPacman);
@@ -94,6 +94,8 @@ void GameOperations::checkCollisionFruit()
                 if (CheckCollisionRecs(fruits[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
                     fruits[i]->eatenFruit();
+                    fruits[i]->Destroy();
+                    points.addPoints();
                     if(fruits[i]->getFruitNum()==0)
                     {
                         gameOver=true;

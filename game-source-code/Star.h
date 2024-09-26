@@ -27,6 +27,7 @@ class Star : public BaseObject
     private:
         vector<Star> starFruits;
         vector<string> fruitsFilepath;
+        int clock;
 };
 
 #endif /* BB5257F6_5AD4_4BE3_9A6C_BB94C19F6F37 */

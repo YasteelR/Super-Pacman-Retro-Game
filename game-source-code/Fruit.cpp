@@ -27,3 +27,8 @@ void Fruit::eatenFruit()
 {
     NumOfFruit--;
 }
+
+void Fruit::Destroy()
+{
+    set_location(-100,-100);
+}

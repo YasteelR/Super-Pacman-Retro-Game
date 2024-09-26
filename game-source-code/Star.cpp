@@ -3,6 +3,8 @@
 Star::Star() : BaseObject()
 {
     set_sprite("../resources/star.png");
+    srand(time(0));
+    clock=0;
     
     fruitsFilepath.emplace_back("../resources/banana.png");
     fruitsFilepath.emplace_back("../resources/oranges.png");
@@ -24,11 +26,15 @@ void Star::createCompanions()
 
 void Star::setObjects()
 {
-    srand(time(0));
-    for(int i=0; i<starFruits.size(); i++)
+    clock++;
+    if (clock == 300)
     {
-        int temp = rand()%3;
-        starFruits[i].set_sprite(fruitsFilepath[temp]);
+        clock=0;
+        for (int i = 0; i < starFruits.size(); i++)
+        {
+            int temp = rand() % 3;
+            starFruits[i].set_sprite(fruitsFilepath[temp]);
+        }
     }
 }  
 
@@ -42,8 +48,11 @@ void Star::DrawCompanions()
 
 void Star::setCompanionPosition()
 {
-    starFruits[0].set_location(get_x()+49,get_y()-1);
-    starFruits[0].set_location(get_x()-51,get_y()-1);
+    if(!starFruits.empty() && starFruits.size()==2)
+    {
+        starFruits[0].set_location(get_x()+49,get_y()-1);
+        starFruits[0].set_location(get_x()-51,get_y()-1);
+    }
 }
 
 void Star::move_Obj()
@@ -82,6 +91,8 @@ void Star::Destroy()
 {
     current_x=-100;
     current_y=-100;
-    starFruits[0].set_location(-100,-100);
-    starFruits[1].set_location(-100,-100);
+    for(int i=0; i<starFruits.size(); i++)
+    {
+        starFruits[i].set_location(-100,-100);
+    }
 }
