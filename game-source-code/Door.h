@@ -9,9 +9,9 @@ using namespace std;
 class Door : public BaseObject{
 public:
 
-    Door();
-    void move_Obj() override{};
-    void undoLastMove() override{};
+    Door(int x, int y);
+    void move_Obj();
+    void undoLastMove();
 
 private:
     

@@ -30,7 +30,7 @@ class BaseObject {
     void set_Properties(Properties new_Properties);
     int get_x();
     int get_y();
-    virtual void set_location(int x, int y);
+    void set_location(int x, int y);
     Rectangle getBoundingBox() const;
     virtual string get_sprite();
     virtual void move_Obj() = 0;
