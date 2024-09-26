@@ -19,7 +19,8 @@ public:
     static bool is_game_over;
     void draw();
     void loadRect(string FilePath);
-    Rectangle returnRect(int& i);
+    Rectangle returnRect(int& i, vector<int>& vector);
+    bool getGameOver();
 
 private:
 
@@ -33,5 +34,6 @@ private:
     int NumberOfBounds;
     vector<int> pellets;
     int NumberOfPellets;
+    bool gameOver;
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */

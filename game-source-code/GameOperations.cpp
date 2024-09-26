@@ -4,12 +4,12 @@ GameOperations::GameOperations(){
     shared_ptr<GameData> GameInfo = make_shared<GameData>();
     loadRect("../resources/GameMap.txt");
 
-    playerPacman = make_shared<player>(player(800,400));
+    playerPacman = make_shared<player>(player(800,600));
     playerPacman->setGameData(GameInfo);
-    Ghost1 = make_shared<Ghost>(Ghost(200,200));    
+    Ghost1 = make_shared<Ghost>(Ghost(800,400));    
     movingObjects.push_back(playerPacman);
     movingObjects.push_back(Ghost1);
-    Ghost1 = make_shared<Ghost>(Ghost(100,100));
+    Ghost1 = make_shared<Ghost>(Ghost(850,400));
     movingObjects.push_back(Ghost1);
 
     
@@ -35,11 +35,7 @@ bool GameOperations::checkCollisionPacmanGhost(){
     for (auto i = 1; i < 3; i++ ){
         if (CheckCollisionRecs(movingObjects[0]->getBoundingBox() ,movingObjects[i]->getBoundingBox() )) {
             collision = true;
-            // cout <<"collistion is happening "<<endl;
-            // cout <<"player x:"<<movingObjects[0]->get_x()<<"player y:"<<movingObjects[0]->get_y()<<endl;
-            // cout <<"ghost x:"<<movingObjects[i]->get_x()<<"ghost y:"<<movingObjects[i]->get_y()<<endl;
-            // set player dead
-            // update score
+            gameOver = true;
         }
     }
     return collision;
@@ -48,7 +44,17 @@ bool GameOperations::checkCollisionPacmanGhost(){
 void GameOperations::checkCollisionWall(){
     for (auto& objects : movingObjects ){
         for (auto i = 0; i< WallCoordinates.size() - 3; i= i + 4){
-                if (CheckCollisionRecs(returnRect(i) ,objects->getBoundingBox() )) {
+                if (CheckCollisionRecs(returnRect(i, WallCoordinates) ,objects->getBoundingBox() )) {
+                    //cout <<"wall collision"<<endl;
+                    objects->undoLastMove();
+            }
+            //cout<<"collision Exit"<<endl;
+        }
+        //cout<<"exit first"<<endl;
+    }
+    for (auto& objects : movingObjects ){
+        for (auto i = 0; i< boundaryCoordinates.size() - 3; i= i + 4){
+                if (CheckCollisionRecs(returnRect(i, boundaryCoordinates) ,objects->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
                     objects->undoLastMove();
             }
@@ -120,7 +126,11 @@ void GameOperations::loadRect(string FilePath){
     // }
 
 }
-Rectangle GameOperations::returnRect(int& i){
+Rectangle GameOperations::returnRect(int& i, vector<int>& vector){
     //cout <<WallCoordinates[i] << "y-"<< WallCoordinates[i +1] << "y-"<< (float)WallCoordinates[i + 2]<< "y-"<< (float)WallCoordinates[i + 3]<<endl;
-    return { (float)WallCoordinates[i], (float)WallCoordinates[i +1], (float)WallCoordinates[i + 2], (float)WallCoordinates[i + 3]};
+    return { (float)vector[i], (float)vector[i +1], (float)vector[i + 2], (float)vector[i + 3]};
+}
+
+bool GameOperations::getGameOver(){
+    return gameOver;
 }

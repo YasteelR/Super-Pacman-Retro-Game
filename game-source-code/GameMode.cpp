@@ -67,6 +67,9 @@ void PacMan::run(){
                     Game_Opperations->checkCollisionPacmanGhost();
                     Game_Opperations->draw();
                     Game_Opperations->checkCollisionWall();
+                    if (Game_Opperations->getGameOver()){
+                        mode=Mode_select::Game_over_screen;
+                    }
 
                     
                 break;
@@ -79,6 +82,8 @@ void PacMan::run(){
 
                 case Mode_select::Game_over_screen:
                     BeginDrawing();
+                    DrawText("GameOver",400, 200, 80, WHITE);
+                    DrawText("press esc",400, 500, 40, WHITE);  
                     ClearBackground(RED);
                     EndDrawing();
                 break;

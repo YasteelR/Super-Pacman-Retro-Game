@@ -37,15 +37,19 @@ void Ghost::move_Obj(){
     if (xDistance > 0){
         moveRight();
         lastMove = "right";
+        return;
     }else if (xDistance < 0){
         moveLeft();
         lastMove = "left";
+        return;
     }else if (yDistance < 0){
         moveUp();
         lastMove = "up";
+        return;
     }else if ( yDistance > 0){
         moveDown();
         lastMove = "down";
+        return;
     }
 
 };
