@@ -100,13 +100,13 @@ void GameOperations::draw(){
                       WallCoordinates[i+3],
                       GREEN);
         }
-        for(int i=0; i<WallCoordinates.size()-3; i=i+4)
+        for(int i=0; i<doors.size()-3; i=i+4)
         {
-            DrawRectangle(WallCoordinates[i], 
-                      WallCoordinates[i+1],
-                      WallCoordinates[i+2],
-                      WallCoordinates[i+3],
-                      GREEN);
+            DrawRectangle(doors[i], 
+                      doors[i+1],
+                      doors[i+2],
+                      doors[i+3],
+                      RED);
         }
         for(int i=0; i<keys.size(); i++)
         {

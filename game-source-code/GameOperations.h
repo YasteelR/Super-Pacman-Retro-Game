@@ -16,6 +16,7 @@ public:
     void move_objects();
     bool checkCollisionPacmanGhost();
     void checkCollisionWall();
+    void checkCollisionDoor();
     void checkCollisionPellets();
     static bool is_game_over;
     void draw();
@@ -38,7 +39,7 @@ private:
     bool gameOver;
     vector<shared_ptr<Key>> keys;
     int NumberOfKeys;
-    vector<shared_ptr<Door>> doors;
+    vector<int> doors;
     int NumberOfDoors;
 
 };
