@@ -65,7 +65,16 @@ void GameOperations::checkCollisionWall(){
     //cout << "Exit both forloop"<<endl;
 }
 
-
+void GameOperations::checkCollisionDoor()
+{
+    for (auto i = 0; i< doors.size() - 3; i= i + 4){
+                if (CheckCollisionRecs(returnRect(i, doors) ,movingObjects[0]->getBoundingBox() )) {
+                    //cout <<"wall collision"<<endl;
+                    movingObjects[0]->undoLastMove();
+            }
+            //cout<<"collision Exit"<<endl;
+        }
+}
 
 // void GameOperations::checkCollisionPellets(){
 //     for (auto& objects : movingObjects ){
