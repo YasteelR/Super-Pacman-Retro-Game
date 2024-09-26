@@ -9,6 +9,7 @@
 #include "FileReader.h"
 #include "Key.h"
 #include "Fruit.h"
+#include "Score.h"
 
 class GameOperations{
 public:
@@ -19,6 +20,7 @@ public:
     void checkCollisionWall();
     void checkCollisionDoor();
     void checkCollisionKey();
+    void checkCollisionFruit();
     void checkCollisionPellets();
     static bool is_game_over;
     void draw();
@@ -44,7 +46,8 @@ private:
     vector<int> doors;
     int NumberOfDoors;
     vector<shared_ptr<Fruit>> fruits;
-    int NumberOfFruits
+    int NumberOfFruits;
+    Score points();
 
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */

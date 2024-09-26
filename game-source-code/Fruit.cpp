@@ -1,6 +1,16 @@
 #include "Fruit.h"
 
-Fruit::Fruit(int x, int y) : BaseObject(x,y)
+Fruit::Fruit() : BaseObject()
 {
-    set_location(x,y);
+    set_sprite("../resources/key.png");
+}
+
+void Fruit::move_Obj()
+{
+    throw runtime_error("Keys cannot move!");
+}
+
+void Fruit::undoLastMove()
+{
+    throw runtime_error("Keys cannot move!");
 }

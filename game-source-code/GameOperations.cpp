@@ -87,6 +87,17 @@ void GameOperations::checkCollisionKey()
             //cout<<"collision Exit"<<endl;
         }
 }
+
+void GameOperations::checkCollisionFruit()
+{
+    for (auto i = 0; i< fruits.size(); i++){
+                if (CheckCollisionRecs(fruits[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
+                    //cout <<"wall collision"<<endl;
+                    
+            }
+            //cout<<"collision Exit"<<endl;
+        }
+}
 // void GameOperations::checkCollisionPellets(){
 //     for (auto& objects : movingObjects ){
 //         for (auto& pellets : pelletList){
@@ -131,6 +142,10 @@ void GameOperations::draw(){
         for(int i=0; i<keys.size(); i++)
         {
             keys[i]->draw_sprite_object();
+        }
+        for(int i=0; i<fruits.size(); i++)
+        {
+            fruits[i]->draw_sprite_object();
         }
         EndDrawing();
 

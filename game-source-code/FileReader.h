@@ -41,7 +41,7 @@ class FileReader
             bool DataWasRead = false;
             while (InputFile >> xpos >> ypos)
             {
-                StoreKeys.emplace_back(make_unique<T>());
+                StoreKeys.emplace_back(make_shared<T>());
                 StoreKeys.back()->set_location(xpos, ypos);
                 NumberOfObjects++;
                 DataWasRead = true;

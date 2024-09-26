@@ -8,7 +8,9 @@ using namespace std;
 class Fruit : public BaseObject
 {
     public:
-        Fruit(int x, int y);
+        Fruit();
+        void move_Obj();
+        void undoLastMove();
 
     private:
 
