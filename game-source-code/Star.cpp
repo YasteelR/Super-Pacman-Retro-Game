@@ -1,6 +1,6 @@
 #include "Star.h"
 
-Star::Star()
+Star::Star() : BaseObject()
 {
     set_sprite("../resources/star.png");
     starFruits.emplace_back();
@@ -27,4 +27,22 @@ void Star::DrawCompanions()
     {
         starFruits[i].draw_sprite_object();
     }
+}
+
+void Star::setCompanionPosition()
+{
+    for(int i=0; i<starFruits.size(); i++)
+    {
+        starFruits[i].set_location(get_x(),get_y());
+    }
+}
+
+void Star::move_Obj()
+{
+    throw runtime_error("Keys cannot move!");
+}
+
+void Star::undoLastMove()
+{
+    throw runtime_error("Keys cannot move!");
 }

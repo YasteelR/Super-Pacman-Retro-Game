@@ -13,7 +13,11 @@ class Star : BaseObject
         Star();
         void setObjects();
         void changeImages();
-        
+        void DrawCompanions();
+        void setCompanionPosition();
+
+        void move_Obj();
+        void undoLastMove();
 
     private:
         vector<BaseObject> starFruits;

@@ -10,6 +10,7 @@
 #include "Key.h"
 #include "Fruit.h"
 #include "Score.h"
+#include "Star.h"
 
 class GameOperations{
 public:
@@ -48,6 +49,8 @@ private:
     vector<shared_ptr<Fruit>> fruits;
     int NumberOfFruits;
     Score points;
+    vector<shared_ptr<Star>> stars;
+    int NumberOfStars;
 
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */
