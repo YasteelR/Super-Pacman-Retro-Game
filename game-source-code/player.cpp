@@ -11,22 +11,22 @@ player::player(int x, int y)
 }
 
 void player::moveUp(){
-    set_location(get_x(), get_y() - 10);
+    set_location(get_x(), get_y() - 5);
 
 }
 
 void player::moveDown() {
-    set_location(get_x(), get_y() + 10);
+    set_location(get_x(), get_y() + 5);
 
 }
 
 void player::moveLeft() {
-    set_location(get_x() - 10, get_y() );
+    set_location(get_x() - 5, get_y() );
 
 }
 
 void player::moveRight() {
-    set_location(get_x() + 10, get_y() );
+    set_location(get_x() + 5, get_y() );
 }
 
 

@@ -5,11 +5,11 @@ Key::Key() : BaseObject()
     set_sprite("../resources/key.png");
 }
 
-// void Key::setDoors(Door Object1,Door Object2)
-// {
-//     doors.emplace_back(make_unique<Door>(Object1));
-//     doors.emplace_back(make_unique<Door>(Object2));
-// }
+void Key::setDoors(vector<shared_ptr<BaseObject>>& doors, int Position)
+{
+    doors.push_back(doors[Position]);
+    doors.push_back(doors[Position+1]);
+}
 
 void Key::move_Obj()
 {

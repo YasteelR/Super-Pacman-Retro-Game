@@ -67,6 +67,8 @@ Keys
 1100 450
 1300 350
 
+Doors
+
 
 Rectangles
 250 0  1100 250

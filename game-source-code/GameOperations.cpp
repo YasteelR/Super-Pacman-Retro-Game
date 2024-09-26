@@ -123,14 +123,14 @@ void GameOperations::loadRect(string FilePath){
     // TextFile.ObjectType("Pellets");
     // TextFile.ReadData(pellets,NumberOfPellets);
 
-    // for(int i=0; i<pellets.size(); i++)
-    // {
-    //     cout<<pellets[i]<<" ";
-    //     if(i%4==0 && i!=0)
-    //     {
-    //         cout<<endl;
-    //     }
-    // }
+    for(int i=0; i<keys.size(); i++)
+    {
+        cout<<keys[i]->get_x()<<" "<<keys[i]->get_y()<<" ";
+        if(i%2==0 && i!=0)
+        {
+            cout<<endl;
+        }
+    }
 
 }
 Rectangle GameOperations::returnRect(int& i, vector<int>& vector){

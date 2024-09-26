@@ -36,7 +36,7 @@ private:
     vector<int> pellets;
     int NumberOfPellets;
     bool gameOver;
-    vector<unique_ptr<Key>> keys;
+    vector<shared_ptr<Key>> keys;
     int NumberOfKeys;
 
 };
