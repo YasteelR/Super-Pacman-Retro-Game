@@ -82,6 +82,7 @@ void GameOperations::checkCollisionKey()
                 if (CheckCollisionRecs(keys[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
                     keys[i]->destroyDoors(doors);
+                    keys[i]->set_location(-100,-100);
             }
             //cout<<"collision Exit"<<endl;
         }
@@ -153,10 +154,10 @@ void GameOperations::loadRect(string FilePath){
     // TextFile.ObjectType("Pellets");
     // TextFile.ReadData(pellets,NumberOfPellets);
 
-    for(int i=0; i<keys.size(); i++)
-    {
-        cout<<keys[i]->get_x()<<" "<<keys[i]->get_y()<<" "<<endl;
-    }
+    // for(int i=0; i<keys.size(); i++)
+    // {
+    //     cout<<keys[i]->get_x()<<" "<<keys[i]->get_y()<<" "<<endl;
+    // }
 
 }
 Rectangle GameOperations::returnRect(int& i, vector<int>& vector){
