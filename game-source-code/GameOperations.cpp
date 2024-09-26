@@ -171,9 +171,7 @@ void GameOperations::draw(){
             stars[i]->draw_sprite_object();
             stars[i]->DrawCompanions();
         }
-        string ScoreString = "Score: ";
-        ScoreString += to_string(points.getScore());
-        DrawText(ScoreString.c_str(),600, 50, 50, GREEN);
+        DrawText(points.getStringScore().c_str(),600, 50, 50, GREEN);
         EndDrawing();
 
 }

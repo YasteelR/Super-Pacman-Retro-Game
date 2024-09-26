@@ -28,3 +28,12 @@ void Score::addStarPoints(bool matched1, bool matched2)
     else 
         points = points +500;
 }
+
+string Score::getStringScore()
+{
+    ScoreString.clear();
+    ScoreString="Score: ";
+    ScoreString+= to_string(points);
+
+    return ScoreString;
+}
