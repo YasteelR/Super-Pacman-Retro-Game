@@ -5,7 +5,7 @@ int Fruit::NumOfFruit=0;
 Fruit::Fruit() : BaseObject()
 {
     NumOfFruit++;
-    set_sprite("../resources/key.png");
+    set_sprite("../resources/banana.png");
 }
 
 void Fruit::move_Obj()
