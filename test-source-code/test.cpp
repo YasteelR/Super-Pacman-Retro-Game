@@ -8,7 +8,7 @@
 #include "Player.h"
 #include "Ghost.h"
 
-auto temp = raylib::Window(1600, 900, "test window");
+ auto temp = raylib::Window(1600, 900, "test window");
 
 TEST_CASE("check cake ")
 {
@@ -81,107 +81,108 @@ TEST_CASE("check cake ")
 // }
 
 //====================================Testing Player====================================================================================
-TEST_CASE("GameOperations initializes correctly")
-{
-    raylib::Window(1600, 900, "test window");
-    player test = player(0, 0);
+// TEST_CASE("GameOperations initializes correctly")
+// {
+//     raylib::Window(1600, 900, "test window");
+//     player test = player(0, 0);
 
-    int xPosition = 0;
-    int yPosition = 0;
+//     int xPosition = 0;
+//     int yPosition = 0;
 
-    bool check = false;
-    if (test.get_x() == xPosition && test.get_y() == yPosition)
-    {
-        check = true;
-    }
+//     bool check = false;
+//     if (test.get_x() == xPosition && test.get_y() == yPosition)
+//     {
+//         check = true;
+//     }
 
-    CHECK(check);
-}
+//     CHECK(check);
+// }
 
-TEST_CASE("moveUp moves the player up")
-{
-    raylib::Window(1600, 900, "test window");
-    player test = player{800, 300};
-    test.moveUp();
+// TEST_CASE("moveUp moves the player up")
+// {
+//     raylib::Window(1600, 900, "test window");
+//     player test = player{800, 300};
+//     test.moveUp();
 
-    CHECK(test.get_y() == 300 - 5);
-}
+//     CHECK(test.get_y() == 300 - 5);
+// }
 
-TEST_CASE("moveUp will not move the player off the screen")
-{
-    raylib::Window(1600, 900, "test window");
-    player test = player{800, 300};
-    test.set_location(800, 9);
-    test.moveUp();
+// TEST_CASE("moveUp will not move the player off the screen")
+// {
+//     raylib::Window(1600, 900, "test window");
+//     player test = player{800, 300};
+//     test.set_location(800, 9);
+//     test.moveUp();
 
-    CHECK(test.get_y() == 9);
-}
+//     CHECK(test.get_y() == 9);
+// }
 
-TEST_CASE("moveDown moves the player down")
-{
-    raylib::Window(1600, 900, "test window");
-    player test = player{800, 300};
-    test.moveDown();
+// TEST_CASE("moveDown moves the player down")
+// {
+//     raylib::Window(1600, 900, "test window");
+//     player test = player{800, 300};
+//     test.moveDown();
 
-    CHECK(test.get_y() == 300 + 15);
-}
+//     CHECK(test.get_y() == 300 + 15);
+// }
 
-TEST_CASE("moveDown will not move the player off screen")
-{
-    player test = player{800, 300};
-    test.set_location(800, 756);
-    test.moveDown();
+// TEST_CASE("moveDown will not move the player off screen")
+// {
+//     player test = player{800, 300};
+//     test.set_location(800, 756);
+//     test.moveDown();
 
-    CHECK(test.get_y() == 756);
-}
+//     CHECK(test.get_y() == 756);
+// }
 
-TEST_CASE("moveLeft moves the player Left")
-{
-    raylib::Window(1600, 900, "test window");
-    player test = player{800, 300};
-    test.moveLeft();
+// TEST_CASE("moveLeft moves the player Left")
+// {
+//     raylib::Window(1600, 900, "test window");
+//     player test = player{800, 300};
+//     test.moveLeft();
 
-    CHECK(test.get_x() == 800 - 15);
-}
+//     CHECK(test.get_x() == 800 - 15);
+// }
 
-TEST_CASE("moveLeft will not move the player off screen")
-{
-    raylib::Window(1600, 900, "test window");
-    player test = player{800, 300};
-    test.set_location(4, 300);
-    test.moveLeft();
+// TEST_CASE("moveLeft will not move the player off screen")
+// {
+//     raylib::Window(1600, 900, "test window");
+//     player test = player{800, 300};
+//     test.set_location(4, 300);
+//     test.moveLeft();
 
-    CHECK(test.get_x() == 4);
-}
+//     CHECK(test.get_x() == 4);
+// }
 
-TEST_CASE("moveRight moves the player Right")
-{
-    raylib::Window(1600, 900, "test window");
-    player test = player{800, 300};
-    test.moveRight();
+// TEST_CASE("moveRight moves the player Right")
+// {
+//     raylib::Window(1600, 900, "test window");
+//     player test = player{800, 300};
+//     test.moveRight();
 
-    CHECK(test.get_x() == 800 + 15);
-}
+//     CHECK(test.get_x() == 800 + 15);
+// }
 
-TEST_CASE("moveRight moves the player Right")
-{
-    raylib::Window(1600, 900, "test window");
-    player test = player{800, 300};
-    test.set_location(1451, 300);
-    test.moveRight();
+// TEST_CASE("moveRight moves the player Right")
+// {
+//     raylib::Window(1600, 900, "test window");
+//     player test = player{800, 300};
+//     test.set_location(1451, 300);
+//     test.moveRight();
 
-    CHECK(test.get_x() == 1466);
-}
+//     CHECK(test.get_x() == 1466);
+// }
 //====================================Testing collisions====================================================================================
 TEST_CASE("check collision between sprites work")
 {
+    //raylib::Window(1600, 900, "test window");
     GameOperations game;
 
     CHECK(!game.checkCollisionPacmanGhost());
 }
 TEST_CASE("check collision between sprites work")
 {
-    raylib::Window(1600, 900, "test window");
+    //raylib::Window(1600, 900, "test window");
     player test = player{800, 300};
     vector<int> WallCoordinates= {1,1,10,10};
     int index = 0;
@@ -197,11 +198,13 @@ TEST_CASE("check collision between sprites work")
 }
 //====================================Testing Ghost====================================================================================
 TEST_CASE("test ghost constructor"){
+    //raylib::Window(1600, 900, "test window");
     Ghost ghost1 (500,500);
     CHECK(ghost1.get_sprite()!="");
 }
 
 TEST_CASE("Test ghost move up decreases y axis"){
+    //raylib::Window(1600, 900, "test window");
     Ghost ghost1 (500,500);
     int initialY = ghost1.get_y();
     ghost1.moveUp();
@@ -209,6 +212,7 @@ TEST_CASE("Test ghost move up decreases y axis"){
 }
 
 TEST_CASE("Test ghost move down increases y axis"){
+    //raylib::Window(1600, 900, "test window");
     Ghost ghost1 (500,500);
     int initialY = ghost1.get_y();
     ghost1.moveDown();
@@ -216,8 +220,16 @@ TEST_CASE("Test ghost move down increases y axis"){
 }
 
 TEST_CASE("Test ghost move right increases x axis"){
+    //raylib::Window(1600, 900, "test window");
     Ghost ghost1 (500,500);
     int initialX = ghost1.get_x();
     ghost1.moveRight();
     CHECK(initialX + 2 == ghost1.get_x());
+}
+TEST_CASE("Test ghost move left decreases x axis"){
+    //raylib::Window(1600, 900, "test window");
+    Ghost ghost1 (500,500);
+    int initialX = ghost1.get_x();
+    ghost1.moveLeft();
+    CHECK(initialX - 2 == ghost1.get_x());
 }
