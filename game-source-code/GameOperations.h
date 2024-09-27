@@ -29,6 +29,9 @@ public:
     Rectangle returnRect(int& i, vector<int>& vector);
     bool getGameOver();
     void checkCollisionStar();
+    bool getCollision();
+    void resetCollision();
+
 
 private:
 
@@ -52,6 +55,7 @@ private:
     Score points;
     vector<shared_ptr<Star>> stars;
     int NumberOfStars;
+    bool collision;
 
 };
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */
