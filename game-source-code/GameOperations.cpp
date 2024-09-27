@@ -3,6 +3,7 @@
 GameOperations::GameOperations(){
     shared_ptr<GameData> GameInfo = make_shared<GameData>();
     loadRect("../resources/GameMap.txt");
+    collision=false;
 
     playerPacman = make_shared<player>(player(550,200));
     playerPacman->setGameData(GameInfo);
@@ -46,6 +47,7 @@ void GameOperations::checkCollisionWall(){
         for (auto i = 0; i< WallCoordinates.size() - 3; i= i + 4){
                 if (CheckCollisionRecs(returnRect(i, WallCoordinates) ,objects->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
+                    collision=true;
                     objects->undoLastMove();
             }
             //cout<<"collision Exit"<<endl;
@@ -56,6 +58,7 @@ void GameOperations::checkCollisionWall(){
         for (auto i = 0; i< boundaryCoordinates.size() - 3; i= i + 4){
                 if (CheckCollisionRecs(returnRect(i, boundaryCoordinates) ,objects->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
+                    collision=true;
                     objects->undoLastMove();
             }
             //cout<<"collision Exit"<<endl;
@@ -70,6 +73,7 @@ void GameOperations::checkCollisionDoor()
     for (auto i = 0; i< doors.size() - 3; i= i + 4){
                 if (CheckCollisionRecs(returnRect(i, doors) ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
+                    collision=true;
                     movingObjects[0]->undoLastMove();
             }
             //cout<<"collision Exit"<<endl;
@@ -81,6 +85,7 @@ void GameOperations::checkCollisionKey()
     for (auto i = 0; i< keys.size(); i++){
                 if (CheckCollisionRecs(keys[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
+                    collision=true;
                     keys[i]->destroyDoors(doors);
                     keys[i]->set_location(-100,-100);
             }
@@ -93,6 +98,7 @@ void GameOperations::checkCollisionFruit()
     for (auto i = 0; i< fruits.size(); i++){
                 if (CheckCollisionRecs(fruits[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
                     //cout <<"wall collision"<<endl;
+                    collision=true;
                     fruits[i]->eatenFruit();
                     fruits[i]->Destroy();
                     points.addPoints();
@@ -109,7 +115,8 @@ void GameOperations::checkCollisionStar()
 {
     for (auto i = 0; i< stars.size(); i++){
                 if (CheckCollisionRecs(stars[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
-                    cout <<"Star collision"<<endl;
+                    //cout <<"Star collision"<<endl;
+                    collision=true;
                     points.addStarPoints(stars[i]->CompanionsMatch(),stars[i]->CompanionsMatchFruit());
                     stars[i]->Destroy();
             }
@@ -213,4 +220,14 @@ Rectangle GameOperations::returnRect(int& i, vector<int>& vector){
 
 bool GameOperations::getGameOver(){
     return gameOver;
+}
+
+bool GameOperations::getCollision()
+{
+    return collision;
+}
+
+void GameOperations::resetCollision()
+{
+    collision=false;
 }
