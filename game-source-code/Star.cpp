@@ -33,7 +33,7 @@ void Star::createCompanions()
 void Star::setObjects()
 {
     clock++;
-    if (clock == 300)
+    if (clock == 60)
     {
         clock=0;
         for (int i = 0; i < starFruits.size(); i++)
