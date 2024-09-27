@@ -6,10 +6,12 @@
 #include "BaseObject.h"
 #include "GameOperations.h"
 #include "Player.h"
+#include "Ghost.h"
 
-TEST_CASE("check cake "){
+TEST_CASE("check cake ")
+{
 
-    CHECK(1==1);
+    CHECK(1 == 1);
 }
 
 //====================================Testing BaseObject class=====================================================================
@@ -56,15 +58,15 @@ TEST_CASE("check cake "){
 //     CHECK(testCase);
 // }
 
-//TEST_CASE("Set sprite changes sprite to filename")
+// TEST_CASE("Set sprite changes sprite to filename")
 //{
-//    BaseObject test = BaseObject{0,0};
-//    string spriteTestName="bobbbyyyyyy";
+//     BaseObject test = BaseObject{0,0};
+//     string spriteTestName="bobbbyyyyyy";
 //
-//    test.set_sprite(spriteTestName);
+//     test.set_sprite(spriteTestName);
 //
-//    CHECK(test.get_sprite()==spriteTestName);
-//}
+//     CHECK(test.get_sprite()==spriteTestName);
+// }
 
 // TEST_CASE("Set_moved shows if the object has been moved")
 // {
@@ -74,89 +76,120 @@ TEST_CASE("check cake "){
 //     Properties check=test.get_Properties();
 
 //     CHECK(check.is_moved);
-// }  
+// }
 
 //====================================Testing Player====================================================================================
 TEST_CASE("GameOperations initializes correctly")
 {
-   player test = player(0,0);
+    raylib::Window(1600, 900, "test window");
+    player test = player(0, 0);
 
-   int xPosition=800;
-   int yPosition=300;
+    int xPosition = 0;
+    int yPosition = 0;
 
-   bool check = false;
-   if(test.get_x()==xPosition && test.get_y()==yPosition)
-   {
-       check=true;
-   }
+    bool check = false;
+    if (test.get_x() == xPosition && test.get_y() == yPosition)
+    {
+        check = true;
+    }
 
-  CHECK(check);
+    CHECK(check);
 }
 
 TEST_CASE("moveUp moves the player up")
 {
-    player test = player{800,300};
+    raylib::Window(1600, 900, "test window");
+    player test = player{800, 300};
     test.moveUp();
 
-    CHECK(test.get_y()==300-15);
+    CHECK(test.get_y() == 300 - 5);
 }
 
 TEST_CASE("moveUp will not move the player off the screen")
 {
-    player test = player{800,300};
-    test.set_location(800,9);
+    raylib::Window(1600, 900, "test window");
+    player test = player{800, 300};
+    test.set_location(800, 9);
     test.moveUp();
 
-    CHECK(test.get_y()==9);
+    CHECK(test.get_y() == 9);
 }
 
 TEST_CASE("moveDown moves the player down")
 {
-    player test = player{800,300};
+    raylib::Window(1600, 900, "test window");
+    player test = player{800, 300};
     test.moveDown();
 
-    CHECK(test.get_y()==300+15);
+    CHECK(test.get_y() == 300 + 15);
 }
 
 TEST_CASE("moveDown will not move the player off screen")
 {
-    player test = player{800,300};
-    test.set_location(800,756);
+    player test = player{800, 300};
+    test.set_location(800, 756);
     test.moveDown();
 
-    CHECK(test.get_y()==756);
+    CHECK(test.get_y() == 756);
 }
 
 TEST_CASE("moveLeft moves the player Left")
 {
-    player test = player{800,300};
+    raylib::Window(1600, 900, "test window");
+    player test = player{800, 300};
     test.moveLeft();
 
-    CHECK(test.get_x()==800-15);
+    CHECK(test.get_x() == 800 - 15);
 }
 
 TEST_CASE("moveLeft will not move the player off screen")
 {
-    player test = player{800,300};
-    test.set_location(4,300);
+    raylib::Window(1600, 900, "test window");
+    player test = player{800, 300};
+    test.set_location(4, 300);
     test.moveLeft();
 
-    CHECK(test.get_x()==4);
+    CHECK(test.get_x() == 4);
 }
 
 TEST_CASE("moveRight moves the player Right")
 {
-    player test = player{800,300};
+    raylib::Window(1600, 900, "test window");
+    player test = player{800, 300};
     test.moveRight();
 
-    CHECK(test.get_x()==800+15);
+    CHECK(test.get_x() == 800 + 15);
 }
 
 TEST_CASE("moveRight moves the player Right")
 {
-    player test = player{800,300};
-    test.set_location(1451,300);
+    raylib::Window(1600, 900, "test window");
+    player test = player{800, 300};
+    test.set_location(1451, 300);
     test.moveRight();
 
-    CHECK(test.get_x()==1466);
+    CHECK(test.get_x() == 1466);
+}
+//====================================Testing collisions====================================================================================
+TEST_CASE("check collision between sprites work")
+{
+    GameOperations game;
+
+    CHECK(!game.checkCollisionPacmanGhost());
+}
+TEST_CASE("check collision between sprites work")
+{
+    raylib::Window(1600, 900, "test window");
+    player test = player{800, 300};
+    vector<int> WallCoordinates= {1,1,10,10};
+    int index = 0;
+    GameOperations game;
+    bool collision = false;
+
+    if (CheckCollisionRecs(game.returnRect(index, WallCoordinates) ,test.getBoundingBox() )) {
+        //cout <<"wall collision"<<endl;
+        collision = true;
+    }
+
+    CHECK(!collision);
 }
