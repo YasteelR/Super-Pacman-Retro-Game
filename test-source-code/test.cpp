@@ -8,6 +8,8 @@
 #include "Player.h"
 #include "Ghost.h"
 
+auto temp = raylib::Window(1600, 900, "test window");
+
 TEST_CASE("check cake ")
 {
 
@@ -192,4 +194,30 @@ TEST_CASE("check collision between sprites work")
     }
 
     CHECK(!collision);
+}
+//====================================Testing Ghost====================================================================================
+TEST_CASE("test ghost constructor"){
+    Ghost ghost1 (500,500);
+    CHECK(ghost1.get_sprite()!="");
+}
+
+TEST_CASE("Test ghost move up decreases y axis"){
+    Ghost ghost1 (500,500);
+    int initialY = ghost1.get_y();
+    ghost1.moveUp();
+    CHECK(initialY - 2 == ghost1.get_y());
+}
+
+TEST_CASE("Test ghost move down increases y axis"){
+    Ghost ghost1 (500,500);
+    int initialY = ghost1.get_y();
+    ghost1.moveDown();
+    CHECK(initialY + 2 == ghost1.get_y());
+}
+
+TEST_CASE("Test ghost move right increases x axis"){
+    Ghost ghost1 (500,500);
+    int initialX = ghost1.get_x();
+    ghost1.moveRight();
+    CHECK(initialX + 2 == ghost1.get_x());
 }
