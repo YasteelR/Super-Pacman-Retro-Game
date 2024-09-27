@@ -81,31 +81,31 @@ TEST_CASE("check cake ")
 // }
 
 //====================================Testing Player====================================================================================
-// TEST_CASE("GameOperations initializes correctly")
-// {
-//     raylib::Window(1600, 900, "test window");
-//     player test = player(0, 0);
+TEST_CASE("GameOperations initializes correctly")
+{
+    raylib::Window(1600, 900, "test window");
+    player test = player(0, 0);
 
-//     int xPosition = 0;
-//     int yPosition = 0;
+    int xPosition = 0;
+    int yPosition = 0;
 
-//     bool check = false;
-//     if (test.get_x() == xPosition && test.get_y() == yPosition)
-//     {
-//         check = true;
-//     }
+    bool check = false;
+    if (test.get_x() == xPosition && test.get_y() == yPosition)
+    {
+        check = true;
+    }
 
-//     CHECK(check);
-// }
+    CHECK(check);
+}
 
-// TEST_CASE("moveUp moves the player up")
-// {
-//     raylib::Window(1600, 900, "test window");
-//     player test = player{800, 300};
-//     test.moveUp();
+TEST_CASE("moveUp moves the player up")
+{
+    raylib::Window(1600, 900, "test window");
+    player test = player{800, 300};
+    test.moveUp();
 
-//     CHECK(test.get_y() == 300 - 5);
-// }
+    CHECK(test.get_y() == 300 - 5);
+}
 
 // TEST_CASE("moveUp will not move the player off the screen")
 // {
