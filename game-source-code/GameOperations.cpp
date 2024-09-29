@@ -98,27 +98,27 @@ void GameOperations::checkCollisionWall(){
 
 void GameOperations::checkCollisionDoor()
 {
-    for (auto i = 0; i< doors.size() - 3; i= i + 4){
-                if (CheckCollisionRecs(returnRect(i, doors) ,movingObjects[0]->getBoundingBox() )) {
-                    //cout <<"wall collision"<<endl;
-                    collision=true;
-                    movingObjects[0]->undoLastMove();
-            }
-            //cout<<"collision Exit"<<endl;
+    for (auto i = 0; i < doors.size(); i++)
+    {
+        if (CheckCollisionRecs(returnRect(doors[i]), playerPacman->getBoundingBox()))
+        {
+            collision = true;
+            playerPacman->undoLastMove();
         }
+    }
 }
 
 void GameOperations::checkCollisionKey()
 {
-    for (auto i = 0; i< keys.size(); i++){
-                if (CheckCollisionRecs(keys[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
-                    //cout <<"wall collision"<<endl;
-                    collision=true;
-                    keys[i]->destroyDoors(doors);
-                    keys[i]->set_location(-100,-100);
-            }
-            //cout<<"collision Exit"<<endl;
+    for (auto i = 0; i < keys.size(); i++)
+    {
+        if (CheckCollisionRecs(keys[i]->getBoundingBox(), playerPacman->getBoundingBox()))
+        {
+            collision = true;
+            keys[i]->destroyDoors(doors);
+            keys[i]->set_location(-100, -100);
         }
+    }
 }
 
 void GameOperations::checkCollisionFruit()
