@@ -1,7 +1,7 @@
 #include "Ghost.h"
 
 Ghost::Ghost(int x, int y)
-: BaseObject(x,y)
+: Move(x,y)
 {
     auto object_feature = get_Properties();
     object_feature.is_player = true;

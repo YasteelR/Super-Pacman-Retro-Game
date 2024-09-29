@@ -3,10 +3,11 @@
 #include "BaseObject.h"
 #include "raylib-cpp.hpp"
 #include <iostream>
+#include "Move.h"
 
 using namespace std;
 
-class Ghost : public BaseObject{
+class Ghost : public Move{
 public:
     Ghost(int x, int y);
     void moveUp();
