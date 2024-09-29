@@ -74,3 +74,40 @@ void player::undoLastMove() {
 }
 
 
+void player::loseLife()
+{
+    if(lives>=0)
+    {
+        hearts[lives-1]->set_location(-100,-100);
+    }
+    lives--;
+    if(lives==0)
+    {
+        dead=true;
+    }
+}
+
+bool player::isDead()
+{
+    return dead;
+}
+
+void player::setHearts()
+{
+    int w=750;
+    int h=800;
+    for(int i=0; i<lives; i++)
+    {
+        hearts.emplace_back(make_shared<BaseObject>());
+        hearts.back()->set_location(w,h);
+        hearts.back()->set_sprite("../resources/heart.png");
+        w=w+55;
+    }
+}
+
+shared_ptr<vector<shared_ptr<BaseObject>>> player::getHearts()
+{
+    auto pointer = make_shared<vector<shared_ptr<BaseObject>>>(hearts);
+    return pointer;
+}
+
