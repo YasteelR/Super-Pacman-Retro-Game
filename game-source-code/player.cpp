@@ -1,15 +1,16 @@
 #include "player.h"
 
 player::player(int x, int y)
-: BaseObject(x,y)
+: Move(x,y)
 {
-
+    lives=3;
+    setHearts();
+    dead=false;
     auto object_feature = get_Properties();
     object_feature.is_player = true;
     set_Properties(object_feature);
     set_sprite("../resources/pacmanLeft.png");
 }
-
 void player::moveUp(){
     set_location(get_x(), get_y() - 5);
 
