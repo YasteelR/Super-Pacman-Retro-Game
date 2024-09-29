@@ -166,46 +166,21 @@ void GameOperations::checkCollisionPellets()
 void GameOperations::draw(){
         BeginDrawing();
         ClearBackground(GREEN);
-        for (auto& objects :movingObjects){
-            objects->draw_sprite_object();
-        }
-        for(int i=0; i<boundaryCoordinates.size()-3; i=i+4)
-        {
-            DrawRectangle(boundaryCoordinates[i], 
-                      boundaryCoordinates[i+1],
-                      boundaryCoordinates[i+2],
-                      boundaryCoordinates[i+3],
-                      BLACK);
-        }
-        for(int i=0; i<WallCoordinates.size()-3; i=i+4)
-        {
-            DrawRectangle(WallCoordinates[i], 
-                      WallCoordinates[i+1],
-                      WallCoordinates[i+2],
-                      WallCoordinates[i+3],
-                      BLACK);
-        }
-        for(int i=0; i<doors.size()-3; i=i+4)
-        {
-            DrawRectangle(doors[i], 
-                      doors[i+1],
-                      doors[i+2],
-                      doors[i+3],
-                      RED);
-        }
-        for(int i=0; i<keys.size(); i++)
-        {
-            keys[i]->draw_sprite_object();
-        }
-        for(int i=0; i<fruits.size(); i++)
-        {
-            fruits[i]->draw_sprite_object();
-        }
+        sketch->drawObjects(playerPacman);
+        sketch->drawObjects(Ghosts);
+        sketch->drawMap(walls,BLACK);
+        sketch->drawMap(boundaries,BLACK);
+        sketch->drawMap(doors,RED);
+        string hhh="Lives: ";
+        DrawText(hhh.c_str(),600, 800, 50, GREEN);
+        sketch->drawObjects(*(playerPacman->getHearts()));
+        sketch->drawObjects(keys);
+        sketch->drawObjects(fruits);
         for(int i=0; i<stars.size(); i++)
         {
             stars[i]->setObjects();
-            stars[i]->draw_sprite_object();
-            stars[i]->DrawCompanions();
+            sketch->drawObjects(stars);
+            sketch->drawObjects(*(stars[i]->getCompanions()));
         }
         DrawText(points.getStringScore().c_str(),600, 50, 50, GREEN);
         EndDrawing();
