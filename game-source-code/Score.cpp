@@ -104,3 +104,8 @@ void Score::store()
         out << HighScores[i] <<endl;
     }
 }
+
+Score::~Score()
+{
+    store();
+}
