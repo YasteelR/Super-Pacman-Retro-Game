@@ -184,38 +184,35 @@ void GameOperations::draw(){
         }
         DrawText(points.getStringScore().c_str(),600, 50, 50, GREEN);
         EndDrawing();
-
 }
 
 void GameOperations::loadRect(string FilePath){
 
     FileReader TextFile(FilePath);
     TextFile.ObjectType("Rectangles");
-    TextFile.ReadData(WallCoordinates,NumberOfWalls);
+    TextFile.ReadData4(walls);
 
     TextFile.ObjectType("Boundaries");
-    TextFile.ReadData(boundaryCoordinates,NumberOfBounds);
+    TextFile.ReadData4(boundaries);
 
     TextFile.ObjectType("Keys");
-    TextFile.ReadDataObject(keys,NumberOfKeys);
+    TextFile.ReadData2(keys);
 
     TextFile.ObjectType("Doors");
-    TextFile.ReadData(doors,NumberOfDoors);
+    TextFile.ReadData4(doors);
 
     TextFile.ObjectType("Fruits");
-    TextFile.ReadDataObject(fruits,NumberOfFruits);
+    TextFile.ReadData2(fruits);
 
     TextFile.ObjectType("Stars");
-    TextFile.ReadDataObject(stars,NumberOfStars);
-    stars[0]->setUpCompanions();
-    // TextFile.ObjectType("Pellets");
-    // TextFile.ReadData(pellets,NumberOfPellets);
+    TextFile.ReadData2(stars);
+    for(int i=0; i<stars.size(); i++)
+    {
+        stars[i]->setUpCompanions(2);
+    }
 
-    // for(int i=0; i<keys.size(); i++)
-    // {
-    //     cout<<keys[i]->get_x()<<" "<<keys[i]->get_y()<<" "<<endl;
-    // }
-
+    TextFile.ObjectType("Power Pellets");
+    TextFile.ReadData2(pellets);
 }
 Rectangle GameOperations::returnRect(int& i, vector<int>& vector){
     //cout <<WallCoordinates[i] << "y-"<< WallCoordinates[i +1] << "y-"<< (float)WallCoordinates[i + 2]<< "y-"<< (float)WallCoordinates[i + 3]<<endl;
