@@ -5,35 +5,33 @@ Star::Star() : BaseObject()
     set_sprite("../resources/star.png");
     srand(time(0));
     clock=0;
+    timer =60;
     
     fruitsFilepath.emplace_back("../resources/banana.png");
     fruitsFilepath.emplace_back("../resources/orange.png");
     fruitsFilepath.emplace_back("../resources/cherry.png");
 }
 
-void Star::setUpCompanions()
+void Star::setUpCompanions(int companions)
 {
-    createCompanions();
-    if(!starFruits.empty())
-    {
-        starFruits[0]->set_sprite(fruitsFilepath[0]);
-        starFruits[1]->set_sprite(fruitsFilepath[1]);
-    }
+    createCompanions(companions);
     setCompanionPosition();
 }
 
-void Star::createCompanions()
+
+void Star::createCompanions(int& companions)
 {
-    for(int i=0; i<2; i++)
+    for(int i=0; i<companions; i++)
     {
         starFruits.emplace_back(make_shared<Star>());
+        starFruits.back()->set_sprite(fruitsFilepath[0]);
     }
 }
 
 void Star::setObjects()
 {
     clock++;
-    if (clock == 60)
+    if (clock == timer)
     {
         clock=0;
         for (int i = 0; i < starFruits.size(); i++)
@@ -44,14 +42,6 @@ void Star::setObjects()
     }
 }  
 
-void Star::DrawCompanions()
-{
-    for(int i=0; i<starFruits.size(); i++)
-    {
-        starFruits[i]->draw_sprite_object();
-    }
-}
-
 void Star::setCompanionPosition()
 {
     if(!starFruits.empty() && starFruits.size()==2)
@@ -61,15 +51,6 @@ void Star::setCompanionPosition()
     }
 }
 
-void Star::move_Obj()
-{
-    throw runtime_error("Keys cannot move!");
-}
-
-void Star::undoLastMove()
-{
-    throw runtime_error("Keys cannot move!");
-}
 bool Star::CompanionsMatch()
 {
     if(starFruits[0]->get_sprite()==starFruits[1]->get_sprite())
