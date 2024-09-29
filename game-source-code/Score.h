@@ -3,6 +3,8 @@
 
 #include <string>
 #include <fstream>
+#include <memory>
+#include <vector>
 
 using namespace std;
 
@@ -18,10 +20,12 @@ class Score
         bool newHighScore();
         void sortScores();
         void store();
+        shared_ptr<vector<int>> getHighScores();
+
+        ~Score();
     private:
         int points;
         string ScoreString;
-        fstream outPut;
         vector<int> HighScores;
         bool hScore;
 };

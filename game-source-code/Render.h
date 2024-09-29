@@ -21,6 +21,9 @@ class Render : public BaseObject
 
         template <typename T>
         void drawObjects(shared_ptr<T> Object);
+
+        template <typename T>
+        void drawText(vector<T>& Object, int x, int y);
 };
 
 template <typename T>
@@ -51,4 +54,14 @@ void Render::drawObjects(shared_ptr<T> Object)
     Object->draw_sprite_object();
 }
 
+template <typename T>
+void Render::drawText(vector<T>& Object, int x, int y)
+{
+    for(int i=0; i<Object.size(); i++)
+    {
+        string convert = to_string(Object[i]);
+        DrawText(convert.c_str(),x,y,50,GREEN);
+        y=y+50;
+    }
+}
 #endif /* AF83D00B_46A7_46C7_8815_82219216F383 */
