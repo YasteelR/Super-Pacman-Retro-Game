@@ -71,6 +71,7 @@ void PacMan::run(){
                     Game_Opperations->checkCollisionKey();
                     Game_Opperations->checkCollisionFruit();
                     Game_Opperations->checkCollisionStar();
+                    Game_Opperations->checkCollisionPellets();
                     if (Game_Opperations->getGameOver()){
                         mode=Mode_select::Game_over_screen;
                     }

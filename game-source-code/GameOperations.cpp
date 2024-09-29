@@ -156,6 +156,7 @@ void GameOperations::checkCollisionPellets()
 {
     for (auto i = 0; i < pellets.size(); i++)
     {
+        pellets[i]->duration();
         if (CheckCollisionRecs(pellets[i]->getBoundingBox(), playerPacman->getBoundingBox()))
         {
             pellets[i]->activate();
@@ -214,6 +215,10 @@ void GameOperations::loadRect(string FilePath){
 
     TextFile.ObjectType("Power Pellets");
     TextFile.ReadData2(pellets);
+    for(int i=0; i<pellets.size(); i++)
+    {
+        
+    }
 }
 Rectangle GameOperations::returnRect(int& i, vector<int>& vector){
     return { (float)vector[i], (float)vector[i +1], (float)vector[i + 2], (float)vector[i + 3]};

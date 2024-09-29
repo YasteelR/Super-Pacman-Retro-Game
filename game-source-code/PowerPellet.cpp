@@ -25,6 +25,6 @@ bool PowerPellet::activePower()
 
 void PowerPellet::activate()
 {
-    active=120;
+    active=1800;
     set_location(-100,-100);
 }
