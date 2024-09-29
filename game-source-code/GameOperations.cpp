@@ -123,44 +123,45 @@ void GameOperations::checkCollisionKey()
 
 void GameOperations::checkCollisionFruit()
 {
-    for (auto i = 0; i< fruits.size(); i++){
-                if (CheckCollisionRecs(fruits[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
-                    //cout <<"wall collision"<<endl;
-                    collision=true;
-                    fruits[i]->eatenFruit();
-                    fruits[i]->Destroy();
-                    points.addPoints();
-                    if(fruits[i]->getFruitNum()==0)
-                    {
-                        gameOver=true;
-                    }
+    for (auto i = 0; i < fruits.size(); i++)
+    {
+        if (CheckCollisionRecs(fruits[i]->getBoundingBox(), playerPacman->getBoundingBox()))
+        {
+            collision = true;
+            fruits[i]->eatenFruit();
+            fruits[i]->Destroy();
+            points.addPoints();
+            if (fruits[i]->getFruitNum() == 0)
+            {
+                gameOver = true;
             }
-            //cout<<"collision Exit"<<endl;
         }
+    }
 }
 
 void GameOperations::checkCollisionStar()
 {
-    for (auto i = 0; i< stars.size(); i++){
-                if (CheckCollisionRecs(stars[i]->getBoundingBox() ,movingObjects[0]->getBoundingBox() )) {
-                    //cout <<"Star collision"<<endl;
-                    collision=true;
-                    points.addStarPoints(stars[i]->CompanionsMatch(),stars[i]->CompanionsMatchFruit());
-                    stars[i]->Destroy();
-            }
-            //cout<<"collision Exit"<<endl;
+    for (auto i = 0; i < stars.size(); i++)
+    {
+        if (CheckCollisionRecs(stars[i]->getBoundingBox(), playerPacman->getBoundingBox()))
+        {
+            collision = true;
+            points.addStarPoints(stars[i]->CompanionsMatch(), stars[i]->CompanionsMatchFruit());
+            stars[i]->Destroy();
         }
+    }
 }
-// void GameOperations::checkCollisionPellets(){
-//     for (auto& objects : movingObjects ){
-//         for (auto& pellets : pelletList){
-//             if (CheckCollisionRecs(wall ,objects->getBoundingBox() )) {
-//                 //checl if isdead 
-//                 //update score
-//             }
-//         }
-//     }
-// }
+
+void GameOperations::checkCollisionPellets()
+{
+    for (auto i = 0; i < pellets.size(); i++)
+    {
+        if (CheckCollisionRecs(pellets[i]->getBoundingBox(), playerPacman->getBoundingBox()))
+        {
+            pellets[i]->activate();
+        }
+    }
+}
 
 void GameOperations::draw(){
         BeginDrawing();
