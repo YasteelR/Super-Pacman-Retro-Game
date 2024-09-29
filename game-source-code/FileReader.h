@@ -23,37 +23,13 @@ class FileReader
 
         //Reads the Map txt file.
         void ObjectType(string NameOfObject); //The Name of the object i.e rectangles, lines, circles, etc...
-        void ReadData(vector<int>& StoreData, int& NumberOfObjects);
+        
+        //This is a standard template for reading in different objects from the text file.
+        //It's for objects that have two coordinates
         template <typename T>
-        void ReadDataObject(vector<shared_ptr<T>> &StoreKeys, int &NumberOfObjects)
-        {
-            static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
-            InputFile.seekg(0, std::ios::beg);
-            string HeaderLine;
-            while (HeaderLine != Object && !InputFile.eof())
-            {
-
-                getline(InputFile, HeaderLine);
-            }
-
-            int xpos;
-            int ypos;
-            bool DataWasRead = false;
-            while (InputFile >> xpos >> ypos)
-            {
-                StoreKeys.emplace_back(make_shared<T>());
-                StoreKeys.back()->set_location(xpos, ypos);
-                NumberOfObjects++;
-                DataWasRead = true;
-            }
-
-            if (DataWasRead == false)
-            {
-                throw runtime_error("File contained no coordinates");
-            }
-
-            InputFile.clear();
-        };
+        void ReadData2(vector<shared_ptr<T>> &StoreObjects);
+        template <typename T>
+        void ReadData4(vector<shared_ptr<T>> &StoreObjects);
 
     private:
         string MapFile;
