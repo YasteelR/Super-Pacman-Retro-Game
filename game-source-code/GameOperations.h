@@ -11,6 +11,10 @@
 #include "Fruit.h"
 #include "Score.h"
 #include "Star.h"
+#include "Move.h"
+#include "Render.h"
+#include "Wall.h"
+#include "PowerPellet.h"
 
 class GameOperations{
 public:
@@ -26,7 +30,8 @@ public:
     static bool is_game_over;
     void draw();
     void loadRect(string FilePath);
-    Rectangle returnRect(int& i, vector<int>& vector);
+    template <typename T>
+    Rectangle returnRect(shared_ptr<T> Object);
     bool getGameOver();
     void checkCollisionStar();
     bool getCollision();
@@ -37,25 +42,26 @@ private:
 
 
     shared_ptr<player> playerPacman;
-    shared_ptr<Ghost> Ghost1;
-    vector <shared_ptr<BaseObject>> movingObjects;
-    vector<int> WallCoordinates;
-    int NumberOfWalls;
-    vector<int> boundaryCoordinates;
+    vector<shared_ptr<Ghost>> Ghosts;
+    vector <shared_ptr<Wall>> walls;
+    vector <shared_ptr<Wall>> boundaries;
     int NumberOfBounds;
-    vector<int> pellets;
-    int NumberOfPellets;
     bool gameOver;
     vector<shared_ptr<Key>> keys;
-    int NumberOfKeys;
-    vector<int> doors;
-    int NumberOfDoors;
+    vector<shared_ptr<Door>> doors;
     vector<shared_ptr<Fruit>> fruits;
-    int NumberOfFruits;
     Score points;
     vector<shared_ptr<Star>> stars;
-    int NumberOfStars;
     bool collision;
 
+    unique_ptr<Render> sketch;
+    vector<shared_ptr<PowerPellet>> pellets;
+
 };
+
+template <typename T>
+Rectangle GameOperations::returnRect(shared_ptr<T> Object)
+{
+    return {(float)Object->get_x(), (float)Object->get_y(), (float)Object->getWidth(), (float)Object->getHeight()};
+}
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */
