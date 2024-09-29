@@ -7,11 +7,10 @@ GameOperations::GameOperations(){
 
     playerPacman = make_shared<player>(player(550,200));
     playerPacman->setGameData(GameInfo);
-    Ghost1 = make_shared<Ghost>(Ghost(800,400));    
-    movingObjects.push_back(playerPacman);
-    movingObjects.push_back(Ghost1);
-    Ghost1 = make_shared<Ghost>(Ghost(850,400));
-    movingObjects.push_back(Ghost1);
+    Ghosts.emplace_back(make_shared<Ghost>(750,400));
+    Ghosts.emplace_back(make_shared<Ghost>(750,450));
+    sketch = make_unique<Render>();
+
 
     gameOver=false;
     // create vector of rectangles
@@ -24,7 +23,8 @@ GameOperations::GameOperations(){
 
 void GameOperations::move_objects()
 {
-    for (auto& objects :movingObjects){
+    playerPacman->move_Obj();
+    for (auto& objects :Ghosts){
         objects->move_Obj();
     }
 }   
