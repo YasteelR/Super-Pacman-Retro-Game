@@ -215,7 +215,6 @@ void GameOperations::loadRect(string FilePath){
     TextFile.ReadData2(pellets);
 }
 Rectangle GameOperations::returnRect(int& i, vector<int>& vector){
-    //cout <<WallCoordinates[i] << "y-"<< WallCoordinates[i +1] << "y-"<< (float)WallCoordinates[i + 2]<< "y-"<< (float)WallCoordinates[i + 3]<<endl;
     return { (float)vector[i], (float)vector[i +1], (float)vector[i + 2], (float)vector[i + 3]};
 }
 
