@@ -62,29 +62,38 @@ void GameOperations::checkCollisionPacmanGhost(){
 
 
 void GameOperations::checkCollisionWall(){
-    for (auto& objects : movingObjects ){
-        for (auto i = 0; i< WallCoordinates.size() - 3; i= i + 4){
-                if (CheckCollisionRecs(returnRect(i, WallCoordinates) ,objects->getBoundingBox() )) {
-                    //cout <<"wall collision"<<endl;
-                    collision=true;
-                    objects->undoLastMove();
+    for (auto &objects : Ghosts)
+    {
+        for (auto i = 0; i < walls.size(); i++)
+        {
+            if (CheckCollisionRecs(returnRect(walls[i]), objects->getBoundingBox()))
+            {
+                collision=true;
+                objects->undoLastMove();
             }
-            //cout<<"collision Exit"<<endl;
-        }
-        //cout<<"exit first"<<endl;
-    }
-    for (auto& objects : movingObjects ){
-        for (auto i = 0; i< boundaryCoordinates.size() - 3; i= i + 4){
-                if (CheckCollisionRecs(returnRect(i, boundaryCoordinates) ,objects->getBoundingBox() )) {
-                    //cout <<"wall collision"<<endl;
-                    collision=true;
-                    objects->undoLastMove();
+            if (CheckCollisionRecs(returnRect(walls[i]), playerPacman->getBoundingBox()))
+            {
+                collision=true;
+                playerPacman->undoLastMove();
             }
-            //cout<<"collision Exit"<<endl;
         }
-        //cout<<"exit first"<<endl;
     }
-    //cout << "Exit both forloop"<<endl;
+    for (auto &objects : Ghosts)
+    {
+        for (auto i = 0; i < boundaries.size(); i++)
+        {
+            if (CheckCollisionRecs(returnRect(boundaries[i]), objects->getBoundingBox()))
+            {
+                collision=true;
+                objects->undoLastMove();
+            }
+            if (CheckCollisionRecs(returnRect(boundaries[i]), playerPacman->getBoundingBox()))
+            {
+                collision=true;
+                playerPacman->undoLastMove();
+            }
+        }
+    }
 }
 
 void GameOperations::checkCollisionDoor()
