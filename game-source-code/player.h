@@ -3,10 +3,11 @@
 #include "BaseObject.h"
 #include "raylib-cpp.hpp"
 #include <iostream>
+#include "Move.h"
 
 using namespace std;
 
-class player : public BaseObject{
+class player : public Move{
 public:
 
     player(int x, int y);

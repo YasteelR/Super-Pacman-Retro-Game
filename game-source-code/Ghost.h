@@ -17,6 +17,8 @@ public:
     void move_Obj();
     void undoLastMove();
 
+    void respawn();
+
 private:
     int x_pos;
     int y_pos;  

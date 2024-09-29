@@ -71,3 +71,8 @@ void Ghost::undoLastMove() {
         std::cout << "Invalid move!" << std::endl;
     }
 }
+
+void Ghost::respawn()
+{
+    set_location(750, 400);
+}

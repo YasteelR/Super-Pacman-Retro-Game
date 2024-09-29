@@ -81,3 +81,14 @@ void Star::Destroy()
         starFruits[i]->set_location(-100,-100);
     }
 }
+
+shared_ptr<vector<shared_ptr<BaseObject>>> Star::getCompanions()
+{
+    auto pointer = make_shared<vector<shared_ptr<BaseObject>>>(starFruits);
+    return pointer;
+}
+
+void Star::setTimer(int duration)
+{
+    timer=duration;
+}

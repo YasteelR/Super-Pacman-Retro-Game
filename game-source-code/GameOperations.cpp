@@ -55,7 +55,7 @@ void GameOperations::checkCollisionPacmanGhost(){
                 }
             }
             else 
-                
+                Ghosts[i]->respawn();
         }
     }
 }
@@ -176,6 +176,7 @@ void GameOperations::draw(){
         sketch->drawObjects(*(playerPacman->getHearts()));
         sketch->drawObjects(keys);
         sketch->drawObjects(fruits);
+        sketch->drawObjects(pellets);
         for(int i=0; i<stars.size(); i++)
         {
             stars[i]->setObjects();

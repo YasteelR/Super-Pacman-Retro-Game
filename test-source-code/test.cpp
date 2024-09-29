@@ -140,8 +140,8 @@ TEST_CASE("moveRight moves the player Right")
 TEST_CASE("check collision between sprites work")
 {
     GameOperations game;
-
-    CHECK(!game.checkCollisionPacmanGhost());
+    game.checkCollisionPacmanGhost();
+    CHECK(game.getCollision());
 }
 
 TEST_CASE("check collision between sprites work")
@@ -153,7 +153,6 @@ TEST_CASE("check collision between sprites work")
     bool collision = false;
 
     if (CheckCollisionRecs(game.returnRect(index, WallCoordinates) ,test.getBoundingBox() )) {
-        //cout <<"wall collision"<<endl;
         collision = true;
     }
 
