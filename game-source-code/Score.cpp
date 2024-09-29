@@ -3,6 +3,7 @@
 Score::Score()
 {
     points=0;
+    hScore=false;
 
     outPut.open("../resources/HighScores");
     if(!outPut.is_open())
@@ -15,6 +16,23 @@ Score::Score()
     while(outPut >> High)
     {
         HighScores.emplace_back(High);
+    }
+}
+
+void Score::storeHighScore()
+{
+    if(HighScores.size()<5)
+    {
+        HighScores.emplace(points);
+        hScore=true;
+    }
+    for(int i=0; i<HighScores.size(); i++)
+    {
+        if(points>HighScores[i])
+        {
+            hScore=true;
+            HighScores[i]=points;
+        }
     }
 }
 
@@ -49,4 +67,9 @@ string Score::getStringScore()
     ScoreString+= to_string(points);
 
     return ScoreString;
+}
+
+bool  Score::newHighScore()
+{
+    return hScore;
 }
