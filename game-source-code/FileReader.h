@@ -68,4 +68,40 @@ void FileReader::ReadData2(vector<shared_ptr<T>>& StoreObjects)
     InputFile.clear();
 };
 
+
+template <typename T>
+void FileReader::ReadData4(vector<shared_ptr<T>>& StoreObjects)
+{
+    static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
+    InputFile.seekg(0, std::ios::beg);
+    string HeaderLine;
+    while (HeaderLine != Object && !InputFile.eof())
+    {
+
+        getline(InputFile, HeaderLine);
+    }
+    
+    bool DataWasRead = false;
+    int xpos;
+    int ypos;
+    int width;
+    int height;
+
+    while (InputFile >> xpos >> ypos >> width >> height)
+    {
+        StoreObjects.emplace_back(make_shared<T>());
+        StoreObjects.back()->set_location(xpos, ypos);
+        StoreObjects.back()->setWidth(width);
+        StoreObjects.back()->setHeight(height);
+        DataWasRead = true;
+    }
+
+    if (DataWasRead == false)
+    {
+        throw runtime_error("File contained no coordinates");
+    }
+    
+    InputFile.clear();
+};
+
 #endif /* B5A97AA2_DF14_43C3_88A9_C49E15AF5231 */
