@@ -24,7 +24,7 @@ void Score::storeHighScore()
 {
     if(HighScores.size()<5)
     {
-        HighScores.emplace(points);
+        HighScores.emplace_back(points);
         hScore=true;
     }
     for(int i=0; i<HighScores.size(); i++)

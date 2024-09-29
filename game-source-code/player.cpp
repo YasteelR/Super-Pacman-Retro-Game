@@ -94,7 +94,7 @@ bool player::isDead()
 
 void player::setHearts()
 {
-    int w=750;
+    int w=200;
     int h=800;
     for(int i=0; i<lives; i++)
     {

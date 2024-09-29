@@ -173,7 +173,7 @@ void GameOperations::draw(){
         sketch->drawMap(boundaries,BLACK);
         sketch->drawMap(doors,RED);
         string hhh="Lives: ";
-        DrawText(hhh.c_str(),600, 800, 50, GREEN);
+        DrawText(hhh.c_str(),50, 800, 50, GREEN);
         sketch->drawObjects(*(playerPacman->getHearts()));
         sketch->drawObjects(keys);
         sketch->drawObjects(fruits);
@@ -185,6 +185,10 @@ void GameOperations::draw(){
             sketch->drawObjects(*(stars[i]->getCompanions()));
         }
         DrawText(points.getStringScore().c_str(),600, 50, 50, GREEN);
+
+        string sss="Current High Score: ";
+        DrawText(sss.c_str(), 400, 800, 50 ,GREEN);
+        sketch->drawText(*(points.getHighScores()), 1450, 50);
         EndDrawing();
 }
 

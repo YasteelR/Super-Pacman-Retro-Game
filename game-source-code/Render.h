@@ -56,12 +56,11 @@ void Render::drawObjects(shared_ptr<T> Object)
 
 template <typename T>
 void Render::drawText(vector<T>& Object, int x, int y)
-{
-    for(int i=0; i<Object.size(); i++)
+{   
+    if(!Object.empty())
     {
-        string convert = to_string(Object[i]);
+        string convert = to_string(Object[0]);
         DrawText(convert.c_str(),x,y,50,GREEN);
-        y=y+50;
     }
 }
 #endif /* AF83D00B_46A7_46C7_8815_82219216F383 */
