@@ -29,18 +29,37 @@ void GameOperations::move_objects()
     }
 }   
 
-bool GameOperations::checkCollisionPacmanGhost(){
-    
-    bool collision;
+void GameOperations::checkCollisionPacmanGhost(){
     //check collision with Ghosts
-    for (auto i = 1; i < 3; i++ ){
-        if (CheckCollisionRecs(movingObjects[0]->getBoundingBox() ,movingObjects[i]->getBoundingBox() )) {
+    for (auto i = 0; i < Ghosts.size(); i++ ){
+        if (CheckCollisionRecs(playerPacman->getBoundingBox(), Ghosts[i]->getBoundingBox()))
+        {
+            
             collision = true;
-            gameOver = true;
+            bool pelletIsActive=false;
+            for(int i=0; i<pellets.size(); i++)
+            {
+                if(pellets[i]->activePower())
+                {
+                    pelletIsActive=true;
+                    break;
+                }
+            }
+            if(!pelletIsActive)
+            {
+                playerPacman->loseLife();
+                playerPacman->set_location(550, 200);
+                if (playerPacman->isDead())
+                {
+                    gameOver = true;
+                }
+            }
+            else 
+                
         }
     }
-    return collision;
 }
+
 
 void GameOperations::checkCollisionWall(){
     for (auto& objects : movingObjects ){

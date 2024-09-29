@@ -21,7 +21,7 @@ public:
     GameOperations();
     void Start();
     void move_objects();
-    bool checkCollisionPacmanGhost();
+    void checkCollisionPacmanGhost();
     void checkCollisionWall();
     void checkCollisionDoor();
     void checkCollisionKey();
