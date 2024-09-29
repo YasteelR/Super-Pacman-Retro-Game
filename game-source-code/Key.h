@@ -10,9 +10,7 @@ class Key : public BaseObject
 {
     public:
         Key();
-        void move_Obj();
-        void undoLastMove();
-        void destroyDoors(vector<int>& doors);
+        void destroyDoors(vector<shared_ptr<Door>>& doors);
 
     private:
         vector<shared_ptr<int>> doors;
