@@ -33,9 +33,7 @@ class BaseObject {
     int get_y();
     void set_location(int x, int y);
     Rectangle getBoundingBox() const;
-    virtual string get_sprite();
-    virtual void move_Obj() = 0;
-    virtual void undoLastMove() = 0;
+    string get_sprite();
     //////////////////////////////////////
     void draw_sprite_object();
     void draw_rectangular_object(vector<int>& objectCoordinates);

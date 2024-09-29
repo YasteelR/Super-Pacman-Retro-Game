@@ -25,16 +25,15 @@ string BaseObject::get_sprite(){
 };
 
 void BaseObject::draw_sprite_object(){
-        //BeginDrawing();
-        //ClearBackground(BLUE);
         DrawTexture(spriteObject, get_x(), get_y(), WHITE);
-        DrawRectangleLines(get_x(), get_y(), spriteObject.width,spriteObject.height, RED);
-        //EndDrawing();
+        DrawRectangleLines(get_x(),
+                           get_y(), 
+                           spriteObject.width,
+                           spriteObject.height, 
+                           RED);
 }
 
 void BaseObject::draw_rectangular_object(vector<int>& objectCoordinates){
-        //BeginDrawing();
-        //ClearBackground(BLUE);
         for(int i=0; i<objectCoordinates.size()-3; i+4)
         {
             DrawRectangle(objectCoordinates[i], 
@@ -43,7 +42,6 @@ void BaseObject::draw_rectangular_object(vector<int>& objectCoordinates){
                       objectCoordinates[i+3],
                       GREEN);
         }
-        //EndDrawing();
 }
 
 
