@@ -6,14 +6,17 @@
 
 using namespace std;
 
-class Pellet : public BaseObject{
+class PowerPellet : public BaseObject{
 public:
 
-    Pellet();
+    PowerPellet();
+    void duration();
+    bool activePower();
+    void activate();
 
 private:
-    int x_pos;
-    int y_pos;  
+    int active;
+    int PelletNumber;
 };
 
 
