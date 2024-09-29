@@ -3,6 +3,19 @@
 Score::Score()
 {
     points=0;
+
+    outPut.open("../resources/HighScores");
+    if(!outPut.is_open())
+    {
+        throw runtime_error("HighScore file not open");
+    }
+
+    int High;
+
+    while(outPut >> High)
+    {
+        HighScores.emplace_back(High);
+    }
 }
 
 void Score::addPoints()

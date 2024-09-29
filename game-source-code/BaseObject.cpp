@@ -30,7 +30,7 @@ void BaseObject::draw_sprite_object(){
                            get_y(), 
                            spriteObject.width,
                            spriteObject.height, 
-                           RED);
+                           (Color){255, 0, 0, 0});
 }
 
 void BaseObject::draw_rectangular_object(vector<int>& objectCoordinates){

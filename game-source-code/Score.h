@@ -2,6 +2,7 @@
 #define A98570DD_3CC0_4B62_9562_11D1DEE22ADD
 
 #include <string>
+#include <fstream>
 
 using namespace std;
 
