@@ -16,12 +16,17 @@ public:
     void moveLeft();
     void moveRight();
     void undoLastMove();
-    
+    void loseLife();
+    bool isDead();
+    void setHearts();
+    shared_ptr<vector<shared_ptr<BaseObject>>> getHearts();
+
 
 
 private:
-    int x_pos;
-    int y_pos;  
+    vector<shared_ptr<BaseObject>> hearts;
+    int lives;
+    bool dead;
     string lastMove;
 };
 
