@@ -33,6 +33,7 @@ void Score::storeHighScore()
             hScore=true;
             HighScores[i]=points;
         }
+        break;
     }
 }
 
@@ -72,4 +73,21 @@ string Score::getStringScore()
 bool  Score::newHighScore()
 {
     return hScore;
+}
+
+void Score::sortScores()
+{
+    int temp;
+    for(int i=0; i<HighScores.size(); i++)
+    {
+            for(int j=HighScores.size()-1; j>i; j++)
+            {
+                if(HighScores[j]>HighScores[i])
+                {
+                    temp=HighScores[i];
+                    HighScores[i]=HighScores[j];
+                    HighScores[j]=temp;
+                }
+            }
+    }
 }
