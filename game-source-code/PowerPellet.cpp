@@ -1,6 +1,9 @@
 #include "PowerPellet.h"
 
-PowerPellet::PowerPellet() : BaseObject(){}
+PowerPellet::PowerPellet() : BaseObject()
+{
+    set_sprite("../resources/powerPellet.png");
+}
 
 void PowerPellet::duration()
 {
