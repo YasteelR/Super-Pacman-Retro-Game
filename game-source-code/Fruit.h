@@ -9,8 +9,6 @@ class Fruit : public BaseObject
 {
     public:
         Fruit();
-        void move_Obj();
-        void undoLastMove();
         int getFruitNum();
         static void eatenFruit();
         void Destroy();
