@@ -5,15 +5,16 @@ Score::Score()
     points=0;
     hScore=false;
 
-    outPut.open("../resources/HighScores");
-    if(!outPut.is_open())
+    ifstream in;
+    in.open("../resources/HighScores.txt");
+    if(!in.is_open())
     {
         throw runtime_error("HighScore file not open");
     }
 
     int High;
 
-    while(outPut >> High)
+    while(in >> High)
     {
         HighScores.emplace_back(High);
     }
@@ -89,5 +90,17 @@ void Score::sortScores()
                     HighScores[j]=temp;
                 }
             }
+    }
+}
+
+void Score::store()
+{
+    sortScores();
+    ofstream out;
+    out.open("../resources/HighScores.txt");
+
+    for(int i=0; i<HighScores.size(); i++)
+    {
+        out << HighScores[i] <<endl;
     }
 }
