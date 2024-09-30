@@ -11,6 +11,7 @@ GameOperations::GameOperations(){
     Ghosts.emplace_back(make_shared<Ghost>(750,450));
     sketch = make_unique<Render>();
     points = make_unique<Score>();
+    collide = make_unique<Collisions>();
 
 
     gameOver=false;
@@ -99,13 +100,10 @@ void GameOperations::checkCollisionWall(){
 
 void GameOperations::checkCollisionDoor()
 {
-    for (auto i = 0; i < doors.size(); i++)
+    if(collide->checkCollisions(doors,playerPacman))
     {
-        if (CheckCollisionRecs(returnRect(doors[i]), playerPacman->getBoundingBox()))
-        {
-            collision = true;
-            playerPacman->undoLastMove();
-        }
+        collision = true;
+        playerPacman->undoLastMove();
     }
 }
 

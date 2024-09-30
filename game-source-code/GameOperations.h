@@ -15,6 +15,7 @@
 #include "Render.h"
 #include "Wall.h"
 #include "PowerPellet.h"
+#include "Collisions.h"
 
 class GameOperations{
 public:
@@ -56,6 +57,7 @@ private:
 
     unique_ptr<Render> sketch;
     vector<shared_ptr<PowerPellet>> pellets;
+    unique_ptr<Collisions> collide;
 
 };
 
