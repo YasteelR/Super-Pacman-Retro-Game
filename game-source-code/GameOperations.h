@@ -30,7 +30,6 @@ public:
     static bool is_game_over;
     void draw();
     void loadRect(string FilePath);
-    Rectangle returnRect(int& i, vector<int>& vector);
     template <typename T>
     Rectangle returnRect(shared_ptr<T> Object);
     bool getGameOver();
@@ -51,7 +50,7 @@ private:
     vector<shared_ptr<Key>> keys;
     vector<shared_ptr<Door>> doors;
     vector<shared_ptr<Fruit>> fruits;
-    Score points;
+    unique_ptr<Score> points;
     vector<shared_ptr<Star>> stars;
     bool collision;
 

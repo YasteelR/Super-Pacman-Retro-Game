@@ -10,6 +10,7 @@ GameOperations::GameOperations(){
     Ghosts.emplace_back(make_shared<Ghost>(750,400));
     Ghosts.emplace_back(make_shared<Ghost>(750,450));
     sketch = make_unique<Render>();
+    points = make_unique<Score>();
 
 
     gameOver=false;
@@ -130,7 +131,7 @@ void GameOperations::checkCollisionFruit()
             collision = true;
             fruits[i]->eatenFruit();
             fruits[i]->Destroy();
-            points.addPoints();
+            points->addPoints();
             if (fruits[i]->getFruitNum() == 0)
             {
                 gameOver = true;
@@ -146,7 +147,7 @@ void GameOperations::checkCollisionStar()
         if (CheckCollisionRecs(stars[i]->getBoundingBox(), playerPacman->getBoundingBox()))
         {
             collision = true;
-            points.addStarPoints(stars[i]->CompanionsMatch(), stars[i]->CompanionsMatchFruit());
+            points->addStarPoints(stars[i]->CompanionsMatch(), stars[i]->CompanionsMatchFruit());
             stars[i]->Destroy();
         }
     }
@@ -184,11 +185,11 @@ void GameOperations::draw(){
             sketch->drawObjects(stars);
             sketch->drawObjects(*(stars[i]->getCompanions()));
         }
-        DrawText(points.getStringScore().c_str(),600, 50, 50, GREEN);
+        DrawText(points->getStringScore().c_str(),600, 50, 50, GREEN);
 
         string sss="Current High Score: ";
         DrawText(sss.c_str(), 400, 800, 50 ,GREEN);
-        sketch->drawText(*(points.getHighScores()), 1450, 50);
+        sketch->drawText(*(points->getHighScores()), 1450, 50);
         EndDrawing();
 }
 
@@ -223,9 +224,6 @@ void GameOperations::loadRect(string FilePath){
     {
         
     }
-}
-Rectangle GameOperations::returnRect(int& i, vector<int>& vector){
-    return { (float)vector[i], (float)vector[i +1], (float)vector[i + 2], (float)vector[i + 3]};
 }
 
 bool GameOperations::getGameOver(){

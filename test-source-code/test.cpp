@@ -144,20 +144,20 @@ TEST_CASE("check collision between sprites work")
     CHECK(game.getCollision());
 }
 
-TEST_CASE("check collision between sprites work")
-{
-    player test = player{800, 300};
-    vector<int> WallCoordinates= {1,1,10,10};
-    int index = 0;
-    GameOperations game;
-    bool collision = false;
+// TEST_CASE("check collision between sprites work")
+// {
+//     player test = player{800, 300};
+//     vector<int> WallCoordinates= {1,1,10,10};
+//     int index = 0;
+//     GameOperations game;
+//     bool collision = false;
 
-    if (CheckCollisionRecs(game.returnRect(index, WallCoordinates) ,test.getBoundingBox() )) {
-        collision = true;
-    }
+//     if (CheckCollisionRecs(game.returnRect(index, WallCoordinates) ,test.getBoundingBox() )) {
+//         collision = true;
+//     }
 
-    CHECK(!collision);
-}
+//     CHECK(!collision);
+// }
 
 // TEST_CASE("Check collisions work if pacman Spawns inside a wall")
 // {
