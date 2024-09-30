@@ -106,6 +106,7 @@ void GameOperations::checkCollisionDoor()
         collision = true;
         playerPacman->undoLastMove();
     }
+    collide->resetCollision();
 }
 
 void GameOperations::checkCollisionKey()

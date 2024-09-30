@@ -17,9 +17,11 @@ class Collisions
 
         bool getCollision();
         int getObject();
-
+        void resetCollision();
+        
         template <typename T>
         Rectangle returnRect(shared_ptr<T> Object);
+        
 
     private:
         tuple<bool,int> CollisionObject;
