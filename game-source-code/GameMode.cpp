@@ -12,12 +12,15 @@ PacMan::PacMan(){
     splash = LoadTexture("../resources/pacman.png");
     splashPosition = {450,100};
     keys = LoadTexture("../resources/arrowKey.png");
-    keyPosition = {1220,650};
+    keyPosition = {1220,550};
     enter = LoadTexture("../resources/enter.png");
     enterPosition = {650, 560};
     p = LoadTexture("../resources/p.png");
-    pPosition = {400, 540};
-    Game_Opperations = make_unique<GameOperations>();    
+    pPosition = {1330, 320};
+    escape = LoadTexture("../resources/escape.png");
+    escapePosition = {1330,90};
+    Game_Opperations = make_unique<GameOperations>();
+    cycle = 0; 
     
 }
 
@@ -62,13 +65,21 @@ void PacMan::run(){
 
                     BeginDrawing();
                     ClearBackground(BLACK);
-                    DrawTextureEx(splash, splashPosition, 0, 1, WHITE); 
+
+                    DrawTextureEx(splash, splashPosition, 0, 1, WHITE);
+
                     DrawTextureEx(keys, keyPosition, 0, 1, WHITE);
-                    DrawText("USE ARROW KEYS TO MOVE", 1210, 610, 25, GREEN);
+                    DrawText("USE ARROW KEYS TO MOVE", 1210, 510, 25, GREEN);
+
                     DrawTextureEx(enter, enterPosition, 0, 1, WHITE);
                     DrawText("PRESS ENTER TO PLAY", 500, 510, 50, GREEN); 
+
                     DrawTextureEx(p, pPosition, 0, 1, WHITE);
-                    DrawText("PRESS P TO PAUSE", 350, 750, 25, GREEN); 
+                    DrawText("PRESS P TO PAUSE", 1270, 270, 25, GREEN); 
+
+                    DrawTextureEx(escape, escapePosition, 0, 1, WHITE);
+                    DrawText("PRESS ESCAPE TO EXIT", 1230, 60, 25, GREEN);
+
                     EndDrawing();
                 break;
 
