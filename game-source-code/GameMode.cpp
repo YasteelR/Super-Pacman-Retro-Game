@@ -10,7 +10,13 @@ PacMan::PacMan(){
     mode = Mode_select::Splash_screen;
     window->SetTargetFPS(60);
     splash = LoadTexture("../resources/pacman.png");
-    cout<< "Constructed "<<endl;
+    splashPosition = {450,100};
+    keys = LoadTexture("../resources/arrowKey.png");
+    keyPosition = {1220,650};
+    enter = LoadTexture("../resources/enter.png");
+    enterPosition = {650, 560};
+    p = LoadTexture("../resources/p.png");
+    pPosition = {400, 540};
     Game_Opperations = make_unique<GameOperations>();    
     
 }
@@ -55,9 +61,14 @@ void PacMan::run(){
                 case Mode_select::Splash_screen:
 
                     BeginDrawing();
-                    ClearBackground(GREEN);
-                    DrawTextureEx(splash, ZeroZero,0, 2.35, WHITE);
-                    DrawText("press enter to start, use arrows to move and p to pause", 800, 800, 25, WHITE); 
+                    ClearBackground(BLACK);
+                    DrawTextureEx(splash, splashPosition, 0, 1, WHITE); 
+                    DrawTextureEx(keys, keyPosition, 0, 1, WHITE);
+                    DrawText("USE ARROW KEYS TO MOVE", 1210, 610, 25, GREEN);
+                    DrawTextureEx(enter, enterPosition, 0, 1, WHITE);
+                    DrawText("PRESS ENTER TO PLAY", 500, 510, 50, GREEN); 
+                    DrawTextureEx(p, pPosition, 0, 1, WHITE);
+                    DrawText("PRESS P TO PAUSE", 350, 750, 25, GREEN); 
                     EndDrawing();
                 break;
 
