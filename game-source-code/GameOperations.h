@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <tuple>
 #include "player.h"
 #include "Ghost.h"
 #include "GameData.h"

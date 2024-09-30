@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include <raylib-cpp.hpp>
+#include <tuple>
 
 using namespace std;
 
@@ -12,23 +13,30 @@ class Collisions
     public:
         Collisions(){};
         template <typename T1, typename T2>
-        bool checkCollisions(vector<shared_ptr<T1>> Object, shared_ptr<T2> Player);
+        void checkCollisions(vector<shared_ptr<T1>> Object, shared_ptr<T2> Player);
+
+        bool getCollision();
+        int getObject();
 
         template <typename T>
         Rectangle returnRect(shared_ptr<T> Object);
+
+    private:
+        tuple<bool,int> CollisionObject;
 };
 
 template <typename T1, typename T2>
-bool Collisions::checkCollisions(vector<shared_ptr<T1>> Object, shared_ptr<T2> Player)
+void Collisions::checkCollisions(vector<shared_ptr<T1>> Object, shared_ptr<T2> Player)
 {
     for(int i=0; i<Object.size(); i++)
     {
         if(CheckCollisionRecs(returnRect(Object[i]), Player->getBoundingBox()))
         {
-            return true;
+            get<0>(CollisionObject)=true;
+            get<1>(CollisionObject)=i;
+            break;
         }
     }
-    return false;
 }
 
 template <typename T>

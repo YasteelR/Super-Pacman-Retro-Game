@@ -100,7 +100,8 @@ void GameOperations::checkCollisionWall(){
 
 void GameOperations::checkCollisionDoor()
 {
-    if(collide->checkCollisions(doors,playerPacman))
+    collide->checkCollisions(doors,playerPacman);
+    if(collide->getCollision())
     {
         collision = true;
         playerPacman->undoLastMove();
