@@ -105,11 +105,6 @@ void Score::store()
     }
 }
 
-Score::~Score()
-{
-    store();
-}
-
 shared_ptr<vector<int>> Score::getHighScores()
 {
     auto pointer =make_shared<vector<int>>(HighScores);

@@ -21,8 +21,7 @@ class Score
         void sortScores();
         void store();
         shared_ptr<vector<int>> getHighScores();
-
-        ~Score();
+        
     private:
         int points;
         string ScoreString;
