@@ -1,13 +1,13 @@
 #ifndef BB5257F6_5AD4_4BE3_9A6C_BB94C19F6F37
 #define BB5257F6_5AD4_4BE3_9A6C_BB94C19F6F37
 
-#include "BaseObject.h"
+#include "Sprite.h"
 #include <cstdlib>
 #include<ctime>
 
 using namespace std;
 
-class Star : public BaseObject
+class Star : public Sprite
 {
     public:
         Star();
@@ -20,11 +20,11 @@ class Star : public BaseObject
         bool CompanionsMatch();
         bool CompanionsMatchFruit();
         void Destroy();
-        shared_ptr<vector<shared_ptr<BaseObject>>> getCompanions();
+        shared_ptr<vector<shared_ptr<Sprite>>> getCompanions();
         void setTimer(int duration);
 
     private:
-        vector<shared_ptr<BaseObject>> starFruits;
+        vector<shared_ptr<Sprite>> starFruits;
         vector<string> fruitsFilepath;
         int clock;
         int timer;

@@ -2,7 +2,7 @@
 
 int Fruit::NumOfFruit=0;
 
-Fruit::Fruit() : BaseObject()
+Fruit::Fruit() : Sprite()
 {
     NumOfFruit++;
     set_sprite("../resources/banana.png");

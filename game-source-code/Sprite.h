@@ -6,6 +6,8 @@
 class Sprite : public BaseObject
 {
     public:
+        Sprite() : BaseObject(){};
+        Sprite(int x, int y) : BaseObject(x,y){};
         void setSprite(string filepath);
         string getSprite();
         int getWidth();

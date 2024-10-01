@@ -1,6 +1,6 @@
 #include "Star.h"
 
-Star::Star() : BaseObject()
+Star::Star() : Sprite()
 {
     set_sprite("../resources/star.png");
     srand(time(0));
@@ -82,9 +82,9 @@ void Star::Destroy()
     }
 }
 
-shared_ptr<vector<shared_ptr<BaseObject>>> Star::getCompanions()
+shared_ptr<vector<shared_ptr<Sprite>>> Star::getCompanions()
 {
-    auto pointer = make_shared<vector<shared_ptr<BaseObject>>>(starFruits);
+    auto pointer = make_shared<vector<shared_ptr<Sprite>>>(starFruits);
     return pointer;
 }
 

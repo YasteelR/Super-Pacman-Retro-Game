@@ -1,9 +1,9 @@
 #ifndef B01A566E_8EE6_4DF0_8642_E48F2AD1AC0A
 #define B01A566E_8EE6_4DF0_8642_E48F2AD1AC0A
 
-#include "BaseObject.h"
+#include "Sprite.h"
 
-class Move : public BaseObject
+class Move : public Sprite
 {
     public:
         Move(int x, int y);
