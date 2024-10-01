@@ -3,6 +3,7 @@
 void Sprite::setSprite(string filepath)
 {
     spriteFilepath=filepath;
+    sprite = LoadTexture(filepath.c_str());
 }
 
 string Sprite::getSprite()

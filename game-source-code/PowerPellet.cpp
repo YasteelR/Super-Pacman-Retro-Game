@@ -1,13 +1,12 @@
 #include "PowerPellet.h"
 
-PowerPellet::PowerPellet() : BaseObject()
+PowerPellet::PowerPellet() : Sprite()
 {
     set_sprite("../resources/powerPellet.png");
 }
 
 void PowerPellet::duration()
 {
-    cout<<active<<endl;
     if(active>0)
     {
         active--;

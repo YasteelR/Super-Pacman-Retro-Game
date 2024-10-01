@@ -44,7 +44,7 @@ void Collisions::checkCollisions(vector<shared_ptr<T1>> Object, shared_ptr<T2> P
 template <typename T>
 Rectangle Collisions::returnRect(shared_ptr<T> Object)
 {
-    return {(float)Object->get_x(), (float)Object->get_y(), (float)Object->getSpriteWidth(), (float)Object->getSpriteHeight()};
+    return {(float)Object->get_x(), (float)Object->get_y(), (float)Object->getWidth(), (float)Object->getHeight()};
 }
 
 #endif /* D15E5CA8_19CC_4569_8BBC_70E46AD52EA7 */

@@ -2,6 +2,7 @@
 #define A7554151_12F1_4B26_A7B2_E92F9D6B407A
 
 #include "BaseObject.h"
+#include <raylib-cpp.hpp>
 
 class Sprite : public BaseObject
 {

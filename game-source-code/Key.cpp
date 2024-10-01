@@ -2,9 +2,9 @@
 
 int Key::NumberOfKeys=0;
 
-Key::Key() : BaseObject()
+Key::Key() : Sprite()
 {
-    set_sprite("../resources/key.png");
+    setSprite("../resources/key.png");
     ThisKeysNumber=NumberOfKeys;
     NumberOfKeys++;
 }
