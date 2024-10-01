@@ -29,7 +29,18 @@ void GameOperations::move_objects()
     }
 }   
 
-void GameOperations::checkCollisionPacmanGhost(){
+void GameOperations::handleCollisions()
+{
+    handleCollisionPacmanGhost();
+    handleCollisionWall();
+    handleCollisionDoor();
+    handleCollisionFruit();
+    handleCollisionKey();
+    handleCollisionPellets();
+    handleCollisionStar();
+}
+
+void GameOperations::handleCollisionPacmanGhost(){
     //check collision with Ghosts
     collide->checkCollisions(Ghosts, playerPacman);
     if (collide->getCollision())
@@ -60,7 +71,7 @@ void GameOperations::checkCollisionPacmanGhost(){
 }
 
 
-void GameOperations::checkCollisionWall(){
+void GameOperations::handleCollisionWall(){
     for (auto &objects : Ghosts)
     {
         for (auto i = 0; i < walls.size(); i++)
@@ -95,7 +106,7 @@ void GameOperations::checkCollisionWall(){
     }
 }
 
-void GameOperations::checkCollisionDoor()
+void GameOperations::handleCollisionDoor()
 {
     collide->checkCollisions(doors,playerPacman);
     if(collide->getCollision())
@@ -106,7 +117,7 @@ void GameOperations::checkCollisionDoor()
     collide->resetCollision();
 }
 
-void GameOperations::checkCollisionKey()
+void GameOperations::handleCollisionKey()
 {
     collide->checkCollisions(keys,playerPacman);
     if (collide->getCollision())
@@ -118,7 +129,7 @@ void GameOperations::checkCollisionKey()
     collide->resetCollision();
 }
 
-void GameOperations::checkCollisionFruit()
+void GameOperations::handleCollisionFruit()
 {
     collide->checkCollisions(fruits,playerPacman);
     if(collide->getCollision())
@@ -135,7 +146,7 @@ void GameOperations::checkCollisionFruit()
     collide->resetCollision();
 }
 
-void GameOperations::checkCollisionStar()
+void GameOperations::handleCollisionStar()
 {
     collide->checkCollisions(stars,playerPacman);
     if (collide->getCollision())
@@ -147,7 +158,7 @@ void GameOperations::checkCollisionStar()
     collide->resetCollision();
 }
 
-void GameOperations::checkCollisionPellets()
+void GameOperations::handleCollisionPellets()
 {
     for(int i=0; i<pellets.size(); i++)
     {

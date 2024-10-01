@@ -22,25 +22,27 @@ public:
     GameOperations();
     void Start();
     void move_objects();
-    void checkCollisionPacmanGhost();
-    void checkCollisionWall();
-    void checkCollisionDoor();
-    void checkCollisionKey();
-    void checkCollisionFruit();
-    void checkCollisionPellets();
+    void handleCollisions();
+    
     static bool is_game_over;
     void draw();
     void loadRect(string FilePath);
     template <typename T>
     Rectangle returnRect(shared_ptr<T> Object);
     bool getGameOver();
-    void checkCollisionStar();
     bool getCollision();
     void resetCollision();
 
 
 private:
 
+    void handleCollisionPacmanGhost();
+    void handleCollisionWall();
+    void handleCollisionDoor();
+    void handleCollisionKey();
+    void handleCollisionFruit();
+    void handleCollisionPellets();
+    void handleCollisionStar();
 
     shared_ptr<player> playerPacman;
     vector<shared_ptr<Ghost>> Ghosts;

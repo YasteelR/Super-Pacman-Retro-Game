@@ -86,14 +86,8 @@ void PacMan::run(){
                 case Mode_select::Game_screen:
 
                     Game_Opperations->move_objects(); 
-                    Game_Opperations->checkCollisionWall();    
-                    Game_Opperations->checkCollisionPacmanGhost();
+                    Game_Opperations->handleCollisions();
                     Game_Opperations->draw();
-                    Game_Opperations->checkCollisionDoor();
-                    Game_Opperations->checkCollisionKey();
-                    Game_Opperations->checkCollisionFruit();
-                    Game_Opperations->checkCollisionStar();
-                    Game_Opperations->checkCollisionPellets();
                     if (Game_Opperations->getGameOver()){
                         mode=Mode_select::Game_over_screen;
                     }

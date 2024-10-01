@@ -140,7 +140,7 @@ TEST_CASE("moveRight moves the player Right")
 TEST_CASE("check collision between sprites work")
 {
     GameOperations game;
-    game.checkCollisionPacmanGhost();
+    game.handleCollisions();
     CHECK(game.getCollision());
 }
 
