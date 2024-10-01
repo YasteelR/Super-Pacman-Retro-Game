@@ -1,12 +1,10 @@
 #include "GameOperations.h"
 
 GameOperations::GameOperations(){
-    shared_ptr<GameData> GameInfo = make_shared<GameData>();
     loadRect("../resources/GameMap.txt");
     collision=false;
 
     playerPacman = make_shared<player>(player(550,200));
-    playerPacman->setGameData(GameInfo);
     Ghosts.emplace_back(make_shared<Ghost>(750,400));
     Ghosts.emplace_back(make_shared<Ghost>(750,450));
     sketch = make_unique<Render>();
@@ -27,7 +25,7 @@ void GameOperations::move_objects()
 {
     playerPacman->move_Obj();
     for (auto& objects :Ghosts){
-        objects->move_Obj();
+        objects->move_Obj(playerPacman);
     }
 }   
 

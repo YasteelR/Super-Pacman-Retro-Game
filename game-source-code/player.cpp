@@ -49,7 +49,6 @@ void player::move_Obj(){
             lastMove = "left";
             return;
         }
-        updatePlayerGameData();
 }
 
 void player::undoLastMove() {
@@ -66,7 +65,6 @@ void player::undoLastMove() {
         moveLeft();
     }
     else {
-        //std::cout << "Invalid move!" << std::endl;
     }
 }
 

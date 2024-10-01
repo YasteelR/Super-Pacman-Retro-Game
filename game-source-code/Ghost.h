@@ -3,6 +3,7 @@
 #include "raylib-cpp.hpp"
 #include <iostream>
 #include "Sprite.h"
+#include "player.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ public:
     void moveDown();
     void moveLeft();
     void moveRight();
-    void move_Obj();
+    void move_Obj(shared_ptr<player> pacman);
     void undoLastMove();
 
     void respawn();

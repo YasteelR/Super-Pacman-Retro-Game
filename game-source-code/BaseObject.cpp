@@ -1,9 +1,6 @@
 #include "BaseObject.h"
 
-using namespace std; 
-
-shared_ptr<GameData> BaseObject::GameInfo = nullptr;
-
+using namespace std;
 
 BaseObject::BaseObject(){}
 
@@ -33,20 +30,3 @@ void BaseObject::set_window(shared_ptr<raylib::Window> window){
 shared_ptr<raylib::Window> BaseObject::get_window(){
     return window_;
 };
-
-void BaseObject::setGameData(shared_ptr<GameData> GameData){
-    GameInfo = GameData;
-}
-
-void BaseObject::updatePlayerGameData(){
-    GameInfo->setPlayerPos(get_x(),get_y());
-}
-
-
-int BaseObject::getPlayerX(){
-    return GameInfo->getPlayerXpos();
-}
-
-int BaseObject::getPlayerY(){
-    return GameInfo->getPlayerYpos();
-}

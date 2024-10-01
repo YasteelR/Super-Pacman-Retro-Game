@@ -6,7 +6,6 @@
 #include <tuple>
 #include "player.h"
 #include "Ghost.h"
-#include "GameData.h"
 #include "FileReader.h"
 #include "Key.h"
 #include "Fruit.h"

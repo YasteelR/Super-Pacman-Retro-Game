@@ -25,9 +25,9 @@ void Ghost::moveRight() {
     set_location(get_x() + 2, get_y() );
 }
 
-void Ghost::move_Obj(){
-    auto playerX = getPlayerX();
-    auto playerY = getPlayerY();
+void Ghost::move_Obj(shared_ptr<player> pacman){
+    auto playerX = pacman->get_x();
+    auto playerY = pacman->get_y();
 
     auto xDistance = playerX - get_x();
     auto yDistance = playerY - get_y();
@@ -48,7 +48,6 @@ void Ghost::move_Obj(){
         lastMove = "down";
         return;
     }
-
 };
 
 void Ghost::undoLastMove() {
