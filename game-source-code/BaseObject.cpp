@@ -97,6 +97,17 @@ void BaseObject::updatePlayerGameData(){
 int BaseObject::getPlayerX(){
     return GameInfo->getPlayerXpos();
 }
+
 int BaseObject::getPlayerY(){
     return GameInfo->getPlayerYpos();
+}
+
+int BaseObject::getSpriteWidth()
+{
+    return spriteObject.GetWidth();
+}
+
+int BaseObject::getSpriteHeight()
+{
+    return spriteObject.GetHeight();
 }

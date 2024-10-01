@@ -111,15 +111,14 @@ void GameOperations::checkCollisionDoor()
 
 void GameOperations::checkCollisionKey()
 {
-    for (auto i = 0; i < keys.size(); i++)
+    collide->checkCollisions(keys,playerPacman);
+    if (collide->getCollision())
     {
-        if (CheckCollisionRecs(keys[i]->getBoundingBox(), playerPacman->getBoundingBox()))
-        {
-            collision = true;
-            keys[i]->destroyDoors(doors);
-            keys[i]->set_location(-100, -100);
-        }
+        collision = true;
+        keys[collide->getObject()]->destroyDoors(doors);
+        keys[collide->getObject()]->set_location(-100, -100);
     }
+    collide->resetCollision();
 }
 
 void GameOperations::checkCollisionFruit()

@@ -7,6 +7,7 @@ PowerPellet::PowerPellet() : BaseObject()
 
 void PowerPellet::duration()
 {
+    cout<<active<<endl;
     if(active>0)
     {
         active--;

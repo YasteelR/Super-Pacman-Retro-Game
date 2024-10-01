@@ -34,6 +34,8 @@ class BaseObject {
     void set_location(int x, int y);
     Rectangle getBoundingBox() const;
     string get_sprite();
+    int getSpriteWidth();
+    int getSpriteHeight();
     //////////////////////////////////////
     void draw_sprite_object();
     void draw_rectangular_object(vector<int>& objectCoordinates);
