@@ -31,33 +31,32 @@ void GameOperations::move_objects()
 
 void GameOperations::checkCollisionPacmanGhost(){
     //check collision with Ghosts
-    for (auto i = 0; i < Ghosts.size(); i++ ){
-        if (CheckCollisionRecs(playerPacman->getBoundingBox(), Ghosts[i]->getBoundingBox()))
+    collide->checkCollisions(Ghosts, playerPacman);
+    if (collide->getCollision())
+    {
+        collision = true;
+        bool pelletIsActive = false;
+        for (int i = 0; i < pellets.size(); i++)
         {
-            
-            collision = true;
-            bool pelletIsActive=false;
-            for(int i=0; i<pellets.size(); i++)
+            if (pellets[i]->activePower())
             {
-                if(pellets[i]->activePower())
-                {
-                    pelletIsActive=true;
-                    break;
-                }
+                pelletIsActive = true;
+                break;
             }
-            if(!pelletIsActive)
-            {
-                playerPacman->loseLife();
-                playerPacman->set_location(550, 200);
-                if (playerPacman->isDead())
-                {
-                    gameOver = true;
-                }
-            }
-            else 
-                Ghosts[i]->respawn();
         }
+        if (!pelletIsActive)
+        {
+            playerPacman->loseLife();
+            playerPacman->set_location(550, 200);
+            if (playerPacman->isDead())
+            {
+                gameOver = true;
+            }
+        }
+        else
+            Ghosts[collide->getObject()]->respawn();
     }
+    collide->resetCollision();
 }
 
 
@@ -121,45 +120,45 @@ void GameOperations::checkCollisionKey()
 
 void GameOperations::checkCollisionFruit()
 {
-    for (auto i = 0; i < fruits.size(); i++)
+    collide->checkCollisions(fruits,playerPacman);
+    if(collide->getCollision())
     {
-        if (CheckCollisionRecs(fruits[i]->getBoundingBox(), playerPacman->getBoundingBox()))
+        collision = true;
+        fruits[collide->getObject()]->eatenFruit();
+        fruits[collide->getObject()]->Destroy();
+        points->addPoints();
+        if (fruits[collide->getObject()]->getFruitNum() == 0)
         {
-            collision = true;
-            fruits[i]->eatenFruit();
-            fruits[i]->Destroy();
-            points->addPoints();
-            if (fruits[i]->getFruitNum() == 0)
-            {
-                gameOver = true;
-            }
+            gameOver = true;
         }
     }
+    collide->resetCollision();
 }
 
 void GameOperations::checkCollisionStar()
 {
-    for (auto i = 0; i < stars.size(); i++)
+    collide->checkCollisions(stars,playerPacman);
+    if (collide->getCollision())
     {
-        if (CheckCollisionRecs(stars[i]->getBoundingBox(), playerPacman->getBoundingBox()))
-        {
-            collision = true;
-            points->addStarPoints(stars[i]->CompanionsMatch(), stars[i]->CompanionsMatchFruit());
-            stars[i]->Destroy();
-        }
+        collision = true;
+        points->addStarPoints(stars[collide->getObject()]->CompanionsMatch(), stars[collide->getObject()]->CompanionsMatchFruit());
+        stars[collide->getObject()]->Destroy();
     }
+    collide->resetCollision();
 }
 
 void GameOperations::checkCollisionPellets()
 {
-    for (auto i = 0; i < pellets.size(); i++)
+    for(int i=0; i<pellets.size(); i++)
     {
         pellets[i]->duration();
-        if (CheckCollisionRecs(pellets[i]->getBoundingBox(), playerPacman->getBoundingBox()))
-        {
-            pellets[i]->activate();
-        }
     }
+    collide->checkCollisions(pellets,playerPacman);
+    if (collide->getCollision())
+    {
+        pellets[collide->getObject()]->activate();
+    }
+    collide->resetCollision();
 }
 
 void GameOperations::draw(){
