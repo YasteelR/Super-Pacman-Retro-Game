@@ -33,18 +33,6 @@ void BaseObject::draw_sprite_object(){
                            (Color){255, 0, 0, 0});
 }
 
-void BaseObject::draw_rectangular_object(vector<int>& objectCoordinates){
-        for(int i=0; i<objectCoordinates.size()-3; i+4)
-        {
-            DrawRectangle(objectCoordinates[i], 
-                      objectCoordinates[i+1],
-                      objectCoordinates[i+2],
-                      objectCoordinates[i+3],
-                      GREEN);
-        }
-}
-
-
 void BaseObject::set_Properties(Properties new_Properties){
     object_Properties = new_Properties;
 };
