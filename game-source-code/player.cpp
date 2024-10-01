@@ -6,9 +6,6 @@ player::player(int x, int y)
     lives=3;
     setHearts();
     dead=false;
-    auto object_feature = get_Properties();
-    object_feature.is_player = true;
-    set_Properties(object_feature);
     set_sprite("../resources/pacmanLeft.png");
 }
 void player::moveUp(){

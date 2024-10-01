@@ -9,32 +9,15 @@
 
 using namespace std;
 
-
-struct Properties{
-    bool is_moved;
-    bool is_invincible;
-    bool is_collided;
-    bool is_player;
-    bool is_enemy;
-    bool is_wall;
-    bool is_dead;
-    bool is_points;
-};
-
-
-
 class BaseObject {
     public:
     BaseObject(int x, int y);
     BaseObject();
-    Properties get_Properties();
-    void set_Properties(Properties new_Properties);
     int get_x();
     int get_y();
     void set_location(int x, int y);
     void set_sprite(string sprite_file_location);
     void set_window(shared_ptr<raylib::Window> window);
-    void set_moved(bool moved);
     shared_ptr<raylib::Window> get_window();
 
     void setGameData(shared_ptr<GameData> GameData);
@@ -49,7 +32,6 @@ class BaseObject {
     private:
         shared_ptr<raylib::Window> window_;
         string sprite;
-        Properties object_Properties;
 
         static shared_ptr<GameData> GameInfo;
 
