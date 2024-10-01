@@ -1,13 +1,12 @@
 #ifndef D090F8A0_C96D_4D4B_A6E4_9D21C536DB0F
 #define D090F8A0_C96D_4D4B_A6E4_9D21C536DB0F
-#include "BaseObject.h"
 #include "raylib-cpp.hpp"
 #include <iostream>
-#include "Move.h"
+#include "Sprite.h"
 
 using namespace std;
 
-class Ghost : public Move{
+class Ghost : public Sprite{
 public:
     Ghost(int x, int y);
     void moveUp();

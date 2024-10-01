@@ -32,12 +32,6 @@ class BaseObject {
     int get_x();
     int get_y();
     void set_location(int x, int y);
-    Rectangle getBoundingBox() const;
-    string get_sprite();
-    int getSpriteWidth();
-    int getSpriteHeight();
-    //////////////////////////////////////
-    void draw_sprite_object();
     void set_sprite(string sprite_file_location);
     void set_window(shared_ptr<raylib::Window> window);
     void set_moved(bool moved);
@@ -56,7 +50,6 @@ class BaseObject {
         shared_ptr<raylib::Window> window_;
         string sprite;
         Properties object_Properties;
-        raylib::Texture2D spriteObject;
 
         static shared_ptr<GameData> GameInfo;
 

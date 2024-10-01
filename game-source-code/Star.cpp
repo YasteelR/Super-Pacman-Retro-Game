@@ -53,7 +53,7 @@ void Star::setCompanionPosition()
 
 bool Star::CompanionsMatch()
 {
-    if(starFruits[0]->get_sprite()==starFruits[1]->get_sprite())
+    if(starFruits[0]->getSprite()==starFruits[1]->getSprite())
     {
         return true;
     }
@@ -65,7 +65,7 @@ bool Star::CompanionsMatchFruit()
 {
     string check;
     check="../resources/banana.png";
-    if (starFruits[0]->get_sprite() == check && starFruits[1]->get_sprite() == check)
+    if (starFruits[0]->getSprite() == check && starFruits[1]->getSprite() == check)
     {
         return true;
     }

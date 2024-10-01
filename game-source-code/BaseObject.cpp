@@ -20,32 +20,9 @@ Properties BaseObject::get_Properties(){
     return object_Properties;
 };
 
-string BaseObject::get_sprite(){
-    return sprite;
-};
-
-void BaseObject::draw_sprite_object(){
-        DrawTexture(spriteObject, get_x(), get_y(), WHITE);
-        DrawRectangleLines(get_x(),
-                           get_y(), 
-                           spriteObject.width,
-                           spriteObject.height, 
-                           (Color){255, 0, 0, 0});
-}
-
 void BaseObject::set_Properties(Properties new_Properties){
     object_Properties = new_Properties;
 };
-
-void BaseObject::set_sprite(string sprite_file_location){
-    sprite = sprite_file_location;
-    spriteObject = LoadTexture(sprite_file_location.c_str()); 
-};
-
-Rectangle BaseObject::getBoundingBox() const {
-
-        return { (float)current_x, (float)current_y, (float)spriteObject.width, (float)spriteObject.height };
-}
 
 void BaseObject::set_location(int x, int y){
     current_x = x;
@@ -88,14 +65,4 @@ int BaseObject::getPlayerX(){
 
 int BaseObject::getPlayerY(){
     return GameInfo->getPlayerYpos();
-}
-
-int BaseObject::getSpriteWidth()
-{
-    return spriteObject.GetWidth();
-}
-
-int BaseObject::getSpriteHeight()
-{
-    return spriteObject.GetHeight();
 }

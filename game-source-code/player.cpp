@@ -1,7 +1,7 @@
 #include "player.h"
 
 player::player(int x, int y)
-: Move(x,y)
+: Sprite(x,y)
 {
     lives=3;
     setHearts();
@@ -98,16 +98,16 @@ void player::setHearts()
     int h=800;
     for(int i=0; i<lives; i++)
     {
-        hearts.emplace_back(make_shared<BaseObject>());
+        hearts.emplace_back(make_shared<Sprite>());
         hearts.back()->set_location(w,h);
         hearts.back()->set_sprite("../resources/heart.png");
         w=w+55;
     }
 }
 
-shared_ptr<vector<shared_ptr<BaseObject>>> player::getHearts()
+shared_ptr<vector<shared_ptr<Sprite>>> player::getHearts()
 {
-    auto pointer = make_shared<vector<shared_ptr<BaseObject>>>(hearts);
+    auto pointer = make_shared<vector<shared_ptr<Sprite>>>(hearts);
     return pointer;
 }
 

@@ -1,7 +1,7 @@
 #include "Ghost.h"
 
 Ghost::Ghost(int x, int y)
-: Move(x,y)
+: Sprite(x,y)
 {
     auto object_feature = get_Properties();
     object_feature.is_player = true;

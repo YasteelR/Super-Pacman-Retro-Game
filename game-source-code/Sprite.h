@@ -9,11 +9,13 @@ class Sprite : public BaseObject
     public:
         Sprite() : BaseObject(){};
         Sprite(int x, int y) : BaseObject(x,y){};
-        void setSprite(string filepath);
+        void set_sprite(string filepath);
         string getSprite();
         int getWidth();
         int getHeight();
-        void drawSpriteObject();
+        void draw_sprite_object();
+        Rectangle getBoundingBox() const;
+    
     
     private:
         raylib::Texture2D sprite;

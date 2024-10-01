@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class player : public Move{
+class player : public Sprite{
 public:
 
     player(int x, int y);
@@ -20,12 +20,12 @@ public:
     void loseLife();
     bool isDead();
     void setHearts();
-    shared_ptr<vector<shared_ptr<BaseObject>>> getHearts();
+    shared_ptr<vector<shared_ptr<Sprite>>> getHearts();
 
 
 
 private:
-    vector<shared_ptr<BaseObject>> hearts;
+    vector<shared_ptr<Sprite>> hearts;
     int lives;
     bool dead;
     string lastMove;

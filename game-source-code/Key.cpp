@@ -4,7 +4,7 @@ int Key::NumberOfKeys=0;
 
 Key::Key() : Sprite()
 {
-    setSprite("../resources/key.png");
+    set_sprite("../resources/key.png");
     ThisKeysNumber=NumberOfKeys;
     NumberOfKeys++;
 }
