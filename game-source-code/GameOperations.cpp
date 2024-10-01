@@ -175,7 +175,7 @@ void GameOperations::draw(){
         string hhh="Lives: ";
         DrawText(hhh.c_str(),50, 800, 50, GREEN);
         sketch->drawObjects(*(playerPacman->getHearts()));
-        sketch->drawObjects(keys);
+        sketch->drawObjects1(keys);
         sketch->drawObjects(fruits);
         sketch->drawObjects(pellets);
         for(int i=0; i<stars.size(); i++)

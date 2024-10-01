@@ -20,6 +20,9 @@ class Render : public BaseObject
         void drawObjects(vector<shared_ptr<T>> Object);
 
         template <typename T>
+        void drawObjects1(vector<shared_ptr<T>> Object);
+
+        template <typename T>
         void drawObjects(shared_ptr<T> Object);
 
         template <typename T>
@@ -45,6 +48,15 @@ void Render::drawObjects(vector<shared_ptr<T>> Object)
     for (int i = 0; i < Object.size(); i++)
     {
         Object[i]->draw_sprite_object();
+    }
+}
+
+template <typename T>
+void Render::drawObjects1(vector<shared_ptr<T>> Object)
+{
+    for (int i = 0; i < Object.size(); i++)
+    {
+        Object[i]->drawSpriteObject();
     }
 }
 

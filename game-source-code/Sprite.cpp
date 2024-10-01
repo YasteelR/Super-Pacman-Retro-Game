@@ -19,3 +19,12 @@ int Sprite::getHeight()
 {
     return sprite.GetHeight();
 }
+
+void Sprite::drawSpriteObject(){
+        DrawTexture(sprite, get_x(), get_y(), WHITE);
+        DrawRectangleLines(get_x(),
+                           get_y(), 
+                           sprite.width,
+                           sprite.height, 
+                           (Color){255, 0, 0, 0});
+}

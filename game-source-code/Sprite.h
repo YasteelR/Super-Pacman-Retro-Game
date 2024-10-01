@@ -13,6 +13,7 @@ class Sprite : public BaseObject
         string getSprite();
         int getWidth();
         int getHeight();
+        void drawSpriteObject();
     
     private:
         raylib::Texture2D sprite;
