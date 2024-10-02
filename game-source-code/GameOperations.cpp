@@ -72,37 +72,31 @@ void GameOperations::handleCollisionPacmanGhost(){
 
 
 void GameOperations::handleCollisionWall(){
-    for (auto &objects : Ghosts)
+    collide->checkCollisions(walls,playerPacman);
+    if(collide->getCollision())
     {
-        for (auto i = 0; i < walls.size(); i++)
-        {
-            if (CheckCollisionRecs(returnRect(walls[i]), objects->getBoundingBox()))
-            {
-                collision=true;
-                objects->undoLastMove();
-            }
-            if (CheckCollisionRecs(returnRect(walls[i]), playerPacman->getBoundingBox()))
-            {
-                collision=true;
-                playerPacman->undoLastMove();
-            }
-        }
+        collision=true;
+        playerPacman->undoLastMove();
     }
-    for (auto &objects : Ghosts)
+    collide->resetCollision();
+    
+    collide->checkCollisions(boundaries,playerPacman);
+    if(collide->getCollision())
     {
-        for (auto i = 0; i < boundaries.size(); i++)
+        collision=true;
+        playerPacman->undoLastMove();
+    }
+    collide->resetCollision();
+
+    for(int i=0; i<Ghosts.size(); i++)
+    {
+        collide->checkCollisions(walls,Ghosts[i]);
+        if(collide->getCollision())
         {
-            if (CheckCollisionRecs(returnRect(boundaries[i]), objects->getBoundingBox()))
-            {
-                collision=true;
-                objects->undoLastMove();
-            }
-            if (CheckCollisionRecs(returnRect(boundaries[i]), playerPacman->getBoundingBox()))
-            {
-                collision=true;
-                playerPacman->undoLastMove();
-            }
+            collision=true;
+            Ghosts[i]->undoLastMove();
         }
+        collide->resetCollision();
     }
 }
 
@@ -227,10 +221,6 @@ void GameOperations::loadRect(string FilePath){
 
     TextFile.ObjectType("Power Pellets");
     TextFile.ReadData2(pellets);
-    for(int i=0; i<pellets.size(); i++)
-    {
-        
-    }
 }
 
 bool GameOperations::getGameOver(){
