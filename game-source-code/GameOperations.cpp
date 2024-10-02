@@ -10,6 +10,7 @@ GameOperations::GameOperations(){
     sketch = make_unique<Render>();
     points = make_unique<Score>();
     collide = make_unique<Collisions>();
+    Object = make_unique<ObjectManager>();
 
 
     gameOver=false;

@@ -17,8 +17,7 @@ class ObjectManager
         ObjectManager(){};
         void loadObjects(string filepath);
         template <typename T>
-        shared_ptr<T> getObject(string type);
-
+        shared_ptr<T> get(string type);
     private:
         FileReader ObjectFile;
 
@@ -35,11 +34,11 @@ class ObjectManager
 };
 
 template <typename T>
-shared_ptr<T> ObjectManager::getObject(string type)
+shared_ptr<T> ObjectManager::get(string type)
 {
     if(type == "player")
     {
-        return player;
+        return playerPacman;
     }
     else if(type == "Ghost")
     {

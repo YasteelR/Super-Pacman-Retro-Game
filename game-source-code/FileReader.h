@@ -13,6 +13,7 @@ using namespace std;
 class FileReader
 {
     public:
+        FileReader(){};
         FileReader(string ReadInFile);
 
         void SetMapFile(string FileName);
