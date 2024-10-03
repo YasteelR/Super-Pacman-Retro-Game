@@ -40,6 +40,7 @@ void GameOperations::handleCollisions()
     handleCollisionKey();
     handleCollisionPellets();
     handleCollisionStar();
+    handleCollisionSPellets();
 }
 
 void GameOperations::handleCollisionPacmanGhost(){
@@ -49,11 +50,20 @@ void GameOperations::handleCollisionPacmanGhost(){
     {
         collision = true;
         bool pelletIsActive = false;
+        bool spelletIsActive = false;
         for (int i = 0; i < pellets.size(); i++)
         {
             if (pellets[i]->activePower())
             {
                 pelletIsActive = true;
+                break;
+            }
+        }
+        for (int i = 0; i < spellets.size(); i++)
+        {
+            if (spellets[i]->activePower())
+            {
+                spelletIsActive = true;
                 break;
             }
         }
@@ -168,6 +178,20 @@ void GameOperations::handleCollisionPellets()
     collide->resetCollision();
 }
 
+void GameOperations::handleCollisionSPellets()
+{
+    for(int i=0; i<spellets.size(); i++)
+    {
+        spellets[i]->duration();
+    }
+    collide->checkCollisions(spellets,playerPacman);
+    if (collide->getCollision())
+    {
+        spellets[collide->getObject()]->activate();
+    }
+    collide->resetCollision();
+}
+
 void GameOperations::draw(){
         BeginDrawing();
         ClearBackground(GREEN);
@@ -182,6 +206,7 @@ void GameOperations::draw(){
         sketch->drawObjects(keys);
         sketch->drawObjects(fruits);
         sketch->drawObjects(pellets);
+        sketch->drawObjects(spellets);
         for(int i=0; i<stars.size(); i++)
         {
             stars[i]->setObjects();

@@ -45,6 +45,7 @@ private:
     void handleCollisionFruit();
     void handleCollisionPellets();
     void handleCollisionStar();
+    void handleCollisionSPellets();
 
     shared_ptr<player> playerPacman;
     vector<shared_ptr<Ghost>> Ghosts;
