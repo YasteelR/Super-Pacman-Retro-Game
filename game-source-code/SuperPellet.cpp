@@ -2,7 +2,7 @@
 
 SuperPellet::SuperPellet() : Sprite()
 {
-    set_sprite("../resources/powerPellet.png");
+    set_sprite("../resources/superPellet.png");
     active=0;
 }
 

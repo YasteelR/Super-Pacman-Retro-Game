@@ -219,6 +219,9 @@ void GameOperations::loadRect(string FilePath){
 
     TextFile.ObjectType("Power Pellets");
     TextFile.ReadData2(pellets);
+
+    TextFile.ObjectType("Super Pellets");
+    TextFile.ReadData2(spellets);
 }
 
 bool GameOperations::getGameOver(){
