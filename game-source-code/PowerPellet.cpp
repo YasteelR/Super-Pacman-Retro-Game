@@ -3,6 +3,7 @@
 PowerPellet::PowerPellet() : Sprite()
 {
     set_sprite("../resources/powerPellet.png");
+    active=0;
 }
 
 void PowerPellet::duration()

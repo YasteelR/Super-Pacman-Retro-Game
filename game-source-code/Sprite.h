@@ -13,7 +13,6 @@ class Sprite : public BaseObject
         string getSprite();
         int getWidth();
         int getHeight();
-        void draw_sprite_object();
         Rectangle getBoundingBox() const;
     
     
