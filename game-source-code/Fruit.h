@@ -12,6 +12,7 @@ class Fruit : public Sprite
         int getFruitNum();
         static void eatenFruit();
         void Destroy();
+        static void reset();
 
     private:
         static int NumOfFruit;

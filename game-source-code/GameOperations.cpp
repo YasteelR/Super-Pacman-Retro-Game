@@ -3,6 +3,8 @@
 GameOperations::GameOperations(){
     loadRect("../resources/GameMap.txt");
     collision=false;
+    Fruit clear;
+    clear.reset();
 
     playerPacman = make_shared<player>(player(550,200));
     Ghosts.emplace_back(make_shared<Ghost>(750,400));

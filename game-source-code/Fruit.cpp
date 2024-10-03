@@ -10,6 +10,7 @@ Fruit::Fruit() : Sprite()
 
 int Fruit::getFruitNum()
 {
+    cout<<NumOfFruit<<endl;
     return NumOfFruit;
 }
 
@@ -21,4 +22,9 @@ void Fruit::eatenFruit()
 void Fruit::Destroy()
 {
     set_location(-100,-100);
+}
+
+void Fruit::reset()
+{
+    NumOfFruit=0;
 }
