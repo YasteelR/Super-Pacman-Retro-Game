@@ -216,10 +216,6 @@ void GameOperations::loadRect(string FilePath){
 
     TextFile.ObjectType("Stars");
     TextFile.ReadData2(stars);
-    for(int i=0; i<stars.size(); i++)
-    {
-        stars[i]->setUpCompanions(2);
-    }
 
     TextFile.ObjectType("Power Pellets");
     TextFile.ReadData2(pellets);

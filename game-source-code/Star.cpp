@@ -10,22 +10,15 @@ Star::Star() : Sprite()
     fruitsFilepath.emplace_back("../resources/banana.png");
     fruitsFilepath.emplace_back("../resources/orange.png");
     fruitsFilepath.emplace_back("../resources/cherry.png");
-}
 
-void Star::setUpCompanions(int companions)
-{
-    createCompanions(companions);
-    setCompanionPosition();
-}
+    starFruits.emplace_back(make_shared<Sprite>());
+    starFruits.back()->set_sprite(fruitsFilepath[0]);
 
+    starFruits.emplace_back(make_shared<Sprite>());
+    starFruits.back()->set_sprite(fruitsFilepath[1]);
 
-void Star::createCompanions(int& companions)
-{
-    for(int i=0; i<companions; i++)
-    {
-        starFruits.emplace_back(make_shared<Star>());
-        starFruits.back()->set_sprite(fruitsFilepath[0]);
-    }
+    starFruits[0]->set_location(801,601);
+    starFruits[1]->set_location(701,601);
 }
 
 void Star::setObjects()
@@ -39,15 +32,6 @@ void Star::setObjects()
             int temp = rand() % 3;
             starFruits[i]->set_sprite(fruitsFilepath[temp]);
         }
-    }
-}  
-
-void Star::setCompanionPosition()
-{
-    if(!starFruits.empty() && starFruits.size()==2)
-    {
-        starFruits[0]->set_location(get_x()+49,get_y()-1);
-        starFruits[1]->set_location(get_x()-51,get_y()-1);
     }
 }
 

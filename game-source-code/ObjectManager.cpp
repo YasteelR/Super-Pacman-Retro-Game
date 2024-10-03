@@ -28,10 +28,6 @@ void ObjectManager::loadObjects(string filepath)
 
     ObjectFile.ObjectType("Stars");
     ObjectFile.ReadData2(stars);
-    for(int i=0; i<stars.size(); i++)
-    {
-        stars[i]->setUpCompanions(2);
-    }
 
     ObjectFile.ObjectType("Power Pellets");
     ObjectFile.ReadData2(powerpellets);

@@ -14,9 +14,6 @@ class Star : public Sprite
         void setObjects();
         void changeImages();
         void DrawCompanions();
-        void setCompanionPosition();
-        void createCompanions(int& companions);
-        void setUpCompanions(int companions);
         bool CompanionsMatch();
         bool CompanionsMatchFruit();
         void Destroy();
