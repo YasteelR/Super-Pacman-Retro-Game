@@ -28,7 +28,7 @@ class ObjectManager
         vector<shared_ptr<Key>> keys;
         vector<shared_ptr<Door>> doors;
         vector<shared_ptr<Fruit>> fruits;
-        unique_ptr<Score> scores;
+        shared_ptr<Score> scores;
         vector<shared_ptr<Star>> stars;
         vector<shared_ptr<PowerPellet>> powerpellets;
 };
@@ -42,27 +42,33 @@ shared_ptr<T> ObjectManager::get(string type)
     }
     else if(type == "Ghost")
     {
-        return ghosts;
+        auto ghostPointer = make_shared<vector<shared_ptr<Ghost>>>(ghosts);
+        return ghostPointer;
     }
     else if(type == "Wall")
     {
-        return walls;
+        auto wallPointer = make_shared<vector<shared_ptr<Wall>>>(walls);
+        return wallPointer;
     }
     else if(type == "Boundary")
     {
-        return boundaries;
+        auto boundaryPointer = make_shared<vector<shared_ptr<Wall>>>(boundaries);
+        return boundaryPointer;
     }
     else if(type == "Key")
     {
-        return keys;
+        auto keyPointer = make_shared<vector<shared_ptr<Key>>>(keys);
+        return keyPointer;
     }
     else if(type == "Door")
     {
-        return doors;
+        auto doorPointer = make_shared<vector<shared_ptr<Door>>>(doors);
+        return doorPointer;
     }
     else if(type == "Fruit")
     {
-        return fruits;
+        auto fruitPointer = make_shared<vector<shared_ptr<Fruit>>>(fruits);
+        return fruitPointer;
     }
     else if(type == "Score")
     {
@@ -70,11 +76,13 @@ shared_ptr<T> ObjectManager::get(string type)
     }
     else if(type == "Star")
     {
-        return stars;
+        auto starPointer = make_shared<vector<shared_ptr<Star>>>(stars);
+        return starPointer;
     }
     else if(type == "PowerPellet")
     {
-        return powerpellets;
+        auto powerpelletsPointer = make_shared<vector<shared_ptr<PowerPellet>>>(powerpellets);
+        return powerpelletsPointer;
     }
     else 
         throw runtime_error("Type does not match any objects");

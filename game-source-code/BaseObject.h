@@ -24,7 +24,6 @@ class BaseObject {
         int current_y;
     private:
         shared_ptr<raylib::Window> window_;
-        string sprite;
 };
 
 

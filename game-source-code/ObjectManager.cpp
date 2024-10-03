@@ -5,8 +5,8 @@ void ObjectManager::loadObjects(string filepath)
     //Create the player and the ghosts and set their positions
     playerPacman = make_shared<player>(player(550,200));
     ghosts.emplace_back(make_shared<Ghost>(750,400));
-    ghosts.emplace_back(make_shared<Ghost>(750,450));
-    scores = make_unique<Score>();
+    ghosts.emplace_back(make_shared<Ghost>(800,400));
+    scores = make_shared<Score>();
 
     ObjectFile.OpenFile(filepath);
     

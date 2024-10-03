@@ -6,7 +6,7 @@ GameOperations::GameOperations(){
 
     playerPacman = make_shared<player>(player(550,200));
     Ghosts.emplace_back(make_shared<Ghost>(750,400));
-    Ghosts.emplace_back(make_shared<Ghost>(750,450));
+    Ghosts.emplace_back(make_shared<Ghost>(800,400));
     sketch = make_unique<Render>();
     points = make_unique<Score>();
     collide = make_unique<Collisions>();
@@ -18,8 +18,6 @@ GameOperations::GameOperations(){
     // create vector of rectangles
 
     //create vector of walls
-
-
 
 }
 
