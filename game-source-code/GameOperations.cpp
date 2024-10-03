@@ -67,7 +67,7 @@ void GameOperations::handleCollisionPacmanGhost(){
                 break;
             }
         }
-        if (!pelletIsActive)
+        if (!pelletIsActive && !spelletIsActive)
         {
             playerPacman->loseLife();
             playerPacman->set_location(550, 200);
@@ -76,8 +76,11 @@ void GameOperations::handleCollisionPacmanGhost(){
                 gameOver = true;
             }
         }
-        else
+        else if(pelletIsActive)
+        {
             Ghosts[collide->getObject()]->respawn();
+        }
+        else if(spelletIsActive){}
     }
     collide->resetCollision();
 }
