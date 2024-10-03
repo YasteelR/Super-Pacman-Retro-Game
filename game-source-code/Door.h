@@ -14,6 +14,7 @@ public:
     int getHeight();
     void setWidth(int width_);
     void setHeight(int height_);
+    void destroy();
 
 private:
     int width;

@@ -118,10 +118,24 @@ void GameOperations::handleCollisionWall(){
 void GameOperations::handleCollisionDoor()
 {
     collide->checkCollisions(doors,playerPacman);
-    if(collide->getCollision())
+    bool spelletIsActive = false;
+    for(int i=0; i<spellets.size(); i++)
+    {
+        if (spellets[i]->activePower())
+            {
+                spelletIsActive = true;
+                break;
+            }
+    }
+    if(collide->getCollision()&&!spelletIsActive)
     {
         collision = true;
         playerPacman->undoLastMove();
+    }
+    else if(collide->getCollision()&&spelletIsActive)
+    {
+        collision = true;
+        doors[collide->getObject()]->destroy();
     }
     collide->resetCollision();
 }
