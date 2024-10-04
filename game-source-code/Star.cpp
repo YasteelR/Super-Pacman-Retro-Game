@@ -1,39 +1,30 @@
 #include "Star.h"
 
-Star::Star() : BaseObject()
+Star::Star() : Sprite()
 {
     set_sprite("../resources/star.png");
     srand(time(0));
     clock=0;
+    timer =60;
     
     fruitsFilepath.emplace_back("../resources/banana.png");
     fruitsFilepath.emplace_back("../resources/orange.png");
     fruitsFilepath.emplace_back("../resources/cherry.png");
-}
 
-void Star::setUpCompanions()
-{
-    createCompanions();
-    if(!starFruits.empty())
-    {
-        starFruits[0]->set_sprite(fruitsFilepath[0]);
-        starFruits[1]->set_sprite(fruitsFilepath[1]);
-    }
-    setCompanionPosition();
-}
+    starFruits.emplace_back(make_shared<Sprite>());
+    starFruits.back()->set_sprite(fruitsFilepath[0]);
 
-void Star::createCompanions()
-{
-    for(int i=0; i<2; i++)
-    {
-        starFruits.emplace_back(make_shared<Star>());
-    }
+    starFruits.emplace_back(make_shared<Sprite>());
+    starFruits.back()->set_sprite(fruitsFilepath[1]);
+
+    starFruits[0]->set_location(801,601);
+    starFruits[1]->set_location(701,601);
 }
 
 void Star::setObjects()
 {
     clock++;
-    if (clock == 60)
+    if (clock == timer)
     {
         clock=0;
         for (int i = 0; i < starFruits.size(); i++)
@@ -42,37 +33,11 @@ void Star::setObjects()
             starFruits[i]->set_sprite(fruitsFilepath[temp]);
         }
     }
-}  
-
-void Star::DrawCompanions()
-{
-    for(int i=0; i<starFruits.size(); i++)
-    {
-        starFruits[i]->draw_sprite_object();
-    }
 }
 
-void Star::setCompanionPosition()
-{
-    if(!starFruits.empty() && starFruits.size()==2)
-    {
-        starFruits[0]->set_location(get_x()+49,get_y()-1);
-        starFruits[1]->set_location(get_x()-51,get_y()-1);
-    }
-}
-
-void Star::move_Obj()
-{
-    throw runtime_error("Keys cannot move!");
-}
-
-void Star::undoLastMove()
-{
-    throw runtime_error("Keys cannot move!");
-}
 bool Star::CompanionsMatch()
 {
-    if(starFruits[0]->get_sprite()==starFruits[1]->get_sprite())
+    if(starFruits[0]->getSprite()==starFruits[1]->getSprite())
     {
         return true;
     }
@@ -84,7 +49,7 @@ bool Star::CompanionsMatchFruit()
 {
     string check;
     check="../resources/banana.png";
-    if (starFruits[0]->get_sprite() == check && starFruits[1]->get_sprite() == check)
+    if (starFruits[0]->getSprite() == check && starFruits[1]->getSprite() == check)
     {
         return true;
     }
@@ -99,4 +64,15 @@ void Star::Destroy()
     {
         starFruits[i]->set_location(-100,-100);
     }
+}
+
+shared_ptr<vector<shared_ptr<Sprite>>> Star::getCompanions()
+{
+    auto pointer = make_shared<vector<shared_ptr<Sprite>>>(starFruits);
+    return pointer;
+}
+
+void Star::setTimer(int duration)
+{
+    timer=duration;
 }

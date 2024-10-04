@@ -3,6 +3,39 @@
 Score::Score()
 {
     points=0;
+    hScore=false;
+
+    ifstream in;
+    in.open("../resources/HighScores.txt");
+    if(!in.is_open())
+    {
+        throw runtime_error("HighScore file not open");
+    }
+
+    int High;
+
+    while(in >> High)
+    {
+        HighScores.emplace_back(High);
+    }
+}
+
+void Score::storeHighScore()
+{
+    if(HighScores.size()<5)
+    {
+        HighScores.emplace_back(points);
+        hScore=true;
+    }
+    for(int i=0; i<HighScores.size(); i++)
+    {
+        if(points>HighScores[i])
+        {
+            hScore=true;
+            HighScores[i]=points;
+        }
+        break;
+    }
 }
 
 void Score::addPoints()
@@ -36,4 +69,45 @@ string Score::getStringScore()
     ScoreString+= to_string(points);
 
     return ScoreString;
+}
+
+bool  Score::newHighScore()
+{
+    return hScore;
+}
+
+void Score::sortScores()
+{
+    int temp;
+    for(int i=0; i<HighScores.size(); i++)
+    {
+            for(int j=HighScores.size()-1; j>i; j++)
+            {
+                if(HighScores[j]>HighScores[i])
+                {
+                    temp=HighScores[i];
+                    HighScores[i]=HighScores[j];
+                    HighScores[j]=temp;
+                }
+            }
+    }
+}
+
+void Score::store()
+{
+    sortScores();
+    ofstream out;
+    out.open("../resources/HighScores.txt");
+
+    for(int i=0; i<HighScores.size(); i++)
+    {
+        out << HighScores[i] <<endl;
+    }
+}
+
+shared_ptr<vector<int>> Score::getHighScores()
+{
+    auto pointer =make_shared<vector<int>>(HighScores);
+    
+    return pointer;
 }

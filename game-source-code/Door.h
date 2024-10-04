@@ -9,9 +9,12 @@ using namespace std;
 class Door : public BaseObject{
 public:
 
-    Door(int x, int y);
-    void move_Obj();
-    void undoLastMove();
+    Door();
+    int getWidth();
+    int getHeight();
+    void setWidth(int width_);
+    void setHeight(int height_);
+    void destroy();
 
 private:
     int width;

@@ -36,9 +36,18 @@ private:
     unique_ptr<GameOperations> Game_Opperations;
     Mode_select mode;
     raylib::Texture2D splash;
-    Vector2 ZeroZero = {0,0};
+    raylib::Texture2D keys;
+    raylib::Texture2D enter;
+    raylib::Texture2D p;
+    raylib::Texture2D escape;
+    Vector2 splashPosition;
+    Vector2 keyPosition;
+    Vector2 enterPosition;
+    Vector2 pPosition;
+    Vector2 escapePosition;
     const int screen_width =1600;
     const int screen_height =900;
+    int cycle;
 };
 
 #endif /* AEFA9809_0E75_4129_876C_3490D6312543 */

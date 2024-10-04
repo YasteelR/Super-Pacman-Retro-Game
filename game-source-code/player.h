@@ -3,10 +3,11 @@
 #include "BaseObject.h"
 #include "raylib-cpp.hpp"
 #include <iostream>
+#include "Move.h"
 
 using namespace std;
 
-class player : public BaseObject{
+class player : public Sprite{
 public:
 
     player(int x, int y);
@@ -16,12 +17,17 @@ public:
     void moveLeft();
     void moveRight();
     void undoLastMove();
-    
+    void loseLife();
+    bool isDead();
+    void setHearts();
+    shared_ptr<vector<shared_ptr<Sprite>>> getHearts();
+
 
 
 private:
-    int x_pos;
-    int y_pos;  
+    vector<shared_ptr<Sprite>> hearts;
+    int lives;
+    bool dead;
     string lastMove;
 };
 
