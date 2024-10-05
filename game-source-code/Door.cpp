@@ -1,16 +1,30 @@
 #include "Door.h"
 
-Door::Door(int x, int y) : BaseObject(x,y)
+Door::Door() : BaseObject(){}
+
+int Door::getWidth()
 {
-    set_location(x,y);
+    return width;
 }
 
-void Door::move_Obj()
+int Door::getHeight()
 {
-    throw runtime_error("Keys cannot move!");
+    return height;
 }
 
-void Door::undoLastMove()
+void Door::setWidth(int width_)
 {
-    throw runtime_error("Keys cannot move!");
+    width=width_;
+}
+
+void Door::setHeight(int height_)
+{
+    height = height_;
+}
+
+void Door::destroy()
+{
+    set_location(0,0);
+    width=0;
+    height=0;
 }

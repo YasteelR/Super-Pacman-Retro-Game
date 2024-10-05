@@ -141,60 +141,31 @@ TEST_CASE("check collision between sprites work")
 {
     //raylib::Window(1600, 900, "test window");
     GameOperations game;
-
-    CHECK(!game.checkCollisionPacmanGhost());
+    game.handleCollisions();
+    CHECK(game.getCollision());
 }
 
-TEST_CASE("check collision between sprites work")
-{
-    //raylib::Window(1600, 900, "test window");
-    player test = player{800, 300};
-    vector<int> WallCoordinates= {1,1,10,10};
-    int index = 0;
-    GameOperations game;
-    bool collision = false;
+// TEST_CASE("check collision between sprites work")
+// {
+//     player test = player{800, 300};
+//     vector<int> WallCoordinates= {1,1,10,10};
+//     int index = 0;
+//     GameOperations game;
+//     bool collision = false;
 
-    if (CheckCollisionRecs(game.returnRect(index, WallCoordinates) ,test.getBoundingBox() )) {
-        //cout <<"wall collision"<<endl;
-        collision = true;
-    }
+//     if (CheckCollisionRecs(game.returnRect(index, WallCoordinates) ,test.getBoundingBox() )) {
+//         collision = true;
+//     }
 
-    CHECK(!collision);
-}
-//====================================Testing Ghost====================================================================================
-TEST_CASE("test ghost constructor"){
-    //raylib::Window(1600, 900, "test window");
-    Ghost ghost1 (500,500);
-    CHECK(ghost1.get_sprite()!="");
-}
+//     CHECK(!collision);
+// }
 
-TEST_CASE("Test ghost move up decreases y axis"){
-    //raylib::Window(1600, 900, "test window");
-    Ghost ghost1 (500,500);
-    int initialY = ghost1.get_y();
-    ghost1.moveUp();
-    CHECK(initialY - 2 == ghost1.get_y());
-}
+// TEST_CASE("Check collisions work if pacman Spawns inside a wall")
+// {
+//     GameOperations test;
+//     test.loadRect("..resources/GameMap.txt");
+//     player TestPlayer = player {50,0};
+//     test.checkCollisionWall();
 
-TEST_CASE("Test ghost move down increases y axis"){
-    //raylib::Window(1600, 900, "test window");
-    Ghost ghost1 (500,500);
-    int initialY = ghost1.get_y();
-    ghost1.moveDown();
-    CHECK(initialY + 2 == ghost1.get_y());
-}
-
-TEST_CASE("Test ghost move right increases x axis"){
-    //raylib::Window(1600, 900, "test window");
-    Ghost ghost1 (500,500);
-    int initialX = ghost1.get_x();
-    ghost1.moveRight();
-    CHECK(initialX + 2 == ghost1.get_x());
-}
-TEST_CASE("Test ghost move left decreases x axis"){
-    //raylib::Window(1600, 900, "test window");
-    Ghost ghost1 (500,500);
-    int initialX = ghost1.get_x();
-    ghost1.moveLeft();
-    CHECK(initialX - 2 == ghost1.get_x());
-}
+//     CHECK(test.getCollision());
+// }

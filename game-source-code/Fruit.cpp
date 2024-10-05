@@ -2,24 +2,15 @@
 
 int Fruit::NumOfFruit=0;
 
-Fruit::Fruit() : BaseObject()
+Fruit::Fruit() : Sprite()
 {
     NumOfFruit++;
     set_sprite("../resources/banana.png");
 }
 
-void Fruit::move_Obj()
-{
-    throw runtime_error("Keys cannot move!");
-}
-
-void Fruit::undoLastMove()
-{
-    throw runtime_error("Keys cannot move!");
-}
-
 int Fruit::getFruitNum()
 {
+    cout<<NumOfFruit<<endl;
     return NumOfFruit;
 }
 
@@ -31,4 +22,9 @@ void Fruit::eatenFruit()
 void Fruit::Destroy()
 {
     set_location(-100,-100);
+}
+
+void Fruit::reset()
+{
+    NumOfFruit=0;
 }

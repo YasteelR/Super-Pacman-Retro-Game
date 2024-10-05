@@ -2,32 +2,19 @@
 
 int Key::NumberOfKeys=0;
 
-Key::Key() : BaseObject()
+Key::Key() : Sprite()
 {
     set_sprite("../resources/key.png");
     ThisKeysNumber=NumberOfKeys;
     NumberOfKeys++;
-    //cout<<NumberOfKeys<<endl;
 }
 
-void Key::destroyDoors(vector<int>& doors)
+void Key::destroyDoors(vector<shared_ptr<Door>>& doors)
 {
-    //cout<<"Entered"<<endl;
-    for(int j=ThisKeysNumber*8; j<(ThisKeysNumber*8+8); j++)
+    for(int i=ThisKeysNumber*2; i<ThisKeysNumber*2+2; i++)
     {
-        doors[j]=0;
-        // cout<<j<<" ";
-        // cout<<doors[j]<<" ";
+        doors[i]->set_location(0,0);
+        doors[i]->setWidth(0);
+        doors[i]->setWidth(0);
     }
-    //cout<<endl;
-}
-
-void Key::move_Obj()
-{
-    throw runtime_error("Keys cannot move!");
-}
-
-void Key::undoLastMove()
-{
-    throw runtime_error("Keys cannot move!");
 }

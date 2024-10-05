@@ -1,15 +1,20 @@
 #include "player.h"
 
 player::player(int x, int y)
-: BaseObject(x,y)
+: Sprite(x,y)
 {
-
-    auto object_feature = get_Properties();
-    object_feature.is_player = true;
-    set_Properties(object_feature);
+    lives=3;
+    setHearts();
+    dead=false;
     set_sprite("../resources/pacmanLeft.png");
+    up = false;
+    down = false;
+    vertical = 0;
+    right = false;
+    left = false;
+    horizontal = 0;
+    speed = 5;
 }
-
 void player::moveUp(){
     set_location(get_x(), get_y() - 5);
 
@@ -31,30 +36,86 @@ void player::moveRight() {
 
 
 void player::move_Obj(){
-        if(IsKeyDown(KEY_UP)) {
-            moveUp();
-            lastMove = "up";
-            return;
+        if((IsKeyDown(KEY_UP)||up)&&(!right&&!left)) {
+            if(!up)
+            {
+                vertical = 50/speed - vertical;
+                up=true;
+                down = false;
+            }
+            if(vertical>0)
+            {
+                vertical--;
+                if(vertical==0)
+                {
+                    up = false;
+                }
+                moveUp();
+                lastMove = "up";
+                return;
+            }
         }
-        else if(IsKeyDown(KEY_DOWN)) {
-            moveDown();
-            lastMove = "down";
-            return;
+        else if((IsKeyDown(KEY_DOWN)||down)&&(!right&&!left)) {
+            if(!down)
+            {
+                vertical = 50/speed - vertical;
+                up=false;
+                down = true;
+            }
+            if(vertical>0)
+            {
+                vertical--;
+                if(vertical==0)
+                {
+                    down = false;
+                }
+                moveDown();
+                lastMove = "down";
+                return;
+            }
         }
-        if(IsKeyDown(KEY_RIGHT)) {
-            moveRight();
-            lastMove = "right";
-            return;
+        if((IsKeyDown(KEY_RIGHT)||right)&&(!up&&!down)) {
+            if(!right)
+            {
+                horizontal = 50/speed - horizontal;
+                right=true;
+                left = false;
+            }
+            if(horizontal>0)
+            {
+                horizontal--;
+                if(horizontal==0)
+                {
+                    right = false;
+                }
+                moveRight();
+                lastMove = "right";
+                return;
+            }
         }
-        else if(IsKeyDown(KEY_LEFT)) {
-            moveLeft();
-            lastMove = "left";
-            return;
+        else if((IsKeyDown(KEY_LEFT)||left)&&(!up&&!down)) {
+            if(!left)
+            {
+                horizontal = 50/speed - horizontal;
+                right=false;
+                left = true;
+            }
+            if(horizontal>0)
+            {
+                horizontal--;
+                if(horizontal==0)
+                {
+                    left = false;
+                }
+                moveLeft();
+                lastMove = "left";
+                return;
+            }
         }
-        updatePlayerGameData();
 }
 
 void player::undoLastMove() {
+    resetMovers();
     if (lastMove == "up") {
         moveDown();
     }
@@ -68,8 +129,63 @@ void player::undoLastMove() {
         moveLeft();
     }
     else {
-        //std::cout << "Invalid move!" << std::endl;
     }
 }
 
 
+void player::loseLife()
+{
+    if(lives>=0)
+    {
+        hearts[lives-1]->set_location(-100,-100);
+    }
+    lives--;
+    if(lives==0)
+    {
+        dead=true;
+    }
+}
+
+bool player::isDead()
+{
+    return dead;
+}
+
+void player::setHearts()
+{
+    int w=200;
+    int h=800;
+    for(int i=0; i<lives; i++)
+    {
+        hearts.emplace_back(make_shared<Sprite>());
+        hearts.back()->set_location(w,h);
+        hearts.back()->set_sprite("../resources/heart.png");
+        w=w+55;
+    }
+}
+
+shared_ptr<vector<shared_ptr<Sprite>>> player::getHearts()
+{
+    auto pointer = make_shared<vector<shared_ptr<Sprite>>>(hearts);
+    return pointer;
+}
+
+void player::resetMovers()
+{
+    up=false;
+    down=false;
+    right=false;
+    left=false;
+    vertical=0;
+    horizontal=0;
+}
+
+void player::setSpeed(int velocity)
+{
+    if(50%velocity==0)
+    {
+        speed=velocity;
+    }
+    else 
+        throw runtime_error("Velocity must be an integer multiple of 50");
+}

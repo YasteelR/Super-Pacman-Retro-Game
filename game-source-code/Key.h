@@ -1,18 +1,16 @@
 #ifndef C52769D9_9D04_4104_8174_7698B3973915
 #define C52769D9_9D04_4104_8174_7698B3973915
 
-#include "BaseObject.h"
+#include "Sprite.h"
 #include "Door.h"
 
 using namespace std;
 
-class Key : public BaseObject
+class Key : public Sprite
 {
     public:
         Key();
-        void move_Obj();
-        void undoLastMove();
-        void destroyDoors(vector<int>& doors);
+        void destroyDoors(vector<shared_ptr<Door>>& doors);
 
     private:
         vector<shared_ptr<int>> doors;

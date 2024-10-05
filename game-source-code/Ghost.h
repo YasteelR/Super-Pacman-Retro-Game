@@ -1,20 +1,23 @@
 #ifndef D090F8A0_C96D_4D4B_A6E4_9D21C536DB0F
 #define D090F8A0_C96D_4D4B_A6E4_9D21C536DB0F
-#include "BaseObject.h"
 #include "raylib-cpp.hpp"
 #include <iostream>
+#include "Sprite.h"
+#include "player.h"
 
 using namespace std;
 
-class Ghost : public BaseObject{
+class Ghost : public Sprite{
 public:
     Ghost(int x, int y);
     void moveUp();
     void moveDown();
     void moveLeft();
     void moveRight();
-    void move_Obj();
+    void move_Obj(shared_ptr<player> pacman);
     void undoLastMove();
+
+    void respawn();
 
 private:
     int x_pos;
