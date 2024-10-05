@@ -29,25 +29,81 @@ void player::moveRight() {
 
 
 void player::move_Obj(){
-        if(IsKeyDown(KEY_UP)) {
-            moveUp();
-            lastMove = "up";
-            return;
+if((IsKeyDown(KEY_UP)up)&&(!right&&!left)) {
+            if(!up)
+            {
+                vertical = 50/speed - vertical;
+                up=true;
+                down = false;
+            }
+            if(vertical>0)
+            {
+                vertical--;
+                if(vertical==0)
+                {
+                    up = false;
+                }
+                moveUp();
+                lastMove = "up";
+                return;
+            }
         }
-        else if(IsKeyDown(KEY_DOWN)) {
-            moveDown();
-            lastMove = "down";
-            return;
+        else if((IsKeyDown(KEY_DOWN)down)&&(!right&&!left)) {
+            if(!down)
+            {
+                vertical = 50/speed - vertical;
+                up=false;
+                down = true;
+            }
+            if(vertical>0)
+            {
+                vertical--;
+                if(vertical==0)
+                {
+                    down = false;
+                }
+                moveDown();
+                lastMove = "down";
+                return;
+            }
         }
-        if(IsKeyDown(KEY_RIGHT)) {
-            moveRight();
-            lastMove = "right";
-            return;
+        if((IsKeyDown(KEY_RIGHT)right)&&(!up&&!down)) {
+            if(!right)
+            {
+                horizontal = 50/speed - horizontal;
+                right=true;
+                left = false;
+            }
+            if(horizontal>0)
+            {
+                horizontal--;
+                if(horizontal==0)
+                {
+                    right = false;
+                }
+                moveRight();
+                lastMove = "right";
+                return;
+            }
         }
-        else if(IsKeyDown(KEY_LEFT)) {
-            moveLeft();
-            lastMove = "left";
-            return;
+        else if((IsKeyDown(KEY_LEFT)left)&&(!up&&!down)) {
+            if(!left)
+            {
+                horizontal = 50/speed - horizontal;
+                right=false;
+                left = true;
+            }
+            if(horizontal>0)
+            {
+                horizontal--;
+                if(horizontal==0)
+                {
+                    left = false;
+                }
+                moveLeft();
+                lastMove = "left";
+                return;
+            }
         }
 }
 
