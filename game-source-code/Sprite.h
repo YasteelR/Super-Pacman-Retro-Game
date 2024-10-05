@@ -14,11 +14,14 @@ class Sprite : public BaseObject
         int getWidth();
         int getHeight();
         Rectangle getBoundingBox() const;
+        int getRotation();
+        void setRotaion(int orientation);
     
     
     private:
         raylib::Texture2D sprite;
         string spriteFilepath;
+        int rotation;
 };
 
 #endif /* A7554151_12F1_4B26_A7B2_E92F9D6B407A */
