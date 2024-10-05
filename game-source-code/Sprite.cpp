@@ -24,3 +24,4 @@ Rectangle Sprite::getBoundingBox() const {
 
         return { (float)current_x, (float)current_y, (float)sprite.width, (float)sprite.height };
 }
+

@@ -14,6 +14,7 @@ class Sprite : public BaseObject
         int getWidth();
         int getHeight();
         Rectangle getBoundingBox() const;
+
     
     
     private:
