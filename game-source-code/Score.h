@@ -18,8 +18,6 @@ class Score
         string getStringScore();
         void storeHighScore();
         bool newHighScore();
-        void sortScores();
-        void store();
         shared_ptr<vector<int>> getHighScores();
         
     private:
@@ -27,6 +25,9 @@ class Score
         string ScoreString;
         vector<int> HighScores;
         bool hScore;
+        
+        void sortScores();
+        void store();
 };
 
 #endif /* A98570DD_3CC0_4B62_9562_11D1DEE22ADD */

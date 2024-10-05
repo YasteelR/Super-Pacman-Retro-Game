@@ -36,7 +36,7 @@ void player::moveRight() {
 
 
 void player::move_Obj(){
-if((IsKeyDown(KEY_UP)up)&&(!right&&!left)) {
+        if((IsKeyDown(KEY_UP)||up)&&(!right&&!left)) {
             if(!up)
             {
                 vertical = 50/speed - vertical;
@@ -55,7 +55,7 @@ if((IsKeyDown(KEY_UP)up)&&(!right&&!left)) {
                 return;
             }
         }
-        else if((IsKeyDown(KEY_DOWN)down)&&(!right&&!left)) {
+        else if((IsKeyDown(KEY_DOWN)||down)&&(!right&&!left)) {
             if(!down)
             {
                 vertical = 50/speed - vertical;
@@ -74,7 +74,7 @@ if((IsKeyDown(KEY_UP)up)&&(!right&&!left)) {
                 return;
             }
         }
-        if((IsKeyDown(KEY_RIGHT)right)&&(!up&&!down)) {
+        if((IsKeyDown(KEY_RIGHT)||right)&&(!up&&!down)) {
             if(!right)
             {
                 horizontal = 50/speed - horizontal;
@@ -93,7 +93,7 @@ if((IsKeyDown(KEY_UP)up)&&(!right&&!left)) {
                 return;
             }
         }
-        else if((IsKeyDown(KEY_LEFT)left)&&(!up&&!down)) {
+        else if((IsKeyDown(KEY_LEFT)||left)&&(!up&&!down)) {
             if(!left)
             {
                 horizontal = 50/speed - horizontal;
@@ -115,6 +115,7 @@ if((IsKeyDown(KEY_UP)up)&&(!right&&!left)) {
 }
 
 void player::undoLastMove() {
+    resetMovers();
     if (lastMove == "up") {
         moveDown();
     }

@@ -36,6 +36,8 @@ void Score::storeHighScore()
         }
         break;
     }
+    sortScores();
+    store();
 }
 
 void Score::addPoints()
