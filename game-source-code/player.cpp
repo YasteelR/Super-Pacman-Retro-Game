@@ -7,6 +7,13 @@ player::player(int x, int y)
     setHearts();
     dead=false;
     set_sprite("../resources/pacmanLeft.png");
+    up = false;
+    down = false;
+    vertical = 0;
+    right = false;
+    left = false;
+    horizontal = 0;
+    speed = 5;
 }
 void player::moveUp(){
     set_location(get_x(), get_y() - 5);
@@ -162,3 +169,22 @@ shared_ptr<vector<shared_ptr<Sprite>>> player::getHearts()
     return pointer;
 }
 
+void player::resetMovers()
+{
+    up=false;
+    down=false;
+    right=false;
+    left=false;
+    vertical=0;
+    horizontal=0;
+}
+
+void player::setSpeed(int velocity)
+{
+    if(50%velocity==0)
+    {
+        speed=velocity;
+    }
+    else 
+        throw runtime_error("Velocity must be an integer multiple of 50");
+}

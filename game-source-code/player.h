@@ -21,6 +21,9 @@ public:
     bool isDead();
     void setHearts();
     shared_ptr<vector<shared_ptr<Sprite>>> getHearts();
+    void setSpeed(int velocity);
+    void resetMovers();
+
 
 
 
@@ -29,6 +32,13 @@ private:
     int lives;
     bool dead;
     string lastMove;
+    int vertical;
+    int horizontal;
+    bool up;
+    bool down;
+    bool left;
+    bool right;
+    int speed;
 };
 
 
