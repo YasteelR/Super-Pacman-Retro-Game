@@ -87,6 +87,7 @@ add_executable(${GAME_EXE} ${GAME_SRC}) # shows the console window
 configure_file(${CMAKE_SOURCE_DIR}/resources/GameMap.txt ${CMAKE_BINARY_DIR}/resources/GameMap.txt COPYONLY)
 configure_file(${CMAKE_SOURCE_DIR}/resources/GameMapTest1.txt ${CMAKE_BINARY_DIR}/resources/GameMapTest1.txt COPYONLY)
 configure_file(${CMAKE_SOURCE_DIR}/resources/GameMapTest2.txt ${CMAKE_BINARY_DIR}/resources/GameMapTest2.txt COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/resources/HighScores.txt ${CMAKE_BINARY_DIR}/resources/HighScores.txt COPYONLY)
 # To prevent the console window from appearing when the game is run, replace the above line with this one:
 # add_executable(${GAME_EXE} WIN32 ${GAME_SRC})
 

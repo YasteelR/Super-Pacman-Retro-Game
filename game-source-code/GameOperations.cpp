@@ -74,6 +74,7 @@ void GameOperations::handleCollisionPacmanGhost(){
             if (playerPacman->isDead())
             {
                 gameOver = true;
+                points->storeHighScore();
             }
         }
         else if(pelletIsActive)
@@ -164,6 +165,7 @@ void GameOperations::handleCollisionFruit()
         if (fruits[collide->getObject()]->getFruitNum() == 0)
         {
             gameOver = true;
+            points->storeHighScore();
         }
     }
     collide->resetCollision();
@@ -234,7 +236,7 @@ void GameOperations::draw(){
 
         string sss="Current High Score: ";
         DrawText(sss.c_str(), 400, 800, 50 ,GREEN);
-        sketch->drawText(*(points->getHighScores()), 1450, 50);
+        sketch->drawText(*(points->getHighScores()), 1000, 800);
         EndDrawing();
 }
 

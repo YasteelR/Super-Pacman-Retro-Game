@@ -1,4 +1,7 @@
 #include "Score.h"
+#include <iostream>
+
+using namespace std;
 
 Score::Score()
 {
@@ -17,6 +20,7 @@ Score::Score()
     while(in >> High)
     {
         HighScores.emplace_back(High);
+        cout << HighScores.back()<<endl;
     }
 }
 
@@ -83,7 +87,7 @@ void Score::sortScores()
     int temp;
     for(int i=0; i<HighScores.size(); i++)
     {
-            for(int j=HighScores.size()-1; j>i; j++)
+            for(int j=HighScores.size()-1; j > i ; j--)
             {
                 if(HighScores[j]>HighScores[i])
                 {
