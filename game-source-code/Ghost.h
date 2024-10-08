@@ -23,6 +23,8 @@ private:
     int x_pos;
     int y_pos;  
     string lastMove;
+    bool hor;
+    bool vert;
 };
 
 
