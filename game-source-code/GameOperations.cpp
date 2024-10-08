@@ -199,14 +199,24 @@ void GameOperations::handleCollisionPellets()
 
 void GameOperations::handleCollisionSPellets()
 {
+    bool SuperMode=false;
     for(int i=0; i<spellets.size(); i++)
     {
         spellets[i]->duration();
+        if(spellets[i]->activePower())
+        {
+            SuperMode=true;
+        }
+    }
+    if(!SuperMode)
+    {
+        playerPacman->setSpeed(2);
     }
     collide->checkCollisions(spellets,playerPacman);
     if (collide->getCollision())
     {
         spellets[collide->getObject()]->activate();
+        playerPacman ->setSpeed(5);
     }
     collide->resetCollision();
 }

@@ -39,6 +39,7 @@ private:
     bool left;
     bool right;
     int speed;
+    int newSpeed;
 };
 
 

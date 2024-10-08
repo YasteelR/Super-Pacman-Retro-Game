@@ -13,29 +13,36 @@ player::player(int x, int y)
     right = false;
     left = false;
     horizontal = 0;
-    speed = 5;
+    speed = 2;
+    newSpeed=speed;
 }
+
 void player::moveUp(){
-    set_location(get_x(), get_y() - 5);
+    set_location(get_x(), get_y() - speed);
 
 }
 
 void player::moveDown() {
-    set_location(get_x(), get_y() + 5);
+    set_location(get_x(), get_y() + speed);
 
 }
 
 void player::moveLeft() {
-    set_location(get_x() - 5, get_y() );
+    set_location(get_x() - speed, get_y() );
 
 }
 
 void player::moveRight() {
-    set_location(get_x() + 5, get_y() );
+    set_location(get_x() + speed, get_y() );
 }
 
 
 void player::move_Obj(){
+    cout<<horizontal<<" "<<vertical<<endl;
+    if(vertical==0 && horizontal==0)
+    {
+        speed =newSpeed;
+    }
         if((IsKeyDown(KEY_UP)||up)&&(!right&&!left)) {
             if(!up)
             {
@@ -75,6 +82,7 @@ void player::move_Obj(){
             }
         }
         if((IsKeyDown(KEY_RIGHT)||right)&&(!up&&!down)) {
+            cout<<"right"<<endl;
             if(!right)
             {
                 horizontal = 50/speed - horizontal;
@@ -184,7 +192,7 @@ void player::setSpeed(int velocity)
 {
     if(50%velocity==0)
     {
-        speed=velocity;
+        newSpeed=velocity;
     }
     else 
         throw runtime_error("Velocity must be an integer multiple of 50");
