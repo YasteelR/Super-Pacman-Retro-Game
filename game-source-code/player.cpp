@@ -16,22 +16,22 @@ player::player(int x, int y)
     speed = 5;
 }
 void player::moveUp(){
-    set_location(get_x(), get_y() - 5);
+    set_location(get_x(), get_y() - speed);
 
 }
 
 void player::moveDown() {
-    set_location(get_x(), get_y() + 5);
+    set_location(get_x(), get_y() + speed);
 
 }
 
 void player::moveLeft() {
-    set_location(get_x() - 5, get_y() );
+    set_location(get_x() - speed, get_y() );
 
 }
 
 void player::moveRight() {
-    set_location(get_x() + 5, get_y() );
+    set_location(get_x() + speed, get_y() );
 }
 
 
