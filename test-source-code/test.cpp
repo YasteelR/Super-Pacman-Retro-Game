@@ -167,3 +167,74 @@ TEST_SUITE("Player Tests") {
         CHECK_THROWS(pacman.setSpeed(7)); // Set speed to an invalid value (not a multiple of 50)
     }
 }
+
+//==================================BaseObject===================================
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest.h"
+#include "Collisions.h"
+#include "player.h"
+#include "Wall.h"
+
+// Test Suite for Collisions
+TEST_SUITE("Collisions Tests") {
+
+    TEST_CASE("Check Collision Between Two Rectangles") {
+        // Create player and wall
+        //auto player = make_shared<player>(100, 100);
+        shared_ptr<player> playerPacman;
+        playerPacman = make_shared<player>(player(100, 100));
+        auto wall = make_shared<Wall>();
+        wall->setWidth(50);
+        wall->setHeight(50);
+        wall->set_location(120, 120); // Position the wall to collide with the player
+
+        // Create a vector of shared_ptr for walls
+        vector<shared_ptr<Wall>> walls = {wall};
+
+        Collisions collisionChecker;
+        collisionChecker.checkCollisions(walls, playerPacman);
+
+        CHECK(collisionChecker.getCollision() == true); // Collision should be detected
+        CHECK(collisionChecker.getObject() == 0); // It should be the first wall
+    }
+
+    TEST_CASE("No Collision When Not Overlapping") {
+        // Create player and wall
+        shared_ptr<player> playerPacman;
+        playerPacman = make_shared<player>(player(100, 100));
+        auto wall = make_shared<Wall>();
+        wall->setWidth(50);
+        wall->setHeight(50);
+        wall->set_location(200, 200); // Position the wall far away from the player
+
+        // Create a vector of shared_ptr for walls
+        vector<shared_ptr<Wall>> walls = {wall};
+
+        Collisions collisionChecker;
+        collisionChecker.checkCollisions(walls, playerPacman);
+
+        CHECK(collisionChecker.getCollision() == false); // No collision should be detected
+    }
+
+    TEST_CASE("Check Collision with Multiple Objects") {
+        shared_ptr<player> playerPacman;
+        playerPacman = make_shared<player>(player(100, 100));
+        auto wall1 = make_shared<Wall>();
+        wall1->setWidth(50);
+        wall1->setHeight(50);
+        wall1->set_location(120, 120); // This wall will collide with the player
+
+        auto wall2 = make_shared<Wall>();
+        wall2->setWidth(50);
+        wall2->setHeight(50);
+        wall2->set_location(200, 200); // This wall will not collide with the player
+
+        // Create a vector of walls
+        vector<shared_ptr<Wall>> walls = {wall1, wall2};
+
+        Collisions collisionChecker;
+        collisionChecker.checkCollisions(walls, playerPacman);
+
+        CHECK(collisionChecker.getCollision() == true); // Collision should be detected
+        CHECK(collisionChecker.getObject() == 0); // It should be the first wall
+    }
