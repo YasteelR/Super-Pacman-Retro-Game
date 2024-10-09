@@ -237,6 +237,7 @@ void GameOperations::draw(){
 void GameOperations::loadRect(string FilePath){
 
     FileReader TextFile(FilePath);
+    
     TextFile.ObjectType("Player");
     TextFile.ReadData2(playerPacman);
 

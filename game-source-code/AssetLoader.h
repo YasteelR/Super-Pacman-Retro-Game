@@ -7,11 +7,14 @@ class AssetLoader
 {
     public:
         AssetLoader(){};
-        void setPath(string filepath);
+        void OpenPath(string filepath);
+        void ClosePath(string filepath);
         template <typename T>
         void LoadObject(vector<shared_ptr<T>>& Object, string ObjectName);
         template <typename T>
         void LoadObject(shared_ptr<T>& Object, string ObjectName);
+        template <typename T>
+        void LoadObject(unique_ptr<T>& Object, string ObjectName);
 
     private:
         FileReader ObjectFile;
@@ -31,7 +34,7 @@ void AssetLoader::LoadObject(vector<shared_ptr<T>>& Object, string ObjectName)
 }
 
 template <typename T>
-void LoadObject(shared_ptr<T>& Object, string ObjectName)
+void AssetLoader::LoadObject(shared_ptr<T>& Object, string ObjectName)
 {
     if(ObjectName=="Player")
     {
@@ -42,4 +45,9 @@ void LoadObject(shared_ptr<T>& Object, string ObjectName)
         Object = make_shared<T>();
 }
 
+template <typename T>
+void AssetLoader::LoadObject(unique_ptr<T>& Object, string ObjectName)
+{
+    Object = make_unique<T>();
+}
 #endif /* DCFC5681_4E68_4E0A_AF25_1C9FDF03378B */

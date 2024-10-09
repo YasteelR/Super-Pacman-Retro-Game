@@ -1,6 +1,11 @@
 #include "AssetLoader.h"
 
-void AssetLoader::setPath(string filepath)
+void AssetLoader::OpenPath(string filepath)
 {
     ObjectFile.OpenFile(filepath);
+}
+
+void AssetLoader::ClosePath(string filepath)
+{
+    ObjectFile.CloseFile();
 }

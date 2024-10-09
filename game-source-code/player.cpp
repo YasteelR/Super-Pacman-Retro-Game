@@ -3,8 +3,8 @@
 player::player()
 : Sprite()
 {
+    lives=4;
     cout<<lives<<endl;
-    lives=3;
     setHearts();
     dead=false;
     set_sprite("../resources/pacmanLeft.png");
