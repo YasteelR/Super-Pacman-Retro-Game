@@ -5,38 +5,39 @@ using namespace std;
 
 Score::Score()
 {
-    points=0;
-    hScore=false;
+    points = 0;
+    hScore = false;
 
     ifstream in;
     in.open("../resources/HighScores.txt");
-    if(!in.is_open())
+    if (!in.is_open())
     {
         throw runtime_error("HighScore file not open");
     }
 
     int High;
-
-    while(in >> High)
+    while (in >> High)
     {
-        HighScores.emplace_back(High);
+        HighScores.emplace_back(High);  // Loads high scores from the file.
     }
 }
 
 void Score::storeHighScore()
 {
-    if(HighScores.size()<5)
+    if (HighScores.size() < 5)
     {
         HighScores.emplace_back(points);
-        hScore=true;
+        hScore = true;  // Mark this as a new high score.
     }
+
     if (points > HighScores.back())
     {
         hScore = true;
-        HighScores.back() = points;
+        HighScores.back() = points;  // Replace the lowest score if the current score is higher.
     }
+
     sortScores();
-    store();
+    store();  // Persist the updated high scores.
 }
 
 void Score::addPoints()
