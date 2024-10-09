@@ -450,3 +450,89 @@ TEST_SUITE("Major Feature star tests super pellets and fruits") {
         CHECK(pellet->activePower() == true);  // Power pellet should be active
     }
 }
+
+//==================================Star feature===================================
+#include "Star.h"
+
+// Test Suite for Star
+TEST_SUITE("Major Feature Star Tests") {
+
+    TEST_CASE("Star Initialization") {
+        // Test that the star is initialized correctly and has two companion sprites
+        Star star;
+
+        // Test if the star is initialized with a sprite
+        CHECK(star.getSprite() == "../resources/star.png");
+
+        // Check if the companions are correctly initialized
+        auto companions = star.getCompanions();
+        CHECK(companions->size() == 2);  // There should be two companion fruits
+        CHECK((*companions)[0]->getSprite() == "../resources/banana.png");  // Companion 1 sprite
+        CHECK((*companions)[1]->getSprite() == "../resources/orange.png");  // Companion 2 sprite
+    }
+
+    TEST_CASE("Star Set Objects") {
+        // Test that the companions' sprites can be updated
+        Star star;
+
+        star.setObjects();  // Randomly changes the companion sprites
+
+        auto companions = star.getCompanions();
+        // After setting objects, the companions' sprites should have been updated randomly
+        CHECK(((*companions)[0]->getSprite() == "../resources/banana.png" ||
+               (*companions)[0]->getSprite() == "../resources/orange.png" ||
+               (*companions)[0]->getSprite() == "../resources/cherry.png"));
+
+        CHECK(((*companions)[1]->getSprite() == "../resources/banana.png" ||
+               (*companions)[1]->getSprite() == "../resources/orange.png" ||
+               (*companions)[1]->getSprite() == "../resources/cherry.png"));
+    }
+
+    TEST_CASE("Star Companions Matching") {
+        // Test that the companion matching logic works correctly
+        Star star;
+
+        // Manually set companion sprites to match
+        auto companions = star.getCompanions();
+        (*companions)[0]->set_sprite("../resources/banana.png");
+        (*companions)[1]->set_sprite("../resources/banana.png");
+
+        // Test that companions match
+        CHECK(star.CompanionsMatch() == true);
+        CHECK(star.CompanionsMatchFruit() == true);
+
+        // Change one sprite so they no longer match
+        (*companions)[1]->set_sprite("../resources/orange.png");
+
+        // Test that companions no longer match
+        CHECK(star.CompanionsMatch() == false);
+        CHECK(star.CompanionsMatchFruit() == false);
+    }
+
+    TEST_CASE("Star Destruction") {
+        // Test that the star and its companions are destroyed correctly
+        Star star;
+
+        star.Destroy();  // Destroy the star and its companions
+
+        // Check if the star is destroyed
+        CHECK(star.get_x() == -100);
+        CHECK(star.get_y() == -100);
+
+        // Check if the companions are destroyed
+        auto companions = star.getCompanions();
+        CHECK((*companions)[0]->get_x() == -100);
+        CHECK((*companions)[1]->get_x() == -100);
+    }
+
+    TEST_CASE("Star Timer Set") {
+        // Test that the timer for changing objects can be set
+        Star star;
+
+        star.setTimer(30);  // Set the timer for 30 cycles
+
+        // Use setObjects to ensure the timer functions
+        star.setObjects();
+        // Further testing for timing logic can be done through integration tests or mocks
+    }
+}
