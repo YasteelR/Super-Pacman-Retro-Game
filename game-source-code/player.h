@@ -92,19 +92,18 @@ public:
 
 
 private:
-    vector<shared_ptr<Sprite>> hearts;
-    int lives;
-    bool dead;
-    string lastMove;
-    int vertical;
-    int horizontal;
-    bool up;
-    bool down;
-    bool left;
-    bool right;
-    int speed;
-    int newSpeed;
+    vector<shared_ptr<Sprite>> hearts; ///< Vector to hold heart sprites.
+    int lives; ///< Number of lives remaining.
+    bool dead; ///< Indicates if the player is dead.
+    string lastMove; ///< Last move made by the player.
+    int vertical; ///< Vertical movement state.
+    int horizontal; ///< Horizontal movement state.
+    bool up; ///< Up movement flag.
+    bool down; ///< Down movement flag.
+    bool left; ///< Left movement flag.
+    bool right; ///< Right movement flag.
+    int speed; ///< Movement speed.
+    int newSpeed; ///< New movement speed.
 };
 
-
-#endif 
+#endif
