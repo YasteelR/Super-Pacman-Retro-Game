@@ -3,54 +3,55 @@
 player::player()
 : Sprite()
 {
-    lives=4;
-    cout<<lives<<endl;
-    setHearts();
-    dead=false;
-    set_sprite("../resources/pacmanLeft.png");
+    lives = 4; // Set initial lives to 4.
+    cout << lives << endl; // Print the initial number of lives.
+    setHearts(); // Initialize heart display for lives.
+    dead = false; // Player is initially alive.
+    set_sprite("../resources/pacmanLeft.png"); // Set the initial sprite image.
+    
+    // Initialize movement flags and counters.
     up = false;
     down = false;
-    vertical = 0;
+    vertical = 0; // Vertical movement counter.
     right = false;
     left = false;
-    horizontal = 0;
-    speed = 2;
+    horizontal = 0; // Horizontal movement counter.
+    speed = 2; // Set the speed of the player.
 }
 
 player::player(int x, int y)
-: Sprite(x,y)
+: Sprite(x, y)
 {
-    lives=3;
-    setHearts();
-    dead=false;
-    set_sprite("../resources/pacmanLeft.png");
+    lives = 3; // Set initial lives to 3.
+    setHearts(); // Initialize heart display for lives.
+    dead = false; // Player is initially alive.
+    set_sprite("../resources/pacmanLeft.png"); // Set the initial sprite image.
+    
+    // Initialize movement flags and counters.
     up = false;
     down = false;
     vertical = 0;
     right = false;
     left = false;
     horizontal = 0;
-    speed = 2;
-    newSpeed=speed;
+    speed = 2; // Set the speed of the player.
+    newSpeed = speed; // Set newSpeed to the initial speed.
 }
 
 void player::moveUp(){
-    set_location(get_x(), get_y() - speed);
-
+    set_location(get_x(), get_y() - speed); // Move the player up by the speed amount.
 }
 
 void player::moveDown() {
-    set_location(get_x(), get_y() + speed);
-
+    set_location(get_x(), get_y() + speed); // Move the player down by the speed amount.
 }
 
 void player::moveLeft() {
-    set_location(get_x() - speed, get_y() );
-
+    set_location(get_x() - speed, get_y()); // Move the player left by the speed amount.
 }
 
 void player::moveRight() {
-    set_location(get_x() + speed, get_y() );
+    set_location(get_x() + speed, get_y()); // Move the player right by the speed amount.
 }
 
 
