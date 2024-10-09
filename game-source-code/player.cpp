@@ -38,7 +38,7 @@ void player::moveRight() {
 
 
 void player::move_Obj(){
-    cout<<horizontal<<" "<<vertical<<endl;
+    //cout<<horizontal<<" "<<vertical<<endl;
     if(vertical==0 && horizontal==0)
     {
         speed =newSpeed;
@@ -82,7 +82,7 @@ void player::move_Obj(){
             }
         }
         if((IsKeyDown(KEY_RIGHT)||right)&&(!up&&!down)) {
-            cout<<"right"<<endl;
+            //cout<<"right"<<endl;
             if(!right)
             {
                 horizontal = 50/speed - horizontal;

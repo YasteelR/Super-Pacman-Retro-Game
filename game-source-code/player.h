@@ -19,6 +19,7 @@ public:
     void undoLastMove();
     void loseLife();
     bool isDead();
+    void immune();
     void setHearts();
     shared_ptr<vector<shared_ptr<Sprite>>> getHearts();
     void setSpeed(int velocity);

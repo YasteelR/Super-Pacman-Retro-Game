@@ -1,9 +1,12 @@
 #include "SuperPellet.h"
+int SuperPellet::Super = 0;
 
 SuperPellet::SuperPellet() : Sprite()
 {
     set_sprite("../resources/superPellet.png");
     active=0;
+    Super=0;
+    powerful = false;
 }
 
 void SuperPellet::duration()
@@ -12,11 +15,16 @@ void SuperPellet::duration()
     {
         active--;
     }
+    else if (active==0&&powerful)
+    {
+        Super--;
+        powerful=false;
+    }
 }
 
 bool SuperPellet::activePower()
 {
-    if(active>0)
+    if(Super>0)
     {
         return true;
     }
@@ -27,5 +35,7 @@ bool SuperPellet::activePower()
 void SuperPellet::activate()
 {
     active=450;
+    powerful = true;
+    Super++;
     set_location(-100,-100);
 }

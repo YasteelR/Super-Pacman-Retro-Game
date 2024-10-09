@@ -65,6 +65,8 @@ private:
     vector<shared_ptr<SuperPellet>> spellets;
     unique_ptr<Collisions> collide;
     unique_ptr<ObjectManager> Object;
+    int freeze;
+    string input;
 };
 
 template <typename T>

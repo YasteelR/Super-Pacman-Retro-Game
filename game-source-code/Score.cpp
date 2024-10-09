@@ -31,14 +31,10 @@ void Score::storeHighScore()
         HighScores.emplace_back(points);
         hScore=true;
     }
-    for(int i=0; i<HighScores.size(); i++)
+    if (points > HighScores.back())
     {
-        if(points>HighScores[i])
-        {
-            hScore=true;
-            HighScores[i]=points;
-        }
-        break;
+        hScore = true;
+        HighScores.back() = points;
     }
     sortScores();
     store();

@@ -16,7 +16,6 @@ public:
     void moveRight();
     void move_Obj(shared_ptr<player> pacman);
     void undoLastMove();
-
     void respawn();
 
 private:
@@ -25,6 +24,8 @@ private:
     string lastMove;
     bool hor;
     bool vert;
+    int xSpawn;
+    int ySpawn;
 };
 
 

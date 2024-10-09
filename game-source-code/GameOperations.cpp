@@ -14,6 +14,7 @@ GameOperations::GameOperations(){
     collide = make_unique<Collisions>();
     Object = make_unique<ObjectManager>();
     Object->loadObjects("../resources/GameMap.txt");
+    freeze = 180;
 
 
     gameOver=false;
@@ -25,10 +26,15 @@ GameOperations::GameOperations(){
 
 void GameOperations::move_objects()
 {
-    playerPacman->move_Obj();
-    for (auto& objects :Ghosts){
-        objects->move_Obj(playerPacman);
+    if(freeze==0)
+    {
+        playerPacman->move_Obj();
+        for (auto& objects :Ghosts){
+            objects->move_Obj(playerPacman);
+        }
     }
+    else 
+        freeze--;
 }   
 
 void GameOperations::handleCollisions()
@@ -50,7 +56,6 @@ void GameOperations::handleCollisionPacmanGhost(){
     {
         collision = true;
         bool pelletIsActive = false;
-        bool spelletIsActive = false;
         for (int i = 0; i < pellets.size(); i++)
         {
             if (pellets[i]->activePower())
@@ -59,18 +64,15 @@ void GameOperations::handleCollisionPacmanGhost(){
                 break;
             }
         }
-        for (int i = 0; i < spellets.size(); i++)
+        if (!pelletIsActive && !spellets[0]->activePower())
         {
-            if (spellets[i]->activePower())
-            {
-                spelletIsActive = true;
-                break;
-            }
-        }
-        if (!pelletIsActive && !spelletIsActive)
-        {
+            freeze=180;
             playerPacman->loseLife();
             playerPacman->set_location(550, 200);
+            for(int i=0; i<Ghosts.size(); i++)
+            {
+                Ghosts[i]->respawn();
+            }
             if (playerPacman->isDead())
             {
                 gameOver = true;
@@ -81,7 +83,6 @@ void GameOperations::handleCollisionPacmanGhost(){
         {
             Ghosts[collide->getObject()]->respawn();
         }
-        else if(spelletIsActive){}
     }
     collide->resetCollision();
 }
@@ -119,21 +120,13 @@ void GameOperations::handleCollisionWall(){
 void GameOperations::handleCollisionDoor()
 {
     collide->checkCollisions(doors,playerPacman);
-    bool spelletIsActive = false;
-    for(int i=0; i<spellets.size(); i++)
-    {
-        if (spellets[i]->activePower())
-            {
-                spelletIsActive = true;
-                break;
-            }
-    }
-    if(collide->getCollision()&&!spelletIsActive)
+
+    if(collide->getCollision()&&!spellets[0]->activePower())
     {
         collision = true;
         playerPacman->undoLastMove();
     }
-    else if(collide->getCollision()&&spelletIsActive)
+    else if(collide->getCollision()&&spellets[0]->activePower())
     {
         collision = true;
         doors[collide->getObject()]->destroy();
@@ -203,12 +196,8 @@ void GameOperations::handleCollisionSPellets()
     for(int i=0; i<spellets.size(); i++)
     {
         spellets[i]->duration();
-        if(spellets[i]->activePower())
-        {
-            SuperMode=true;
-        }
     }
-    if(!SuperMode)
+    if(!spellets[0]->activePower())
     {
         playerPacman->setSpeed(2);
     }
@@ -247,6 +236,16 @@ void GameOperations::draw(){
         string sss="Current High Score: ";
         DrawText(sss.c_str(), 400, 800, 50 ,GREEN);
         sketch->drawText(*(points->getHighScores()), 1000, 800);
+         
+        if(freeze%60==0)
+        {
+            input = to_string(freeze/60);
+        }
+        if(freeze>0)
+        {
+            cout<<input<<endl;
+            DrawText(input.c_str(), 600, 300, 200, YELLOW);
+        }
         EndDrawing();
 }
 

@@ -18,6 +18,8 @@ public:
 private:
     int active;
     int PelletNumber;
+    static int Super;
+    bool powerful;
 };
 
 #endif /* D3835E53_B072_4ADE_AC8E_A6F35E290691 */

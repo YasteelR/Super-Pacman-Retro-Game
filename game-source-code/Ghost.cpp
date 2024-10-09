@@ -6,6 +6,8 @@ Ghost::Ghost(int x, int y)
     set_sprite("../resources/Ghost.png");
     vert = true;
     hor = true;
+    xSpawn=x;
+    ySpawn=y;
 }
 
 void Ghost::moveUp(){
@@ -33,7 +35,7 @@ void Ghost::move_Obj(shared_ptr<player> pacman){
 
     auto xDistance = playerX - get_x();
     auto yDistance = playerY - get_y();
-    cout << xDistance<<"    "<<yDistance<<"  "<<hor<< "   " << vert<<endl;
+    //cout << xDistance<<"    "<<yDistance<<"  "<<hor<< "   " << vert<<endl;
     if (xDistance > 0 && hor){
         moveRight();
         lastMove = "right";
@@ -80,5 +82,5 @@ void Ghost::undoLastMove() {
 
 void Ghost::respawn()
 {
-    set_location(750, 400);
+    set_location(xSpawn, ySpawn);
 }
