@@ -54,7 +54,6 @@ void player::moveRight() {
     set_location(get_x() + speed, get_y()); // Move the player right by the speed amount.
 }
 
-
 void player::move_Obj(){
     // If there's no current movement, reset speed.
     if(vertical == 0 && horizontal == 0)
