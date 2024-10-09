@@ -10,7 +10,7 @@ Fruit::Fruit() : Sprite()
 
 int Fruit::getFruitNum()
 {
-    cout<<NumOfFruit<<endl;
+    //cout<<NumOfFruit<<endl;
     return NumOfFruit;
 }
 

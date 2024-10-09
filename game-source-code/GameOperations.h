@@ -49,19 +49,17 @@ private:
     shared_ptr<player> playerPacman;
     vector<shared_ptr<Ghost>> Ghosts;
     vector <shared_ptr<Wall>> walls;
-    vector <shared_ptr<Wall>> boundaries;
-    int NumberOfBounds;
     bool gameOver;
     vector<shared_ptr<Key>> keys;
     vector<shared_ptr<Door>> doors;
     vector<shared_ptr<Fruit>> fruits;
+    vector<shared_ptr<PowerPellet>> pellets;
+    vector<shared_ptr<SuperPellet>> spellets;
     unique_ptr<Score> points;
     vector<shared_ptr<Star>> stars;
     bool collision;
 
     unique_ptr<Render> sketch;
-    vector<shared_ptr<PowerPellet>> pellets;
-    vector<shared_ptr<SuperPellet>> spellets;
     unique_ptr<Collisions> collide;
     int freeze;
     string input;

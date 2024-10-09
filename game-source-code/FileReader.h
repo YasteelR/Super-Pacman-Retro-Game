@@ -30,6 +30,8 @@ class FileReader
         template <typename T>
         void ReadData2(vector<shared_ptr<T>> &StoreObjects);
         template <typename T>
+        void ReadData2(shared_ptr<T> &StoreObjects);
+        template <typename T>
         void ReadData4(vector<shared_ptr<T>> &StoreObjects);
 
     private:

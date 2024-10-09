@@ -18,7 +18,7 @@ class AssetLoader
 template <typename T>
 void AssetLoader::LoadObject(vector<shared_ptr<T>>& Object, string ObjectName)
 {
-    if(ObjectName=="Rectangles")
+    if(ObjectName=="Walls")
     {
         ObjectFile.ObjectType(ObjectName);
         ObjectFile.ReadData4(Object);

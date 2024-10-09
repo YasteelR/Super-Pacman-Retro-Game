@@ -3,8 +3,8 @@
 GameOperations::GameOperations(){
     loadRect("../resources/GameMap.txt");
     collision=false;
-    Fruit clear;
-    clear.reset();
+    Fruit NumberOfFruit;
+    NumberOfFruit.reset();
 
     playerPacman = make_shared<player>(player(550,200));
     Ghosts.emplace_back(make_shared<Ghost>(750,400));
@@ -88,14 +88,6 @@ void GameOperations::handleCollisionPacmanGhost(){
 
 void GameOperations::handleCollisionWall(){
     collide->checkCollisions(walls,playerPacman);
-    if(collide->getCollision())
-    {
-        collision=true;
-        playerPacman->undoLastMove();
-    }
-    collide->resetCollision();
-    
-    collide->checkCollisions(boundaries,playerPacman);
     if(collide->getCollision())
     {
         collision=true;
@@ -214,7 +206,6 @@ void GameOperations::draw(){
         sketch->drawObjects(playerPacman);
         sketch->drawObjects(Ghosts);
         sketch->drawMap(walls,BLACK);
-        sketch->drawMap(boundaries,BLACK);
         sketch->drawMap(doors,RED);
         string hhh="Lives: ";
         DrawText(hhh.c_str(),50, 800, 50, GREEN);
@@ -252,9 +243,6 @@ void GameOperations::loadRect(string FilePath){
     FileReader TextFile(FilePath);
     TextFile.ObjectType("Walls");
     TextFile.ReadData4(walls);
-
-    // TextFile.ObjectType("Boundaries");
-    // TextFile.ReadData4(boundaries);
 
     TextFile.ObjectType("Keys");
     TextFile.ReadData2(keys);
