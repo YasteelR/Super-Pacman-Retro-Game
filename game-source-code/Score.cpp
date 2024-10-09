@@ -42,7 +42,7 @@ void Score::storeHighScore()
 
 void Score::addPoints()
 {
-    points=points+200;
+    points += 200;
 }
 
 int Score::getScore()
@@ -52,64 +52,58 @@ int Score::getScore()
 
 void Score::addStarPoints(bool matched1, bool matched2)
 {
-    if(matched1==true&&matched2==false)
+    if (matched1 && !matched2)
     {
-        points=points+2000;
+        points += 2000;
     }
-    else if(matched1==true&&matched2==true)
+    else if (matched1 && matched2)
     {
-        points=points+5000;
+        points += 5000;
     }
-    else 
-        points = points +500;
+    else
+    {
+        points += 500;
+    }
 }
 
 string Score::getStringScore()
 {
-    ScoreString.clear();
-    ScoreString="Score: ";
-    ScoreString+= to_string(points);
-
+    ScoreString = "Score: " + to_string(points);  // Updates score string with current points.
     return ScoreString;
 }
 
-bool  Score::newHighScore()
+bool Score::newHighScore()
 {
     return hScore;
 }
 
 void Score::sortScores()
 {
-    int temp;
-    for(int i=0; i<HighScores.size(); i++)
+    // Bubble sort to order high scores in descending order.
+    for (int i = 0; i < HighScores.size(); i++)
     {
-            for(int j=HighScores.size()-1; j > i ; j--)
+        for (int j = HighScores.size() - 1; j > i; j--)
+        {
+            if (HighScores[j] > HighScores[i])
             {
-                if(HighScores[j]>HighScores[i])
-                {
-                    temp=HighScores[i];
-                    HighScores[i]=HighScores[j];
-                    HighScores[j]=temp;
-                }
+                swap(HighScores[i], HighScores[j]);
             }
+        }
     }
 }
 
 void Score::store()
 {
-    sortScores();
     ofstream out;
     out.open("../resources/HighScores.txt");
 
-    for(int i=0; i<HighScores.size(); i++)
+    for (int score : HighScores)
     {
-        out << HighScores[i] <<endl;
+        out << score << endl;  // Write each high score to the file.
     }
 }
 
 shared_ptr<vector<int>> Score::getHighScores()
 {
-    auto pointer =make_shared<vector<int>>(HighScores);
-    
-    return pointer;
+    return make_shared<vector<int>>(HighScores);  // Returns a shared pointer to the high scores.
 }
