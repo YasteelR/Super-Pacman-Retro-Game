@@ -168,7 +168,7 @@ TEST_SUITE("Player Tests") {
     }
 }
 
-//==================================BaseObject===================================
+//==================================collisions===================================
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "Collisions.h"
@@ -296,5 +296,79 @@ TEST_SUITE("BaseObject Tests") {
 
         CHECK(obj.get_x() == 0); // Default x should be 0
         CHECK(obj.get_y() == 0); // Default y should be 0
+    }
+}
+//==================================Score===================================
+// Mock setup for high score file
+void mockHighScoreFile(const std::vector<int>& scores) {
+    std::ofstream out("../resources/HighScores.txt");
+    for (int score : scores) {
+        out << score << std::endl;
+    }
+    out.close();
+}
+
+// Test Suite for Score
+TEST_SUITE("Score Tests") {
+
+    TEST_CASE("Score Initialization") {
+        mockHighScoreFile({1000, 900, 800, 700, 600}); // Mock high score file
+
+        Score score;
+        CHECK(score.getScore() == 0); // Initial score should be 0
+        CHECK(score.getHighScores()->size() == 5); // High score list should have 5 entries
+    }
+
+    TEST_CASE("Add Points") {
+        Score score;
+        score.addPoints(); // Add 200 points
+        CHECK(score.getScore() == 200); // Verify score after adding points
+
+        score.addPoints(); // Add another 200 points
+        CHECK(score.getScore() == 400); // Verify score after second addition
+    }
+
+    TEST_CASE("Add Star Points (Companions Match)") {
+        Score score;
+
+        score.addStarPoints(true, false); // Add points for matching companions (no fruit match)
+        CHECK(score.getScore() == 2000); // Verify score after matching companions
+
+        score.addStarPoints(true, true); // Add points for matching companions and fruit
+        CHECK(score.getScore() == 7000); // Verify score after matching companions and fruit
+    }
+
+    TEST_CASE("New High Score") {
+        mockHighScoreFile({1000, 900, 800, 700, 600}); // Mock high score file
+
+        Score score;
+        score.addPoints(); // Add 200 points, making score = 200
+
+        score.storeHighScore(); // Check if 200 points is a new high score
+        CHECK(score.newHighScore() == false); // 200 shouldn't be a new high score
+
+        for (int i = 0; i < 5; ++i) {
+            score.addPoints(); // Add points until score = 1200
+        }
+
+        score.storeHighScore(); // Now store high score
+        CHECK(score.newHighScore() == true); // 1200 should be a new high score
+        CHECK(score.getHighScores()->at(0) == 1200); // 1200 should be the highest score now
+    }
+
+    TEST_CASE("Sort High Scores") {
+        mockHighScoreFile({600, 800, 1000, 700, 900}); // Mock unsorted high score file
+
+        Score score;
+        score.storeHighScore(); // This should sort the high scores without adding a new one
+
+        CHECK(score.getHighScores()->at(0) == 1000); // Highest score should be first
+        CHECK(score.getHighScores()->at(4) == 600);  // Lowest score should be last
+    }
+
+    TEST_CASE("Get String Score") {
+        Score score;
+        score.addPoints();
+        CHECK(score.getStringScore() == "Score: 200"); // Check if the score string is formatted correctly
     }
 }
