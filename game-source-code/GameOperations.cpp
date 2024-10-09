@@ -3,10 +3,7 @@
 GameOperations::GameOperations(){
     loadRect("../resources/GameMap.txt");
     collision=false;
-    Fruit NumberOfFruit;
-    NumberOfFruit.reset();
 
-    playerPacman = make_shared<player>(player(550,200));
     Ghosts.emplace_back(make_shared<Ghost>(750,400));
     Ghosts.emplace_back(make_shared<Ghost>(800,400));
     sketch = make_unique<Render>();
@@ -232,7 +229,6 @@ void GameOperations::draw(){
         }
         if(freeze>0)
         {
-            cout<<input<<endl;
             DrawText(input.c_str(), 600, 300, 200, YELLOW);
         }
         EndDrawing();
@@ -241,6 +237,9 @@ void GameOperations::draw(){
 void GameOperations::loadRect(string FilePath){
 
     FileReader TextFile(FilePath);
+    TextFile.ObjectType("Player");
+    TextFile.ReadData2(playerPacman);
+
     TextFile.ObjectType("Walls");
     TextFile.ReadData4(walls);
 

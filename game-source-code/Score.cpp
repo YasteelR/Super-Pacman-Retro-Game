@@ -20,7 +20,6 @@ Score::Score()
     while(in >> High)
     {
         HighScores.emplace_back(High);
-        cout << HighScores.back()<<endl;
     }
 }
 

@@ -10,6 +10,8 @@ class AssetLoader
         void setPath(string filepath);
         template <typename T>
         void LoadObject(vector<shared_ptr<T>>& Object, string ObjectName);
+        template <typename T>
+        void LoadObject(shared_ptr<T>& Object, string ObjectName);
 
     private:
         FileReader ObjectFile;
@@ -27,4 +29,17 @@ void AssetLoader::LoadObject(vector<shared_ptr<T>>& Object, string ObjectName)
         ObjectFile.ObjectType(ObjectName);
         ObjectFile.ReadData2(Object);
 }
+
+template <typename T>
+void LoadObject(shared_ptr<T>& Object, string ObjectName)
+{
+    if(ObjectName=="Player")
+    {
+        ObjectFile.ObjectType(ObjectName);
+        ObjectFile.ReadData2(Object);
+    }
+    else 
+        Object = make_shared<T>();
+}
+
 #endif /* DCFC5681_4E68_4E0A_AF25_1C9FDF03378B */

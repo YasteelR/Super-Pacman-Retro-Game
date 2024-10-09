@@ -3,6 +3,7 @@
 player::player()
 : Sprite()
 {
+    cout<<lives<<endl;
     lives=3;
     setHearts();
     dead=false;
@@ -162,8 +163,8 @@ void player::loseLife()
     if(lives>=0)
     {
         hearts[lives-1]->set_location(-100,-100);
+        lives--;
     }
-    lives--;
     if(lives==0)
     {
         dead=true;
