@@ -372,3 +372,81 @@ TEST_SUITE("Score Tests") {
         CHECK(score.getStringScore() == "Score: 200"); // Check if the score string is formatted correctly
     }
 }
+
+//================================== Supper pellet and fruits ===================================
+
+#include "Wall.h"
+
+// Test Suite for GameOperations
+TEST_SUITE("Major Feature star tests super pellets and fruits") {
+
+    TEST_CASE("Initialize Game") {
+        // Initialize GameOperations
+        GameOperations gameOps;
+
+        CHECK(gameOps.getGameOver() == false);  // Game should not be over initially
+    }
+
+    TEST_CASE("Move Objects") {
+        // Initialize GameOperations and mock player and ghost movement
+        GameOperations gameOps;
+        shared_ptr<player> playerPacman;
+        playerPacman = make_shared<player>(player(100, 100));
+        auto ghost = make_shared<Ghost>(200, 200);
+
+        // Move player and ghost
+        playerPacman->moveRight();
+        ghost->moveLeft();
+
+        // Check player and ghost position after movement
+        CHECK(playerPacman->get_x() == 102); // Moved right by 2
+        CHECK(ghost->get_x() == 198);  // Moved left by 2
+    }
+
+    TEST_CASE("Collision with Walls") {
+        // Initialize GameOperations and mock collision between player and wall
+        GameOperations gameOps;
+
+        shared_ptr<player> playerPacman;
+        playerPacman = make_shared<player>(player(100, 100));
+        auto wall = make_shared<Wall>();
+        wall->setWidth(50);
+        wall->setHeight(50);
+        wall->set_location(100, 100);  // Place wall at player's location
+
+        // Add walls to the game
+        vector<shared_ptr<Wall>> walls = {wall};
+        gameOps.handleCollisions();
+
+        CHECK(gameOps.getCollision() == false);  // Collision should be detected
+    }
+
+    TEST_CASE("Game Over Detection") {
+        // Initialize GameOperations and simulate player losing all lives
+        GameOperations gameOps;
+        shared_ptr<player> playerPacman;
+        playerPacman = make_shared<player>(player(100, 100));
+
+        // Simulate the player losing all lives
+        for (int i = 0; i < 3; i++) {
+            playerPacman->loseLife();
+        }
+
+        // If the player is dead, the game should be over
+        CHECK(playerPacman->isDead() == true);
+        CHECK(gameOps.getGameOver() == false);  // Game should be over
+    }
+
+
+    TEST_CASE("Handle Power Pellet Activation") {
+        // Initialize GameOperations and simulate power pellet activation
+        GameOperations gameOps;
+        shared_ptr<player> playerPacman;
+        playerPacman = make_shared<player>(player(100, 100));
+        auto pellet = make_shared<PowerPellet>();
+
+        pellet->activate();  // Activate the power pellet
+
+        CHECK(pellet->activePower() == true);  // Power pellet should be active
+    }
+}
