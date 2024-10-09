@@ -238,3 +238,63 @@ TEST_SUITE("Collisions Tests") {
         CHECK(collisionChecker.getCollision() == true); // Collision should be detected
         CHECK(collisionChecker.getObject() == 0); // It should be the first wall
     }
+    
+    TEST_CASE("Reset Collision Status") {
+        shared_ptr<player> playerPacman;
+        playerPacman = make_shared<player>(player(100, 100));
+        auto wall = make_shared<Wall>();
+        wall->setWidth(50);
+        wall->setHeight(50);
+        wall->set_location(120, 120); // Position the wall to collide with the player
+
+        vector<shared_ptr<Wall>> walls = {wall};
+
+        Collisions collisionChecker;
+        collisionChecker.checkCollisions(walls, playerPacman);
+
+        CHECK(collisionChecker.getCollision() == true); // Collision detected
+
+        collisionChecker.resetCollision(); // Reset collision state
+
+        CHECK(collisionChecker.getCollision() == false); // Collision state should be reset
+    }
+}
+
+
+//==================================BaseObject===================================
+
+// Test Suite for BaseObject
+TEST_SUITE("BaseObject Tests") {
+
+    TEST_CASE("Constructor and Location") {
+        BaseObject obj(100, 150); // Create an object at (100, 150)
+
+        CHECK(obj.get_x() == 100); // Check initial x position
+        CHECK(obj.get_y() == 150); // Check initial y position
+    }
+
+    TEST_CASE("Set and Get Location") {
+        BaseObject obj; // Create a default object
+
+        obj.set_location(200, 250); // Set new location
+
+        CHECK(obj.get_x() == 200); // Check updated x position
+        CHECK(obj.get_y() == 250); // Check updated y position
+    }
+
+    TEST_CASE("Set and Get Window") {
+        auto window = std::make_shared<raylib::Window>(800, 600, "Test Window");
+        BaseObject obj;
+
+        obj.set_window(window); // Set the window
+
+        CHECK(obj.get_window() == window); // Check if the window is set correctly
+    }
+
+    TEST_CASE("Default Constructor") {
+        BaseObject obj; // Create a default object
+
+        CHECK(obj.get_x() == 0); // Default x should be 0
+        CHECK(obj.get_y() == 0); // Default y should be 0
+    }
+}
