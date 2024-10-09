@@ -86,17 +86,17 @@ private:
     string MapFile; ///< The name of the map file.
     ifstream InputFile; ///< Input file stream.
     string Object; ///< Current object type being read.
+    string HeaderLine; ///< Used in readData functions.
+    bool DataWasRead;///< Flag to check read functions ran.
 };
 
 template <typename T>
 void FileReader::ReadData2(vector<shared_ptr<T>>& StoreObjects) {
     static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
     InputFile.seekg(0, std::ios::beg);
-    string HeaderLine;
     while (HeaderLine != Object && !InputFile.eof()) {
         getline(InputFile, HeaderLine);
     }
-    bool DataWasRead = false;
     int xpos, ypos;
     while (InputFile >> xpos >> ypos) {
         StoreObjects.emplace_back(make_shared<T>());
@@ -106,6 +106,7 @@ void FileReader::ReadData2(vector<shared_ptr<T>>& StoreObjects) {
     if (!DataWasRead) {
         throw runtime_error("File contained no coordinates");
     }
+    DataWasRead = false;
     InputFile.clear();
 }
 
@@ -113,11 +114,9 @@ template <typename T>
 void FileReader::ReadData4(vector<shared_ptr<T>>& StoreObjects) {
     static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
     InputFile.seekg(0, std::ios::beg);
-    string HeaderLine;
     while (HeaderLine != Object && !InputFile.eof()) {
         getline(InputFile, HeaderLine);
     }
-    bool DataWasRead = false;
     int xpos, ypos, width, height;
     while (InputFile >> xpos >> ypos >> width >> height) {
         StoreObjects.emplace_back(make_shared<T>());
@@ -129,6 +128,7 @@ void FileReader::ReadData4(vector<shared_ptr<T>>& StoreObjects) {
     if (!DataWasRead) {
         throw runtime_error("File contained no coordinates");
     }
+    DataWasRead = false;
     InputFile.clear();
 }
 

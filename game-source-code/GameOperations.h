@@ -17,6 +17,7 @@
 #include "PowerPellet.h"
 #include "Collisions.h"
 #include "SuperPellet.h"
+#include "ObjectManager.h"
 
 /**
  * @brief Manages game operations and logic.
