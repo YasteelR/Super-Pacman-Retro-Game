@@ -55,105 +55,110 @@ void player::moveRight() {
 
 
 void player::move_Obj(){
-    //cout<<horizontal<<" "<<vertical<<endl;
-    if(vertical==0 && horizontal==0)
+    // If there's no current movement, reset speed.
+    if(vertical == 0 && horizontal == 0)
     {
-        speed =newSpeed;
+        speed = newSpeed; // Restore original speed.
     }
-        if((IsKeyDown(KEY_UP)||up)&&(!right&&!left)) {
-            if(!up)
+    
+    // Handle upward movement.
+    if((IsKeyDown(KEY_UP) || up) && (!right && !left)) {
+        if(!up) // If not already moving up, calculate vertical movement.
+        {
+            vertical = 50/speed - vertical; // Determine how much to move up.
+            up = true; // Set moving up flag.
+            down = false; // Reset down flag.
+        }
+        if(vertical > 0) // Continue moving up until the counter reaches zero.
+        {
+            vertical--;
+            if(vertical == 0) // Reset moving up flag when done.
             {
-                vertical = 50/speed - vertical;
-                up=true;
+                up = false;
+            }
+            moveUp(); // Move player up.
+            lastMove = "up"; // Record the last move direction.
+            return; // Exit the function.
+        }
+    }
+    
+    // Handle downward movement.
+    else if((IsKeyDown(KEY_DOWN) || down) && (!right && !left)) {
+        if(!down) // If not already moving down, calculate vertical movement.
+        {
+            vertical = 50/speed - vertical;
+            up = false; // Reset up flag.
+            down = true; // Set moving down flag.
+        }
+        if(vertical > 0) // Continue moving down until the counter reaches zero.
+        {
+            vertical--;
+            if(vertical == 0) // Reset moving down flag when done.
+            {
                 down = false;
             }
-            if(vertical>0)
-            {
-                vertical--;
-                if(vertical==0)
-                {
-                    up = false;
-                }
-                moveUp();
-                lastMove = "up";
-                return;
-            }
+            moveDown(); // Move player down.
+            lastMove = "down"; // Record the last move direction.
+            return; // Exit the function.
         }
-        else if((IsKeyDown(KEY_DOWN)||down)&&(!right&&!left)) {
-            if(!down)
-            {
-                vertical = 50/speed - vertical;
-                up=false;
-                down = true;
-            }
-            if(vertical>0)
-            {
-                vertical--;
-                if(vertical==0)
-                {
-                    down = false;
-                }
-                moveDown();
-                lastMove = "down";
-                return;
-            }
+    }
+    
+    // Handle right movement.
+    if((IsKeyDown(KEY_RIGHT) || right) && (!up && !down)) {
+        if(!right) // If not already moving right, calculate horizontal movement.
+        {
+            horizontal = 50/speed - horizontal; // Determine how much to move right.
+            right = true; // Set moving right flag.
+            left = false; // Reset left flag.
         }
-        if((IsKeyDown(KEY_RIGHT)||right)&&(!up&&!down)) {
-            //cout<<"right"<<endl;
-            if(!right)
+        if(horizontal > 0) // Continue moving right until the counter reaches zero.
+        {
+            horizontal--;
+            if(horizontal == 0) // Reset moving right flag when done.
             {
-                horizontal = 50/speed - horizontal;
-                right=true;
+                right = false;
+            }
+            moveRight(); // Move player right.
+            lastMove = "right"; // Record the last move direction.
+            return; // Exit the function.
+        }
+    }
+    // Handle left movement.
+    else if((IsKeyDown(KEY_LEFT) || left) && (!up && !down)) {
+        if(!left) // If not already moving left, calculate horizontal movement.
+        {
+            horizontal = 50/speed - horizontal; // Determine how much to move left.
+            right = false; // Reset right flag.
+            left = true; // Set moving left flag.
+        }
+        if(horizontal > 0) // Continue moving left until the counter reaches zero.
+        {
+            horizontal--;
+            if(horizontal == 0) // Reset moving left flag when done.
+            {
                 left = false;
             }
-            if(horizontal>0)
-            {
-                horizontal--;
-                if(horizontal==0)
-                {
-                    right = false;
-                }
-                moveRight();
-                lastMove = "right";
-                return;
-            }
+            moveLeft(); // Move player left.
+            lastMove = "left"; // Record the last move direction.
+            return; // Exit the function.
         }
-        else if((IsKeyDown(KEY_LEFT)||left)&&(!up&&!down)) {
-            if(!left)
-            {
-                horizontal = 50/speed - horizontal;
-                right=false;
-                left = true;
-            }
-            if(horizontal>0)
-            {
-                horizontal--;
-                if(horizontal==0)
-                {
-                    left = false;
-                }
-                moveLeft();
-                lastMove = "left";
-                return;
-            }
-        }
+    }
 }
 
 void player::undoLastMove() {
-    resetMovers();
+    resetMovers(); // Reset movement flags and counters.
+    // Undo the last move based on the last recorded direction.
     if (lastMove == "up") {
-        moveDown();
+        moveDown(); // Move down to undo up.
     }
     else if (lastMove == "down") {
-        moveUp();
+        moveUp(); // Move up to undo down.
     }
     else if (lastMove == "left") {
-        moveRight();
+        moveRight(); // Move right to undo left.
     }
     else if (lastMove == "right") {
-        moveLeft();
-    }
-    else {
+        moveLeft(); // Move left to undo right.
     }
 }
 
