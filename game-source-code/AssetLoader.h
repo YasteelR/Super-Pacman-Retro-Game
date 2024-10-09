@@ -3,20 +3,61 @@
 
 #include "FileReader.h"
 
+/**
+ * @class AssetLoader
+ * @brief Class responsible for loading various types of objects from files.
+ */
 class AssetLoader
 {
     public:
+        /**
+         * @brief Default constructor for AssetLoader.
+         */
         AssetLoader(){};
+
+        /**
+         * @brief Opens the file at the specified filepath.
+         * @param filepath The path to the file to open.
+         */
         void OpenPath(string filepath);
+
+        /**
+         * @brief Closes the file at the specified filepath.
+         * @param filepath The path to the file to close.
+         */
         void ClosePath(string filepath);
+
+        /**
+         * @brief Loads a vector of shared_ptr objects of type T.
+         * @tparam T The type of the objects to be loaded.
+         * @param Object A vector of shared pointers to objects of type T.
+         * @param ObjectName The name of the object to be loaded.
+         */
         template <typename T>
         void LoadObject(vector<shared_ptr<T>>& Object, string ObjectName);
+
+        /**
+         * @brief Loads a shared_ptr object of type T.
+         * @tparam T The type of the object to be loaded.
+         * @param Object A shared pointer to an object of type T.
+         * @param ObjectName The name of the object to be loaded.
+         */
         template <typename T>
         void LoadObject(shared_ptr<T>& Object, string ObjectName);
+
+        /**
+         * @brief Loads a unique_ptr object of type T.
+         * @tparam T The type of the object to be loaded.
+         * @param Object A unique pointer to an object of type T.
+         * @param ObjectName The name of the object to be loaded.
+         */
         template <typename T>
         void LoadObject(unique_ptr<T>& Object, string ObjectName);
 
     private:
+        /**
+         * @brief An instance of FileReader to handle file operations.
+         */
         FileReader ObjectFile;
 };
 /// Implementation of template methods
