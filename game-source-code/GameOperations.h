@@ -115,6 +115,9 @@ private:
     vector<shared_ptr<SuperPellet>> spellets; ///< Vector of super pellet objects.
     unique_ptr<Collisions> collide; ///< Collision object.
     unique_ptr<ObjectManager> Object; ///< Object manager.
+
+    int freeze; ///< Timer.
+    string input; ///< Timing display.
 };
 
 template <typename T>

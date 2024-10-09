@@ -72,7 +72,15 @@ public:
      */
     template <typename T>
     void ReadData2(vector<shared_ptr<T>>& StoreObjects);
-    
+    /**
+     * @brief Reads data for objects with two coordinates.
+     * 
+     * @tparam T The type of object to read.
+     * @param StoreObjects The shared pointer to store the read objects.
+     */
+    template <typename T>
+    void ReadData2(shared_ptr<T>& StoreObjects);
+
     /**
      * @brief Reads data for objects with four coordinates.
      * 
@@ -110,6 +118,27 @@ void FileReader::ReadData2(vector<shared_ptr<T>>& StoreObjects) {
     InputFile.clear();
 }
 
+template <typename T>
+void FileReader::ReadData2(shared_ptr<T>& StoreObjects)
+{
+    static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
+    InputFile.seekg(0, std::ios::beg);
+    while (HeaderLine != Object && !InputFile.eof()) {
+        getline(InputFile, HeaderLine);
+    }
+    int xpos, ypos;
+    while (InputFile >> xpos >> ypos) {
+        StoreObjects=make_shared<T>();
+        StoreObjects->set_location(xpos, ypos);
+        DataWasRead = true;
+    }
+    if (!DataWasRead) {
+        throw runtime_error("File contained no coordinates");
+    }
+    DataWasRead = false;
+    InputFile.clear();
+}
+    
 template <typename T>
 void FileReader::ReadData4(vector<shared_ptr<T>>& StoreObjects) {
     static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");

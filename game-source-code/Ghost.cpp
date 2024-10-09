@@ -3,7 +3,7 @@
 Ghost::Ghost(int x, int y)
 : Sprite(x,y)
 {
-    set_sprite("../resources/BlackGhost.png");
+    set_sprite("../resources/ghost.png");
     vert = true;
     hor = true;
     xSpawn=x;

@@ -62,6 +62,7 @@ void GameOperations::handleCollisionPacmanGhost(){
         if (!pelletIsActive && !spellets[0]->activePower())
         {
             freeze=180;
+            playerPacman->resetMovers();
             playerPacman->loseLife();
             playerPacman->set_location(550, 200);
             for(int i=0; i<Ghosts.size(); i++)
