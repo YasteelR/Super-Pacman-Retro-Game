@@ -14,50 +14,66 @@ enum Mode_select{
     Game_over_screen
 };
 
-
+/**
+ * @brief Manages the game state and transitions between screens.
+ * 
+ * The PacMan class handles the game loop, screen management,
+ * and user input.
+ */
 class PacMan {
 public:
-
     PacMan();
-
+    
+    /**
+     * @brief Runs the main game loop.
+     */
     void run();
-
+    
+    /**
+     * @brief Sets the splash screen state.
+     * 
+     * @param event The key event.
+     */
     void set_splash_screen(const int& event);
- 
+    
+    /**
+     * @brief Sets the game screen state.
+     * 
+     * @param event The key event.
+     */
     void set_game_screen(const int& event);
- 
+    
+    /**
+     * @brief Sets the pause screen state.
+     * 
+     * @param event The key event.
+     */
     void set_pause_screen(const int& event);
- 
+    
+    /**
+     * @brief Sets the game over screen state.
+     * 
+     * @param event The key event.
+     */
     void set_gameover_screen(const int& event);
 
-
 private:
-    shared_ptr<raylib::Window> window;
-    unique_ptr<GameOperations> Game_Opperations;
-    Mode_select mode;
-    raylib::Texture2D splash;
-    raylib::Texture2D keys;
-    raylib::Texture2D enter;
-    raylib::Texture2D p;
-    raylib::Texture2D escape;
-    Vector2 splashPosition;
-    Vector2 keyPosition;
-    Vector2 enterPosition;
-    Vector2 pPosition;
-    Vector2 escapePosition;
-    const int screen_width =1600;
-    const int screen_height =900;
-    int cycle;
+    shared_ptr<raylib::Window> window; ///< The game window.
+    unique_ptr<GameOperations> Game_Opperations; ///< Game operations handler.
+    Mode_select mode; ///< Current game mode.
+    raylib::Texture2D splash; ///< Texture for the splash screen.
+    raylib::Texture2D keys; ///< Texture for key controls.
+    raylib::Texture2D enter; ///< Texture for the enter key.
+    raylib::Texture2D p; ///< Texture for the pause key.
+    raylib::Texture2D escape; ///< Texture for the escape key.
+    Vector2 splashPosition; ///< Position for the splash screen texture.
+    Vector2 keyPosition; ///< Position for the key controls texture.
+    Vector2 enterPosition; ///< Position for the enter key texture.
+    Vector2 pPosition; ///< Position for the pause key texture.
+    Vector2 escapePosition; ///< Position for the escape key texture.
+    const int screen_width = 1600; ///< Width of the window.
+    const int screen_height = 900; ///< Height of the window.
+    int cycle; ///< Game cycle counter.
 };
 
 #endif /* AEFA9809_0E75_4129_876C_3490D6312543 */
-
-/*
-private:
-
-    shared_ptr<sf::RenderWindow> window;
-    Mode_select mode;
-   // unique_ptr<GameOperations> defender_game;
-
-};
-*/
