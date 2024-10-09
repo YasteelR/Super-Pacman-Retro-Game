@@ -16,7 +16,6 @@
 #include "Wall.h"
 #include "PowerPellet.h"
 #include "Collisions.h"
-#include "ObjectManager.h"
 #include "SuperPellet.h"
 
 class GameOperations{
@@ -64,7 +63,6 @@ private:
     vector<shared_ptr<PowerPellet>> pellets;
     vector<shared_ptr<SuperPellet>> spellets;
     unique_ptr<Collisions> collide;
-    unique_ptr<ObjectManager> Object;
     int freeze;
     string input;
 };

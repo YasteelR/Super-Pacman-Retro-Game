@@ -20,11 +20,11 @@ void AssetLoader::LoadObject(vector<shared_ptr<T>>& Object, string ObjectName)
 {
     if(ObjectName=="Rectangles")
     {
-        TextFile.ObjectType(ObjectName);
-        TextFile.ReadData4(Object);
+        ObjectFile.ObjectType(ObjectName);
+        ObjectFile.ReadData4(Object);
     }
     else 
-        TextFile.ObjectType(ObjectName);
-        TextFile.ReadData2(Object);
+        ObjectFile.ObjectType(ObjectName);
+        ObjectFile.ReadData2(Object);
 }
 #endif /* DCFC5681_4E68_4E0A_AF25_1C9FDF03378B */

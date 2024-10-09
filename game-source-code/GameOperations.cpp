@@ -12,8 +12,6 @@ GameOperations::GameOperations(){
     sketch = make_unique<Render>();
     points = make_unique<Score>();
     collide = make_unique<Collisions>();
-    Object = make_unique<ObjectManager>();
-    Object->loadObjects("../resources/GameMap.txt");
     freeze = 180;
 
 
@@ -252,11 +250,11 @@ void GameOperations::draw(){
 void GameOperations::loadRect(string FilePath){
 
     FileReader TextFile(FilePath);
-    TextFile.ObjectType("Rectangles");
+    TextFile.ObjectType("Walls");
     TextFile.ReadData4(walls);
 
-    TextFile.ObjectType("Boundaries");
-    TextFile.ReadData4(boundaries);
+    // TextFile.ObjectType("Boundaries");
+    // TextFile.ReadData4(boundaries);
 
     TextFile.ObjectType("Keys");
     TextFile.ReadData2(keys);
