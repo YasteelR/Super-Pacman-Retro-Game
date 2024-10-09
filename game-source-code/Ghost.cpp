@@ -1,33 +1,30 @@
 #include "Ghost.h"
 
 Ghost::Ghost(int x, int y)
-: Sprite(x,y)
+: Sprite(x, y) // Initialize the base Sprite class with the given coordinates.
 {
-    set_sprite("../resources/ghost.png");
-    vert = true;
-    hor = true;
-    xSpawn=x;
-    ySpawn=y;
-    speed=2;
+    set_sprite("../resources/ghost.png"); // Load the ghost sprite from the specified path.
+    vert = true;  // Allow vertical movement.
+    hor = true;   // Allow horizontal movement.
+    xSpawn = x;   // Store the initial x-coordinate for respawning.
+    ySpawn = y;   // Store the initial y-coordinate for respawning.
+    speed = 2;    // Set the ghost's movement speed.
 }
 
 void Ghost::moveUp(){
-    set_location(get_x(), get_y() - speed);
-
+    set_location(get_x(), get_y() - speed); // Move the ghost up by the speed value.
 }
 
 void Ghost::moveDown() {
-    set_location(get_x(), get_y() + speed);
-
+    set_location(get_x(), get_y() + speed); // Move the ghost down by the speed value.
 }
 
 void Ghost::moveLeft() {
-    set_location(get_x() - speed, get_y() );
-
+    set_location(get_x() - speed, get_y()); // Move the ghost left by the speed value.
 }
 
 void Ghost::moveRight() {
-    set_location(get_x() + speed, get_y() );
+    set_location(get_x() + speed, get_y()); // Move the ghost right by the speed value.
 }
 
 void Ghost::move_Obj(shared_ptr<player> pacman){
