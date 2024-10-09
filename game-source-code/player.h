@@ -15,6 +15,13 @@ using namespace std;
 class player : public Sprite {
 public:
     /**
+     * @brief Default Constructor.
+     * 
+     * Initializes the player.
+     */
+    player();
+
+    /**
      * @brief Constructor with position parameters.
      * 
      * Initializes the player at specified coordinates.
