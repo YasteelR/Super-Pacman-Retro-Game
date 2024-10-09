@@ -7,27 +7,66 @@
 
 using namespace std;
 
-class Ghost : public Sprite{
+/**
+ * @brief Represents a Ghost object in the game.
+ * 
+ * The Ghost class handles ghost movement and behavior.
+ */
+class Ghost : public Sprite {
 public:
+    /**
+     * @brief Constructor with position parameters.
+     * 
+     * Initializes the ghost at specified coordinates.
+     * 
+     * @param x The initial x-coordinate.
+     * @param y The initial y-coordinate.
+     */
     Ghost(int x, int y);
+    
+    /**
+     * @brief Moves the ghost upwards.
+     */
     void moveUp();
+    
+    /**
+     * @brief Moves the ghost downwards.
+     */
     void moveDown();
+    
+    /**
+     * @brief Moves the ghost to the left.
+     */
     void moveLeft();
+    
+    /**
+     * @brief Moves the ghost to the right.
+     */
     void moveRight();
+    
+    /**
+     * @brief Moves the ghost towards the player.
+     * 
+     * @param pacman The shared pointer to the player object.
+     */
     void move_Obj(shared_ptr<player> pacman);
+    
+    /**
+     * @brief Undoes the last move made by the ghost.
+     */
     void undoLastMove();
+    
+    /**
+     * @brief Respawns the ghost at its original position.
+     */
     void respawn();
 
 private:
-    int x_pos;
-    int y_pos;  
-    string lastMove;
-    bool hor;
-    bool vert;
-    int xSpawn;
-    int ySpawn;
+    int x_pos; ///< Current x-coordinate of the ghost.
+    int y_pos; ///< Current y-coordinate of the ghost.
+    string lastMove; ///< Last move made by the ghost.
+    bool hor; ///< Horizontal movement flag.
+    bool vert; ///< Vertical movement flag.
 };
-
-
 
 #endif /* D090F8A0_C96D_4D4B_A6E4_9D21C536DB0F */
