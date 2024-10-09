@@ -19,25 +19,75 @@
 #include "ObjectManager.h"
 #include "SuperPellet.h"
 
-class GameOperations{
+/**
+ * @brief Manages game operations and logic.
+ * 
+ * The GameOperations class handles game state, object movement, 
+ * collision detection, and rendering.
+ */
+class GameOperations {
 public:
     GameOperations();
+    
+    /**
+     * @brief Starts the game operations.
+     */
     void Start();
+    
+    /**
+     * @brief Moves game objects.
+     */
     void move_objects();
+    
+    /**
+     * @brief Handles collision detection and response.
+     */
     void handleCollisions();
     
-    static bool is_game_over;
+    static bool is_game_over; ///< Indicates if the game is over.
+    
+    /**
+     * @brief Draws the game objects and UI.
+     */
     void draw();
-    void loadRect(string FilePath);
+    
+    /**
+     * @brief Loads rectangles from a file.
+     * 
+     * @param FilePath The path to the map file.
+     */
+    void loadRect(std::string FilePath);
+    
+    /**
+     * @brief Returns the bounding rectangle of an object.
+     * 
+     * @tparam T The object type.
+     * @param Object The shared pointer to the object.
+     * @return Rectangle The bounding rectangle.
+     */
     template <typename T>
     Rectangle returnRect(shared_ptr<T> Object);
+    
+    /**
+     * @brief Checks if the game is over.
+     * 
+     * @return true if the game is over, false otherwise.
+     */
     bool getGameOver();
+    
+    /**
+     * @brief Checks if a collision occurred.
+     * 
+     * @return true if a collision occurred, false otherwise.
+     */
     bool getCollision();
+    
+    /**
+     * @brief Resets the collision status.
+     */
     void resetCollision();
 
-
 private:
-
     void handleCollisionPacmanGhost();
     void handleCollisionWall();
     void handleCollisionDoor();
@@ -46,30 +96,30 @@ private:
     void handleCollisionPellets();
     void handleCollisionStar();
     void handleCollisionSPellets();
-
-    shared_ptr<player> playerPacman;
-    vector<shared_ptr<Ghost>> Ghosts;
-    vector <shared_ptr<Wall>> walls;
-    vector <shared_ptr<Wall>> boundaries;
-    int NumberOfBounds;
-    bool gameOver;
-    vector<shared_ptr<Key>> keys;
-    vector<shared_ptr<Door>> doors;
-    vector<shared_ptr<Fruit>> fruits;
-    unique_ptr<Score> points;
-    vector<shared_ptr<Star>> stars;
-    bool collision;
-
-    unique_ptr<Render> sketch;
-    vector<shared_ptr<PowerPellet>> pellets;
-    vector<shared_ptr<SuperPellet>> spellets;
-    unique_ptr<Collisions> collide;
-    unique_ptr<ObjectManager> Object;
+    
+    shared_ptr<player> playerPacman; ///< The player object.
+    vector<shared_ptr<Ghost>> Ghosts; ///< Vector of ghost objects.
+    vector <shared_ptr<Wall>> walls; ///< Vector of wall objects.
+    vector <shared_ptr<Wall>> boundaries; ///< Vector of boundary objects.
+    int NumberOfBounds; ///< Number of boundary objects.
+    bool gameOver; ///< Indicates if the game is over.
+    vector<shared_ptr<Key>> keys; ///< Vector of key objects.
+    vector<shared_ptr<Door>> doors; ///< Vector of door objects.
+    vector<shared_ptr<Fruit>> fruits; ///< Vector of fruit objects.
+    unique_ptr<Score> points; ///< Score object.
+    vector<shared_ptr<Star>> stars; ///< Vector of star objects.
+    bool collision; ///< Indicates if a collision occurred.
+    
+    unique_ptr<Render> sketch; ///< Render object for drawing.
+    vector<shared_ptr<PowerPellet>> pellets; ///< Vector of power pellet objects.
+    vector<shared_ptr<SuperPellet>> spellets; ///< Vector of super pellet objects.
+    unique_ptr<Collisions> collide; ///< Collision object.
+    unique_ptr<ObjectManager> Object; ///< Object manager.
 };
 
 template <typename T>
-Rectangle GameOperations::returnRect(shared_ptr<T> Object)
-{
+Rectangle GameOperations::returnRect(shared_ptr<T> Object) {
     return {(float)Object->get_x(), (float)Object->get_y(), (float)Object->getWidth(), (float)Object->getHeight()};
 }
+
 #endif /* CE167A85_A911_4D91_8B62_622EFB213774 */
