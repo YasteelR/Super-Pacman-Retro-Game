@@ -157,60 +157,60 @@ void player::undoLastMove() {
     }
 }
 
-
 void player::loseLife()
 {
-    if(lives>=0)
+    if(lives >= 0) // Ensure lives are valid before decrementing.
     {
-        hearts[lives-1]->set_location(-100,-100);
-        lives--;
+        hearts[lives-1]->set_location(-100, -100); // Move the heart off-screen.
+        lives--; // Decrease the number of lives.
     }
-    if(lives==0)
+    if(lives == 0) // Check if player is out of lives.
     {
-        dead=true;
+        dead = true; // Set the dead state to true.
     }
 }
 
 bool player::isDead()
 {
-    return dead;
+    return dead; // Return the current dead state.
 }
 
 void player::setHearts()
 {
-    int w=200;
-    int h=800;
-    for(int i=0; i<lives; i++)
+    int w = 200; // Initial x position for hearts.
+    int h = 800; // y position for hearts.
+    for(int i = 0; i < lives; i++) // Create hearts based on lives.
     {
-        hearts.emplace_back(make_shared<Sprite>());
-        hearts.back()->set_location(w,h);
-        hearts.back()->set_sprite("../resources/heart.png");
-        w=w+55;
+        hearts.emplace_back(make_shared<Sprite>()); // Create a new heart sprite.
+        hearts.back()->set_location(w, h); // Set heart position.
+        hearts.back()->set_sprite("../resources/heart.png"); // Set heart sprite image.
+        w = w + 55; // Update x position for the next heart.
     }
 }
 
 shared_ptr<vector<shared_ptr<Sprite>>> player::getHearts()
 {
-    auto pointer = make_shared<vector<shared_ptr<Sprite>>>(hearts);
-    return pointer;
+    auto pointer = make_shared<vector<shared_ptr<Sprite>>>(hearts); // Create a shared pointer for hearts.
+    return pointer; // Return the shared pointer.
 }
 
 void player::resetMovers()
 {
-    up=false;
-    down=false;
-    right=false;
-    left=false;
-    vertical=0;
-    horizontal=0;
+    up = false; // Reset up movement flag.
+    down = false; // Reset down movement flag.
+    right = false; // Reset right movement flag.
+    left = false; // Reset left movement flag.
+    vertical = 0; // Reset vertical movement counter.
+    horizontal = 0; // Reset horizontal movement counter.
 }
 
 void player::setSpeed(int velocity)
 {
-    if(50%velocity==0)
-    {
-        newSpeed=velocity;
+    // Ensure velocity is a multiple of 50 before setting.
+    if (50 % velocity == 0) {
+        newSpeed = velocity; // Set the new speed.
     }
-    else 
-        throw runtime_error("Velocity must be an integer multiple of 50");
+    else {
+        throw runtime_error("Velocity must be an integer multiple of 50"); // Throw an error if the condition is not met.
+    }
 }
