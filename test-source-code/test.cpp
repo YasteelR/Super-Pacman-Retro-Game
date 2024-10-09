@@ -4,6 +4,14 @@
 #include <iostream>
 #include "GameOperations.h"
 
+#include "Ghost.h"
+#include "player.h"
+
+#include "BaseObject.h"
+
+#include "Score.h"
+#include <fstream>
+
 
 using namespace std;
 
@@ -14,158 +22,70 @@ TEST_CASE("check cake ")
 
     CHECK(1 == 1);
 }
+//==================================Ghost & movment ===================================
+// Test Suite for Ghost
+TEST_SUITE("Ghost Tests") {
 
-//====================================Testing BaseObject class=====================================================================
-// TEST_CASE("Base Object Initializes correctly")
-// {
-//     //This test needs to be altered later
-//     BaseObject test=BaseObject{0,0};
-//     tuple<bool, bool, bool> TestConditions(false, false, false);
+    TEST_CASE("Constructor Initialization") {
+        Ghost ghost(400, 300); // Create a ghost at (400, 300)
 
-//     if(test.get_x()==0 && test.get_y()==0)
-//     {
-//         get<0>(TestConditions)=true;
-//     }
-
-//     if(test.get_sprite()=="")
-//     {
-//         get<1>(TestConditions)=true;
-//     }
-
-//     if(get<0>(TestConditions)==get<1>(TestConditions))
-//     {
-//         get<2>(TestConditions)=true;
-//     }
-
-//     CHECK(get<2>(TestConditions));
-// }
-
-// TEST_CASE("Set Location updates objects location")
-// {
-//     BaseObject test = BaseObject{0,0};
-
-//     int x=1;
-//     int y=1;
-
-//     test.set_location(x,y);
-
-//     bool testCase=false;
-
-//     if(test.get_x()==x && test.get_y()==y)
-//     {
-//         testCase=true;
-//     }
-
-//     CHECK(testCase);
-// }
-
-// TEST_CASE("Set sprite changes sprite to filename")
-//{
-//     BaseObject test = BaseObject{0,0};
-//     string spriteTestName="bobbbyyyyyy";
-//
-//     test.set_sprite(spriteTestName);
-//
-//     CHECK(test.get_sprite()==spriteTestName);
-// }
-
-// TEST_CASE("Set_moved shows if the object has been moved")
-// {
-//     BaseObject test = BaseObject{0,0};
-//     test.set_moved(true);
-
-//     Properties check=test.get_Properties();
-
-//     CHECK(check.is_moved);
-// }
-
-//====================================Testing Player====================================================================================
-TEST_CASE("Player initializes correctly")
-{
-    player test = player(0, 0);
-
-    int xPosition = 0;
-    int yPosition = 0;
-
-    bool check = false;
-    if (test.get_x() == xPosition && test.get_y() == yPosition)
-    {
-        check = true;
+        CHECK(ghost.get_x() == 400); // Check initial x position
+        CHECK(ghost.get_y() == 300); // Check initial y position
+        CHECK(ghost.getSprite() == "../resources/Ghost.png"); // Check sprite path
     }
 
-    CHECK(check);
+    TEST_CASE("Movement Up") {
+        Ghost ghost(400, 300);
+        ghost.moveUp(); // Move the ghost up
+
+        CHECK(ghost.get_y() == 298); // Check y position after moving up
+    }
+
+    TEST_CASE("Movement Down") {
+        Ghost ghost(400, 300);
+        ghost.moveDown(); // Move the ghost down
+
+        CHECK(ghost.get_y() == 302); // Check y position after moving down
+    }
+
+    TEST_CASE("Movement Left") {
+        Ghost ghost(400, 300);
+        ghost.moveLeft(); // Move the ghost left
+
+        CHECK(ghost.get_x() == 398); // Check x position after moving left
+    }
+
+    TEST_CASE("Movement Right") {
+        Ghost ghost(400, 300);
+        ghost.moveRight(); // Move the ghost right
+
+        CHECK(ghost.get_x() == 402); // Check x position after moving right
+    }
+
+    TEST_CASE("Move Towards Player") {
+        Ghost ghost(400, 300);
+        shared_ptr<player> playerPacman;
+        playerPacman = make_shared<player>(player(100, 100));
+
+        ghost.move_Obj(playerPacman); // Move ghost towards player
+
+        CHECK(ghost.get_x() == 398); // Ghost should move right towards player
+        CHECK(ghost.get_y() == 300); // Ghost should not move vertically
+    }
+
+    TEST_CASE("Undo Last Move") {
+        Ghost ghost(400, 300);
+        ghost.moveUp(); // Move the ghost up
+        ghost.undoLastMove(); // Undo the move
+
+        CHECK(ghost.get_y() == 298); // Ghost should return to original y position
+    }
+
+    TEST_CASE("Respawn") {
+        Ghost ghost(400, 300);
+        ghost.respawn(); // Respawn the ghost
+
+        CHECK(ghost.get_x() == 750); // Check respawn position
+        CHECK(ghost.get_y() == 400); // Check respawn position
+    }
 }
-
-TEST_CASE("moveUp moves the player up")
-{
-    player test = player{800, 300};
-    test.moveUp();
-
-    CHECK(test.get_y() == 300 - 5);
-}
-
-TEST_CASE("moveDown moves the player down")
-{
-    player test = player{800, 300};
-    test.moveDown();
-
-    CHECK(test.get_y() == 300 + 5);
-}
-
-TEST_CASE("moveLeft moves the player Left")
-{
-    player test = player{800, 300};
-    test.moveLeft();
-
-    CHECK(test.get_x() == 800 - 5);
-}
-
-TEST_CASE("moveRight moves the player Right")
-{
-    player test = player{800, 300};
-    test.moveRight();
-
-    CHECK(test.get_x() == 800 + 5);
-}
-
-TEST_CASE("moveRight moves the player Right")
-{
-    player test = player{800, 300};
-    test.set_location(1451, 300);
-    test.moveRight();
-
-    CHECK(test.get_x() == 1451+5);
-}
-//====================================Testing collisions====================================================================================
-TEST_CASE("check collision between sprites work")
-{
-    //raylib::Window(1600, 900, "test window");
-    GameOperations game;
-    game.handleCollisions();
-    CHECK(game.getCollision());
-}
-
-// TEST_CASE("check collision between sprites work")
-// {
-//     player test = player{800, 300};
-//     vector<int> WallCoordinates= {1,1,10,10};
-//     int index = 0;
-//     GameOperations game;
-//     bool collision = false;
-
-//     if (CheckCollisionRecs(game.returnRect(index, WallCoordinates) ,test.getBoundingBox() )) {
-//         collision = true;
-//     }
-
-//     CHECK(!collision);
-// }
-
-// TEST_CASE("Check collisions work if pacman Spawns inside a wall")
-// {
-//     GameOperations test;
-//     test.loadRect("..resources/GameMap.txt");
-//     player TestPlayer = player {50,0};
-//     test.checkCollisionWall();
-
-//     CHECK(test.getCollision());
-// }
