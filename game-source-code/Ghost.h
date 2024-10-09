@@ -69,6 +69,7 @@ private:
     bool vert; ///< Vertical movement flag.
     int xSpawn;///< x spawn point.
     int ySpawn;///< y spawn point.
+    int speed; ///< how many pixels the ghosts move.
 };
 
 #endif /* D090F8A0_C96D_4D4B_A6E4_9D21C536DB0F */
