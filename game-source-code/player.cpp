@@ -1,5 +1,21 @@
 #include "player.h"
 
+player::player()
+: Sprite()
+{
+    lives=3;
+    setHearts();
+    dead=false;
+    set_sprite("../resources/pacmanLeft.png");
+    up = false;
+    down = false;
+    vertical = 0;
+    right = false;
+    left = false;
+    horizontal = 0;
+    speed = 2;
+}
+
 player::player(int x, int y)
 : Sprite(x,y)
 {

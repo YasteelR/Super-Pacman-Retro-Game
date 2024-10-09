@@ -9,7 +9,7 @@ using namespace std;
 
 class player : public Sprite{
 public:
-
+    player();
     player(int x, int y);
     void move_Obj();
     void moveUp();

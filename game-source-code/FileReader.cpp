@@ -5,6 +5,7 @@ FileReader::FileReader(string ReadInFile)
     MapFile=ReadInFile;
     Object="Rectangles";
     OpenFile(MapFile);
+    DataWasRead = false;
 }
 void FileReader::OpenFile()
 {

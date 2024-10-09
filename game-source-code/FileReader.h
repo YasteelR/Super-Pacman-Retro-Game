@@ -38,7 +38,8 @@ class FileReader
         string MapFile;
         ifstream InputFile;
         string Object;
-
+        string HeaderLine;
+        bool DataWasRead;
 };
 
 template <typename T>
@@ -46,14 +47,12 @@ void FileReader::ReadData2(vector<shared_ptr<T>>& StoreObjects)
 {
     static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
     InputFile.seekg(0, std::ios::beg);
-    string HeaderLine;
+
     while (HeaderLine != Object && !InputFile.eof())
     {
-
         getline(InputFile, HeaderLine);
     }
     
-    bool DataWasRead = false;
     int xpos;
     int ypos;
     while (InputFile >> xpos >> ypos)
@@ -68,23 +67,49 @@ void FileReader::ReadData2(vector<shared_ptr<T>>& StoreObjects)
         throw runtime_error("File contained no coordinates");
     }
     
+    DataWasRead = false;
     InputFile.clear();
 };
 
-
 template <typename T>
-void FileReader::ReadData4(vector<shared_ptr<T>>& StoreObjects)
+void FileReader::ReadData2(shared_ptr<T>& StoreObjects)
 {
     static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
     InputFile.seekg(0, std::ios::beg);
-    string HeaderLine;
     while (HeaderLine != Object && !InputFile.eof())
     {
 
         getline(InputFile, HeaderLine);
     }
     
-    bool DataWasRead = false;
+    int xpos;
+    int ypos;
+    while (InputFile >> xpos >> ypos)
+    {
+        StoreObjects = make_shared<T>();
+        StoreObjects->set_location(xpos, ypos);
+        DataWasRead = true;
+    }
+
+    if (DataWasRead == false)
+    {
+        throw runtime_error("File contained no coordinates");
+    }
+    DataWasRead = false;
+    InputFile.clear();
+};
+
+template <typename T>
+void FileReader::ReadData4(vector<shared_ptr<T>>& StoreObjects)
+{
+    static_assert(std::is_base_of<BaseObject, T>::value, "T must be derived from BaseObject");
+    InputFile.seekg(0, std::ios::beg);
+    while (HeaderLine != Object && !InputFile.eof())
+    {
+
+        getline(InputFile, HeaderLine);
+    }
+    
     int xpos;
     int ypos;
     int width;
@@ -103,7 +128,7 @@ void FileReader::ReadData4(vector<shared_ptr<T>>& StoreObjects)
     {
         throw runtime_error("File contained no coordinates");
     }
-    
+    DataWasRead = false;
     InputFile.clear();
 };
 
