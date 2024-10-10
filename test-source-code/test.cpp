@@ -31,7 +31,7 @@ TEST_SUITE("Ghost Tests") {
 
         CHECK(ghost.get_x() == 400); // Check initial x position
         CHECK(ghost.get_y() == 300); // Check initial y position
-        CHECK(ghost.getSprite() == "../resources/Ghost.png"); // Check sprite path
+        CHECK(ghost.getSprite() == "../resources/ghost.png"); // Check sprite path
     }
 
     TEST_CASE("Movement Up") {
@@ -83,10 +83,11 @@ TEST_SUITE("Ghost Tests") {
 
     TEST_CASE("Respawn") {
         Ghost ghost(400, 300);
+        ghost.set_location(500,300);
         ghost.respawn(); // Respawn the ghost
 
-        CHECK(ghost.get_x() == 750); // Check respawn position
-        CHECK(ghost.get_y() == 400); // Check respawn position
+        CHECK(ghost.get_x() == 400); // Check respawn position
+        CHECK(ghost.get_y() == 300); // Check respawn position
     }
 }
 
@@ -418,7 +419,7 @@ TEST_SUITE("Major Feature star tests super pellets and fruits") {
         vector<shared_ptr<Wall>> walls = {wall};
         gameOps.handleCollisions();
 
-        CHECK(gameOps.getCollision() == false);  // Collision should be detected
+        CHECK(gameOps.getCollision() == true);  // Collision should be detected
     }
 
     TEST_CASE("Game Over Detection") {
