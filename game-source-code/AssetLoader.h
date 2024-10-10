@@ -34,7 +34,16 @@ class AssetLoader
          * @param ObjectName The name of the object to be loaded.
          */
         template <typename T>
-        void LoadObject(vector<shared_ptr<T>>& Object, string ObjectName);
+        void LoadObject4(vector<shared_ptr<T>>& Object, string ObjectName);
+
+        /**
+         * @brief Loads a vector of shared_ptr objects of type T.
+         * @tparam T The type of the objects to be loaded.
+         * @param Object A vector of shared pointers to objects of type T.
+         * @param ObjectName The name of the object to be loaded.
+         */
+        template <typename T>
+        void LoadObject2(vector<shared_ptr<T>>& Object, string ObjectName);
 
         /**
          * @brief Loads a shared_ptr object of type T.
@@ -69,17 +78,25 @@ class AssetLoader
  * @param ObjectName The name of the object to be loaded.
  */
 template <typename T>
-void AssetLoader::LoadObject(vector<shared_ptr<T>>& Object, string ObjectName)
+void AssetLoader::LoadObject2(vector<shared_ptr<T>>& Object, string ObjectName)
 {
-    if(ObjectName=="Walls")
-    {
-        ObjectFile.ObjectType(ObjectName);
-        ObjectFile.ReadData4(Object);
-    }
-    else 
-        ObjectFile.ObjectType(ObjectName);
-        ObjectFile.ReadData2(Object);
+    ObjectFile.ObjectType(ObjectName);
+    ObjectFile.ReadData2(Object);
 }
+
+/**
+ * @brief Template specialization for loading a vector of shared_ptr objects.
+ * @tparam T The type of the objects being loaded.
+ * @param Object A vector of shared pointers to objects of type T.
+ * @param ObjectName The name of the object to be loaded.
+ */
+template <typename T>
+void AssetLoader::LoadObject4(vector<shared_ptr<T>>& Object, string ObjectName)
+{
+    ObjectFile.ObjectType(ObjectName);
+    ObjectFile.ReadData4(Object);
+}
+
 /**
  * @brief Template specialization for loading a shared_ptr object.
  * @tparam T The type of the object being loaded.

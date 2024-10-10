@@ -17,7 +17,7 @@
 #include "PowerPellet.h"
 #include "Collisions.h"
 #include "SuperPellet.h"
-#include "ObjectManager.h"
+#include "AssetLoader.h"
 
 /**
  * @brief Manages game operations and logic.
@@ -50,13 +50,6 @@ public:
      * @brief Draws the game objects and UI.
      */
     void draw();
-    
-    /**
-     * @brief Loads rectangles from a file.
-     * 
-     * @param FilePath The path to the map file.
-     */
-    void loadRect(std::string FilePath);
     
     /**
      * @brief Returns the bounding rectangle of an object.
@@ -96,6 +89,7 @@ private:
     void handleCollisionPellets();
     void handleCollisionStar();
     void handleCollisionSPellets();
+    void loadEntities(std::string FilePath);
     
     shared_ptr<player> playerPacman; ///< The player object.
     vector<shared_ptr<Ghost>> Ghosts; ///< Vector of ghost objects.
@@ -114,7 +108,7 @@ private:
     vector<shared_ptr<PowerPellet>> pellets; ///< Vector of power pellet objects.
     vector<shared_ptr<SuperPellet>> spellets; ///< Vector of super pellet objects.
     unique_ptr<Collisions> collide; ///< Collision object.
-    unique_ptr<ObjectManager> Object; ///< Object manager.
+    unique_ptr<AssetLoader> Generator; ///< Load in objects from txt file.
 
     int freeze; ///< Timer.
     string input; ///< Timing display.

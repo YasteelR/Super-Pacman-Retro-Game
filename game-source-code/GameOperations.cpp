@@ -1,7 +1,9 @@
 #include "GameOperations.h"
 
 GameOperations::GameOperations(){
-    loadRect("../resources/GameMap.txt");
+    Generator = make_unique<AssetLoader>();
+
+    loadEntities("../resources/GameMap.txt");
     collision=false;
 
     Ghosts.emplace_back(make_shared<Ghost>(750,400));
@@ -235,33 +237,20 @@ void GameOperations::draw(){
         EndDrawing();
 }
 
-void GameOperations::loadRect(string FilePath){
+void GameOperations::loadEntities(string FilePath){
 
-    FileReader TextFile(FilePath);
-    
-    TextFile.ObjectType("Player");
-    TextFile.ReadData2(playerPacman);
+    Generator->OpenPath(FilePath);
 
-    TextFile.ObjectType("Walls");
-    TextFile.ReadData4(walls);
+    Generator->LoadObject(playerPacman, "Player");
+    Generator->LoadObject4(walls, "Walls");
+    Generator->LoadObject2(keys, "Keys");
+    Generator->LoadObject4(doors, "Doors");
+    Generator->LoadObject2(fruits, "Fruits");
+    Generator->LoadObject2(stars, "Stars");
+    Generator->LoadObject2(pellets, "Power Pellets");
+    Generator->LoadObject2(spellets, "Super Pellets");
 
-    TextFile.ObjectType("Keys");
-    TextFile.ReadData2(keys);
-
-    TextFile.ObjectType("Doors");
-    TextFile.ReadData4(doors);
-
-    TextFile.ObjectType("Fruits");
-    TextFile.ReadData2(fruits);
-
-    TextFile.ObjectType("Stars");
-    TextFile.ReadData2(stars);
-
-    TextFile.ObjectType("Power Pellets");
-    TextFile.ReadData2(pellets);
-
-    TextFile.ObjectType("Super Pellets");
-    TextFile.ReadData2(spellets);
+    Generator->ClosePath(FilePath);
 }
 
 bool GameOperations::getGameOver(){
