@@ -7,6 +7,7 @@ Star::Star() : Sprite()
     srand(time(0)); // Seed the random number generator with the current time.
     clock = 0; // Initialize the clock for timing.
     timer = 60; // Set the timer duration for changing fruit sprites.
+    timer1 = -1;
 
     // Add different fruit file paths to the vector for random selection.
     fruitsFilepath.emplace_back("../resources/banana.png");
@@ -71,6 +72,7 @@ bool Star::CompanionsMatchFruit()
 // Moves the star and its companions out of view.
 void Star::Destroy()
 {
+    timer1 = rand()%900+180; //Randomly sets timer1 between 3 and 15 secs
     set_location(-100, -100); // Move the star out of view.
     for (int i = 0; i < starFruits.size(); i++)
     {
@@ -89,4 +91,22 @@ shared_ptr<vector<shared_ptr<Sprite>>> Star::getCompanions()
 void Star::setTimer(int duration)
 {
     timer = duration; // Update the timer duration.
+}
+
+//respawns the star and it's companions after a random increment of time
+void Star::tickTock()
+{
+    if(timer1>-1)
+    {
+        timer1--;
+    }
+}
+void Star::respawn()
+{
+    if(timer1==0)
+    {
+        starFruits[0]->set_location(801, 601);
+        starFruits[1]->set_location(701, 601);
+        set_location(750,601);
+    }
 }

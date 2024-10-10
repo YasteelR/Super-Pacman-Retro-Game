@@ -62,11 +62,22 @@ public:
      */
     void setTimer(int duration);
 
+    /**
+    @brief Decrements the respawn timer for the star and its companions.
+    */
+    void tickTock();
+
+    /**
+    @brief Respawns the star and its companions.
+    */
+    void respawn();
+
 private:
     vector<shared_ptr<Sprite>> starFruits; ///< Companion fruits of the star.
     vector<string> fruitsFilepath; ///< File paths for fruit textures.
     int clock; ///< Timer clock.
     int timer; ///< Duration for the timer.
+    int timer1; ///<Timer for respawn.
 };
 
 #endif /* BB5257F6_5AD4_4BE3_9A6C_BB94C19F6F37 */

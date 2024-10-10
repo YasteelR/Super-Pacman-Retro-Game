@@ -164,6 +164,8 @@ void GameOperations::handleCollisionFruit()
 void GameOperations::handleCollisionStar()
 {
     collide->checkCollisions(stars,playerPacman);
+    stars[0]->tickTock();
+    stars[0]->respawn();
     if (collide->getCollision())
     {
         collision = true;
