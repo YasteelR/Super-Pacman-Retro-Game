@@ -19,6 +19,11 @@ void PowerPellet::duration()
     {
         active--; // Reduce the active duration by one.
     }
+    else if (active == 0 && powerful) // If active duration has expired and it's powerful.
+    {
+        Power--; // Decrease the count of active super pellets.
+        powerful = false; // Set powerful state to false.
+    }
 }
 
 // Checks if the power pellet is currently active.
