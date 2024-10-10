@@ -36,8 +36,8 @@ public:
 private:
     int active; ///< Active duration of the super pellet.
     int PelletNumber; ///< The pellet's identifier.
-    static int Super;
-    bool powerful;
+    static int Super; ///<counter for number of active pellets.
+    bool powerful; ///< flag if a pellet is active.
 };
 
 #endif /* DADBC4C0_964C_40F7_98D7_993A0DD45080 */

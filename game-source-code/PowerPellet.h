@@ -33,6 +33,8 @@ public:
 private:
     int active; ///< Active duration of the power pellet.
     int PelletNumber; ///< The pellet's identifier.
+    static int Power; ///<counter for number of active pellets.
+    bool powerful; ///< flag if a pellet is active.
 };
 
 #endif /* B4E447DE_F542_493E_BFDA_9697CE8ED184 */

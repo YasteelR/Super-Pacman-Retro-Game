@@ -49,19 +49,23 @@ void GameOperations::handleCollisions()
 void GameOperations::handleCollisionPacmanGhost(){
     //check collision with Ghosts
     collide->checkCollisions(Ghosts, playerPacman);
+    for(int i=0; i<Ghosts.size(); i++)
+    {
+        if(spellets[0]->activePower()&&!pellets[0]->activePower())
+        {
+            Ghosts[i]->below();
+        }
+        else if (pellets[0]->activePower())
+        {
+            Ghosts[i]->scared();
+        }
+        else 
+            Ghosts[i]->set_sprite("../resources/ghost.png");
+    }
     if (collide->getCollision())
     {
         collision = true;
-        bool pelletIsActive = false;
-        for (int i = 0; i < pellets.size(); i++)
-        {
-            if (pellets[i]->activePower())
-            {
-                pelletIsActive = true;
-                break;
-            }
-        }
-        if (!pelletIsActive && !spellets[0]->activePower())
+        if (!pellets[0]->activePower() && !spellets[0]->activePower())
         {
             freeze=180;
             playerPacman->resetMovers();
@@ -77,7 +81,7 @@ void GameOperations::handleCollisionPacmanGhost(){
                 points->storeHighScore();
             }
         }
-        else if(pelletIsActive)
+        else if(pellets[0]->activePower())
         {
             Ghosts[collide->getObject()]->respawn();
         }

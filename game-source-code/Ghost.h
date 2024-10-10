@@ -52,6 +52,16 @@ public:
     void move_Obj(shared_ptr<player> pacman);
     
     /**
+     * @brief If power pellet is active ghosts turn blue.
+     */
+    void scared();
+
+    /**
+     * @brief If super pellet is active ghosts turn white.
+     */
+    void below();
+
+    /**
      * @brief Undoes the last move made by the ghost.
      */
     void undoLastMove();
@@ -70,6 +80,7 @@ private:
     int xSpawn;///< x spawn point.
     int ySpawn;///< y spawn point.
     int speed; ///< how many pixels the ghosts move.
+    vector<string> pngs; ///< Different ghost image pngs.
 };
 
 #endif /* D090F8A0_C96D_4D4B_A6E4_9D21C536DB0F */

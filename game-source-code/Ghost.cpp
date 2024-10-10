@@ -9,6 +9,9 @@ Ghost::Ghost(int x, int y)
     xSpawn = x;   // Store the initial x-coordinate for respawning.
     ySpawn = y;   // Store the initial y-coordinate for respawning.
     speed = 2;    // Set the ghost's movement speed.
+
+    pngs.emplace_back("../resources/scaredGhost.png");
+    pngs.emplace_back("../resources/whiteGhost.png");
 }
 
 void Ghost::moveUp(){
@@ -86,4 +89,14 @@ void Ghost::undoLastMove() {
 void Ghost::respawn()
 {
     set_location(xSpawn, ySpawn); // Reset the ghost's position to its spawn point.
+}
+
+void Ghost::scared()
+{
+    set_sprite(pngs[0]);
+}
+
+void Ghost::below()
+{
+    set_sprite(pngs[1]);
 }
