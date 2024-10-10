@@ -17,6 +17,11 @@ player::player()
     left = false;
     horizontal = 0; // Horizontal movement counter.
     speed = 2; // Set the speed of the player.
+    newSpeed = speed;
+    png.emplace_back("../resources/pacmanLeft.png");
+    png.emplace_back("../resources/pacmanRight.png");
+    png.emplace_back("../resources/pacmanUp.png");
+    png.emplace_back("../resources/pacmanDown.png");
 }
 
 player::player(int x, int y)
@@ -36,6 +41,10 @@ player::player(int x, int y)
     horizontal = 0;
     speed = 2; // Set the speed of the player.
     newSpeed = speed; // Set newSpeed to the initial speed.
+    png.emplace_back("../resources/pacmanLeft.png");
+    png.emplace_back("../resources/pacmanRight.png");
+    png.emplace_back("../resources/pacmanUp.png");
+    png.emplace_back("../resources/pacmanDown.png");
 }
 
 void player::moveUp(){
@@ -63,6 +72,7 @@ void player::move_Obj(){
     
     // Handle upward movement.
     if((IsKeyDown(KEY_UP) || up) && (!right && !left)) {
+        set_sprite(png[2]);
         if(!up) // If not already moving up, calculate vertical movement.
         {
             vertical = 50/speed - vertical; // Determine how much to move up.
@@ -84,6 +94,7 @@ void player::move_Obj(){
     
     // Handle downward movement.
     else if((IsKeyDown(KEY_DOWN) || down) && (!right && !left)) {
+        set_sprite(png[3]);
         if(!down) // If not already moving down, calculate vertical movement.
         {
             vertical = 50/speed - vertical;
@@ -105,6 +116,7 @@ void player::move_Obj(){
     
     // Handle right movement.
     if((IsKeyDown(KEY_RIGHT) || right) && (!up && !down)) {
+        set_sprite(png[1]);
         if(!right) // If not already moving right, calculate horizontal movement.
         {
             horizontal = 50/speed - horizontal; // Determine how much to move right.
@@ -125,6 +137,7 @@ void player::move_Obj(){
     }
     // Handle left movement.
     else if((IsKeyDown(KEY_LEFT) || left) && (!up && !down)) {
+        set_sprite(png[0]);
         if(!left) // If not already moving left, calculate horizontal movement.
         {
             horizontal = 50/speed - horizontal; // Determine how much to move left.

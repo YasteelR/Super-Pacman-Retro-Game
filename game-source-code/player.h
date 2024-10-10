@@ -111,6 +111,7 @@ private:
     bool right; ///< Right movement flag.
     int speed; ///< Movement speed.
     int newSpeed; ///< New movement speed.
+    vector<string> png; ///< filepaths to the different pngs.
 };
 
 #endif
