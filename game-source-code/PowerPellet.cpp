@@ -41,7 +41,7 @@ bool PowerPellet::activePower()
 // Activates the power pellet for a specific duration.
 void PowerPellet::activate()
 {
-    active = 450; // Set the active duration.
+    active = 480; // Set the active duration.
     powerful = true; // Mark the power pellet as powerful.
     Power++; // Increment the count of active power pellets.
     set_location(-100, -100); // Move the pellet out of view.

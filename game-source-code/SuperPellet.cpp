@@ -41,7 +41,7 @@ bool SuperPellet::activePower()
 // Activates the super pellet, setting it to active state and updating its properties.
 void SuperPellet::activate()
 {
-    active = 450; // Set the active duration.
+    active = 480; // Set the active duration.
     powerful = true; // Mark the super pellet as powerful.
     Super++; // Increment the count of active super pellets.
     set_location(-100, -100); // Move the pellet out of view.

@@ -6,13 +6,10 @@ GameOperations::GameOperations(){
     loadEntities("../resources/GameMap.txt");
     collision=false;
 
-    Ghosts.emplace_back(make_shared<Ghost>(750,400));
-    Ghosts.emplace_back(make_shared<Ghost>(800,400));
     sketch = make_unique<Render>();
     points = make_unique<Score>();
     collide = make_unique<Collisions>();
     freeze = 180;
-
 
     gameOver=false;
     // create vector of rectangles
@@ -123,7 +120,13 @@ void GameOperations::handleCollisionDoor()
     else if(collide->getCollision()&&spellets[0]->activePower())
     {
         collision = true;
-        doors[collide->getObject()]->destroy();
+        if(collide->getObject()!=doors.size()-1)
+        {
+            doors[collide->getObject()]->destroy();
+        }
+        else 
+            collision = true;
+            playerPacman->undoLastMove();
     }
     collide->resetCollision();
 }
@@ -242,7 +245,8 @@ void GameOperations::draw(){
 }
 
 void GameOperations::loadEntities(string FilePath){
-
+    Ghosts.emplace_back(make_shared<Ghost>(750,400));
+    Ghosts.emplace_back(make_shared<Ghost>(800,400));
     Generator->OpenPath(FilePath);
 
     Generator->LoadObject(playerPacman, "Player");
